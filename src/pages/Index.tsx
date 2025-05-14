@@ -1,12 +1,57 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import React, { useEffect } from 'react';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import AboutMe from '@/components/AboutMe';
+import Timeline from '@/components/Timeline';
+import XolutionHighlights from '@/components/XolutionHighlights';
+import PwCHighlights from '@/components/PwCHighlights';
+import Vision from '@/components/Vision';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+
+const Index: React.FC = () => {
+  useEffect(() => {
+    // Set the title of the page
+    document.title = "Gokul Madan Alikkal - Consulting Leader & SaaS Founder";
+    
+    // Smooth scroll to section when clicking on navigation links
+    const handleSmoothScroll = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        const href = target.getAttribute('href');
+        if (!href) return;
+        
+        e.preventDefault();
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+    
+    document.addEventListener('click', handleSmoothScroll);
+    
+    return () => {
+      document.removeEventListener('click', handleSmoothScroll);
+    };
+  }, []);
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow">
+        <Hero />
+        <AboutMe />
+        <Timeline />
+        <XolutionHighlights />
+        <PwCHighlights />
+        <Vision />
+        <ContactSection />
+      </main>
+      <Footer />
     </div>
   );
 };
