@@ -1,6 +1,7 @@
 
-import React, { useEffect, useRef } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import React from 'react';
+import { Timeline as UiTimeline } from "@/components/ui/timeline";
+import { Card } from "@/components/ui/card";
 
 interface TimelineEntry {
   period: string;
@@ -46,71 +47,32 @@ const timelineData: TimelineEntry[] = [
   }
 ];
 
-const Timeline: React.FC = () => {
-  const timelineRef = useRef<HTMLDivElement>(null);
+// Transform the timelineData into the format expected by the UI Timeline component
+const formattedData = timelineData.map(entry => ({
+  title: entry.period,
+  content: (
+    <div className="bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md">
+      <h3 className="text-xl font-serif font-semibold mb-1">{entry.title}</h3>
+      <p className="text-base font-medium text-neutral-600 dark:text-neutral-400 mb-4">{entry.company}</p>
+      <ul className="list-disc list-inside space-y-2">
+        {entry.description.map((item, i) => (
+          <li key={i} className="text-neutral-700 dark:text-neutral-300">{item}</li>
+        ))}
+      </ul>
+    </div>
+  ),
+}));
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const timelineItems = timelineRef.current?.querySelectorAll('.timeline-item');
-    timelineItems?.forEach((item) => {
-      observer.observe(item);
-    });
-
-    return () => {
-      timelineItems?.forEach((item) => {
-        observer.unobserve(item);
-      });
-    };
-  }, []);
-
+const TimelineComponent: React.FC = () => {
   return (
-    <section id="timeline" className="py-20 bg-slate-light">
-      <div className="section-container">
-        <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-12 text-center">Professional Journey</h2>
-        
-        <div ref={timelineRef} className="relative max-w-3xl mx-auto">
-          {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gray-200"></div>
-          
-          {/* Timeline entries */}
-          {timelineData.map((entry, index) => (
-            <div key={index} className="timeline-item opacity-0 mb-12">
-              <div className="timeline-card">
-                <div className="timeline-dot"></div>
-                <div className="mb-2">
-                  <span className="text-sm font-medium bg-beige px-3 py-1 rounded-full">{entry.period}</span>
-                </div>
-                <Card className="border-0 shadow-md card-hover">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-xl">{entry.title}</CardTitle>
-                    <CardDescription className="text-base font-medium">{entry.company}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="list-disc list-inside space-y-1">
-                      {entry.description.map((item, i) => (
-                        <li key={i} className="text-gray-700">{item}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          ))}
-        </div>
+    <section id="timeline" className="py-20">
+      <div className="section-container mb-8">
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold text-center">Professional Journey</h2>
       </div>
+      
+      <UiTimeline data={formattedData} />
     </section>
   );
 };
 
-export default Timeline;
+export default TimelineComponent;
