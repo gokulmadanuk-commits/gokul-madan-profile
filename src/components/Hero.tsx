@@ -2,11 +2,19 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 
 const Hero: React.FC = () => {
   return (
-    <section className="min-h-screen pt-24 pb-8 flex items-center gradient-bg">
-      <div className="section-container">
+    <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
+      <AnimatedGridPattern
+        numSquares={30}
+        maxOpacity={0.1}
+        duration={3}
+        repeatDelay={1}
+        className="[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30"
+      />
+      <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold leading-tight">
