@@ -73,12 +73,6 @@ export default {
 					light: '#E3F0FD',
 					DEFAULT: '#D3E4FD',
 					dark: '#B3C0D3' 
-				},
-				// New bright green accent color
-				green: {
-					light: '#34D399',
-					DEFAULT: '#10B981',
-					dark: '#059669'
 				}
 			},
 			fontFamily: {
