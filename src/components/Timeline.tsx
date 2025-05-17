@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Timeline as UiTimeline } from "@/components/ui/timeline";
 import { Card } from "@/components/ui/card";
 
 interface TimelineEntry {
@@ -47,30 +46,51 @@ const timelineData: TimelineEntry[] = [
   }
 ];
 
-// Transform the timelineData into the format expected by the UI Timeline component
-const formattedData = timelineData.map(entry => ({
-  title: entry.period,
-  content: (
-    <div className="bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md">
-      <h3 className="text-xl font-serif font-semibold mb-1">{entry.title}</h3>
-      <p className="text-base font-medium text-neutral-600 dark:text-neutral-400 mb-4">{entry.company}</p>
-      <ul className="list-disc list-inside space-y-2">
-        {entry.description.map((item, i) => (
-          <li key={i} className="text-neutral-700 dark:text-neutral-300">{item}</li>
-        ))}
-      </ul>
-    </div>
-  ),
-}));
-
 const TimelineComponent: React.FC = () => {
   return (
-    <section id="timeline" className="py-20">
-      <div className="section-container mb-8">
-        <h2 className="text-3xl md:text-4xl font-serif font-semibold text-center">Professional Journey</h2>
+    <section id="timeline" className="py-24 bg-secondary/50">
+      <div className="section-container">
+        <div className="mb-16 max-w-2xl">
+          <h2 className="text-3xl md:text-4xl font-medium mb-4">Professional Journey</h2>
+          <p className="text-muted-foreground text-lg">A timeline of key roles that have shaped my expertise in analytics, transactions, and technology.</p>
+        </div>
+        
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-stripe-purple/30 to-transparent ml-4 md:ml-8 lg:ml-40" />
+          
+          <div className="space-y-16 relative">
+            {timelineData.map((entry, index) => (
+              <div 
+                key={index} 
+                className="relative pl-12 md:pl-16 lg:pl-48"
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-0 top-0 w-8 h-8 flex items-center justify-center">
+                  <div className="w-2 h-2 bg-stripe-purple rounded-full" />
+                  <div className="absolute w-4 h-4 bg-stripe-purple/20 rounded-full animate-pulse" />
+                </div>
+                
+                <Card className="bg-white border-0 shadow-sm overflow-hidden">
+                  <div className="p-6 md:p-8">
+                    <div className="text-sm font-medium text-stripe-gray mb-2">{entry.period}</div>
+                    <h3 className="text-xl font-medium mb-1">{entry.title}</h3>
+                    <p className="text-muted-foreground mb-4">{entry.company}</p>
+                    <ul className="space-y-2">
+                      {entry.description.map((item, i) => (
+                        <li key={i} className="text-stripe-gray-dark flex items-start">
+                          <span className="mr-2 text-stripe-purple">•</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      
-      <UiTimeline data={formattedData} />
     </section>
   );
 };
