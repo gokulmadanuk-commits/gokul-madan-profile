@@ -7,13 +7,13 @@ import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 const Hero: React.FC = () => {
   return <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
       <AnimatedGridPattern 
-        numSquares={40} 
+        numSquares={100} // Increased from 40 to 100
         maxOpacity={0.3} 
         duration={0.6} 
         repeatDelay={1} 
-        width={60} // Increased from default 40
-        height={60} // Increased from default 40
-        className="[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
+        width={40} // Back to default 40
+        height={40} // Back to default 40
+        className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
       />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
