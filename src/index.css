@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -45,6 +44,11 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* New green accent variables */
+    --accent-green: 161 84% 40%;
+    --accent-green-light: 156 72% 52%;
+    --accent-green-dark: 158 89% 31%;
   }
 
   .dark {
