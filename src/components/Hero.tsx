@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
       <AnimatedGridPattern 
         numSquares={100} // Increased from 40 to 100
         maxOpacity={0.3} 
-        duration={0.2} 
+        duration={0.7} 
         repeatDelay={1} 
         width={40} // Back to default 40
         height={40} // Back to default 40
