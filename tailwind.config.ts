@@ -63,18 +63,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom green palette based on the new colors
-				green: {
-					50: '#F0F4EA',
-					100: '#E1E9D6',
-					200: '#D3DFCA',
-					300: '#C6D0B8',  // Background base color
-					400: '#B8C6A6',
-					500: '#9AAD83',
-					600: '#7C9460',
-					700: '#5F7B3E',
-					800: '#31602F',  // Primary base color
-					900: '#274D25',
+				// Custom colors for Gokul's portfolio
+				beige: {
+					light: '#F5F0E5',
+					DEFAULT: '#E5DFD3',
+					dark: '#C5C0B3'
+				},
+				slate: {
+					light: '#E3F0FD',
+					DEFAULT: '#D3E4FD',
+					dark: '#B3C0D3' 
 				}
 			},
 			fontFamily: {
