@@ -1,9 +1,7 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
-
 const Hero: React.FC = () => {
   return <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
       <AnimatedGridPattern numSquares={30} maxOpacity={0.3} duration={0.6} repeatDelay={1} className="[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
@@ -12,7 +10,7 @@ const Hero: React.FC = () => {
           <div className="space-y-6 animate-fade-in">
             <div className="space-y-2">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold leading-tight">Hi, I'm Gokul</h1>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-normal">A Deals &amp; Data Analytics professional.</h2>
+              <h2 className="text-2xl md:text-3xl font-serif font-semibold lg:text-4xl">A Deals &amp; Data Analytics professional.</h2>
             </div>
             <p className="text-lg md:text-xl text-gray-700">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
             <Button className="mt-6 group" size="lg">
@@ -39,5 +37,4 @@ const Hero: React.FC = () => {
       </div>
     </section>;
 };
-
 export default Hero;
