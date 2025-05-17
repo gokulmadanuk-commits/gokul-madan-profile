@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface CaseStudy {
   title: string;
@@ -61,31 +62,30 @@ const PwCHighlights: React.FC = () => {
   }, []);
 
   return (
-    <section id="pwc" className="py-24 relative overflow-hidden">
+    <section id="pwc" className="py-20 bg-beige-light">
       <div className="section-container">
-        <h2 className="text-3xl md:text-4xl font-medium mb-12 text-center">What I Built at PwC</h2>
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-12 text-center">What I Built at PwC</h2>
         
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {caseStudies.map((study, index) => (
             <div key={index} className="case-study-card opacity-0">
-              <div className="h-full bg-white border rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:translate-y-[-2px]">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-medium">{study.title}</h3>
-                    <span className="text-xs font-medium bg-stripe-purple/10 text-stripe-purple px-2 py-1 rounded-full">
-                      {study.dealType}
-                    </span>
-                  </div>
-                  <p className="text-muted-foreground">{study.description}</p>
-                </div>
-              </div>
+              <Card className="h-full border-0 shadow-lg card-hover">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xl">{study.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700">{study.description}</p>
+                </CardContent>
+                <CardFooter>
+                  <span className="text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full">
+                    {study.dealType}
+                  </span>
+                </CardFooter>
+              </Card>
             </div>
           ))}
         </div>
       </div>
-      
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-secondary/20 pointer-events-none" />
     </section>
   );
 };
