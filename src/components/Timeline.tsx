@@ -51,12 +51,12 @@ const timelineData: TimelineEntry[] = [
 const formattedData = timelineData.map(entry => ({
   title: entry.period,
   content: (
-    <div className="bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md">
+    <div className="bg-card backdrop-blur-sm rounded-lg p-6 shadow-md border border-accent/30">
       <h3 className="text-xl font-serif font-semibold mb-1">{entry.title}</h3>
-      <p className="text-base font-medium text-neutral-600 dark:text-neutral-400 mb-4">{entry.company}</p>
+      <p className="text-base font-medium text-foreground/80 mb-4">{entry.company}</p>
       <ul className="list-disc list-inside space-y-2">
         {entry.description.map((item, i) => (
-          <li key={i} className="text-neutral-700 dark:text-neutral-300">{item}</li>
+          <li key={i} className="text-foreground/90">{item}</li>
         ))}
       </ul>
     </div>
@@ -65,9 +65,9 @@ const formattedData = timelineData.map(entry => ({
 
 const TimelineComponent: React.FC = () => {
   return (
-    <section id="timeline" className="py-20">
+    <section id="timeline" className="py-20 bg-gradient-to-b from-background/90 to-background">
       <div className="section-container mb-8">
-        <h2 className="text-3xl md:text-4xl font-serif font-semibold text-center">Professional Journey</h2>
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold text-center text-primary">Professional Journey</h2>
       </div>
       
       <UiTimeline data={formattedData} />
