@@ -8,8 +8,8 @@ const Hero: React.FC = () => {
   return <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
       <AnimatedGridPattern 
         numSquares={100} // Increased from 40 to 100
-        maxOpacity={0.3} 
-        duration={0.7} 
+        maxOpacity={0.2} 
+        duration={0.9} 
         repeatDelay={1} 
         width={40} // Back to default 40
         height={40} // Back to default 40
