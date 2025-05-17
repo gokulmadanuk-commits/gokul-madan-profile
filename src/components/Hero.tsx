@@ -1,10 +1,20 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
+
 const Hero: React.FC = () => {
   return <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
-      <AnimatedGridPattern numSquares={40} maxOpacity={0.3} duration={0.6} repeatDelay={1} className="[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
+      <AnimatedGridPattern 
+        numSquares={40} 
+        maxOpacity={0.3} 
+        duration={0.6} 
+        repeatDelay={1} 
+        width={60} // Increased from default 40
+        height={60} // Increased from default 40
+        className="[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
+      />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
@@ -37,4 +47,5 @@ const Hero: React.FC = () => {
       </div>
     </section>;
 };
+
 export default Hero;
