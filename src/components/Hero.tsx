@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
         repeatDelay={1} 
         width={60} // Increased from default 40
         height={60} // Increased from default 40
-        className="[mask-image:radial-gradient(800px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
+        className="[mask-image:radial-gradient(600px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
       />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
