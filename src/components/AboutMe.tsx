@@ -7,9 +7,7 @@ const AboutMe: React.FC = () => {
           <div className="space-y-6 text-lg">
             <p className="leading-relaxed">With over 14 years of experience in Deals, Analytics, and Digital Transformation, I have a proven track record of driving data-led initiatives for major enterprises.</p>
             <p className="leading-relaxed">I’ve built a SaaS startup that automates financial workflows and enhances reporting processes for Private Equity portfolio companies.</p>
-            <p className="leading-relaxed">
-              I've worked across India, the US, and the UK, but what ties it all together is this: I use data and technology to solve business problems that matter.
-            </p>
+            <p className="leading-relaxed">My expertise spans complex divestitures, IPOs, and Private Equity transactions—particularly in leveraging technology to improve efficiency and transparency.</p>
           </div>
         </div>
       </div>
