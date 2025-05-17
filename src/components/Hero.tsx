@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
             <div className="space-y-2">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold leading-tight">Hi, I'm Gokul</h1>
+              <h1 className="text-4xl md:text-5xl font-serif font-semibold leading-tight lg:text-7xl">Hi, I'm Gokul</h1>
               <h2 className="text-2xl md:text-3xl font-serif font-semibold lg:text-4xl">A Deals &amp; Data Analytics professional.</h2>
             </div>
             <p className="text-lg md:text-xl text-gray-700">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
