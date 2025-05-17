@@ -2,14 +2,31 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download, Mail, Linkedin } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useScrollPosition } from "@/hooks/useScrollPosition";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Navbar: React.FC = () => {
+  const { isAtTop } = useScrollPosition();
+  
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50 py-4 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50 py-4 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-xl font-serif font-semibold">Gokul Madan Alikkal</h1>
+          <div className="flex items-center space-x-3">
+            {isAtTop && (
+              <Avatar className="h-10 w-10 border border-gray-200">
+                <AvatarImage 
+                  src="/lovable-uploads/762067e6-2085-47a8-987f-4364c649f054.png" 
+                  alt="Gokul Madan Alikkal"
+                  className="object-cover"
+                />
+                <AvatarFallback>GM</AvatarFallback>
+              </Avatar>
+            )}
+            <h1 className="text-xl font-serif font-semibold transition-all">
+              {isAtTop ? "Gokul" : "Gokul Madan Alikkal"}
+            </h1>
           </div>
           <nav className="hidden md:flex space-x-4 items-center">
             <a href="#about" className="text-gray-600 hover:text-primary transition-colors">About</a>
