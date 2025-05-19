@@ -26,11 +26,48 @@ const ContactSection: React.FC = () => {
   };
   
   return (
-    <section id="contact" className="relative overflow-hidden bg-gradient-to-br from-primary/80 to-primary/50 py-20">
+    <section id="contact" className="relative overflow-hidden bg-gradient-to-br from-primary/20 to-primary py-20">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+          <div className="lg:w-1/2 relative">
+            <div className="relative h-[500px] max-w-md mx-auto lg:mx-0">
+              <img 
+                src="/lovable-uploads/96f4b5a4-64ba-4d4d-a803-481323f18bc1.png" 
+                alt="Gokul Madan Alikkal" 
+                className="h-full object-contain object-center"
+              />
+            </div>
+            
+            <div className="absolute top-10 -right-4 sm:right-20 lg:-right-10">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 w-[180px]">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-green-400"></div>
+                    <span className="text-white text-sm">Initial Onboarding</span>
+                  </div>
+                  <p className="text-white/80 text-xs mt-2">2 Weeks to Go</p>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className="absolute top-40 -left-4 sm:left-10">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 w-[160px]">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-blue-400"></div>
+                    <span className="text-white text-sm">Tasks Update</span>
+                  </div>
+                  <p className="text-white/80 text-xs mt-2">5 items remaining</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+          
           <div className="lg:w-1/2">
             <h2 className="text-4xl md:text-5xl font-serif text-white font-semibold mb-6">Ready to see what's possible?</h2>
+            <p className="text-white/90 text-lg mb-8">
+              We'd love 30 minutes to show how to get your customers to their value destination faster.
+            </p>
             
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 max-w-md">
               <CardContent className="pt-6">
@@ -55,40 +92,6 @@ const ContactSection: React.FC = () => {
                 </form>
               </CardContent>
             </Card>
-          </div>
-          
-          <div className="lg:w-1/2 relative">
-            <div className="absolute bottom-0 right-0 transform translate-x-1/4">
-              <div className="relative">
-                <img 
-                  src="/lovable-uploads/c7f7993d-5576-4ef8-baf6-811900657c1f.png" 
-                  alt="Contact illustration" 
-                  className="h-[140%] object-contain"
-                />
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                    <span className="text-white text-sm">New notification</span>
-                  </div>
-                  <p className="text-white/80 text-xs mt-2">Client approval received</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-2 w-2 rounded-full bg-blue-400"></div>
-                    <span className="text-white text-sm">Tasks update</span>
-                  </div>
-                  <p className="text-white/80 text-xs mt-2">3 tasks completed today</p>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </div>

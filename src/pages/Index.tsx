@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -8,6 +9,7 @@ import Vision from '@/components/Vision';
 import Footer from '@/components/Footer';
 import ClientLogos from '@/components/ClientLogos';
 import ProfessionalJourney from '@/components/ProfessionalJourney';
+import ContactSection from '@/components/ContactSection';
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -49,6 +51,7 @@ const Index: React.FC = () => {
         <XolutionHighlights />
         <PwCHighlights />
         <Vision />
+        <ContactSection />
       </main>
       <Footer />
     </div>
