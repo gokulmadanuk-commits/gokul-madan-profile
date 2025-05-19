@@ -9,6 +9,7 @@ import Vision from '@/components/Vision';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ClientLogos from '@/components/ClientLogos';
+import ProfessionalJourney from '@/components/ProfessionalJourney';
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -46,7 +47,7 @@ const Index: React.FC = () => {
         <Hero />
         <ClientLogos />
         <AboutMe />
-        {/* Timeline component removed */}
+        <ProfessionalJourney />
         <XolutionHighlights />
         <PwCHighlights />
         <Vision />
