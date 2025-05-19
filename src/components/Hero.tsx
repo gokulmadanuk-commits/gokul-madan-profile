@@ -1,11 +1,13 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download, Play } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
 const Hero: React.FC = () => {
-  return <section className="min-h-[70vh] pt-12 pb-6 flex items-center relative overflow-hidden">
+  return <section className="py-12 flex items-center relative overflow-hidden">
       <AnimatedGridPattern numSquares={100} maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40} height={40} className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -40,13 +42,20 @@ const Hero: React.FC = () => {
             </div>
           </div>
           
-          <div className="relative animate-fade-in">
-            <AspectRatio ratio={1500 / 1760} className="rounded-lg overflow-hidden shadow-lg max-w-sm mx-auto">
-              <img src="/lovable-uploads/55315e40-76db-4609-a1f6-82d13113aa77.png" alt="Gokul Madan Alikkal" className="w-full h-full object-contain" />
-            </AspectRatio>
+          <div className="relative animate-fade-in flex justify-center lg:justify-end">
+            <div className="w-full max-w-sm">
+              <AspectRatio ratio={1500 / 1760} className="rounded-lg overflow-hidden shadow-lg">
+                <img 
+                  src="/lovable-uploads/ccb03c56-662c-4560-aa78-6d0be23d3180.png" 
+                  alt="Gokul Madan Alikkal" 
+                  className="w-full h-full object-cover"
+                />
+              </AspectRatio>
+            </div>
           </div>
         </div>
       </div>
     </section>;
 };
+
 export default Hero;
