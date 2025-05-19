@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
 
 const ClientLogos: React.FC = () => {
@@ -22,20 +21,15 @@ const ClientLogos: React.FC = () => {
 
   return (
     <section className="py-10 bg-slate-50">
-      <div className="section-container">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-serif font-semibold text-gray-800">Trusted by</h2>
-          <Separator className="w-24 mx-auto mt-3 bg-primary" />
-        </div>
-        
-        <Card className="p-8 bg-white shadow-sm">
+      <div className="w-full px-4">
+        <Card className="w-full p-8 bg-white shadow-none border-2 border-primary">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
             {logos.map((logo, index) => (
               <div key={index} className="h-16 flex items-center justify-center">
                 <img 
                   src={logo.src} 
                   alt={logo.alt} 
-                  className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" 
+                  className="max-h-full max-w-full object-contain" 
                 />
               </div>
             ))}
