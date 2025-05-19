@@ -2,46 +2,50 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Linkedin, Send } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { Card, CardContent } from "@/components/ui/card";
 
 const ContactSection: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     // Simulate form submission
     setTimeout(() => {
-      toast({
-        title: "Request Sent",
-        description: "Gokul will reach out to you soon. Thank you!",
-        duration: 5000,
-      });
+      // Add toast notification here if needed
       setEmail('');
       setIsSubmitting(false);
     }, 1500);
   };
 
   return (
-    <section id="contact" className="py-20 gradient-bg">
-      <div className="section-container">
-        <div className="max-w-3xl mx-auto">
-          <Card className="border-0 shadow-xl overflow-hidden">
-            <CardHeader className="bg-primary text-white text-center py-8">
-              <CardTitle className="text-3xl font-serif">Get In Touch</CardTitle>
-            </CardHeader>
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-medium">
-                    Your Email Address
-                  </label>
-                  <div className="flex gap-2">
+    <section id="contact" className="py-20">
+      <div className="bg-primary text-white rounded-xl overflow-hidden">
+        <div className="flex flex-col lg:flex-row">
+          {/* Left side with image */}
+          <div className="lg:w-1/3 flex items-center justify-center p-6 lg:p-0">
+            <div className="relative">
+              <img 
+                src="/lovable-uploads/7c829219-3347-4cd9-9f73-d092d5fd1e4c.png" 
+                alt="Gokul Madan" 
+                className="max-h-[500px] object-contain"
+              />
+            </div>
+          </div>
+          
+          {/* Right side with content */}
+          <div className="lg:w-2/3 p-8 lg:p-16 flex flex-col justify-center">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">Ready to see what's possible?</h2>
+            <p className="text-xl mb-8">
+              We'd love 30 minutes to show how to get your customers to their value destination faster.
+            </p>
+            
+            <Card className="border-0 shadow-xl bg-white/10 backdrop-blur-sm max-w-md">
+              <CardContent className="p-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="space-y-2">
                     <Input
                       id="email"
                       type="email"
@@ -49,52 +53,20 @@ const ContactSection: React.FC = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="flex-1"
+                      className="bg-white/20 border-white/30 text-white placeholder:text-white/70"
                     />
                     <Button 
                       type="submit" 
                       disabled={isSubmitting}
-                      className="transition-all duration-300"
+                      className="w-full bg-white text-primary hover:bg-white/90 transition-all duration-300 font-medium"
                     >
-                      {isSubmitting ? (
-                        <div className="flex items-center">
-                          <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          <span>Sending...</span>
-                        </div>
-                      ) : (
-                        <div className="flex items-center">
-                          <span>Have Gokul reach out</span>
-                          <Send className="ml-2 h-4 w-4" />
-                        </div>
-                      )}
+                      {isSubmitting ? "Sending..." : "Get a Demo"}
                     </Button>
                   </div>
-                </div>
-                
-                <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4 border-t">
-                  <a 
-                    href="mailto:gokulmadan2@gmail.com"
-                    className="flex items-center justify-center gap-2 text-gray-700 hover:text-primary transition-colors"
-                  >
-                    <Mail className="h-5 w-5" />
-                    <span>gokulmadan2@gmail.com</span>
-                  </a>
-                  <a 
-                    href="https://linkedin.com/in/gokulmadan"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 text-gray-700 hover:text-primary transition-colors"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                    <span>linkedin.com/in/gokulmadan</span>
-                  </a>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>
