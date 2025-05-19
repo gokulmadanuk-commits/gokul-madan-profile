@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="secondary" size="lg" className="group">
-                    <Play className="mr-2 h-4 w-4" />
+                    <Play className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                     Video Introduction
                   </Button>
                 </DialogTrigger>
