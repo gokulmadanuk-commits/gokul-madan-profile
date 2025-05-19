@@ -19,32 +19,34 @@ const Hero: React.FC = () => {
             </div>
             <p className="text-lg md:text-xl font-semibold text-primary">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
             <div className="flex flex-wrap gap-4 mt-4">
-              <Button size="lg" className="group">
-                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                Download My Resume
-              </Button>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="group bg-white text-[#31602F] border-[#31602F] hover:bg-[#31602F]/20 transition-colors">
-                    <Play className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                    Video Introduction
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-2xl">
-                  <div className="aspect-video w-full bg-black flex items-center justify-center text-white">
-                    <div className="text-center">
-                      <Play className="mx-auto h-12 w-12 mb-2" />
-                      <p className="text-lg font-medium">Video Introduction</p>
-                      <p className="text-sm text-gray-300 mt-2">This is a placeholder for the actual video content.</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
+                <Button size="lg" className="group w-full">
+                  <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                  Download My Resume
+                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" size="lg" className="group bg-white text-[#31602F] border-[#31602F] hover:bg-[#31602F]/20 transition-colors w-full">
+                      <Play className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                      Video Introduction
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-2xl">
+                    <div className="aspect-video w-full bg-black flex items-center justify-center text-white">
+                      <div className="text-center">
+                        <Play className="mx-auto h-12 w-12 mb-2" />
+                        <p className="text-lg font-medium">Video Introduction</p>
+                        <p className="text-sm text-gray-300 mt-2">This is a placeholder for the actual video content.</p>
+                      </div>
                     </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
           </div>
           
           <div className="relative animate-fade-in flex justify-center lg:justify-end">
-            <div className="rounded-lg overflow-hidden shadow-[0px_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:shadow-[0px_8px_30px_rgba(0,0,0,0.12)] max-w-sm">
+            <div className="rounded-lg overflow-hidden shadow-[0px_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:shadow-[0px_8px_30px_rgba(0,0,0,0.12)] max-w-sm lg:max-w-sm md:max-w-xs sm:max-w-[250px]">
               <img 
                 src="/lovable-uploads/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png" 
                 alt="Gokul's portrait" 
