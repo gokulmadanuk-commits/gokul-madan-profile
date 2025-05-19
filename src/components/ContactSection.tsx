@@ -16,7 +16,7 @@ const ContactSection: React.FC = () => {
       setIsSubmitting(false);
     }, 1500);
   };
-  return <section id="contact" className="py-20 px-[50px]">
+  return <section id="contact" className="py-20 px-[150px]">
       <div className="bg-primary text-white rounded-xl overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           {/* Left side with image */}
