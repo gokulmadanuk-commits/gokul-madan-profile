@@ -6,10 +6,10 @@ import AboutMe from '@/components/AboutMe';
 import XolutionHighlights from '@/components/XolutionHighlights';
 import PwCHighlights from '@/components/PwCHighlights';
 import Vision from '@/components/Vision';
+import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ClientLogos from '@/components/ClientLogos';
 import ProfessionalJourney from '@/components/ProfessionalJourney';
-import ContactSection from '@/components/ContactSection';
 
 const Index: React.FC = () => {
   useEffect(() => {
