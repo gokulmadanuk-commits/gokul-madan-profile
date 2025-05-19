@@ -14,7 +14,7 @@ const ProfessionalJourney: React.FC = () => {
           <img 
             src="/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png" 
             alt="Xolution Logo" 
-            className="h-12 mt-3 mb-6"
+            className="h-10 w-auto mt-3 mb-6"
           />
         </div>
         
