@@ -22,7 +22,7 @@ const ProfessionalJourney: React.FC = () => {
           <img 
             src="/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png" 
             alt="PwC Logo" 
-            className="h-10 w-auto max-w-[120px] mt-3 mb-6 rounded-md" 
+            className="h-10 w-auto mt-3 mb-6 rounded-md" 
           />
           <PwCBentoDemo />
         </div>
