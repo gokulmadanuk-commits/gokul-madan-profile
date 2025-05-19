@@ -28,7 +28,7 @@ const ContactSection: React.FC = () => {
           <div className="lg:w-1/3 h-full relative">
             <div className="h-[400px] lg:h-full relative">
               <img 
-                src="/lovable-uploads/7c829219-3347-4cd9-9f73-d092d5fd1e4c.png" 
+                src="/lovable-uploads/c7f7993d-5576-4ef8-baf6-811900657c1f.png" 
                 alt="Gokul Madan" 
                 className="object-contain w-auto absolute bottom-0" 
                 style={{ 
