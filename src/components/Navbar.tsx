@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download, Mail, Linkedin } from "lucide-react";
@@ -6,7 +7,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-xl font-serif font-semibold text-[#31602f]">Gokul Madan Alikkal</h1>
+            <h1 className="text-xl font-serif font-semibold text-primary">Gokul Madan Alikkal</h1>
           </div>
           <nav className="hidden md:flex space-x-4 items-center">
             <a href="#about" className="text-gray-600 hover:text-primary transition-colors">About</a>
