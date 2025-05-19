@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
               <h1 className="text-4xl md:text-5xl font-serif font-semibold leading-tight lg:text-7xl">Hi, I'm Gokul</h1>
               <h2 className="text-2xl md:text-3xl font-serif font-semibold lg:text-5xl">A Deals &amp; Data Analytics professional.</h2>
             </div>
-            <p className="text-lg md:text-xl font-semibold text-[#1c3b26]">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
+            <p className="text-lg md:text-xl font-semibold text-[#31602f]">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
             <Button className="mt-6 group" size="lg">
               <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
               Download My Resume
