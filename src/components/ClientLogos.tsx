@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Card } from "@/components/ui/card";
 
 const ClientLogos: React.FC = () => {
   // Array of logo data with src, alt, and optional width/height control
@@ -22,9 +21,9 @@ const ClientLogos: React.FC = () => {
   return (
     <section className="bg-slate-50 border-t-2 border-b-2 border-primary">
       <div className="w-full">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center p-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center py-4 px-8">
           {logos.map((logo, index) => (
-            <div key={index} className="h-16 flex items-center justify-center">
+            <div key={index} className="h-12 flex items-center justify-center">
               <img 
                 src={logo.src} 
                 alt={logo.alt} 
