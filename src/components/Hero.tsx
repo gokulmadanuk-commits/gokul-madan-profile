@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
               </Button>
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="secondary" size="lg" className="group">
+                  <Button variant="secondary" size="lg" className="group hover:bg-green-500/20 transition-colors">
                     <Play className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                     Video Introduction
                   </Button>
