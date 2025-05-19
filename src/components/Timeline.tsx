@@ -1,12 +1,15 @@
+
 import React from 'react';
 import { Timeline as UiTimeline } from "@/components/ui/timeline";
 import { Card } from "@/components/ui/card";
+
 interface TimelineEntry {
   period: string;
   title: string;
   company: string;
   description: string[];
 }
+
 const timelineData: TimelineEntry[] = [{
   period: "2023 – Present",
   title: "Founder",
@@ -40,7 +43,16 @@ const formattedData = timelineData.map(entry => ({
       </ul>
     </div>
 }));
+
 const TimelineComponent: React.FC = () => {
-  return;
+  return (
+    <div id="experience" className="py-16 bg-neutral-50 dark:bg-neutral-950">
+      <div className="max-w-5xl mx-auto px-4">
+        <h2 className="text-3xl font-bold mb-12 text-center">Professional Journey</h2>
+        <UiTimeline data={formattedData} />
+      </div>
+    </div>
+  );
 };
+
 export default TimelineComponent;
