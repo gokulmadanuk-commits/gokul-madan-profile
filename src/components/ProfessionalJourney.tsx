@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BentoDemo } from '@/components/ui/bento-demo';
 import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
@@ -18,7 +19,11 @@ const ProfessionalJourney: React.FC = () => {
         <div className="mt-16 mb-10">
           <h3 className="text-2xl font-bold">2015 - 2023</h3>
           <p className="text-xl text-gray-700">Senior Manager</p>
-          <img src="/lovable-uploads/4a1d098b-4c2a-4b98-92f7-da4bc8e5da7f.png" alt="PwC Logo" className="h-20 w-auto mt-3 mb-6" />
+          <img 
+            src="/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png" 
+            alt="PwC Logo" 
+            className="h-10 w-auto mt-3 mb-6 rounded-md" 
+          />
           <PwCBentoDemo />
         </div>
       </div>
