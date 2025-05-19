@@ -1,11 +1,9 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download, Play } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-
 const Hero: React.FC = () => {
   return <section className="py-12 flex items-center relative overflow-hidden">
       <AnimatedGridPattern numSquares={100} maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40} height={40} className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
@@ -44,18 +42,11 @@ const Hero: React.FC = () => {
           
           <div className="relative animate-fade-in flex justify-center lg:justify-end">
             <div className="w-full max-w-sm">
-              <AspectRatio ratio={1500 / 1760} className="rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src="/lovable-uploads/ccb03c56-662c-4560-aa78-6d0be23d3180.png" 
-                  alt="Gokul Madan Alikkal" 
-                  className="w-full h-full object-cover"
-                />
-              </AspectRatio>
+              
             </div>
           </div>
         </div>
       </div>
     </section>;
 };
-
 export default Hero;
