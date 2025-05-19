@@ -1,14 +1,23 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, Play } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
 const Hero: React.FC = () => {
-  return <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
-      <AnimatedGridPattern numSquares={100}
-    maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40}
-    height={40}
-    className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
+  return (
+    <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
+      <AnimatedGridPattern 
+        numSquares={100}
+        maxOpacity={0.2} 
+        duration={0.9} 
+        repeatDelay={1} 
+        width={40}
+        height={40}
+        className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
+      />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
@@ -22,23 +31,40 @@ const Hero: React.FC = () => {
               Download My Resume
             </Button>
           </div>
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl animate-fade-in">
-            <div className="aspect-video bg-gray-200 w-full">
-              {/* Video or image placeholder */}
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-300 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-gray-500">
-                      <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
-                    </svg>
+          
+          <div className="relative rounded-2xl overflow-hidden shadow-xl animate-fade-in">
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="group relative cursor-pointer">
+                  <AspectRatio ratio={16/10} className="bg-black/5">
+                    <img 
+                      src="/lovable-uploads/d2f3559e-06bd-4de6-9433-e5a046106017.png" 
+                      alt="Gokul Madan Alikkal" 
+                      className="w-full h-full object-cover" 
+                    />
+                  </AspectRatio>
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-primary/80 rounded-full p-4 transform transition-transform group-hover:scale-110">
+                      <Play className="w-8 h-8 text-white" fill="white" />
+                    </div>
                   </div>
-                  <p className="text-gray-500">Video Introduction</p>
                 </div>
-              </div>
-            </div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-2xl">
+                <div className="aspect-video w-full bg-black flex items-center justify-center text-white">
+                  <div className="text-center">
+                    <Play className="mx-auto h-12 w-12 mb-2" />
+                    <p className="text-lg font-medium">Video Introduction</p>
+                    <p className="text-sm text-gray-300 mt-2">This is a placeholder for the actual video content.</p>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
