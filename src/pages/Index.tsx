@@ -9,6 +9,7 @@ import PwCHighlights from '@/components/PwCHighlights';
 import Vision from '@/components/Vision';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import ClientLogos from '@/components/ClientLogos';
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -44,6 +45,7 @@ const Index: React.FC = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <ClientLogos />
         <AboutMe />
         <Timeline />
         <XolutionHighlights />
