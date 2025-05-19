@@ -26,16 +26,14 @@ const ContactSection: React.FC = () => {
         <div className="flex flex-col lg:flex-row relative">
           {/* Left side with image */}
           <div className="lg:w-1/3 h-full relative">
-            <div className="h-full flex items-end justify-center">
+            <div className="h-[400px] lg:h-full relative">
               <img 
-                src="/lovable-uploads/7c829219-3347-4cd9-9f73-d092d5fd1e4c.png" 
+                src="/lovable-uploads/20745f82-411e-437d-88b0-e78e59c6fd0e.png" 
                 alt="Gokul Madan" 
-                className="object-contain w-auto" 
+                className="object-contain w-auto absolute bottom-0" 
                 style={{ 
                   height: "140%", 
-                  maxWidth: "100%", 
-                  position: "absolute",
-                  bottom: "0"
+                  maxWidth: "100%",
                 }}
               />
             </div>
