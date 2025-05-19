@@ -51,7 +51,7 @@ const timelineData: TimelineEntry[] = [
 const formattedData = timelineData.map(entry => ({
   title: entry.period,
   content: (
-    <div className="bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md">
+    <div className="bg-white dark:bg-neutral-900 rounded-lg p-6 border border-[#1C3B26]">
       <h3 className="text-xl font-serif font-semibold mb-1">{entry.title}</h3>
       <p className="text-base font-medium text-neutral-600 dark:text-neutral-400 mb-4">{entry.company}</p>
       <ul className="list-disc list-inside space-y-2">
