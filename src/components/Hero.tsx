@@ -32,19 +32,19 @@ const Hero: React.FC = () => {
             </Button>
           </div>
           
-          <div className="relative rounded-2xl overflow-hidden shadow-xl animate-fade-in">
+          <div className="relative animate-fade-in">
             <Dialog>
               <DialogTrigger asChild>
                 <div className="group relative cursor-pointer">
-                  <AspectRatio ratio={16/10} className="bg-black/5">
+                  <AspectRatio ratio={16/10} className="bg-transparent">
                     <img 
                       src="/lovable-uploads/d2f3559e-06bd-4de6-9433-e5a046106017.png" 
                       alt="Gokul Madan Alikkal" 
                       className="w-full h-full object-cover" 
                     />
                   </AspectRatio>
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="bg-primary/80 rounded-full p-4 transform transition-transform group-hover:scale-110">
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm group-hover:backdrop-blur-none">
+                    <div className="bg-primary/90 rounded-full p-4 transform transition-transform group-hover:scale-110">
                       <Play className="w-8 h-8 text-white" fill="white" />
                     </div>
                   </div>
