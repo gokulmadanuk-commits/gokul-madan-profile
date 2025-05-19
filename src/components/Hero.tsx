@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const Hero: React.FC = () => {
   return (
-    <section className="min-h-[70vh] pt-12 pb-8 flex items-center relative overflow-hidden">
+    <section className="min-h-[80vh] pt-16 pb-8 flex items-center relative overflow-hidden">
       <AnimatedGridPattern 
         numSquares={100}
         maxOpacity={0.2} 
@@ -56,15 +56,13 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="relative animate-fade-in">
-            <div className="max-w-xs mx-auto md:max-w-sm lg:max-w-md">
-              <AspectRatio ratio={1500/1600} className="rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src="/lovable-uploads/5865f7b1-302b-421b-bcfd-2e4080867239.png" 
-                  alt="Gokul Madan Alikkal" 
-                  className="w-full h-full object-cover"
-                />
-              </AspectRatio>
-            </div>
+            <AspectRatio ratio={4/5} className="rounded-lg overflow-hidden shadow-lg max-w-sm mx-auto">
+              <img 
+                src="/lovable-uploads/e344b1af-53d6-4802-8dfe-698a3a01afd8.png" 
+                alt="Gokul Madan Alikkal" 
+                className="w-full h-full object-cover" 
+              />
+            </AspectRatio>
           </div>
         </div>
       </div>
