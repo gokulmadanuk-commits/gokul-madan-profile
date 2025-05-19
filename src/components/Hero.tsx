@@ -1,9 +1,12 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download, Play } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Card } from "@/components/ui/card";
+
 const Hero: React.FC = () => {
   return <section className="py-12 flex items-center relative overflow-hidden">
       <AnimatedGridPattern numSquares={100} maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40} height={40} className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
@@ -41,12 +44,17 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="relative animate-fade-in flex justify-center lg:justify-end">
-            <div className="w-full max-w-sm">
-              
+            <div className="rounded-lg overflow-hidden shadow-[0px_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:shadow-[0px_8px_30px_rgba(0,0,0,0.12)] max-w-sm">
+              <img 
+                src="/lovable-uploads/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png" 
+                alt="Gokul's portrait" 
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
       </div>
     </section>;
 };
+
 export default Hero;
