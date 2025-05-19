@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -6,7 +5,6 @@ import AboutMe from '@/components/AboutMe';
 import XolutionHighlights from '@/components/XolutionHighlights';
 import PwCHighlights from '@/components/PwCHighlights';
 import Vision from '@/components/Vision';
-import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ClientLogos from '@/components/ClientLogos';
 import ProfessionalJourney from '@/components/ProfessionalJourney';
@@ -51,7 +49,6 @@ const Index: React.FC = () => {
         <XolutionHighlights />
         <PwCHighlights />
         <Vision />
-        <ContactSection />
       </main>
       <Footer />
     </div>
