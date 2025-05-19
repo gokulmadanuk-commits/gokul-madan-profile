@@ -56,9 +56,9 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="relative animate-fade-in">
-            <AspectRatio ratio={16/10}>
+            <AspectRatio ratio={1/1.3} className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="/lovable-uploads/d2f3559e-06bd-4de6-9433-e5a046106017.png" 
+                src="/lovable-uploads/e344b1af-53d6-4802-8dfe-698a3a01afd8.png" 
                 alt="Gokul Madan Alikkal" 
                 className="w-full h-full object-cover" 
               />
