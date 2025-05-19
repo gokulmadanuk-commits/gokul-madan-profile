@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download, Mail, Linkedin } from "lucide-react";
@@ -16,10 +15,7 @@ const Navbar: React.FC = () => {
             <a href="#pwc" className="text-gray-600 hover:text-primary transition-colors">PwC</a>
             <a href="#vision" className="text-gray-600 hover:text-primary transition-colors">Vision</a>
             <a href="#contact" className="text-gray-600 hover:text-primary transition-colors">Contact</a>
-            <Button variant="outline" size="sm" className="flex items-center gap-2">
-              <Download className="h-4 w-4" />
-              <span>Resume</span>
-            </Button>
+            
           </nav>
           <div className="md:hidden flex items-center space-x-2">
             <a href="mailto:gokulmadan2@gmail.com" className="p-2 text-gray-600 hover:text-primary">
