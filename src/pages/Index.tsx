@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import AboutMe from '@/components/AboutMe';
-import Timeline from '@/components/Timeline';
 import XolutionHighlights from '@/components/XolutionHighlights';
 import PwCHighlights from '@/components/PwCHighlights';
 import Vision from '@/components/Vision';
@@ -47,7 +46,7 @@ const Index: React.FC = () => {
         <Hero />
         <ClientLogos />
         <AboutMe />
-        <Timeline />
+        {/* Timeline component removed */}
         <XolutionHighlights />
         <PwCHighlights />
         <Vision />
