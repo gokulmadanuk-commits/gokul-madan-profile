@@ -1,23 +1,12 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download, Play } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-
 const Hero: React.FC = () => {
-  return (
-    <section className="min-h-[70vh] pt-12 pb-6 flex items-center relative overflow-hidden">
-      <AnimatedGridPattern 
-        numSquares={100}
-        maxOpacity={0.2} 
-        duration={0.9} 
-        repeatDelay={1} 
-        width={40}
-        height={40}
-        className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
-      />
+  return <section className="min-h-[70vh] pt-12 pb-6 flex items-center relative overflow-hidden">
+      <AnimatedGridPattern numSquares={100} maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40} height={40} className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="space-y-5 animate-fade-in">
@@ -33,11 +22,7 @@ const Hero: React.FC = () => {
               </Button>
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="group bg-white text-[#31602F] border-[#31602F] hover:bg-[#31602F]/20 transition-colors"
-                  >
+                  <Button variant="outline" size="lg" className="group bg-white text-[#31602F] border-[#31602F] hover:bg-[#31602F]/20 transition-colors">
                     <Play className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                     Video Introduction
                   </Button>
@@ -56,18 +41,12 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="relative animate-fade-in">
-            <AspectRatio ratio={1500/1760} className="rounded-lg overflow-hidden shadow-lg max-w-sm mx-auto">
-              <img 
-                src="/lovable-uploads/55315e40-76db-4609-a1f6-82d13113aa77.png" 
-                alt="Gokul Madan Alikkal" 
-                className="w-full h-full object-cover" 
-              />
+            <AspectRatio ratio={1500 / 1760} className="rounded-lg overflow-hidden shadow-lg max-w-sm mx-auto">
+              <img src="/lovable-uploads/55315e40-76db-4609-a1f6-82d13113aa77.png" alt="Gokul Madan Alikkal" className="w-full h-full object-contain" />
             </AspectRatio>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
