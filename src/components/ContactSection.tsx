@@ -22,15 +22,15 @@ const ContactSection: React.FC = () => {
 
   return (
     <section id="contact" className="py-20 px-4 md:px-6 lg:px-[150px]">
-      <div className="bg-gradient-to-br from-[#31602F] to-[#3c7c39] text-white rounded-xl overflow-hidden shadow-xl">
+      <div className="bg-gradient-to-br from-primary via-[#3c7c39] to-[#4a9847] text-white rounded-xl overflow-hidden shadow-xl">
         <div className="flex flex-col lg:flex-row">
           {/* Left side with image */}
-          <div className="lg:w-1/3 relative flex items-center justify-center">
-            <div className="h-full flex items-end">
+          <div className="lg:w-1/3 relative">
+            <div className="absolute bottom-0 left-0 h-full pt-10 flex items-end">
               <img 
                 src="/lovable-uploads/7c829219-3347-4cd9-9f73-d092d5fd1e4c.png" 
                 alt="Gokul Madan" 
-                className="object-contain max-h-[600px] w-auto" 
+                className="object-contain h-[calc(100%-40px)] max-h-[700px] w-auto" 
               />
             </div>
           </div>
