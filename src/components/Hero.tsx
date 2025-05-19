@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const Hero: React.FC = () => {
   return (
-    <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
+    <section className="min-h-[80vh] pt-16 pb-8 flex items-center relative overflow-hidden">
       <AnimatedGridPattern 
         numSquares={100}
         maxOpacity={0.2} 
@@ -19,14 +19,14 @@ const Hero: React.FC = () => {
         className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
       />
       <div className="section-container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 animate-fade-in">
-            <div className="space-y-2">
-              <h1 className="text-4xl md:text-5xl font-serif font-semibold leading-tight lg:text-7xl">Hi, I'm Gokul</h1>
-              <h2 className="text-2xl md:text-3xl font-serif font-semibold lg:text-5xl">A Deals &amp; Data Analytics professional.</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="space-y-5 animate-fade-in">
+            <div className="space-y-1">
+              <h1 className="text-4xl md:text-5xl font-serif font-semibold leading-tight lg:text-6xl">Hi, I'm Gokul</h1>
+              <h2 className="text-2xl md:text-3xl font-serif font-semibold lg:text-4xl">A Deals &amp; Data Analytics professional.</h2>
             </div>
             <p className="text-lg md:text-xl font-semibold text-primary">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
-            <div className="flex flex-wrap gap-4 mt-6">
+            <div className="flex flex-wrap gap-4 mt-4">
               <Button size="lg" className="group">
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                 Download My Resume
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="relative animate-fade-in">
-            <AspectRatio ratio={3/4} className="rounded-lg overflow-hidden shadow-lg max-w-md mx-auto">
+            <AspectRatio ratio={4/5} className="rounded-lg overflow-hidden shadow-lg max-w-sm mx-auto">
               <img 
                 src="/lovable-uploads/e344b1af-53d6-4802-8dfe-698a3a01afd8.png" 
                 alt="Gokul Madan Alikkal" 
