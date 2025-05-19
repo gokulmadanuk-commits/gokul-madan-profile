@@ -1,20 +1,13 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
-
 const Hero: React.FC = () => {
   return <section className="min-h-screen pt-24 pb-8 flex items-center relative overflow-hidden">
-      <AnimatedGridPattern 
-        numSquares={100} // Increased from 40 to 100
-        maxOpacity={0.2} 
-        duration={0.9} 
-        repeatDelay={1} 
-        width={40} // Back to default 40
-        height={40} // Back to default 40
-        className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" 
-      />
+      <AnimatedGridPattern numSquares={100} // Increased from 40 to 100
+    maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40} // Back to default 40
+    height={40} // Back to default 40
+    className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
@@ -22,7 +15,7 @@ const Hero: React.FC = () => {
               <h1 className="text-4xl md:text-5xl font-serif font-semibold leading-tight lg:text-7xl">Hi, I'm Gokul</h1>
               <h2 className="text-2xl md:text-3xl font-serif font-semibold lg:text-5xl">A Deals &amp; Data Analytics professional.</h2>
             </div>
-            <p className="text-lg md:text-xl text-gray-700">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
+            <p className="text-lg md:text-xl font-semibold text-[#1c3b26]">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
             <Button className="mt-6 group" size="lg">
               <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
               Download My Resume
@@ -47,5 +40,4 @@ const Hero: React.FC = () => {
       </div>
     </section>;
 };
-
 export default Hero;
