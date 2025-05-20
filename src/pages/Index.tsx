@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import AboutMe from '@/components/AboutMe';
 import XolutionHighlights from '@/components/XolutionHighlights';
@@ -42,7 +41,6 @@ const Index: React.FC = () => {
   
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
       <main className="flex-grow">
         <Hero />
         <ClientLogos />

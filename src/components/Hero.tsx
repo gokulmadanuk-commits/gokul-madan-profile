@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Download, Play } from "lucide-react";
+import { Download, Play, Mail, Linkedin } from "lucide-react";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -42,6 +42,28 @@ const Hero: React.FC = () => {
                   </DialogContent>
                 </Dialog>
               </div>
+            </div>
+            
+            {/* Contact icons */}
+            <div className="flex items-center space-x-4 mt-4">
+              <a 
+                href="mailto:gokulmadan2@gmail.com" 
+                className="flex items-center text-gray-600 hover:text-primary transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="h-5 w-5 mr-2" />
+                <span className="text-sm">gokulmadan2@gmail.com</span>
+              </a>
+              <a 
+                href="https://linkedin.com/in/gokulmadan" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center text-gray-600 hover:text-primary transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5 mr-2" />
+                <span className="text-sm">LinkedIn</span>
+              </a>
             </div>
           </div>
           
