@@ -43,34 +43,6 @@ const Hero: React.FC = () => {
                 </Dialog>
               </div>
             </div>
-            
-            {/* Contact icons */}
-            <div className="flex items-center space-x-4 mt-4">
-              <a 
-                href="mailto:gokulmadan2@gmail.com" 
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-                aria-label="Email"
-              >
-                <img 
-                  src="/lovable-uploads/40f7f181-94ac-4742-b097-5a7244ac5b79.png" 
-                  alt="Gmail" 
-                  className="w-5 h-5" 
-                />
-              </a>
-              <a 
-                href="https://linkedin.com/in/gokulmadan" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <img 
-                  src="/lovable-uploads/1d17a774-567a-4bb3-b233-816e1938bc64.png" 
-                  alt="LinkedIn" 
-                  className="w-5 h-5" 
-                />
-              </a>
-            </div>
           </div>
           
           <div className="relative animate-fade-in flex justify-center lg:justify-end">
