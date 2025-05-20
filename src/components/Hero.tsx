@@ -51,16 +51,11 @@ const Hero: React.FC = () => {
                 className="p-2 rounded-full hover:bg-gray-100 transition-colors"
                 aria-label="Email"
               >
-                <div className="w-5 h-5 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                    <rect width="24" height="24" fill="#ffffff" rx="4" ry="4" />
-                    <path fill="#E94435" d="M5.526 9.182l5.45 4.09c.581.436 1.464.436 2.045 0l5.452-4.09v7.227a.91.91 0 01-.909.91H6.435a.909.909 0 01-.909-.91V9.181z"/>
-                    <path fill="#C5221F" d="M5.526 9.182v7.227c0 .502.407.909.91.909h11.129a.909.909 0 00.909-.91V9.182L13.02 13.273a1.455 1.455 0 01-2.045 0L5.526 9.182z"/>
-                    <path fill="#FBBC04" d="M18.474 9.182L13.02 13.273c-.58.436-1.463.436-2.044 0L5.526 9.182 9.275 6.5c.732-.546 1.622-.819 2.724-.819s1.992.273 2.724.819l3.75 2.682z"/>
-                    <path fill="#34A853" d="M18.474 16.409a.909.909 0 01-.91.909H6.435a.909.909 0 01-.909-.91v-7.227l5.45 4.09c.581.436 1.464.436 2.045 0l5.452-4.09v7.228z"/>
-                    <path fill="#1A73E8" d="M18.474 9.182L13.02 13.273c-.58.436-1.463.436-2.044 0L5.526 9.182 9.275 6.5c.732-.546 1.622-.819 2.724-.819s1.992.273 2.724.819l3.75 2.682z"/>
-                  </svg>
-                </div>
+                <img 
+                  src="/lovable-uploads/40f7f181-94ac-4742-b097-5a7244ac5b79.png" 
+                  alt="Gmail" 
+                  className="w-5 h-5" 
+                />
               </a>
               <a 
                 href="https://linkedin.com/in/gokulmadan" 
@@ -69,12 +64,11 @@ const Hero: React.FC = () => {
                 className="p-2 rounded-full hover:bg-gray-100 transition-colors"
                 aria-label="LinkedIn"
               >
-                <div className="w-5 h-5 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                    <rect width="24" height="24" rx="2" fill="#0A66C2" />
-                    <path fill="#FFFFFF" d="M7 10v8H4.5v-8H7zm-1.25-3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm10.5 3v.75c.55-.72 1.39-1 2.25-1 2.21 0 3.5 1.57 3.5 3.75V18h-2.5v-4.25c0-1.24-.7-1.75-1.5-1.75-.93 0-1.75.54-1.75 1.75V18h-2.5v-8h2.5z" />
-                  </svg>
-                </div>
+                <img 
+                  src="/lovable-uploads/1d17a774-567a-4bb3-b233-816e1938bc64.png" 
+                  alt="LinkedIn" 
+                  className="w-5 h-5" 
+                />
               </a>
             </div>
           </div>
