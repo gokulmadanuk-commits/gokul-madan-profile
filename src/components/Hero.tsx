@@ -8,9 +8,9 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Card } from "@/components/ui/card";
 
 const Hero: React.FC = () => {
-  return <section className="py-12 flex items-center relative overflow-hidden">
+  return <section className="py-4 sm:py-8 md:py-12 flex items-center relative overflow-hidden">
       <AnimatedGridPattern numSquares={100} maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40} height={40} className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10 pt-0 sm:pt-4 md:pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="space-y-5 animate-fade-in">
             <div className="space-y-1">
