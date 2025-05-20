@@ -43,6 +43,16 @@ const Hero: React.FC = () => {
                 </Dialog>
               </div>
             </div>
+            
+            {/* Social icons for mobile */}
+            <div className="flex md:hidden items-center gap-4 mt-4 justify-center">
+              <a href="mailto:gokulmadan2@gmail.com" className="p-2 text-gray-600 hover:text-primary transition-colors">
+                <img src="/lovable-uploads/c7f7993d-5576-4ef8-baf6-811900657c1f.png" alt="Gmail" className="h-6 w-6" />
+              </a>
+              <a href="https://linkedin.com/in/gokulmadan" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 hover:text-primary transition-colors">
+                <img src="/lovable-uploads/ad1fea55-e1f2-4bab-801c-ff3581a55d8f.png" alt="LinkedIn" className="h-6 w-6" />
+              </a>
+            </div>
           </div>
           
           <div className="relative animate-fade-in flex justify-center lg:justify-end">
