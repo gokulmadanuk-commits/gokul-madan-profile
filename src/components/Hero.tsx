@@ -48,19 +48,19 @@ const Hero: React.FC = () => {
             <div className="flex items-center space-x-4 mt-4">
               <a 
                 href="mailto:gokulmadan2@gmail.com" 
-                className="p-2 rounded-full text-gray-600 hover:text-primary hover:bg-gray-100 transition-colors"
+                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                 aria-label="Email"
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="h-5 w-5 text-[#ea384c]" />
               </a>
               <a 
                 href="https://linkedin.com/in/gokulmadan" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="p-2 rounded-full text-gray-600 hover:text-primary hover:bg-gray-100 transition-colors"
+                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-5 w-5 text-[#0A66C2]" />
               </a>
             </div>
           </div>
