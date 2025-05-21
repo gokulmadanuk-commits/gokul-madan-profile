@@ -4,31 +4,31 @@ import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const XolutionHighlights: React.FC = () => {
-  // Client logos to display
+  // Client logos to display - matching the ones in ProfessionalJourney
   const clientLogos = [
     {
-      src: "/lovable-uploads/e2e6a04d-9b11-417a-b7ad-b9bba1af7a61.png",
-      alt: "Client Logo 1"
+      src: "/lovable-uploads/ba563727-2d13-4f21-8f46-2594c63aa02c.png",
+      alt: "WestBridge Logo"
     },
     {
-      src: "/lovable-uploads/ef1072e8-c89b-46a1-bce6-e47da501b05a.png",
-      alt: "Client Logo 2"
+      src: "/lovable-uploads/830fa207-5dba-44b1-a4c1-508b484c44b0.png",
+      alt: "Accordion Logo"
     },
     {
-      src: "/lovable-uploads/bd60c7ea-a7fb-4ab5-bc37-e74844fe9151.png",
-      alt: "Client Logo 3"
+      src: "/lovable-uploads/735e5e15-6c5a-4b2c-b895-585f5e58b920.png",
+      alt: "CrossCountry Consulting Logo"
     },
     {
-      src: "/lovable-uploads/bd656b34-ed64-4bb8-ae7f-26cdda022fcf.png",
-      alt: "Client Logo 4"
+      src: "/lovable-uploads/aa767c51-79ad-4265-9ed0-9c9936391277.png",
+      alt: "Houlihan Lokey Logo"
     },
     {
-      src: "/lovable-uploads/64a96aef-ba27-448b-9b28-edb7fcc441b3.png",
-      alt: "Client Logo 5"
+      src: "/lovable-uploads/ed3a1c78-0582-4c4f-9a80-6a9d9e330a7a.png",
+      alt: "Siegfried Logo"
     },
     {
-      src: "/lovable-uploads/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png",
-      alt: "Client Logo 6"
+      src: "/lovable-uploads/3f5e2dc5-5f5c-4dce-b899-bcad38cd8534.png",
+      alt: "Vistria Logo"
     }
   ];
 
