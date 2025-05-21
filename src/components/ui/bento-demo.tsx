@@ -11,23 +11,22 @@ import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 
 const features = [
   {
-    Icon: Images,
-    name: "Xolution Architecture",
-    description: "Our comprehensive data processing and reporting architecture.",
-    href: "/",
-    cta: "Learn more",
-    image: "/lovable-uploads/8ccefadf-2df4-40ca-8b84-a18ff05624a2.png",
-    caption: "Modular scalable Architecture",
-    className: "col-span-2 row-span-2",
-  },
-  {
     Icon: FileText,
     name: "Save your files",
     description: "We automatically save your files as you type.",
     href: "/",
     cta: "Learn more",
     background: <div className="absolute -right-20 -top-20 opacity-60"></div>,
-    className: "col-span-1 row-span-1",
+    className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+  },
+  {
+    Icon: Images,
+    name: "Xolution Architecture",
+    description: "Our comprehensive data processing and reporting architecture.",
+    href: "/",
+    cta: "Learn more",
+    image: "/lovable-uploads/8ccefadf-2df4-40ca-8b84-a18ff05624a2.png",
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
   },
   {
     Icon: Globe,
@@ -36,7 +35,7 @@ const features = [
     href: "/",
     cta: "Learn more",
     background: <div className="absolute -right-20 -top-20 opacity-60"></div>,
-    className: "col-span-1 row-span-1",
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
     Icon: Calendar,
@@ -45,7 +44,7 @@ const features = [
     href: "/",
     cta: "Learn more",
     background: <div className="absolute -right-20 -top-20 opacity-60"></div>,
-    className: "col-span-1 row-span-1",
+    className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
   },
   {
     Icon: Bell,
@@ -55,13 +54,13 @@ const features = [
     href: "/",
     cta: "Learn more",
     background: <div className="absolute -right-20 -top-20 opacity-60"></div>,
-    className: "col-span-1 row-span-1",
+    className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
   },
 ];
 
 function BentoDemo() {
   return (
-    <BentoGrid className="grid-cols-3 grid-rows-2 gap-6">
+    <BentoGrid className="lg:grid-rows-3">
       {features.map((feature) => (
         <BentoCard key={feature.name} {...feature} />
       ))}
