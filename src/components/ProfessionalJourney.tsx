@@ -38,20 +38,20 @@ const ProfessionalJourney: React.FC = () => {
             {/* Architecture Card - Takes up 2/3 of the width */}
             <div className="md:col-span-2">
               <Card className="overflow-hidden shadow-md border border-slate-200">
-                <CardContent className="p-4 pb-8">
+                <CardContent className="p-4 pb-0">
                   <AspectRatio ratio={16/9}>
                     <img 
-                      src="/lovable-uploads/eb31525f-5c3f-41d3-a708-15c99df1e85c.png"
+                      src="/lovable-uploads/5bc1419c-6502-453f-afc0-d13bb24271aa.png"
                       alt="Xolution Architecture" 
                       className="w-full h-full object-contain"
                     />
                   </AspectRatio>
-                  <p className="font-bold text-center mt-4">Modular, Scalable Architecture</p>
+                  <p className="font-bold text-left text-xl mb-2 mt-2">Modular, Scalable Architecture</p>
                 </CardContent>
               </Card>
             </div>
             
-            {/* Placeholder for second vertical card */}
+            {/* Features card */}
             <div className="md:col-span-1">
               <Card className="h-full shadow-md border border-slate-200">
                 <CardContent className="p-4 flex flex-col justify-center items-center h-full">
