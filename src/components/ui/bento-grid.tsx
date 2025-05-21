@@ -32,16 +32,14 @@ const BentoCard = ({
   description,
   href,
   cta,
-  image,
 }: {
   name: string;
   className: string;
-  background?: ReactNode;
+  background: ReactNode;
   Icon: any;
   description: string;
   href: string;
   cta: string;
-  image?: string;
 }) => (
   <div
     key={name}
@@ -54,58 +52,28 @@ const BentoCard = ({
       className,
     )}
   >
-    {background && <div>{background}</div>}
-    
-    {image && (
-      <div className="absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-        <img 
-          src={image} 
-          alt={name} 
-          className="w-full h-full object-contain p-4"
-        />
-      </div>
-    )}
-    
-    <div className={cn(
-      "pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300",
-      image ? "group-hover:bg-black/70 group-hover:text-white absolute bottom-0 left-0 right-0" : "group-hover:-translate-y-10"
-    )}>
-      <Icon className={cn(
-        "h-12 w-12 origin-left transform-gpu transition-all duration-300 ease-in-out",
-        image ? "text-white group-hover:scale-75" : "text-neutral-700 group-hover:scale-75"
-      )} />
-      <h3 className={cn(
-        "text-xl font-semibold",
-        image ? "text-white" : "text-neutral-700 dark:text-neutral-300"
-      )}>
+    <div>{background}</div>
+    <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
+      <Icon className="h-12 w-12 origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
+      <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
         {name}
       </h3>
-      <p className={cn(
-        "max-w-lg",
-        image ? "text-white/90" : "text-neutral-400"
-      )}>{description}</p>
+      <p className="max-w-lg text-neutral-400">{description}</p>
     </div>
 
     <div
       className={cn(
         "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
-        image ? "bg-black/70 z-20" : ""
       )}
     >
-      <Button variant="ghost" asChild size="sm" className={cn(
-        "pointer-events-auto",
-        image ? "text-white hover:bg-white/20 hover:text-white" : ""
-      )}>
+      <Button variant="ghost" asChild size="sm" className="pointer-events-auto">
         <a href={href}>
           {cta}
           <ArrowRightIcon className="ml-2 h-4 w-4" />
         </a>
       </Button>
     </div>
-    <div className={cn(
-      "pointer-events-none absolute inset-0 transform-gpu transition-all duration-300",
-      image ? "" : "group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10"
-    )} />
+    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
   </div>
 );
 
