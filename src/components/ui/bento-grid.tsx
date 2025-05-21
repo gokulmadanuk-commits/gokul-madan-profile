@@ -15,7 +15,7 @@ const BentoGrid = ({
   return (
     <div
       className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
+        "grid w-full grid-cols-3 gap-4",
         className,
       )}
     >
@@ -33,6 +33,7 @@ const BentoCard = ({
   href,
   cta,
   image,
+  caption,
 }: {
   name: string;
   className: string;
@@ -42,11 +43,12 @@ const BentoCard = ({
   href: string;
   cta: string;
   image?: string;
+  caption?: string;
 }) => (
   <div
     key={name}
     className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
+      "group relative flex flex-col justify-between overflow-hidden rounded-xl h-[22rem]",
       // light styles
       "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
       // dark styles
@@ -57,22 +59,22 @@ const BentoCard = ({
     {background && <div>{background}</div>}
     
     {image && (
-      <div className="absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute inset-0 w-full h-full">
         <img 
           src={image} 
           alt={name} 
-          className="w-full h-full object-contain p-4"
+          className="w-full h-full object-contain p-6"
         />
       </div>
     )}
     
     <div className={cn(
       "pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300",
-      image ? "group-hover:bg-black/70 group-hover:text-white absolute bottom-0 left-0 right-0" : "group-hover:-translate-y-10"
+      image ? "mt-auto bg-gradient-to-t from-black/80 to-transparent text-white" : "group-hover:-translate-y-10"
     )}>
       <Icon className={cn(
         "h-12 w-12 origin-left transform-gpu transition-all duration-300 ease-in-out",
-        image ? "text-white group-hover:scale-75" : "text-neutral-700 group-hover:scale-75"
+        image ? "text-white" : "text-neutral-700 group-hover:scale-75"
       )} />
       <h3 className={cn(
         "text-xl font-semibold",
@@ -83,7 +85,14 @@ const BentoCard = ({
       <p className={cn(
         "max-w-lg",
         image ? "text-white/90" : "text-neutral-400"
-      )}>{description}</p>
+      )}>
+        {description}
+      </p>
+      {caption && (
+        <p className="text-lg font-medium mt-2 text-white/90">
+          {caption}
+        </p>
+      )}
     </div>
 
     <div
