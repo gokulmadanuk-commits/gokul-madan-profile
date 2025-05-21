@@ -1,6 +1,7 @@
+
 import React from 'react';
-import { BentoDemo } from '@/components/ui/bento-demo';
 import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
+
 const ProfessionalJourney: React.FC = () => {
   return <section id="journey" className="py-16 bg-white">
       <div className="section-container">
@@ -19,7 +20,7 @@ const ProfessionalJourney: React.FC = () => {
             <img src="/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png" alt="Xolution Logo" className="h-9 w-auto" />
           </div>
           
-          {/* Xolution description */}
+          {/* Xolution description - no Bento Demo here anymore */}
           <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
             <p className="text-lg leading-relaxed mb-4">
               Xolution is a tech-enabled Fractional FP&A partner, empowering lean mid-market PE portfolio companies
@@ -29,8 +30,6 @@ const ProfessionalJourney: React.FC = () => {
               What if you had the ability to produce a QoE every single month, instead of just at the time of the deal!
             </p>
           </div>
-          
-          <BentoDemo />
         </div>
         
         {/* PwC Experience */}
