@@ -40,7 +40,7 @@ const ProfessionalJourney: React.FC = () => {
               <h3 className="text-2xl font-bold">2015 - 2023</h3>
               <p className="text-xl text-gray-700">Senior Manager</p>
             </div>
-            <img src="/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png" alt="PwC Logo" className="h-12 w-auto rounded-md" />
+            <img src="/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png" alt="PwC Logo" className="h-20 w-auto rounded-md" />
           </div>
           <PwCBentoDemo />
         </div>
