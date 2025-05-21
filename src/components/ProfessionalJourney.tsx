@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BentoDemo } from '@/components/ui/bento-demo';
 import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
@@ -14,7 +13,7 @@ const ProfessionalJourney: React.FC = () => {
           <img src="/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png" alt="Xolution Logo" className="h-10 w-auto mt-3 mb-6" />
           
           {/* Added Xolution description */}
-          <div className="mb-8 bg-slate-light rounded-lg p-6">
+          <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
             <p className="text-lg leading-relaxed mb-4">
               Xolution is a tech-enabled Fractional FP&A partner, empowering lean mid-market PE portfolio companies
               drive rapid value creation. It serves as a bridge between technology-driven efficiency and the ever-evolving world of financial transactions.
