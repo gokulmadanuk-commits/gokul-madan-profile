@@ -1,6 +1,37 @@
+
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+
 const XolutionHighlights: React.FC = () => {
+  // Client logos to display
+  const clientLogos = [
+    {
+      src: "/lovable-uploads/e2e6a04d-9b11-417a-b7ad-b9bba1af7a61.png",
+      alt: "Client Logo 1"
+    },
+    {
+      src: "/lovable-uploads/ef1072e8-c89b-46a1-bce6-e47da501b05a.png",
+      alt: "Client Logo 2"
+    },
+    {
+      src: "/lovable-uploads/bd60c7ea-a7fb-4ab5-bc37-e74844fe9151.png",
+      alt: "Client Logo 3"
+    },
+    {
+      src: "/lovable-uploads/bd656b34-ed64-4bb8-ae7f-26cdda022fcf.png",
+      alt: "Client Logo 4"
+    },
+    {
+      src: "/lovable-uploads/64a96aef-ba27-448b-9b28-edb7fcc441b3.png",
+      alt: "Client Logo 5"
+    },
+    {
+      src: "/lovable-uploads/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png",
+      alt: "Client Logo 6"
+    }
+  ];
+
   return <section id="xolution" className="py-20 bg-white">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -13,34 +44,27 @@ const XolutionHighlights: React.FC = () => {
               <p className="leading-relaxed">
                 With customizable inputs, standardized outputs, and real-time visibility, Xolution helps deal teams and portfolio companies track KPIs and progress against investment theses — without waiting on consultants.
               </p>
-              
             </div>
           </div>
           
-          <div className="relative">
-            <Card className="overflow-hidden border-0 shadow-xl card-hover bg-gradient-to-br from-slate-light to-white">
+          <div className="space-y-8">
+            {/* Clients Card */}
+            <Card className="overflow-hidden border-0 shadow-lg card-hover bg-white">
               <CardContent className="p-6">
-                <div className="aspect-video bg-white rounded-lg border shadow-sm">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12 mx-auto mb-4 text-primary/30">
-                        <path fillRule="evenodd" d="M2.25 2.25a.75.75 0 000 1.5H3v10.5a3 3 0 003 3h1.21l-1.172 3.513a.75.75 0 001.424.474l.329-.987h8.418l.33.987a.75.75 0 001.422-.474l-1.17-3.513H18a3 3 0 003-3V3.75h.75a.75.75 0 000-1.5H2.25zm6.04 16.5l.5-1.5h6.42l.5 1.5H8.29zm7.46-12a.75.75 0 00-1.5 0v6a.75.75 0 001.5 0v-6zm-3 2.25a.75.75 0 00-1.5 0v3.75a.75.75 0 001.5 0V9zm-3 2.25a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z" clipRule="evenodd" />
-                      </svg>
-                      <p className="text-gray-500">Interactive Demo</p>
+                <h3 className="text-xl font-semibold mb-4 text-center">Clients</h3>
+                <div className="grid grid-cols-3 gap-4">
+                  {clientLogos.map((logo, index) => (
+                    <div key={index} className="flex items-center justify-center p-2">
+                      <img 
+                        src={logo.src} 
+                        alt={logo.alt} 
+                        className="max-h-12 w-auto object-contain"
+                      />
                     </div>
-                  </div>
-                </div>
-                <div className="mt-6 space-y-3">
-                  <div className="h-4 bg-slate-100 rounded-full w-full"></div>
-                  <div className="h-4 bg-slate-100 rounded-full w-5/6"></div>
-                  <div className="h-4 bg-slate-100 rounded-full w-4/6"></div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
-            
-            {/* Decorative elements */}
-            <div className="absolute -z-10 -top-6 -right-6 w-32 h-32 bg-beige rounded-full opacity-50"></div>
-            <div className="absolute -z-10 -bottom-6 -left-6 w-24 h-24 bg-slate rounded-full opacity-50"></div>
           </div>
         </div>
       </div>
