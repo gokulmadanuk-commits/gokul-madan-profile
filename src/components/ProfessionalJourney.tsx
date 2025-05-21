@@ -11,15 +11,23 @@ const ProfessionalJourney: React.FC = () => {
         
         {/* Xolution Experience */}
         <div className="mb-10">
-          <div className="flex items-center mb-4">
+          <div className="flex items-center justify-between w-full mb-4">
             <div>
               <h3 className="text-2xl font-bold">2023 - Present</h3>
               <p className="text-xl text-gray-700">Founder and CEO</p>
+              <a 
+                href="https://xolution.io" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                https://xolution.io
+              </a>
             </div>
             <img 
               src="/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png" 
               alt="Xolution Logo" 
-              className="h-16 w-auto ml-4" 
+              className="h-12 w-auto" 
             />
           </div>
           
@@ -39,7 +47,7 @@ const ProfessionalJourney: React.FC = () => {
         
         {/* PwC Experience */}
         <div className="mt-16 mb-10">
-          <div className="flex items-center mb-4">
+          <div className="flex items-center justify-between w-full mb-4">
             <div>
               <h3 className="text-2xl font-bold">2015 - 2023</h3>
               <p className="text-xl text-gray-700">Senior Manager</p>
@@ -47,7 +55,7 @@ const ProfessionalJourney: React.FC = () => {
             <img 
               src="/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png" 
               alt="PwC Logo" 
-              className="h-16 w-auto ml-4 rounded-md" 
+              className="h-12 w-auto rounded-md" 
             />
           </div>
           <PwCBentoDemo />
