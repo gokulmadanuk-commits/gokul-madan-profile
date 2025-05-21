@@ -4,7 +4,7 @@ import {
   Calendar,
   FileText,
   Globe,
-  Nut,
+  Images,
 } from "lucide-react";
 
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
@@ -20,12 +20,12 @@ const features = [
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
   },
   {
-    Icon: Nut,
-    name: "Full text search",
-    description: "Search through all your files in one place.",
+    Icon: Images,
+    name: "Xolution Architecture",
+    description: "Our comprehensive data processing and reporting architecture.",
     href: "/",
     cta: "Learn more",
-    background: <div className="absolute -right-20 -top-20 opacity-60"></div>,
+    image: "/lovable-uploads/8ccefadf-2df4-40ca-8b84-a18ff05624a2.png",
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
   },
   {
