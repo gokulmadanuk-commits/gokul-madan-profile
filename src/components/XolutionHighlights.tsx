@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const XolutionHighlights: React.FC = () => {
   // Client logos array
@@ -35,7 +36,7 @@ const XolutionHighlights: React.FC = () => {
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Architecture Card */}
-            <Card className="col-span-2 overflow-hidden border-0 shadow-lg">
+            <Card className="col-span-1 overflow-hidden border-0 shadow-lg">
               <CardContent className="p-0">
                 <div className="relative">
                   <img 
@@ -51,12 +52,12 @@ const XolutionHighlights: React.FC = () => {
             </Card>
             
             {/* Clients Card */}
-            <Card className="col-span-2 overflow-hidden border-0 shadow-lg">
+            <Card className="col-span-1 overflow-hidden border-0 shadow-lg">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-6 text-center">Clients</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 gap-4">
                   {clientLogos.map((logo, index) => (
-                    <div key={index} className="flex items-center justify-center h-20">
+                    <div key={index} className="flex items-center justify-center h-16">
                       <img 
                         src={logo.src}
                         alt={logo.alt}

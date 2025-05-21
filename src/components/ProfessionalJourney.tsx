@@ -20,7 +20,7 @@ const ProfessionalJourney: React.FC = () => {
             <img src="/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png" alt="Xolution Logo" className="h-9 w-auto" />
           </div>
           
-          {/* Xolution description - no Bento Demo here anymore */}
+          {/* Xolution description - no Bento Demo here */}
           <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
             <p className="text-lg leading-relaxed mb-4">
               Xolution is a tech-enabled Fractional FP&A partner, empowering lean mid-market PE portfolio companies
