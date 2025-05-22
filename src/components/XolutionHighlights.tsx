@@ -2,6 +2,13 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselPrevious, 
+  CarouselNext 
+} from "@/components/ui/carousel";
 
 const XolutionHighlights: React.FC = () => {
   // Client logos to display - matching the ones in ProfessionalJourney
@@ -29,6 +36,34 @@ const XolutionHighlights: React.FC = () => {
     {
       src: "/lovable-uploads/3f5e2dc5-5f5c-4dce-b899-bcad38cd8534.png",
       alt: "Vistria Logo"
+    }
+  ];
+
+  // Carousel slides
+  const carouselSlides = [
+    {
+      src: "/lovable-uploads/aeb5971b-be21-4388-aa09-696099d22ae7.png",
+      alt: "Challenges Tracking Portfolio Company Performance"
+    },
+    {
+      src: "/lovable-uploads/e5e9c458-ddf1-418c-85a0-73ca6bf7f8f4.png",
+      alt: "Driving Value for Companies in the Mid-Market Sweet Spot"
+    },
+    {
+      src: "/lovable-uploads/e2fb0ff1-62dc-4c60-9564-c3caed51eeae.png",
+      alt: "Laying the Foundation for Effective FP&A"
+    },
+    {
+      src: "/lovable-uploads/f8b2b1a5-a1ed-4a2b-8a9f-1456c302417a.png",
+      alt: "Need for Robust Reporting"
+    },
+    {
+      src: "/lovable-uploads/df73acd6-7872-4fcc-934d-554ee22a6c64.png",
+      alt: "Modular Architecture"
+    },
+    {
+      src: "/lovable-uploads/af05a6d4-51ad-45eb-bdfc-6f34975b7bc4.png",
+      alt: "Xolution Approach"
     }
   ];
 
@@ -66,6 +101,29 @@ const XolutionHighlights: React.FC = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+        
+        {/* Carousel Section - Added below text and above cards */}
+        <div className="mt-12">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {carouselSlides.map((slide, index) => (
+                <CarouselItem key={index}>
+                  <div className="p-1 h-full">
+                    <AspectRatio ratio={16/9}>
+                      <img 
+                        src={slide.src} 
+                        alt={slide.alt}
+                        className="rounded-lg object-contain w-full h-full" 
+                      />
+                    </AspectRatio>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-4 md:-left-6" />
+            <CarouselNext className="-right-4 md:-right-6" />
+          </Carousel>
         </div>
       </div>
     </section>;

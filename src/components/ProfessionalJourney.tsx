@@ -3,6 +3,13 @@ import React from 'react';
 import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselPrevious, 
+  CarouselNext 
+} from "@/components/ui/carousel";
 
 const ProfessionalJourney: React.FC = () => {
   // Client logos to display
@@ -33,6 +40,34 @@ const ProfessionalJourney: React.FC = () => {
     }
   ];
 
+  // Carousel slides
+  const carouselSlides = [
+    {
+      src: "/lovable-uploads/aeb5971b-be21-4388-aa09-696099d22ae7.png",
+      alt: "Challenges Tracking Portfolio Company Performance"
+    },
+    {
+      src: "/lovable-uploads/e5e9c458-ddf1-418c-85a0-73ca6bf7f8f4.png",
+      alt: "Driving Value for Companies in the Mid-Market Sweet Spot"
+    },
+    {
+      src: "/lovable-uploads/e2fb0ff1-62dc-4c60-9564-c3caed51eeae.png",
+      alt: "Laying the Foundation for Effective FP&A"
+    },
+    {
+      src: "/lovable-uploads/f8b2b1a5-a1ed-4a2b-8a9f-1456c302417a.png",
+      alt: "Need for Robust Reporting"
+    },
+    {
+      src: "/lovable-uploads/df73acd6-7872-4fcc-934d-554ee22a6c64.png",
+      alt: "Modular Architecture"
+    },
+    {
+      src: "/lovable-uploads/af05a6d4-51ad-45eb-bdfc-6f34975b7bc4.png",
+      alt: "Xolution Approach"
+    }
+  ];
+
   return <section id="journey" className="py-16 bg-white">
       <div className="section-container">
         <h2 className="text-4xl font-bold text-center mb-12">Professional Journey</h2>
@@ -50,7 +85,7 @@ const ProfessionalJourney: React.FC = () => {
             <img src="/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png" alt="Xolution Logo" className="h-9 w-auto" />
           </div>
           
-          {/* Xolution description - no Bento Demo here */}
+          {/* Xolution description */}
           <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
             <p className="text-lg leading-relaxed mb-4">
               Xolution is a tech-enabled Fractional FP&A partner, empowering lean mid-market PE portfolio companies
@@ -59,6 +94,29 @@ const ProfessionalJourney: React.FC = () => {
             <p className="text-xl font-bold text-primary">
               What if you had the ability to produce a QoE every single month, instead of just at the time of the deal!
             </p>
+          </div>
+          
+          {/* Carousel Section - Added below text description */}
+          <div className="mb-8">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {carouselSlides.map((slide, index) => (
+                  <CarouselItem key={index}>
+                    <div className="p-1 h-full">
+                      <AspectRatio ratio={16/9}>
+                        <img 
+                          src={slide.src} 
+                          alt={slide.alt}
+                          className="rounded-lg object-contain w-full h-full" 
+                        />
+                      </AspectRatio>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="-left-4 md:-left-6" />
+              <CarouselNext className="-right-4 md:-right-6" />
+            </Carousel>
           </div>
           
           {/* Architecture and Features Cards */}
