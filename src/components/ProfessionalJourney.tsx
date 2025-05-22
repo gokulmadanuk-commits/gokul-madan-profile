@@ -40,30 +40,30 @@ const ProfessionalJourney: React.FC = () => {
     }
   ];
 
-  // Carousel slides
+  // Updated carousel slides with new image paths
   const carouselSlides = [
     {
-      src: "/lovable-uploads/aeb5971b-be21-4388-aa09-696099d22ae7.png",
+      src: "/lovable-uploads/8ee16498-f5bf-4553-acf5-1f4b857b9a53.png",
       alt: "Challenges Tracking Portfolio Company Performance"
     },
     {
-      src: "/lovable-uploads/e5e9c458-ddf1-418c-85a0-73ca6bf7f8f4.png",
+      src: "/lovable-uploads/fe476a3c-be34-4bf9-b289-b4e806c296d3.png",
       alt: "Driving Value for Companies in the Mid-Market Sweet Spot"
     },
     {
-      src: "/lovable-uploads/e2fb0ff1-62dc-4c60-9564-c3caed51eeae.png",
+      src: "/lovable-uploads/84938ca9-0f1c-4d4f-b2c9-27d7ddb688c1.png",
       alt: "Laying the Foundation for Effective FP&A"
     },
     {
-      src: "/lovable-uploads/f8b2b1a5-a1ed-4a2b-8a9f-1456c302417a.png",
+      src: "/lovable-uploads/85ac2339-e18f-4c5f-b428-bb367f058892.png",
       alt: "Need for Robust Reporting"
     },
     {
-      src: "/lovable-uploads/df73acd6-7872-4fcc-934d-554ee22a6c64.png",
+      src: "/lovable-uploads/f3e151b5-474a-4bd9-a845-9c774056dfe8.png",
       alt: "Modular Architecture"
     },
     {
-      src: "/lovable-uploads/af05a6d4-51ad-45eb-bdfc-6f34975b7bc4.png",
+      src: "/lovable-uploads/aa65d36c-616c-42f0-9d25-6e09c5717d56.png",
       alt: "Xolution Approach"
     }
   ];
@@ -96,7 +96,7 @@ const ProfessionalJourney: React.FC = () => {
             </p>
           </div>
           
-          {/* Carousel Section - Added below text description */}
+          {/* Carousel Section - Updated with new image paths */}
           <div className="mb-8">
             <Carousel className="w-full">
               <CarouselContent>
