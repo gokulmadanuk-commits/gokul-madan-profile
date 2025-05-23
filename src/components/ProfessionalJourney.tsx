@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
 import { Card, CardContent } from "@/components/ui/card";
@@ -130,9 +131,9 @@ const ProfessionalJourney: React.FC = () => {
               ))}
             </div>
             
-            {/* Download Overview button - Updated to match Hero section button styling */}
-            <div className="mt-6 w-full max-w-md">
-              <Button size="lg" className="group w-full">
+            {/* Download Overview button - Updated to match single Hero button size */}
+            <div className="mt-6">
+              <Button size="lg" className="group w-full sm:w-auto">
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                 Download Overview
               </Button>
