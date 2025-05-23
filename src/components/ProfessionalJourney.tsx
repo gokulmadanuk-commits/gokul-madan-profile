@@ -1,9 +1,17 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselApi } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+
 const ProfessionalJourney: React.FC = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
   // Client logos to display
   const clientLogos = [{
     src: "/lovable-uploads/ba563727-2d13-4f21-8f46-2594c63aa02c.png",
@@ -45,6 +53,20 @@ const ProfessionalJourney: React.FC = () => {
     src: "/lovable-uploads/aa65d36c-616c-42f0-9d25-6e09c5717d56.png",
     alt: "Xolution Approach"
   }];
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
   return <section id="journey" className="py-16 bg-white">
       <div className="section-container">
         <h2 className="text-4xl font-bold text-center mb-12">Professional Journey</h2>
@@ -73,26 +95,52 @@ const ProfessionalJourney: React.FC = () => {
             </p>
           </div>
           
-          {/* Carousel Section - Updated with new image paths */}
+          {/* Carousel Section with enhanced styling */}
           <div className="mb-8">
-            <Carousel className="w-full">
+            <Carousel className="w-full" setApi={setApi}>
               <CarouselContent>
                 {carouselSlides.map((slide, index) => <CarouselItem key={index}>
                     <div className="p-1 h-full">
-                      <AspectRatio ratio={16 / 9}>
-                        <img src={slide.src} alt={slide.alt} className="rounded-lg object-contain w-full h-full" />
-                      </AspectRatio>
+                      <Card className="overflow-hidden shadow-lg border">
+                        <CardContent className="p-0">
+                          <AspectRatio ratio={16 / 9}>
+                            <img src={slide.src} alt={slide.alt} className="object-contain w-full h-full" />
+                          </AspectRatio>
+                        </CardContent>
+                      </Card>
                     </div>
                   </CarouselItem>)}
               </CarouselContent>
               <CarouselPrevious className="-left-4 md:-left-6" />
               <CarouselNext className="-right-4 md:-right-6" />
             </Carousel>
+            
+            {/* Pagination dots */}
+            <div className="flex justify-center space-x-2 mt-4">
+              {Array.from({ length: count }, (_, index) => (
+                <button
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                    index + 1 === current 
+                      ? 'bg-primary' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  onClick={() => api?.scrollTo(index)}
+                />
+              ))}
+            </div>
+            
+            {/* Download Overview button */}
+            <div className="mt-6">
+              <Button className="bg-primary hover:bg-primary/90">
+                Download Overview
+              </Button>
+            </div>
           </div>
-          
-          {/* Architecture and Features Cards */}
-          
         </div>
+        
+        {/* Separator line */}
+        <Separator className="my-12" />
         
         {/* PwC Experience */}
         <div className="mt-16 mb-10">
@@ -108,4 +156,5 @@ const ProfessionalJourney: React.FC = () => {
       </div>
     </section>;
 };
+
 export default ProfessionalJourney;
