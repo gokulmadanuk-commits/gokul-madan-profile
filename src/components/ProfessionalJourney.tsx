@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,6 +5,7 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselApi } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Download } from "lucide-react";
 
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -130,9 +130,10 @@ const ProfessionalJourney: React.FC = () => {
               ))}
             </div>
             
-            {/* Download Overview button */}
-            <div className="mt-6">
-              <Button className="bg-primary hover:bg-primary/90">
+            {/* Download Overview button - Updated to match Hero section button styling */}
+            <div className="mt-6 w-full max-w-md">
+              <Button size="lg" className="group w-full">
+                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                 Download Overview
               </Button>
             </div>
