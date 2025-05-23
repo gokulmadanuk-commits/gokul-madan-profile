@@ -1,8 +1,6 @@
-
 import React, { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import AboutMe from '@/components/AboutMe';
-import XolutionHighlights from '@/components/XolutionHighlights';
 import PwCHighlights from '@/components/PwCHighlights';
 import Vision from '@/components/Vision';
 import Footer from '@/components/Footer';
@@ -46,7 +44,6 @@ const Index: React.FC = () => {
         <ClientLogos />
         <AboutMe />
         <ProfessionalJourney />
-        <XolutionHighlights />
         <PwCHighlights />
         <Vision />
         <ContactSection />
