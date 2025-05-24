@@ -2,32 +2,32 @@
 import React, { useEffect, useRef } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface CaseStudy {
+interface ValueProposition {
   title: string;
-  dealType: string;
+  category: string;
   description: string;
 }
 
-const caseStudies: CaseStudy[] = [
+const valuePropositions: ValueProposition[] = [
   {
-    title: "$1.2B Sale to Maersk",
-    dealType: "M&A",
-    description: "Built customer insight engine for Pilot Freight's sell-side diligence",
+    title: "Deals Analytics Expertise",
+    category: "Analytics",
+    description: "Deep experience in M&A analytics, due diligence, and transaction modeling from billion-dollar deals",
   },
   {
-    title: "PPD IPO",
-    dealType: "IPO",
-    description: "Developed bottom-up forecasting models with accounting implications",
+    title: "Product and Automation Expertise",
+    category: "Technology",
+    description: "Proven track record building SaaS platforms and automation solutions that scale",
   },
   {
-    title: "GE Spin-offs",
-    dealType: "Divestiture",
-    description: "Supported carve-outs of Healthcare, Lighting, and Power divisions",
+    title: "Existing Consolidation Platform for PE Portcos",
+    category: "Platform",
+    description: "Ready-to-deploy consolidation engine designed specifically for private equity portfolio companies",
   },
   {
-    title: "PE Rollups",
-    dealType: "Rollup",
-    description: "Created financial consolidation engine used across multiple transactions",
+    title: "Accounting, Technology and AI Network in Northern Ireland",
+    category: "Network",
+    description: "Established connections across key professional services and technology sectors",
   },
 ];
 
@@ -49,7 +49,7 @@ const PwCHighlights: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    const cards = cardsRef.current?.querySelectorAll('.case-study-card');
+    const cards = cardsRef.current?.querySelectorAll('.value-prop-card');
     cards?.forEach((card) => {
       observer.observe(card);
     });
@@ -64,21 +64,21 @@ const PwCHighlights: React.FC = () => {
   return (
     <section id="pwc" className="py-20 bg-beige-light">
       <div className="section-container">
-        <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-12 text-center">What I Built at PwC</h2>
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-12 text-center">Why Unity Advisory</h2>
         
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {caseStudies.map((study, index) => (
-            <div key={index} className="case-study-card opacity-0">
-              <Card className="h-full border-0 shadow-lg card-hover">
+          {valuePropositions.map((proposition, index) => (
+            <div key={index} className="value-prop-card opacity-0">
+              <Card className="h-full border-0 shadow-lg">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-xl">{study.title}</CardTitle>
+                  <CardTitle className="text-xl">{proposition.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700">{study.description}</p>
+                  <p className="text-gray-700">{proposition.description}</p>
                 </CardContent>
                 <CardFooter>
                   <span className="text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full">
-                    {study.dealType}
+                    {proposition.category}
                   </span>
                 </CardFooter>
               </Card>
