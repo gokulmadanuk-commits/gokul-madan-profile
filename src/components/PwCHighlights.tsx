@@ -64,7 +64,16 @@ const PwCHighlights: React.FC = () => {
   return (
     <section id="pwc" className="py-20 bg-beige-light">
       <div className="section-container">
-        <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-12 text-center">Why Unity Advisory</h2>
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-6 text-center">Why I'm Excited About Unity Advisory</h2>
+        
+        <div className="max-w-4xl mx-auto mb-12 text-center">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Unity's approach of blending AI across advisory workstreams is exactly what the market needs.
+          </p>
+          <p className="text-lg text-gray-700 leading-relaxed mt-4">
+            I've seen firsthand how data and automation can unlock real value in complex transactions. I believe I can bring meaningful insight, execution experience, and founder-level thinking to what you're building.
+          </p>
+        </div>
         
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {valuePropositions.map((proposition, index) => (
