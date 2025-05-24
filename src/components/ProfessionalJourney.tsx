@@ -150,9 +150,21 @@ const ProfessionalJourney: React.FC = () => {
             <div>
               <h3 className="text-2xl font-bold">2015 - 2023</h3>
               <p className="text-xl text-gray-700">Senior Manager</p>
+              <p className="text-primary hover:underline">
+                Deals Strategy and PE Value Creation
+              </p>
             </div>
             <img src="/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png" alt="PwC Logo" className="h-20 w-auto rounded-md" />
           </div>
+          
+          {/* PwC description */}
+          <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
+            <p className="text-lg leading-relaxed">
+              I have led high-impact analytics and strategy initiatives across M&A, IPOs, and divestitures at PwC's Deals practice in the US. 
+              I specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions.
+            </p>
+          </div>
+          
           <PwCBentoDemo />
         </div>
       </div>
