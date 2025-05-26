@@ -16,6 +16,13 @@ const PwCSection: React.FC = () => {
     { src: "/lovable-uploads/ad1fea55-e1f2-4bab-801c-ff3581a55d8f.png", alt: "GoFan", className: "h-12 w-auto" }
   ];
 
+  const complexCarveoutLogos = [
+    { src: "/lovable-uploads/888cc071-63ef-45db-9b0f-5cae6dace908.png", alt: "HPE", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/8de939df-312b-4f5b-80a5-0343ba434523.png", alt: "DXC", className: "h-10 w-auto" },
+    { src: "/lovable-uploads/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png", alt: "GE", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/ccb03c56-662c-4560-aa78-6d0be23d3180.png", alt: "Symantec", className: "h-8 w-auto" }
+  ];
+
   return (
     <div className="mt-16 mb-10">
       <div className="flex items-center justify-between w-full mb-4">
@@ -74,6 +81,7 @@ const PwCSection: React.FC = () => {
                 </div>
               </div>
             }
+            logos={complexCarveoutLogos}
             tags={["Carveout", "Deals Analytics"]}
             className="flex-1"
           />
