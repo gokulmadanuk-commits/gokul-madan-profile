@@ -6,7 +6,6 @@ import Vision from '@/components/Vision';
 import Footer from '@/components/Footer';
 import ClientLogos from '@/components/ClientLogos';
 import ProfessionalJourney from '@/components/ProfessionalJourney';
-import ContactSection from '@/components/ContactSection';
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -46,7 +45,6 @@ const Index: React.FC = () => {
         <ProfessionalJourney />
         <PwCHighlights />
         <Vision />
-        <ContactSection />
       </main>
       <Footer />
     </div>

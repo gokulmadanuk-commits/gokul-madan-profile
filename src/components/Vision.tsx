@@ -18,9 +18,11 @@ const Vision: React.FC = () => {
                     placeholder="Enter your email" 
                     className="w-full"
                   />
-                  <Button className="w-full">
-                    Submit
-                  </Button>
+                  <div className="flex justify-center">
+                    <Button className="px-8">
+                      Submit
+                    </Button>
+                  </div>
                 </div>
               </div>
             </CardContent>
