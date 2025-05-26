@@ -2,7 +2,7 @@
 export const downloadPDF = (fileName: string, displayName?: string) => {
   try {
     const link = document.createElement('a');
-    link.href = `/documents/${fileName}`;
+    link.href = `/${fileName}`;
     link.download = displayName || fileName;
     link.target = '_blank';
     
