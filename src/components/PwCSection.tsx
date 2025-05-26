@@ -99,7 +99,7 @@ const PwCSection: React.FC = () => {
             Deals Strategy and PE Value Creation
           </p>
         </div>
-        <img src="/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png" alt="PwC Logo" className="h-17 w-auto rounded-md" />
+        <img src="/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png" alt="PwC Logo" className="h-16 w-auto rounded-md" />
       </div>
       
       {/* PwC description */}
