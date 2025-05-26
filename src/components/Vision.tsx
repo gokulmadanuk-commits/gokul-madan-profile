@@ -19,7 +19,7 @@ const Vision: React.FC = () => {
                     className="w-full"
                   />
                   <div className="flex justify-center">
-                    <Button size="lg" className="w-full sm:w-auto">
+                    <Button size="lg" className="w-full sm:w-auto sm:min-w-48">
                       Submit
                     </Button>
                   </div>
