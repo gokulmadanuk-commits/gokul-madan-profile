@@ -29,6 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
     const emailResponse = await resend.emails.send({
       from: "Unity Advisory <noreply@gokulmadan.com>",
       to: ["gokulmadan2@gmail.com"],
+      cc: [email],
       reply_to: email,
       subject: "Unity Advisory Connect - New Contact Request",
       html: `
