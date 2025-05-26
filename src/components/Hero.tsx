@@ -6,8 +6,13 @@ import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Card } from "@/components/ui/card";
+import { downloadPDF } from "@/lib/downloadUtils";
 
 const Hero: React.FC = () => {
+  const handleResumeDownload = () => {
+    downloadPDF('resume.pdf', 'Gokul-Madan-Resume.pdf');
+  };
+
   return <section className="py-4 sm:py-8 md:py-12 flex items-center relative overflow-hidden">
       <AnimatedGridPattern numSquares={100} maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40} height={40} className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
       <div className="section-container relative z-10 pt-0 sm:pt-4 md:pt-16">
@@ -20,7 +25,7 @@ const Hero: React.FC = () => {
             <p className="text-lg md:text-xl font-semibold text-primary">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
             <div className="flex flex-wrap gap-4 mt-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
-                <Button size="lg" className="group w-full">
+                <Button size="lg" className="group w-full" onClick={handleResumeDownload}>
                   <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                   Download My Resume
                 </Button>
