@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,7 +6,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
-
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -54,20 +52,16 @@ const ProfessionalJourney: React.FC = () => {
     src: "/lovable-uploads/aa65d36c-616c-42f0-9d25-6e09c5717d56.png",
     alt: "Xolution Approach"
   }];
-
   useEffect(() => {
     if (!api) {
       return;
     }
-
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
-
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
-
   return <section id="journey" className="py-16 bg-white">
       <div className="section-container">
         <h2 className="text-4xl font-bold text-center mb-12">Professional Journey</h2>
@@ -118,17 +112,9 @@ const ProfessionalJourney: React.FC = () => {
             
             {/* Pagination dots */}
             <div className="flex justify-center space-x-2 mt-4">
-              {Array.from({ length: count }, (_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                    index + 1 === current 
-                      ? 'bg-primary' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  onClick={() => api?.scrollTo(index)}
-                />
-              ))}
+              {Array.from({
+              length: count
+            }, (_, index) => <button key={index} className={`w-2 h-2 rounded-full transition-colors duration-200 ${index + 1 === current ? 'bg-primary' : 'bg-gray-300 hover:bg-gray-400'}`} onClick={() => api?.scrollTo(index)} />)}
             </div>
             
             {/* Download Overview button - Updated to match single Hero button size */}
@@ -159,10 +145,7 @@ const ProfessionalJourney: React.FC = () => {
           
           {/* PwC description */}
           <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
-            <p className="text-lg leading-relaxed">
-              I have led high-impact analytics and strategy initiatives across M&A, IPOs, and divestitures at PwC's Deals practice in the US. 
-              I specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions.
-            </p>
+            <p className="text-lg leading-relaxed">I have led high-impact analytics and strategy initiatives across Fortune 100 companies, M&amp;A engagements, IPOs, and divestitures at PwC's Deals practice in the US. I also specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions.</p>
           </div>
           
           <PwCBentoDemo />
@@ -170,5 +153,4 @@ const ProfessionalJourney: React.FC = () => {
       </div>
     </section>;
 };
-
 export default ProfessionalJourney;
