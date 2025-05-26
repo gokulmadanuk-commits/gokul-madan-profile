@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PwCCard from './PwCCard';
 
@@ -25,6 +26,11 @@ const PwCSection: React.FC = () => {
     { src: "/lovable-uploads/cd70899d-30be-4e36-9dc6-9b9a04e6d71e.png", alt: "General Electric", className: "h-8 w-auto" },
     { src: "/lovable-uploads/04dcf006-1259-4072-8cd9-78ec59199151.png", alt: "GE Vernova", className: "h-8 w-auto" },
     { src: "/lovable-uploads/86b71b26-b828-4f65-b42e-19a59169bc9a.png", alt: "GE HealthCare", className: "h-8 w-auto" }
+  ];
+
+  const costTakeoutLogos = [
+    { src: "/lovable-uploads/d8bd04f8-30e1-46b6-b2c6-3b51b81906c4.png", alt: "AT&T", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/19818142-90f8-497a-85f3-68e7f3b2ebfb.png", alt: "Palantir", className: "h-8 w-auto" }
   ];
 
   return (
@@ -94,8 +100,10 @@ const PwCSection: React.FC = () => {
         {/* Column 3 - 2 cards (1/3 top, 2/3 bottom) */}
         <div className="flex flex-col gap-4 order-3 lg:order-3">
           <PwCCard
-            title="Financial Modeling"
-            description="Advanced forecasting and valuation models."
+            title="Cost Takeout"
+            description="Leveraged Palantir Foundry at AT&T to help drive a cost takeout initiative for the Engineering Operations team, identifying $25M+ in takeout opportunity."
+            logos={costTakeoutLogos}
+            tags={["Advanced Analytics", "Cost Takeout"]}
             className="flex-1"
           />
           <PwCCard
