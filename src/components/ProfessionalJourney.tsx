@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { PwCBentoDemo } from '@/components/ui/pwc-bento-demo';
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselApi } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
+
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -33,25 +33,28 @@ const ProfessionalJourney: React.FC = () => {
   }];
 
   // Updated carousel slides with new image paths
-  const carouselSlides = [{
-    src: "/lovable-uploads/8ee16498-f5bf-4553-acf5-1f4b857b9a53.png",
-    alt: "Challenges Tracking Portfolio Company Performance"
-  }, {
-    src: "/lovable-uploads/fe476a3c-be34-4bf9-b289-b4e806c296d3.png",
-    alt: "Driving Value for Companies in the Mid-Market Sweet Spot"
-  }, {
-    src: "/lovable-uploads/84938ca9-0f1c-4d4f-b2c9-27d7ddb688c1.png",
-    alt: "Laying the Foundation for Effective FP&A"
-  }, {
-    src: "/lovable-uploads/85ac2339-e18f-4c5f-b428-bb367f058892.png",
-    alt: "Need for Robust Reporting"
-  }, {
-    src: "/lovable-uploads/f3e151b5-474a-4bd9-a845-9c774056dfe8.png",
-    alt: "Modular Architecture"
-  }, {
-    src: "/lovable-uploads/aa65d36c-616c-42f0-9d25-6e09c5717d56.png",
-    alt: "Xolution Approach"
-  }];
+  const carouselSlides = [
+    {
+      src: "/lovable-uploads/8ee16498-f5bf-4553-acf5-1f4b857b9a53.png",
+      alt: "Challenges Tracking Portfolio Company Performance"
+    }, {
+      src: "/lovable-uploads/fe476a3c-be34-4bf9-b289-b4e806c296d3.png",
+      alt: "Driving Value for Companies in the Mid-Market Sweet Spot"
+    }, {
+      src: "/lovable-uploads/84938ca9-0f1c-4d4f-b2c9-27d7ddb688c1.png",
+      alt: "Laying the Foundation for Effective FP&A"
+    }, {
+      src: "/lovable-uploads/85ac2339-e18f-4c5f-b428-bb367f058892.png",
+      alt: "Need for Robust Reporting"
+    }, {
+      src: "/lovable-uploads/f3e151b5-474a-4bd9-a845-9c774056dfe8.png",
+      alt: "Modular Architecture"
+    }, {
+      src: "/lovable-uploads/aa65d36c-616c-42f0-9d25-6e09c5717d56.png",
+      alt: "Xolution Approach"
+    }
+  ];
+
   useEffect(() => {
     if (!api) {
       return;
@@ -62,7 +65,9 @@ const ProfessionalJourney: React.FC = () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
-  return <section id="journey" className="py-16 bg-white">
+
+  return (
+    <section id="journey" className="py-16 bg-white">
       <div className="section-container">
         <h2 className="text-4xl font-bold text-center mb-12">Professional Journey</h2>
         
@@ -145,12 +150,52 @@ const ProfessionalJourney: React.FC = () => {
           
           {/* PwC description */}
           <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
-            <p className="text-lg leading-relaxed">I have led high-impact analytics and strategy initiatives across Fortune 100 companies, M&amp;A engagements, IPOs, and divestitures at PwC's Deals practice in the US. I also specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions.</p>
+            <p className="text-lg leading-relaxed">I have led high-impact analytics and strategy initiatives across Fortune 100 companies, M&A engagements, IPOs, and divestitures at PwC's Deals practice in the US. I also specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions.</p>
           </div>
           
-          <PwCBentoDemo />
+          {/* Custom PwC Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Customer & Product Insights Card */}
+            <Card className="relative col-span-1 lg:col-span-2 overflow-hidden shadow-lg border bg-white dark:bg-black min-h-[24rem]">
+              <CardContent className="p-6 h-full flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300 mb-4">
+                    Customer & Product Insights
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed mb-6">
+                    Led a team that built a Customer and Product consolidation and insights engine that was instrumental to the Sell Side Diligence for the sale of Pilot Freight Services (Backed by PE Firms ATL Partners and BCI) in their sale to Maersk for $1.7B
+                  </p>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="grid grid-cols-2 gap-4 items-center">
+                    <img src="/lovable-uploads/25e5470a-e5e9-4ddc-8848-e98f603d2a8c.png" alt="Pilot Freight Services" className="h-8 w-auto justify-self-center" />
+                    <img src="/lovable-uploads/0ffc85ee-04cd-48f4-9921-305c368bb304.png" alt="Maersk" className="h-8 w-auto justify-self-center" />
+                    <img src="/lovable-uploads/888cc071-63ef-45db-9b0f-5cae6dace908.png" alt="ATL Partners" className="h-8 w-auto justify-self-center" />
+                    <img src="/lovable-uploads/15d6490f-ddb4-480a-a135-6874f46360b1.png" alt="BCI" className="h-8 w-auto justify-self-center" />
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      Private Equity
+                    </span>
+                    <span className="text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      Sell Side Diligence
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Empty placeholder cards for future content */}
+            <Card className="relative overflow-hidden shadow-lg border bg-white dark:bg-black min-h-[24rem]">
+              <CardContent className="p-6 h-full flex items-center justify-center">
+                <p className="text-gray-400 text-center">Additional project showcase coming soon</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ProfessionalJourney;
