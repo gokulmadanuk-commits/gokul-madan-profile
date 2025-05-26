@@ -19,7 +19,7 @@ const Vision: React.FC = () => {
                     className="w-full"
                   />
                   <div className="flex justify-center">
-                    <Button className="px-8">
+                    <Button className="px-12">
                       Submit
                     </Button>
                   </div>
