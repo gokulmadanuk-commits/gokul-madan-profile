@@ -3,6 +3,7 @@ import React from 'react';
 import { Separator } from "@/components/ui/separator";
 import XolutionSection from './XolutionSection';
 import PwCSection from './PwCSection';
+import MuSigmaSection from './MuSigmaSection';
 
 const ProfessionalJourney: React.FC = () => {
   return (
@@ -18,6 +19,12 @@ const ProfessionalJourney: React.FC = () => {
         
         {/* PwC Experience */}
         <PwCSection />
+        
+        {/* Separator line */}
+        <Separator className="my-12" />
+        
+        {/* Mu Sigma Experience */}
+        <MuSigmaSection />
       </div>
     </section>
   );
