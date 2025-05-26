@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
+
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -147,10 +148,10 @@ const ProfessionalJourney: React.FC = () => {
             <p className="text-lg leading-relaxed">I have led high-impact analytics and strategy initiatives across Fortune 100 companies, M&A engagements, IPOs, and divestitures at PwC's Deals practice in the US. I also specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions.</p>
           </div>
           
-          {/* 3-Column Card Layout */}
-          <div className="grid grid-cols-3 gap-6 min-h-[500px]">
+          {/* Responsive 3-Column Card Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[500px]">
             {/* Column 1 - 2 cards (2/3 top, 1/3 bottom) */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 order-1">
               <Card className="flex-[2] shadow-lg">
                 <CardContent className="p-6 h-full flex flex-col">
                   <h4 className="text-lg mb-3 font-bold text-[#31602f]">Customer & Product Insights</h4>
@@ -162,7 +163,7 @@ const ProfessionalJourney: React.FC = () => {
                       <img src="/lovable-uploads/1af70454-605a-4248-8505-92fa5666d3ea.png" alt="Maersk" className="h-8 w-auto" />
                       <img src="/lovable-uploads/5e8c18be-970d-4977-b433-7ef973e4ce29.png" alt="Pilot Freight Services" className="h-12 w-auto" />
                     </div>
-                    <div className="flex items-center justify-evenly mt-2">
+                    <div className="flex items-center justify-between mt-2">
                       <img src="/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png" alt="ATL Partners" className="h-14 w-auto" />
                       <img src="/lovable-uploads/0b165cc7-8ff4-486e-966b-89d71eb26e01.png" alt="BCI" className="h-6 w-auto" />
                     </div>
@@ -188,7 +189,7 @@ const ProfessionalJourney: React.FC = () => {
             </div>
             
             {/* Column 2 - 1 full height card */}
-            <div className="flex">
+            <div className="flex order-2">
               <Card className="flex-1 shadow-lg">
                 <CardContent className="p-6 h-full flex flex-col justify-center">
                   <h4 className="text-xl font-semibold mb-4 text-center">PE Value Creation</h4>
@@ -201,7 +202,7 @@ const ProfessionalJourney: React.FC = () => {
             </div>
             
             {/* Column 3 - 2 cards (1/3 top, 2/3 bottom) */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 order-3">
               <Card className="flex-1 shadow-lg">
                 <CardContent className="p-6 h-full">
                   <h4 className="text-lg font-semibold mb-3">Financial Modeling</h4>
