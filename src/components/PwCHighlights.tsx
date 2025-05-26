@@ -52,7 +52,7 @@ const PwCHighlights: React.FC = () => {
         <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-6 text-center">Why I'm Excited About Unity Advisory</h2>
         
         <div className="max-w-4xl mx-auto mb-12 text-center">
-          <p className="text-lg leading-relaxed font-bold text-primary-DEFAULT">
+          <p className="text-lg leading-relaxed font-bold text-[#31602f]">
             Unity's approach of blending AI across advisory workstreams is exactly what the market needs.
           </p>
           <p className="text-lg text-gray-700 leading-relaxed mt-4">
