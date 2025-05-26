@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -5,6 +6,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
+
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -51,6 +53,7 @@ const ProfessionalJourney: React.FC = () => {
     src: "/lovable-uploads/aa65d36c-616c-42f0-9d25-6e09c5717d56.png",
     alt: "Xolution Approach"
   }];
+
   useEffect(() => {
     if (!api) {
       return;
@@ -61,7 +64,9 @@ const ProfessionalJourney: React.FC = () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
-  return <section id="journey" className="py-16 bg-white">
+
+  return (
+    <section id="journey" className="py-16 bg-white">
       <div className="section-container">
         <h2 className="text-4xl font-bold text-center mb-12">Professional Journey</h2>
         
@@ -156,15 +161,15 @@ const ProfessionalJourney: React.FC = () => {
                   <h4 className="text-lg mb-3 font-bold text-[#31602f]">Customer & Product Insights</h4>
                   <p className="text-gray-600 mb-4 flex-grow">Led a team that built a Customer and Product consolidation and insights engine that was instrumental to the Sell Side Diligence for the sale of Pilot Freight Services (Backed by PE Firms ATL Partners and BCI) in their sale to Maersk for $1.7B</p>
                   
-                  {/* Logos in 2 rows with offset */}
+                  {/* Logos in 2 rows with improved spacing */}
                   <div className="mb-4">
-                    <div className="flex items-center gap-3 mb-2">
-                      <img src="/lovable-uploads/5e8c18be-970d-4977-b433-7ef973e4ce29.png" alt="Pilot Freight Services" className="h-12 w-auto" />
-                      <img src="/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png" alt="ATL Partners" className="h-14 w-auto mt-1" />
-                    </div>
-                    <div className="flex items-center gap-3 ml-4">
-                      <img src="/lovable-uploads/0b165cc7-8ff4-486e-966b-89d71eb26e01.png" alt="BCI" className="h-6 w-auto mb-1" />
+                    <div className="flex items-center justify-between mb-3">
                       <img src="/lovable-uploads/1af70454-605a-4248-8505-92fa5666d3ea.png" alt="Maersk" className="h-8 w-auto" />
+                      <img src="/lovable-uploads/5e8c18be-970d-4977-b433-7ef973e4ce29.png" alt="Pilot Freight Services" className="h-12 w-auto" />
+                    </div>
+                    <div className="flex items-center justify-between mt-2">
+                      <img src="/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png" alt="ATL Partners" className="h-14 w-auto" />
+                      <img src="/lovable-uploads/0b165cc7-8ff4-486e-966b-89d71eb26e01.png" alt="BCI" className="h-6 w-auto" />
                     </div>
                   </div>
                   
@@ -218,6 +223,8 @@ const ProfessionalJourney: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ProfessionalJourney;
