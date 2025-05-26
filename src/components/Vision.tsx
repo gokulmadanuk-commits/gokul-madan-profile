@@ -3,14 +3,8 @@ import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
-import { downloadPDF } from "@/lib/downloadUtils";
 
 const Vision: React.FC = () => {
-  const handleOverviewDownload = () => {
-    downloadPDF('overview.pdf', 'Gokul-Madan-Overview.pdf');
-  };
-
   return <section id="vision" className="py-20 bg-gray-50">
       <div className="section-container">
         <div className="max-w-3xl mx-auto">
@@ -25,9 +19,8 @@ const Vision: React.FC = () => {
                     className="w-full"
                   />
                   <div className="flex justify-center">
-                    <Button size="lg" className="w-full sm:w-auto sm:min-w-48 group" onClick={handleOverviewDownload}>
-                      <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                      Download Overview
+                    <Button size="lg" className="w-full sm:w-auto sm:min-w-48">
+                      Submit
                     </Button>
                   </div>
                 </div>
