@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
+
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -147,10 +148,56 @@ const ProfessionalJourney: React.FC = () => {
             <p className="text-lg leading-relaxed">I have led high-impact analytics and strategy initiatives across Fortune 100 companies, M&A engagements, IPOs, and divestitures at PwC's Deals practice in the US. I also specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions.</p>
           </div>
           
-          {/* Custom PwC Cards */}
-          
+          {/* 3-Column Card Layout */}
+          <div className="grid grid-cols-3 gap-6 min-h-[500px]">
+            {/* Column 1 - 2 cards (2/3 top, 1/3 bottom) */}
+            <div className="flex flex-col gap-4">
+              <Card className="flex-[2] shadow-lg">
+                <CardContent className="p-6 h-full">
+                  <h4 className="text-lg font-semibold mb-3">Strategic Analytics</h4>
+                  <p className="text-gray-600">Led comprehensive market analysis and strategic planning for Fortune 100 companies across multiple sectors.</p>
+                </CardContent>
+              </Card>
+              <Card className="flex-1 shadow-lg">
+                <CardContent className="p-6 h-full">
+                  <h4 className="text-lg font-semibold mb-3">M&A Support</h4>
+                  <p className="text-gray-600">Supported major transactions and IPO processes.</p>
+                </CardContent>
+              </Card>
+            </div>
+            
+            {/* Column 2 - 1 full height card */}
+            <div className="flex">
+              <Card className="flex-1 shadow-lg">
+                <CardContent className="p-6 h-full flex flex-col justify-center">
+                  <h4 className="text-xl font-semibold mb-4 text-center">PE Value Creation</h4>
+                  <p className="text-gray-600 text-center mb-4">Specialized in developing data-driven solutions and forecasting models that directly contributed to value creation strategies for Private Equity portfolio companies.</p>
+                  <div className="text-center">
+                    <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Billion-Dollar Impact</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            
+            {/* Column 3 - 2 cards (1/3 top, 2/3 bottom) */}
+            <div className="flex flex-col gap-4">
+              <Card className="flex-1 shadow-lg">
+                <CardContent className="p-6 h-full">
+                  <h4 className="text-lg font-semibold mb-3">Financial Modeling</h4>
+                  <p className="text-gray-600">Advanced forecasting and valuation models.</p>
+                </CardContent>
+              </Card>
+              <Card className="flex-[2] shadow-lg">
+                <CardContent className="p-6 h-full">
+                  <h4 className="text-lg font-semibold mb-3">Data-Driven Insights</h4>
+                  <p className="text-gray-600">Delivered comprehensive insights and analytics that shaped strategic decision-making across complex financial transactions and business transformations.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </div>
     </section>;
 };
+
 export default ProfessionalJourney;
