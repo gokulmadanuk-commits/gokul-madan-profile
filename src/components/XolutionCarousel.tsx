@@ -5,6 +5,7 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselApi } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface CarouselSlide {
   src: string;
@@ -19,8 +20,11 @@ const XolutionCarousel: React.FC<XolutionCarouselProps> = ({ slides }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  const { trackClick, trackDownload } = useAnalytics();
 
   const handleOverviewDownload = () => {
+    trackDownload('Xolution_Overview.pdf');
+    trackClick('Xolution Overview Download Button');
     window.open('https://drive.google.com/file/d/12jLt5QWPXslQqPpClrUgLvVR9Ggsid6G/view?usp=sharing', '_blank');
   };
 

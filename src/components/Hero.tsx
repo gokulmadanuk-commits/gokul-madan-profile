@@ -6,10 +6,27 @@ import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Card } from "@/components/ui/card";
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const Hero: React.FC = () => {
+  const { trackClick, trackDownload } = useAnalytics();
+
   const handleResumeDownload = () => {
+    trackDownload('Gokul_Resume.pdf');
+    trackClick('Resume Download Button');
     window.open('https://drive.google.com/file/d/1YJi-kdczKZmLfLmIB27yeazp5tFTdXQ1/view?usp=sharing', '_blank');
+  };
+
+  const handleVideoClick = () => {
+    trackClick('Video Introduction Button');
+  };
+
+  const handleEmailClick = () => {
+    trackClick('Email Contact Link');
+  };
+
+  const handleLinkedInClick = () => {
+    trackClick('LinkedIn Profile Link');
   };
 
   return <section className="py-4 sm:py-8 md:py-12 flex items-center relative overflow-hidden">
@@ -30,7 +47,7 @@ const Hero: React.FC = () => {
                 </Button>
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button variant="outline" size="lg" className="group bg-white text-[#31602F] border-[#31602F] hover:bg-[#31602F]/20 transition-colors w-full">
+                    <Button variant="outline" size="lg" className="group bg-white text-[#31602F] border-[#31602F] hover:bg-[#31602F]/20 transition-colors w-full" onClick={handleVideoClick}>
                       <Play className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                       Video Introduction
                     </Button>
@@ -50,10 +67,10 @@ const Hero: React.FC = () => {
             
             {/* Social icons - visible on both mobile and desktop */}
             <div className="flex items-center space-x-4 mt-2">
-              <a href="mailto:gokulmadan2@gmail.com" className="p-2 text-gray-600 hover:text-primary transition-colors">
+              <a href="mailto:gokulmadan2@gmail.com" className="p-2 text-gray-600 hover:text-primary transition-colors" onClick={handleEmailClick}>
                 <Mail className="h-5 w-5" />
               </a>
-              <a href="https://linkedin.com/in/gokulmadan" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 hover:text-primary transition-colors">
+              <a href="https://linkedin.com/in/gokulmadan" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 hover:text-primary transition-colors" onClick={handleLinkedInClick}>
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>

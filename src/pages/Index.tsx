@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import AboutMe from '@/components/AboutMe';
@@ -6,11 +7,17 @@ import Vision from '@/components/Vision';
 import Footer from '@/components/Footer';
 import ClientLogos from '@/components/ClientLogos';
 import ProfessionalJourney from '@/components/ProfessionalJourney';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const Index: React.FC = () => {
+  const { trackPageView } = useAnalytics();
+
   useEffect(() => {
     // Set the title of the page
     document.title = "Gokul Madan Alikkal - Consulting Leader & SaaS Founder";
+    
+    // Track page view
+    trackPageView('Homepage');
     
     // Smooth scroll to section when clicking on navigation links
     const handleSmoothScroll = (e: MouseEvent) => {
@@ -34,7 +41,7 @@ const Index: React.FC = () => {
     return () => {
       document.removeEventListener('click', handleSmoothScroll);
     };
-  }, []);
+  }, [trackPageView]);
   
   return (
     <div className="flex flex-col min-h-screen">

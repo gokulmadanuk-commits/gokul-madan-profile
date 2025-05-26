@@ -1,9 +1,11 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { useAnalytics } from '@/hooks/useAnalytics';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,6 +22,7 @@ const Vision: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const { toast } = useToast();
+  const { trackClick } = useAnalytics();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +37,7 @@ const Vision: React.FC = () => {
     }
 
     setIsLoading(true);
+    trackClick('Contact Form Submit');
 
     try {
       console.log('Calling Supabase function with:', { name, email });
