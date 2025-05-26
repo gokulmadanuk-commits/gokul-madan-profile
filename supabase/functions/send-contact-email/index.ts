@@ -27,7 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log('Sending email with data:', { name, email });
 
     const emailResponse = await resend.emails.send({
-      from: "Unity Advisory <noreply@xolution.io>",
+      from: "Unity Advisory <noreply@gokulmadan.com>",
       to: ["gokulmadan2@gmail.com"],
       reply_to: email,
       subject: "Unity Advisory Connect - New Contact Request",
