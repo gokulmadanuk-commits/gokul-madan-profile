@@ -5,7 +5,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
-
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -154,7 +153,7 @@ const ProfessionalJourney: React.FC = () => {
             <div className="flex flex-col gap-4 order-1">
               <Card className="flex-[2] shadow-lg">
                 <CardContent className="p-6 h-full flex flex-col">
-                  <h4 className="text-lg mb-3 font-bold text-[#31602f]">Customer & Product Insights</h4>
+                  <h4 className="mb-3 font-bold text-[#31602f] text-xl">Customer & Product Insights</h4>
                   <p className="text-gray-600 mb-4 flex-grow">Led a team that built a Customer and Product consolidation and insights engine that was instrumental to the Sell Side Diligence for the sale of Pilot Freight Services (Backed by PE Firms ATL Partners and BCI) in their sale to Maersk for $1.7B</p>
                   
                   {/* Logos in 2 rows with improved spacing */}
