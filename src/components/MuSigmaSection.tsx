@@ -9,7 +9,7 @@ const MuSigmaSection: React.FC = () => {
             Mu Sigma Inc.
           </p>
         </div>
-        <img src="/lovable-uploads/2e8e1f34-d32d-49fb-8294-4d4670c7f88e.png" alt="Mu Sigma Logo" className="h-20 w-auto rounded-md" />
+        <img src="/lovable-uploads/2e8e1f34-d32d-49fb-8294-4d4670c7f88e.png" alt="Mu Sigma Logo" className="h-14 w-auto rounded-md" />
       </div>
       
       {/* Mu Sigma description */}
