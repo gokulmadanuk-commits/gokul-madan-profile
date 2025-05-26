@@ -153,7 +153,7 @@ const ProfessionalJourney: React.FC = () => {
             <div className="flex flex-col gap-4">
               <Card className="flex-[2] shadow-lg">
                 <CardContent className="p-6 h-full flex flex-col">
-                  <h4 className="text-lg mb-3 text-primary-DEFAULT font-bold">Customer & Product Insights</h4>
+                  <h4 className="text-lg mb-3 font-bold text-[#31602f]">Customer & Product Insights</h4>
                   <p className="text-gray-600 mb-4 flex-grow">Led a team that built a Customer and Product consolidation and insights engine that was instrumental to the Sell Side Diligence for the sale of Pilot Freight Services (Backed by PE Firms ATL Partners and BCI) in their sale to Maersk for $1.7B</p>
                   
                   {/* Logos in 2 rows with offset */}
