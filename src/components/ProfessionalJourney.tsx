@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
+
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -150,7 +151,7 @@ const ProfessionalJourney: React.FC = () => {
           {/* Responsive 3-Column Card Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[500px]">
             {/* Column 1 - 2 cards (2/3 top, 1/3 bottom) */}
-            <div className="flex flex-col gap-4 order-1">
+            <div className="flex flex-col gap-4 order-1 lg:order-1">
               <Card className="flex-[2] shadow-lg">
                 <CardContent className="p-6 h-full flex flex-col">
                   <h4 className="mb-3 font-bold text-[#31602f] text-xl">Customer & Product Insights</h4>
@@ -162,7 +163,7 @@ const ProfessionalJourney: React.FC = () => {
                       <img src="/lovable-uploads/1af70454-605a-4248-8505-92fa5666d3ea.png" alt="Maersk" className="h-8 w-auto" />
                       <img src="/lovable-uploads/5e8c18be-970d-4977-b433-7ef973e4ce29.png" alt="Pilot Freight Services" className="h-12 w-auto" />
                     </div>
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between">
                       <img src="/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png" alt="ATL Partners" className="h-14 w-auto" />
                       <img src="/lovable-uploads/0b165cc7-8ff4-486e-966b-89d71eb26e01.png" alt="BCI" className="h-6 w-auto" />
                     </div>
@@ -180,15 +181,37 @@ const ProfessionalJourney: React.FC = () => {
                 </CardContent>
               </Card>
               <Card className="flex-1 shadow-lg">
-                <CardContent className="p-6 h-full">
-                  <h4 className="text-lg font-semibold mb-3">M&A Support</h4>
-                  <p className="text-gray-600">Supported major transactions and IPO processes.</p>
+                <CardContent className="p-6 h-full flex flex-col">
+                  <h4 className="mb-3 font-bold text-[#31602f] text-xl">Consolidated Data Cube</h4>
+                  <p className="text-gray-600 mb-4 flex-grow">Built a consolidated data cube, combining data across 6 sources to support monthly sponsor reporting for the acquisition of Gofan by PlayOn (a KKR Portfolio company).</p>
+                  
+                  {/* Logos in a single line */}
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between">
+                      <img src="/lovable-uploads/eef35f22-2207-453e-b7a6-461ea39fbd05.png" alt="KKR" className="h-8 w-auto" />
+                      <img src="/lovable-uploads/3860c3ed-d503-4eda-8c9f-f74bbab5eaeb.png" alt="PlayOn" className="h-8 w-auto" />
+                      <img src="/lovable-uploads/2ccfa540-46da-4f8e-92dc-dcb43877cbd0.png" alt="GoFan" className="h-8 w-auto" />
+                    </div>
+                  </div>
+                  
+                  {/* Tags */}
+                  <div className="flex gap-2 flex-wrap mt-auto">
+                    <span className="inline-block bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+                      Private Equity
+                    </span>
+                    <span className="inline-block bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+                      Sell Side Diligence
+                    </span>
+                    <span className="inline-block bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+                      Consolidation
+                    </span>
+                  </div>
                 </CardContent>
               </Card>
             </div>
             
             {/* Column 2 - 1 full height card */}
-            <div className="flex order-2">
+            <div className="flex order-2 lg:order-2">
               <Card className="flex-1 shadow-lg">
                 <CardContent className="p-6 h-full flex flex-col justify-center">
                   <h4 className="text-xl font-semibold mb-4 text-center">PE Value Creation</h4>
@@ -201,7 +224,7 @@ const ProfessionalJourney: React.FC = () => {
             </div>
             
             {/* Column 3 - 2 cards (1/3 top, 2/3 bottom) */}
-            <div className="flex flex-col gap-4 order-3">
+            <div className="flex flex-col gap-4 order-3 lg:order-3">
               <Card className="flex-1 shadow-lg">
                 <CardContent className="p-6 h-full">
                   <h4 className="text-lg font-semibold mb-3">Financial Modeling</h4>
@@ -220,4 +243,5 @@ const ProfessionalJourney: React.FC = () => {
       </div>
     </section>;
 };
+
 export default ProfessionalJourney;
