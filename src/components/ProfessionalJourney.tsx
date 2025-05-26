@@ -5,7 +5,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
-
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -189,8 +188,8 @@ const ProfessionalJourney: React.FC = () => {
                   <div className="mb-4">
                     <div className="flex items-center justify-between">
                       <img src="/lovable-uploads/eef35f22-2207-453e-b7a6-461ea39fbd05.png" alt="KKR" className="h-8 w-auto" />
-                      <img src="/lovable-uploads/3860c3ed-d503-4eda-8c9f-f74bbab5eaeb.png" alt="PlayOn" className="h-8 w-auto" />
-                      <img src="/lovable-uploads/2ccfa540-46da-4f8e-92dc-dcb43877cbd0.png" alt="GoFan" className="h-8 w-auto" />
+                      <img src="/lovable-uploads/3860c3ed-d503-4eda-8c9f-f74bbab5eaeb.png" alt="PlayOn" className="h-9 w-auto" />
+                      <img src="/lovable-uploads/2ccfa540-46da-4f8e-92dc-dcb43877cbd0.png" alt="GoFan" className="h-10 w-auto" />
                     </div>
                   </div>
                   
@@ -243,5 +242,4 @@ const ProfessionalJourney: React.FC = () => {
       </div>
     </section>;
 };
-
 export default ProfessionalJourney;
