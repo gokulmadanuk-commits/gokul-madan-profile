@@ -55,9 +55,7 @@ const PwCHighlights: React.FC = () => {
           <p className="text-lg leading-relaxed font-bold text-[#31602f]">
             Unity's approach of blending AI across advisory workstreams is exactly what the market needs.
           </p>
-          <p className="text-lg text-gray-700 leading-relaxed mt-4">
-            I've seen firsthand how data and automation can unlock real value in complex transactions. I believe I can bring meaningful insight, execution experience, and founder-level thinking to what you're building.
-          </p>
+          <p className="text-lg text-gray-700 leading-relaxed mt-4">I've seen firsthand how analytics, AI and automation can unlock real value. I believe I can bring meaningful insight, execution experience, and founder-level thinking to what you're building.</p>
         </div>
         
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
