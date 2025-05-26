@@ -20,6 +20,10 @@ const XolutionCarousel: React.FC<XolutionCarouselProps> = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
+  const handleOverviewDownload = () => {
+    window.open('https://drive.google.com/file/d/12jLt5QWPXslQqPpClrUgLvVR9Ggsid6G/view?usp=sharing', '_blank');
+  };
+
   useEffect(() => {
     if (!api) {
       return;
@@ -68,7 +72,7 @@ const XolutionCarousel: React.FC<XolutionCarouselProps> = ({ slides }) => {
       
       {/* Download Overview button */}
       <div className="mt-6">
-        <Button size="lg" className="group w-full sm:w-auto">
+        <Button size="lg" className="group w-full sm:w-auto" onClick={handleOverviewDownload}>
           <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
           Download Overview
         </Button>
