@@ -62,11 +62,11 @@ const PwCHighlights: React.FC = () => {
         
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {valuePropositions.map((proposition, index) => <div key={index} className="value-prop-card opacity-0">
-              <Card className="h-full border-0 shadow-lg">
+              <Card className="h-full border-0 shadow-lg flex flex-col">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xl">{proposition.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow">
                   <p className="text-gray-700">{proposition.description}</p>
                 </CardContent>
                 <CardFooter>
