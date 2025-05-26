@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -36,17 +36,17 @@ const Vision: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // For now, we'll simulate the email sending and show the success message
-      // To actually send emails, you'll need to connect to Supabase and create an edge function
-      console.log('Email would be sent to:', {
-        to: 'gokulmadan2@gmail.com',
-        cc: email,
-        subject: 'Unity Advisory Connect',
-        body: `Hi Gokul, 
+      console.log('Calling Supabase function with:', { name, email });
 
-This is ${name} reaching out after seeing your website. 
-Please reach back out to me so we can schedule time to connect.`
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: { name, email }
       });
+
+      if (error) {
+        throw error;
+      }
+
+      console.log('Email sent successfully:', data);
 
       // Show success dialog
       setShowSuccessDialog(true);
@@ -55,7 +55,7 @@ Please reach back out to me so we can schedule time to connect.`
       setName('');
       setEmail('');
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error sending email:', error);
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
