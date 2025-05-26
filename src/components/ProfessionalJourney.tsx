@@ -153,9 +153,31 @@ const ProfessionalJourney: React.FC = () => {
             {/* Column 1 - 2 cards (2/3 top, 1/3 bottom) */}
             <div className="flex flex-col gap-4">
               <Card className="flex-[2] shadow-lg">
-                <CardContent className="p-6 h-full">
-                  <h4 className="text-lg font-semibold mb-3">Strategic Analytics</h4>
-                  <p className="text-gray-600">Led comprehensive market analysis and strategic planning for Fortune 100 companies across multiple sectors.</p>
+                <CardContent className="p-6 h-full flex flex-col">
+                  <h4 className="text-lg font-semibold mb-3">Customer & Product Insights</h4>
+                  <p className="text-gray-600 mb-4 flex-grow">Led a team that built a Customer and Product consolidation and insights engine that was instrumental to the Sell Side Diligence for the sale of Pilot Freight Services (Backed by PE Firms ATL Partners and BCI) in their sale to Maersk for $1.7B</p>
+                  
+                  {/* Logos in 2 rows with offset */}
+                  <div className="mb-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <img src="/lovable-uploads/5e8c18be-970d-4977-b433-7ef973e4ce29.png" alt="Pilot Freight Services" className="h-8 w-auto" />
+                      <img src="/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png" alt="ATL Partners" className="h-6 w-auto mt-1" />
+                    </div>
+                    <div className="flex items-center gap-3 ml-4">
+                      <img src="/lovable-uploads/0b165cc7-8ff4-486e-966b-89d71eb26e01.png" alt="BCI" className="h-6 w-auto mb-1" />
+                      <img src="/lovable-uploads/1af70454-605a-4248-8505-92fa5666d3ea.png" alt="Maersk" className="h-8 w-auto" />
+                    </div>
+                  </div>
+                  
+                  {/* Tags */}
+                  <div className="flex gap-2 flex-wrap mt-auto">
+                    <span className="inline-block bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+                      Private Equity
+                    </span>
+                    <span className="inline-block bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+                      Sell Side Diligence
+                    </span>
+                  </div>
                 </CardContent>
               </Card>
               <Card className="flex-1 shadow-lg">
