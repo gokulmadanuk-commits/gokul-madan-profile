@@ -32,6 +32,12 @@ const PwCSection: React.FC = () => {
     { src: "/lovable-uploads/19818142-90f8-497a-85f3-68e7f3b2ebfb.png", alt: "Palantir", className: "h-8 w-auto" }
   ];
 
+  const advancedAnalyticsLogos = [
+    { src: "/lovable-uploads/19f5f5c6-8131-47f2-998b-d1fd113ca882.png", alt: "The Carlyle Group", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/4f5b142c-7aee-4a67-931d-3f480f421800.png", alt: "PPD", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/f1edcfa5-11cc-4fce-897d-4e3c508afea4.png", alt: "Ansira", className: "h-8 w-auto" }
+  ];
+
   return (
     <div className="mt-16 mb-10">
       <div className="flex items-center justify-between w-full mb-4">
@@ -106,8 +112,15 @@ const PwCSection: React.FC = () => {
             className="flex-1"
           />
           <PwCCard
-            title="Data-Driven Insights"
-            description="Delivered comprehensive insights and analytics that shaped strategic decision-making across complex financial transactions and business transformations."
+            title="Advanced Analytics and Modeling"
+            description={
+              <ul className="space-y-2 list-disc pl-5">
+                <li>Built a bottom-up Indirect Revenue forecasting model ahead of the IPO of a Carlyle portfolio company, PPD</li>
+                <li>Drove the strategy and direction in the build of an Accounts Receivable collections model. We were able to accurately predict the customers propensity to pay and help drive AR invocing strategy</li>
+              </ul>
+            }
+            logos={advancedAnalyticsLogos}
+            tags={["Advanced Analytics", "Financial Modeling", "IPO"]}
             className="flex-[2]"
           />
         </div>
