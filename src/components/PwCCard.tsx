@@ -10,7 +10,7 @@ interface Logo {
 
 interface PwCCardProps {
   title: string;
-  description: string;
+  description: string | React.ReactNode;
   logos?: Logo[];
   tags?: string[];
   className?: string;
@@ -21,7 +21,9 @@ const PwCCard: React.FC<PwCCardProps> = ({ title, description, logos, tags, clas
     <Card className={`shadow-lg ${className || ''}`}>
       <CardContent className="p-6 h-full flex flex-col">
         <h4 className="mb-3 font-bold text-[#31602f] text-xl">{title}</h4>
-        <p className="text-gray-600 mb-4 flex-grow">{description}</p>
+        <div className="text-gray-600 mb-4 flex-grow">
+          {typeof description === 'string' ? <p>{description}</p> : description}
+        </div>
         
         {logos && logos.length > 0 && (
           <div className="mb-4">

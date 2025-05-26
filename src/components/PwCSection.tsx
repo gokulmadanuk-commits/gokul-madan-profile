@@ -13,7 +13,7 @@ const PwCSection: React.FC = () => {
   const gofanLogos = [
     { src: "/lovable-uploads/eef35f22-2207-453e-b7a6-461ea39fbd05.png", alt: "KKR", className: "h-8 w-auto" },
     { src: "/lovable-uploads/3860c3ed-d503-4eda-8c9f-f74bbab5eaeb.png", alt: "PlayOn", className: "h-9 w-auto" },
-    { src: "/lovable-uploads/2ccfa540-46da-4f8e-92dc-dcb43877cbd0.png", alt: "GoFan", className: "h-12 w-auto" }
+    { src: "/lovable-uploads/ad1fea55-e1f2-4bab-801c-ff3581a55d8f.png", alt: "GoFan", className: "h-12 w-auto" }
   ];
 
   return (
@@ -57,9 +57,24 @@ const PwCSection: React.FC = () => {
         {/* Column 2 - 1 full height card */}
         <div className="flex order-2 lg:order-2">
           <PwCCard
-            title="PE Value Creation"
-            description="Specialized in developing data-driven solutions and forecasting models that directly contributed to value creation strategies for Private Equity portfolio companies."
-            tags={["Billion-Dollar Impact"]}
+            title="Complex Carveouts"
+            description={
+              <div className="space-y-3">
+                <div>
+                  <span className="font-bold">Hewlett Packard Enterprise</span>: Supported the complex 4 way carveout of HPE. Focussed on the Legal Entity P&L separation encompassing complex Transfer Pricing situations.
+                </div>
+                <div>
+                  <span className="font-bold">DXC</span>: Led the Deals Analytics team in a complex 3 way carveout of DxC. Managed teams working through the data heavy portions of the Financials (e.g. AP, AR, Revenue, Expense allocations). Also helped implement a consolidation automation tool.
+                </div>
+                <div>
+                  <span className="font-bold">GE Power + GE Healthcare</span>: Worked on the divestitures of GE Power (Vernova) and Healthcare from GE involving highly complex multi layer accounting and reporting systems.
+                </div>
+                <div>
+                  <span className="font-bold">Symantec</span>: Supported the divestiture of Verisign from Symantec
+                </div>
+              </div>
+            }
+            tags={["Carveout", "Deals Analytics"]}
             className="flex-1"
           />
         </div>
