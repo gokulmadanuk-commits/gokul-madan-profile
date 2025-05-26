@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -6,7 +5,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Download } from "lucide-react";
-
 const ProfessionalJourney: React.FC = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -53,7 +51,6 @@ const ProfessionalJourney: React.FC = () => {
     src: "/lovable-uploads/aa65d36c-616c-42f0-9d25-6e09c5717d56.png",
     alt: "Xolution Approach"
   }];
-
   useEffect(() => {
     if (!api) {
       return;
@@ -64,9 +61,7 @@ const ProfessionalJourney: React.FC = () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
-
-  return (
-    <section id="journey" className="py-16 bg-white">
+  return <section id="journey" className="py-16 bg-white">
       <div className="section-container">
         <h2 className="text-4xl font-bold text-center mb-12">Professional Journey</h2>
         
@@ -223,8 +218,6 @@ const ProfessionalJourney: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ProfessionalJourney;
