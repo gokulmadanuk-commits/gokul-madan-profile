@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-
 const Vision: React.FC = () => {
-  return (
-    <section id="vision" className="py-20 bg-white">
+  return <section id="vision" className="py-20 bg-gray-50">
       <div className="section-container">
         <div className="max-w-3xl mx-auto">
           <Card className="border-0 shadow-lg bg-gradient-to-br from-slate-light via-white to-beige-light">
@@ -22,8 +19,6 @@ const Vision: React.FC = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Vision;
