@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 interface Logo {
@@ -42,10 +43,22 @@ const PwCCard: React.FC<PwCCardProps> = ({
                       <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                     </div>)}
                 </div>
-              </div> : <div className="grid grid-cols-3 gap-3 items-center">
-                {logos.map((logo, index) => <div key={index} className="flex items-center justify-center h-10 w-16">
-                    <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
-                  </div>)}
+              </div> : <div className="space-y-3">
+                <div className="flex items-center justify-around">
+                  {logos.slice(0, 3).map((logo, index) => <div key={index} className="flex items-center justify-center h-10 w-16">
+                      <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
+                    </div>)}
+                </div>
+                <div className="flex items-center justify-around">
+                  {logos.slice(3, 6).map((logo, index) => <div key={index + 3} className="flex items-center justify-center h-10 w-16">
+                      <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
+                    </div>)}
+                </div>
+                <div className="flex items-center justify-around">
+                  {logos.slice(6, 9).map((logo, index) => <div key={index + 6} className="flex items-center justify-center h-10 w-16">
+                      <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
+                    </div>)}
+                </div>
               </div>}
           </div>}
         
