@@ -12,9 +12,7 @@ const Vision: React.FC = () => {
                 <p className="leading-relaxed">
                   Unity's approach — blending AI and advisory — is exactly what this moment calls for. I've seen firsthand how data and automation can unlock real value in complex transactions.
                 </p>
-                <p className="leading-relaxed">
-                  I believe I can bring meaningful insight, execution experience, and founder-level thinking to what you're building. If the vision is bold, I want in.
-                </p>
+                
               </div>
             </CardContent>
           </Card>
