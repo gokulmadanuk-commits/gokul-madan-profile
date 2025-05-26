@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PwCCard from './PwCCard';
 
@@ -17,10 +16,15 @@ const PwCSection: React.FC = () => {
   ];
 
   const complexCarveoutLogos = [
-    { src: "/lovable-uploads/888cc071-63ef-45db-9b0f-5cae6dace908.png", alt: "HPE", className: "h-8 w-auto" },
-    { src: "/lovable-uploads/8de939df-312b-4f5b-80a5-0343ba434523.png", alt: "DXC", className: "h-10 w-auto" },
-    { src: "/lovable-uploads/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png", alt: "GE", className: "h-8 w-auto" },
-    { src: "/lovable-uploads/ccb03c56-662c-4560-aa78-6d0be23d3180.png", alt: "Symantec", className: "h-8 w-auto" }
+    { src: "/lovable-uploads/8ab96d05-60f7-416c-8d2f-eae3620b04d5.png", alt: "Hewlett Packard Enterprise", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/25d8be60-48bf-4948-9391-bc12f2ddd5ce.png", alt: "DXC Technology", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/eee48268-cca1-4dfd-abed-2aad34e82fdd.png", alt: "Grinwell", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/5ce79358-389e-4fc9-bbaa-4ff0501456b6.png", alt: "Perspecta", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/4523e26c-e0e1-4376-a6fe-f8a75656d689.png", alt: "Symantec", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/27b9a23f-c96b-47e2-8be0-fbdc0eb520de.png", alt: "VeriSign", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/cd70899d-30be-4e36-9dc6-9b9a04e6d71e.png", alt: "General Electric", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/04dcf006-1259-4072-8cd9-78ec59199151.png", alt: "GE Vernova", className: "h-8 w-auto" },
+    { src: "/lovable-uploads/86b71b26-b828-4f65-b42e-19a59169bc9a.png", alt: "GE HealthCare", className: "h-8 w-auto" }
   ];
 
   return (

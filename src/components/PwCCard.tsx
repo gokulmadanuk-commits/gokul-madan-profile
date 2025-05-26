@@ -33,7 +33,7 @@ const PwCCard: React.FC<PwCCardProps> = ({ title, description, logos, tags, clas
                   <img key={index} src={logo.src} alt={logo.alt} className={logo.className || "h-8 w-auto"} />
                 ))}
               </div>
-            ) : (
+            ) : logos.length <= 4 ? (
               <div>
                 <div className="flex items-center justify-between mb-3">
                   {logos.slice(0, 2).map((logo, index) => (
@@ -45,6 +45,14 @@ const PwCCard: React.FC<PwCCardProps> = ({ title, description, logos, tags, clas
                     <img key={index + 2} src={logo.src} alt={logo.alt} className={logo.className || "h-8 w-auto"} />
                   ))}
                 </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-3 gap-3 items-center">
+                {logos.map((logo, index) => (
+                  <div key={index} className="flex justify-center">
+                    <img src={logo.src} alt={logo.alt} className={logo.className || "h-6 w-auto"} />
+                  </div>
+                ))}
               </div>
             )}
           </div>
