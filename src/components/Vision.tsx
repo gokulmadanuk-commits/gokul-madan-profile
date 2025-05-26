@@ -1,5 +1,9 @@
+
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
 const Vision: React.FC = () => {
   return <section id="vision" className="py-20 bg-gray-50">
       <div className="section-container">
@@ -8,8 +12,16 @@ const Vision: React.FC = () => {
             <CardContent className="p-8 md:p-12">
               <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-8 text-center">Let's Connect</h2>
               <div className="space-y-6 text-lg">
-                
-                
+                <div className="space-y-4">
+                  <Input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    className="w-full"
+                  />
+                  <Button className="w-full">
+                    Submit
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -17,4 +29,5 @@ const Vision: React.FC = () => {
       </div>
     </section>;
 };
+
 export default Vision;
