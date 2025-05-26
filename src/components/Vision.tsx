@@ -9,9 +9,7 @@ const Vision: React.FC = () => {
               <img src="/lovable-uploads/280b909b-ceb8-422b-9f23-2e56e36a673e.png" alt="Unity Advisory Logo" className="absolute top-4 right-4 md:top-6 md:right-6 h-6 md:h-8 w-auto" />
               <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-8 text-center">I'd love to work with Unity Advisory</h2>
               <div className="space-y-6 text-lg">
-                <p className="leading-relaxed">
-                  Unity's approach — blending AI and advisory — is exactly what this moment calls for. I've seen firsthand how data and automation can unlock real value in complex transactions.
-                </p>
+                <p className="leading-relaxed">I believe I could add a lot of value to what Unity Advisory stands for: A lean  and client-centric model that embeds AI across workstreams, delivering value to clients with agility and innovative commercial models.</p>
                 
               </div>
             </CardContent>
