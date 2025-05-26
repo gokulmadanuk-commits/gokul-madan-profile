@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const ClientLogos: React.FC = () => {
@@ -12,7 +13,6 @@ const ClientLogos: React.FC = () => {
     { src: "/lovable-uploads/06605beb-1704-4008-9ef8-9f0226f8b6e7.png", alt: "DXC" },
     { src: "/lovable-uploads/05f51801-ae11-44e7-bf2a-ad20ed89c9b8.png", alt: "Invest Northern Ireland" },
     { src: "/lovable-uploads/88064e12-18aa-42ef-b6fb-7e21e834eaff.png", alt: "Maersk" },
-    { src: "/lovable-uploads/94028933-ea04-4740-82de-0f08b0c569d2.png", alt: "Housing" },
     { src: "/lovable-uploads/2a736e24-15d0-4879-b154-b1c8a89c2bc0.png", alt: "Symantec" },
     { src: "/lovable-uploads/ef1072e8-c89b-46a1-bce6-e47da501b05a.png", alt: "Mu Sigma" },
     { src: "/lovable-uploads/bfccb223-9fb9-4400-91ab-523c8a4abec0.png", alt: "Hewlett Packard Enterprise" },
