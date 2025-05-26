@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PwCCard from './PwCCard';
 
@@ -13,7 +12,7 @@ const PwCSection: React.FC = () => {
   const gofanLogos = [
     { src: "/lovable-uploads/eef35f22-2207-453e-b7a6-461ea39fbd05.png", alt: "KKR", className: "h-8 w-auto" },
     { src: "/lovable-uploads/3860c3ed-d503-4eda-8c9f-f74bbab5eaeb.png", alt: "PlayOn", className: "h-9 w-auto" },
-    { src: "/lovable-uploads/ad1fea55-e1f2-4bab-801c-ff3581a55d8f.png", alt: "GoFan", className: "h-12 w-auto" }
+    { src: "/lovable-uploads/b8f19173-4547-4d54-bb16-b241249d6af8.png", alt: "GoFan", className: "h-12 w-auto" }
   ];
 
   const complexCarveoutLogos = [
