@@ -1,11 +1,12 @@
-
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
+
 interface Logo {
   src: string;
   alt: string;
   className?: string;
 }
+
 interface PwCCardProps {
   title: string;
   description: string | React.ReactNode;
@@ -13,6 +14,7 @@ interface PwCCardProps {
   tags?: string[];
   className?: string;
 }
+
 const PwCCard: React.FC<PwCCardProps> = ({
   title,
   description,
@@ -27,35 +29,35 @@ const PwCCard: React.FC<PwCCardProps> = ({
           {typeof description === 'string' ? <p>{description}</p> : description}
         </div>
         
-        {logos && logos.length > 0 && <div className="mb-4">
+        {logos && logos.length > 0 && <div className="mb-2">
             {logos.length <= 3 ? <div className="flex items-center justify-between">
-                {logos.map((logo, index) => <div key={index} className="flex items-center justify-center h-12 w-20">
+                {logos.map((logo, index) => <div key={index} className="flex items-center justify-center h-16 w-24">
                     <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                   </div>)}
               </div> : logos.length <= 4 ? <div>
-                <div className="flex items-center justify-between mb-3">
-                  {logos.slice(0, 2).map((logo, index) => <div key={index} className="flex items-center justify-center h-12 w-20">
+                <div className="flex items-center justify-between mb-2">
+                  {logos.slice(0, 2).map((logo, index) => <div key={index} className="flex items-center justify-center h-16 w-24">
                       <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                     </div>)}
                 </div>
                 <div className="flex items-center justify-around">
-                  {logos.slice(2).map((logo, index) => <div key={index + 2} className="flex items-center justify-center h-12 w-20">
+                  {logos.slice(2).map((logo, index) => <div key={index + 2} className="flex items-center justify-center h-16 w-24">
                       <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                     </div>)}
                 </div>
-              </div> : <div className="space-y-3">
+              </div> : <div className="space-y-2">
                 <div className="flex items-center justify-around">
-                  {logos.slice(0, 3).map((logo, index) => <div key={index} className="flex items-center justify-center h-10 w-16">
-                      <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
-                    </div>)}
-                </div>
-                <div className="flex items-center justify-around">
-                  {logos.slice(3, 6).map((logo, index) => <div key={index + 3} className="flex items-center justify-center h-10 w-16">
+                  {logos.slice(0, 3).map((logo, index) => <div key={index} className="flex items-center justify-center h-14 w-20">
                       <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                     </div>)}
                 </div>
                 <div className="flex items-center justify-around">
-                  {logos.slice(6, 9).map((logo, index) => <div key={index + 6} className="flex items-center justify-center h-10 w-16">
+                  {logos.slice(3, 6).map((logo, index) => <div key={index + 3} className="flex items-center justify-center h-14 w-20">
+                      <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
+                    </div>)}
+                </div>
+                <div className="flex items-center justify-around">
+                  {logos.slice(6, 9).map((logo, index) => <div key={index + 6} className="flex items-center justify-center h-14 w-20">
                       <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                     </div>)}
                 </div>
@@ -70,4 +72,5 @@ const PwCCard: React.FC<PwCCardProps> = ({
       </CardContent>
     </Card>;
 };
+
 export default PwCCard;
