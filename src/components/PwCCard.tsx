@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -32,7 +33,7 @@ const PwCCard: React.FC<PwCCardProps> = ({
         {logos && logos.length > 0 && <div className="mb-2">
             {logos.length <= 3 ? <div className="flex items-center justify-between">
                 {logos.map((logo, index) => <div key={index} className="flex items-center justify-center h-16 w-24">
-                    <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
+                    <img src={index === 2 ? "/lovable-uploads/36bec207-8772-4896-a399-3611639fe1ab.png" : logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                   </div>)}
               </div> : logos.length <= 4 ? <div>
                 <div className="flex items-center justify-between mb-2">
@@ -42,7 +43,7 @@ const PwCCard: React.FC<PwCCardProps> = ({
                 </div>
                 <div className="flex items-center justify-around">
                   {logos.slice(2).map((logo, index) => <div key={index + 2} className="flex items-center justify-center h-16 w-24">
-                      <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
+                      <img src={index === 0 ? "/lovable-uploads/36bec207-8772-4896-a399-3611639fe1ab.png" : logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                     </div>)}
                 </div>
               </div> : <div className="space-y-2">
