@@ -1,6 +1,6 @@
 import React from 'react';
 const AboutMe: React.FC = () => {
-  return <section id="about" className="py-12 bg-primary">
+  return <section id="about" className="bg-primary py-0">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           
