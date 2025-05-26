@@ -6,16 +6,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import type { Database } from '@/integrations/supabase/types';
 
-interface AnalyticsEvent {
-  id: string;
-  event_type: 'page_view' | 'click' | 'download';
-  event_name: string;
-  page_url: string;
-  user_agent?: string;
-  referrer?: string;
-  created_at: string;
-}
+type AnalyticsEvent = Database['public']['Tables']['analytics_events']['Row'];
 
 const Admin: React.FC = () => {
   const { trackPageView } = useAnalytics();
