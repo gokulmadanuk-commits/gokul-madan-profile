@@ -8,12 +8,8 @@ const Vision: React.FC = () => {
             <CardContent className="p-8 md:p-12">
               <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-8 text-center">Let's Connect</h2>
               <div className="space-y-6 text-lg">
-                <p className="leading-relaxed">
-                  Unity's approach — blending AI and advisory — is exactly what this moment calls for. I've seen firsthand how data and automation can unlock real value in complex transactions.
-                </p>
-                <p className="leading-relaxed">
-                  I believe I can bring meaningful insight, execution experience, and founder-level thinking to what you're building. If the vision is bold, I want in.
-                </p>
+                
+                
               </div>
             </CardContent>
           </Card>
