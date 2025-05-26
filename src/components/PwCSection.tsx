@@ -104,9 +104,7 @@ const PwCSection: React.FC = () => {
       
       {/* PwC description */}
       <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
-        <p className="text-lg leading-relaxed">I have led high-impact analytics and strategy initiatives across Fortune 100 companies, M&amp;A engagements, IPOs, and divestitures at PwC's Deals practice in the US. I also specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions.
-
-Below are just a few highlights.</p>
+        <p className="text-lg leading-relaxed">I have led high-impact analytics and strategy initiatives across Fortune 100 companies, M&amp;A engagements, IPOs, and divestitures at PwC's Deals practice in the US. I also specialized in value creation for Private Equity clients, delivering insights, forecasting models, and data-driven solutions that shaped billion-dollar transactions. Below are a few highlights.</p>
       </div>
       
       {/* Responsive 3-Column Card Layout */}
