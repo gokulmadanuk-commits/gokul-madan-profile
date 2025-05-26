@@ -47,7 +47,7 @@ const PwCHighlights: React.FC = () => {
       });
     };
   }, []);
-  return <section id="pwc" className="py-20 bg-beige-light">
+  return <section id="pwc" className="bg-beige-light py-[20px]">
       <div className="section-container">
         <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-6 text-center">Why I'm Excited About Unity Advisory</h2>
         
