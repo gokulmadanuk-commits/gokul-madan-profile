@@ -160,7 +160,7 @@ const ProfessionalJourney: React.FC = () => {
                   <div className="mb-4">
                     <div className="flex items-center gap-3 mb-2">
                       <img src="/lovable-uploads/5e8c18be-970d-4977-b433-7ef973e4ce29.png" alt="Pilot Freight Services" className="h-12 w-auto" />
-                      <img src="/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png" alt="ATL Partners" className="h-6 w-auto mt-1" />
+                      <img src="/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png" alt="ATL Partners" className="h-14 w-auto mt-1" />
                     </div>
                     <div className="flex items-center gap-3 ml-4">
                       <img src="/lovable-uploads/0b165cc7-8ff4-486e-966b-89d71eb26e01.png" alt="BCI" className="h-6 w-auto mb-1" />
