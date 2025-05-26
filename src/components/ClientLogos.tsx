@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const ClientLogos: React.FC = () => {
@@ -16,6 +15,7 @@ const ClientLogos: React.FC = () => {
     { src: "/lovable-uploads/94028933-ea04-4740-82de-0f08b0c569d2.png", alt: "Housing" },
     { src: "/lovable-uploads/2a736e24-15d0-4879-b154-b1c8a89c2bc0.png", alt: "Symantec" },
     { src: "/lovable-uploads/ef1072e8-c89b-46a1-bce6-e47da501b05a.png", alt: "Mu Sigma" },
+    { src: "/lovable-uploads/bfccb223-9fb9-4400-91ab-523c8a4abec0.png", alt: "Hewlett Packard Enterprise" },
   ];
 
   return (
