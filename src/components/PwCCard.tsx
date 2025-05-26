@@ -1,13 +1,10 @@
-
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-
 interface Logo {
   src: string;
   alt: string;
   className?: string;
 }
-
 interface PwCCardProps {
   title: string;
   description: string | React.ReactNode;
@@ -15,7 +12,6 @@ interface PwCCardProps {
   tags?: string[];
   className?: string;
 }
-
 const PwCCard: React.FC<PwCCardProps> = ({
   title,
   description,
@@ -31,7 +27,7 @@ const PwCCard: React.FC<PwCCardProps> = ({
         </div>
         
         {logos && logos.length > 0 && <div className="mb-2">
-            {logos.length <= 3 ? <div className="flex items-center justify-between">
+            {logos.length <= 3 ? <div className="flex items-center justify-around">
                 {logos.map((logo, index) => <div key={index} className="flex items-center justify-center h-16 w-24">
                     <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                   </div>)}
@@ -73,5 +69,4 @@ const PwCCard: React.FC<PwCCardProps> = ({
       </CardContent>
     </Card>;
 };
-
 export default PwCCard;
