@@ -6,7 +6,7 @@ const Vision: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <Card className="border-0 shadow-lg bg-gradient-to-br from-slate-light via-white to-beige-light">
             <CardContent className="p-8 md:p-12">
-              <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-8 text-center">Why I'm Excited About Unity Advisory</h2>
+              <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-8 text-center">I'd love to work with Unity Advisory</h2>
               <div className="space-y-6 text-lg">
                 <p className="leading-relaxed">
                   Unity's approach — blending AI and advisory — is exactly what this moment calls for. I've seen firsthand how data and automation can unlock real value in complex transactions.
