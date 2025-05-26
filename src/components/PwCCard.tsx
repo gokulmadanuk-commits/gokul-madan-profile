@@ -43,7 +43,7 @@ const PwCCard: React.FC<PwCCardProps> = ({
                 </div>
                 <div className="flex items-center justify-around">
                   {logos.slice(2).map((logo, index) => <div key={index + 2} className="flex items-center justify-center h-16 w-24">
-                      <img src={index === 0 ? "/lovable-uploads/36bec207-8772-4896-a399-3611639fe1ab.png" : logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
+                      <img src={logo.alt === "ATL Partners" ? "/lovable-uploads/4e34a33c-d575-4795-902a-a787b37e8eca.png" : logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
                     </div>)}
                 </div>
               </div> : <div className="space-y-2">
