@@ -1,9 +1,6 @@
-
 import React from 'react';
-
 const MuSigmaSection: React.FC = () => {
-  return (
-    <div className="mt-16 mb-10">
+  return <div className="mt-16 mb-10">
       <div className="flex items-center justify-between w-full mb-4">
         <div>
           <h3 className="text-2xl font-bold">2011 - 2015</h3>
@@ -29,12 +26,10 @@ const MuSigmaSection: React.FC = () => {
         
         {/* Client logos */}
         <div className="flex items-center gap-8 mt-6 px-[30px]">
-          <img src="/lovable-uploads/3e0b2e47-aa77-4237-9556-3cfec7225785.png" alt="AT&T Logo" className="h-12 w-auto" />
+          <img src="/lovable-uploads/3e0b2e47-aa77-4237-9556-3cfec7225785.png" alt="AT&T Logo" className="h-14 w-auto" />
           <img src="/lovable-uploads/542d6830-9573-47fc-a7ba-978504ebb01a.png" alt="KeyBank Logo" className="h-12 w-auto" />
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default MuSigmaSection;
