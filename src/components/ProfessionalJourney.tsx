@@ -162,7 +162,7 @@ const ProfessionalJourney: React.FC = () => {
                       <img src="/lovable-uploads/1af70454-605a-4248-8505-92fa5666d3ea.png" alt="Maersk" className="h-8 w-auto" />
                       <img src="/lovable-uploads/5e8c18be-970d-4977-b433-7ef973e4ce29.png" alt="Pilot Freight Services" className="h-12 w-auto" />
                     </div>
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-evenly mt-2">
                       <img src="/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png" alt="ATL Partners" className="h-14 w-auto" />
                       <img src="/lovable-uploads/0b165cc7-8ff4-486e-966b-89d71eb26e01.png" alt="BCI" className="h-6 w-auto" />
                     </div>
