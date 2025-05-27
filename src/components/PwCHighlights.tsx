@@ -8,7 +8,7 @@ interface ValueProposition {
 const valuePropositions: ValueProposition[] = [{
   title: "Deals Analytics Expertise",
   category: "Analytics",
-  description: "Deep experience in M&A analytics, due diligence, and transaction modeling from billion-dollar deals"
+  description: "Deep experience in M&A, analytics, due diligence and transaction modeling for billion-dollar deals"
 }, {
   title: "Product and Automation Expertise",
   category: "Technology",
