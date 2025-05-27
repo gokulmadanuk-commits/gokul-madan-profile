@@ -14,11 +14,9 @@ const MuSigmaSection: React.FC = () => {
       
       {/* Mu Sigma description */}
       <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
-        <p className="text-lg leading-relaxed mb-4">
-          I pioneered digital adoption strategies for Fortune 500 companies in the Telecommunications and Financial Services sectors:
-        </p>
+        <p className="text-lg leading-relaxed mb-4">I pioneered digital adoption strategies for Fortune 500 companies in the Telecommunications and Banking sectors:</p>
         <ul className="text-lg leading-relaxed list-disc pl-6 space-y-2 px-[30px]">
-          <li>Built statistical models at the AT&T Big Data Centre of Excellence to enhance customer targeting for digital channels, improving customer satisfaction at the contact centers</li>
+          <li>Built statistical models at the AT&T Big Data Centre of Excellence to enhance customer targeting for digital channels</li>
           <li>Led teams in launching cross-channel sales processes with the Buy Online – Pick Up in Store initiative at AT&T</li>
           <li>Managed the web analytics for the iPhone 6 launch on the AT&T website</li>
           <li>Developed robust segmentation frameworks for a Key Bank, enabling effective sales performance management and staff optimization</li>
