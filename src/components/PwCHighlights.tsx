@@ -16,7 +16,7 @@ const valuePropositions: ValueProposition[] = [{
 }, {
   title: "Existing Consolidation Platform for PE Portcos",
   category: "Platform",
-  description: "Ready-to-deploy consolidation engine designed specifically for private equity portfolio companies"
+  description: "Ready-to-deploy modular consolidation engine designed specifically for PE PortCos. Setting the stage for an AI PortCo. monitoring layer for the PE Firms."
 }, {
   title: "Accounting, Technology and AI Network in Northern Ireland",
   category: "Network",
