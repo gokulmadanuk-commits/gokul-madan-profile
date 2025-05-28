@@ -6,26 +6,33 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Card } from "@/components/ui/card";
 import { useAnalytics } from '@/hooks/useAnalytics';
+
 const Hero: React.FC = () => {
   const {
     trackClick,
     trackDownload
   } = useAnalytics();
+
   const handleResumeDownload = () => {
     trackDownload('Gokul_Resume.pdf');
     trackClick('Resume Download Button');
-    window.open('https://drive.google.com/file/d/1YJi-kdczKZmLfLmIB27yeazp5tFTdXQ1/view?usp=sharing', '_blank');
+    window.open('https://drive.google.com/file/d/1qwfQL6udxrZmKQMq5F9Qb31EjcKLTFhp/view', '_blank');
   };
+
   const handleVideoClick = () => {
     trackClick('Video Introduction Button');
   };
+
   const handleEmailClick = () => {
     trackClick('Email Contact Link');
   };
+
   const handleLinkedInClick = () => {
     trackClick('LinkedIn Profile Link');
   };
-  return <section className="py-4 sm:py-8 md:py-12 flex items-center relative overflow-hidden">
+
+  return (
+    <section className="py-4 sm:py-8 md:py-12 flex items-center relative overflow-hidden">
       <AnimatedGridPattern numSquares={100} maxOpacity={0.2} duration={0.9} repeatDelay={1} width={40} height={40} className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-slate-400/30 stroke-slate-400/30" />
       <div className="section-container relative z-10 pt-0 sm:pt-4 md:pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -76,6 +83,8 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
