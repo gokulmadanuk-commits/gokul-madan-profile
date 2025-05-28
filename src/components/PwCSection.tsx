@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PwCCard from './PwCCard';
 const PwCSection: React.FC = () => {
@@ -119,7 +120,7 @@ const PwCSection: React.FC = () => {
         <div className="flex order-2 lg:order-2">
           <PwCCard title="Complex Carveouts" description={<div className="space-y-3">
                 <div>
-                  <span className="font-bold">Hewlett Packard Enterprise</span>: Supported the complex 4 way carveout of HPE. Focussed on the Legal Entity P&L separation encompassing complex Transfer Pricing situations.
+                  <span className="font-bold">Hewlett Packard Enterprise</span>: Supported the complex 4 way carveout of HPE. Focused on the Legal Entity P&L separation encompassing complex Transfer Pricing situations.
                 </div>
                 <div>
                   <span className="font-bold">DXC</span>: Led the Deals Analytics team in a complex 3 way carveout of DxC. Managed teams working through the data heavy portions of the Financials (e.g. AP, AR, Revenue, Expense allocations). Also helped implement a consolidation automation tool.
