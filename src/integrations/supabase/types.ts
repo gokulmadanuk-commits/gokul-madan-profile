@@ -11,6 +11,7 @@ export type Database = {
     Tables: {
       analytics_events: {
         Row: {
+          channel: string | null
           city: string | null
           country: string | null
           created_at: string
@@ -24,6 +25,7 @@ export type Database = {
           user_agent: string | null
         }
         Insert: {
+          channel?: string | null
           city?: string | null
           country?: string | null
           created_at?: string
@@ -37,6 +39,7 @@ export type Database = {
           user_agent?: string | null
         }
         Update: {
+          channel?: string | null
           city?: string | null
           country?: string | null
           created_at?: string

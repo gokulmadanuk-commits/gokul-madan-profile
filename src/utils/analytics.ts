@@ -11,7 +11,29 @@ export interface AnalyticsEvent {
   region?: string;
   city?: string;
   ip_address?: string;
+  channel?: string;
 }
+
+// Function to detect device type based on user agent
+const getDeviceType = (userAgent: string): string => {
+  const ua = userAgent.toLowerCase();
+  
+  // Check for mobile devices
+  if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua)) {
+    // Check specifically for tablets
+    if (/ipad|android(?!.*mobile)|tablet/i.test(ua)) {
+      return 'Tablet';
+    }
+    return 'Mobile';
+  }
+  
+  // Check for desktop
+  if (/windows|macintosh|linux/i.test(ua)) {
+    return 'Desktop';
+  }
+  
+  return 'Other';
+};
 
 // Function to get user's location based on IP
 const getLocationData = async () => {
@@ -37,16 +59,21 @@ const getLocationData = async () => {
   }
 };
 
-export const trackEvent = async (event: Omit<AnalyticsEvent, 'page_url' | 'user_agent' | 'referrer' | 'country' | 'region' | 'city' | 'ip_address'>) => {
+export const trackEvent = async (event: Omit<AnalyticsEvent, 'page_url' | 'user_agent' | 'referrer' | 'country' | 'region' | 'city' | 'ip_address' | 'channel'>) => {
   try {
     // Get location data
     const locationData = await getLocationData();
     
+    // Get device type
+    const userAgent = navigator.userAgent;
+    const channel = getDeviceType(userAgent);
+    
     const eventData: AnalyticsEvent = {
       ...event,
       page_url: window.location.href,
-      user_agent: navigator.userAgent,
+      user_agent: userAgent,
       referrer: document.referrer || null,
+      channel,
       ...locationData,
     };
 
