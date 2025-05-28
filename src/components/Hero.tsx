@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
   const handleResumeDownload = () => {
     trackDownload('Gokul_Resume.pdf');
     trackClick('Resume Download Button');
-    window.open('https://drive.google.com/file/d/1qwfQL6udxrZmKQMq5F9Qb31EjcKLTFhp/view', '_blank');
+    window.open('https://drive.google.com/file/d/1OY4Y2Vv68fdq6gpvp347WgMaTkN1jE3B/view', '_blank');
   };
 
   const handleVideoClick = () => {
