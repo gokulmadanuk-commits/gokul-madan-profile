@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -127,8 +126,8 @@ const Admin: React.FC = () => {
 
     return Object.entries(eventCounts)
       .sort(([,a], [,b]) => b - a)
-      .slice(0, 8)
-      .map(([name, count]) => ({ name, count }));
+      .slice(0, 6)
+      .map(([name, count]) => ({ name: name.length > 15 ? name.slice(0, 15) + '...' : name, count }));
   };
 
   const getTopCountries = () => {
@@ -141,8 +140,8 @@ const Admin: React.FC = () => {
 
     return Object.entries(countryCounts)
       .sort(([,a], [,b]) => b - a)
-      .slice(0, 8)
-      .map(([name, count]) => ({ name, count }));
+      .slice(0, 6)
+      .map(([name, count]) => ({ name: name.length > 12 ? name.slice(0, 12) + '...' : name, count }));
   };
 
   const getTopCities = () => {
@@ -156,8 +155,8 @@ const Admin: React.FC = () => {
 
     return Object.entries(cityCounts)
       .sort(([,a], [,b]) => b - a)
-      .slice(0, 8)
-      .map(([name, count]) => ({ name, count }));
+      .slice(0, 6)
+      .map(([name, count]) => ({ name: name.length > 15 ? name.slice(0, 15) + '...' : name, count }));
   };
 
   const getDeviceIcon = (channel: string) => {
@@ -304,21 +303,21 @@ const Admin: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-gray-800">
+              <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                 Event Types
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <ChartContainer config={{}} className="h-64">
+            <CardContent className="px-4 pb-4">
+              <ChartContainer config={{}} className="h-48 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
                       data={getEventTypeData()}
                       cx="50%"
                       cy="50%"
-                      innerRadius={50}
-                      outerRadius={80}
+                      innerRadius={35}
+                      outerRadius={70}
                       dataKey="value"
                     >
                       {getEventTypeData().map((entry, index) => (
@@ -326,7 +325,12 @@ const Admin: React.FC = () => {
                       ))}
                     </Pie>
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend />
+                    <Legend 
+                      verticalAlign="bottom" 
+                      height={36}
+                      iconSize={8}
+                      wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </ChartContainer>
@@ -335,21 +339,21 @@ const Admin: React.FC = () => {
 
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-gray-800">
+              <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 Device Types
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <ChartContainer config={{}} className="h-64">
+            <CardContent className="px-4 pb-4">
+              <ChartContainer config={{}} className="h-48 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
                       data={getDeviceData()}
                       cx="50%"
                       cy="50%"
-                      innerRadius={50}
-                      outerRadius={80}
+                      innerRadius={35}
+                      outerRadius={70}
                       dataKey="value"
                     >
                       {getDeviceData().map((entry, index) => (
@@ -357,7 +361,12 @@ const Admin: React.FC = () => {
                       ))}
                     </Pie>
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend />
+                    <Legend 
+                      verticalAlign="bottom" 
+                      height={36}
+                      iconSize={8}
+                      wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </ChartContainer>
@@ -366,18 +375,18 @@ const Admin: React.FC = () => {
 
           <Card className="shadow-md hover:shadow-lg transition-shadow lg:col-span-2 xl:col-span-1">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-gray-800">
+              <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
                 <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                 Top Events
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <ChartContainer config={{}} className="h-64">
+            <CardContent className="px-4 pb-4">
+              <ChartContainer config={{}} className="h-48 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={getTopEvents()} layout="horizontal">
-                    <XAxis type="number" />
-                    <YAxis dataKey="name" type="category" width={80} fontSize={12} />
-                    <Bar dataKey="count" fill="#8B5CF6" radius={[0, 4, 4, 0]} />
+                  <BarChart data={getTopEvents()} layout="horizontal" margin={{ left: 5, right: 5, top: 5, bottom: 5 }}>
+                    <XAxis type="number" fontSize={10} />
+                    <YAxis dataKey="name" type="category" width={60} fontSize={10} />
+                    <Bar dataKey="count" fill="#8B5CF6" radius={[0, 2, 2, 0]} />
                     <ChartTooltip content={<ChartTooltipContent />} />
                   </BarChart>
                 </ResponsiveContainer>
@@ -390,18 +399,25 @@ const Admin: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-gray-800">
+              <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
                 <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
                 Top Countries
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <ChartContainer config={{}} className="h-80">
+            <CardContent className="px-4 pb-4">
+              <ChartContainer config={{}} className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={getTopCountries()}>
-                    <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} fontSize={12} />
-                    <YAxis />
-                    <Bar dataKey="count" fill="#4F46E5" radius={[4, 4, 0, 0]} />
+                  <BarChart data={getTopCountries()} margin={{ left: 5, right: 5, top: 5, bottom: 60 }}>
+                    <XAxis 
+                      dataKey="name" 
+                      angle={-45} 
+                      textAnchor="end" 
+                      height={60} 
+                      fontSize={10}
+                      interval={0}
+                    />
+                    <YAxis fontSize={10} />
+                    <Bar dataKey="count" fill="#4F46E5" radius={[2, 2, 0, 0]} />
                     <ChartTooltip content={<ChartTooltipContent />} />
                   </BarChart>
                 </ResponsiveContainer>
@@ -411,18 +427,25 @@ const Admin: React.FC = () => {
 
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-gray-800">
+              <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                 Top Cities
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <ChartContainer config={{}} className="h-80">
+            <CardContent className="px-4 pb-4">
+              <ChartContainer config={{}} className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={getTopCities()}>
-                    <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} fontSize={12} />
-                    <YAxis />
-                    <Bar dataKey="count" fill="#10B981" radius={[4, 4, 0, 0]} />
+                  <BarChart data={getTopCities()} margin={{ left: 5, right: 5, top: 5, bottom: 60 }}>
+                    <XAxis 
+                      dataKey="name" 
+                      angle={-45} 
+                      textAnchor="end" 
+                      height={60} 
+                      fontSize={10}
+                      interval={0}
+                    />
+                    <YAxis fontSize={10} />
+                    <Bar dataKey="count" fill="#10B981" radius={[2, 2, 0, 0]} />
                     <ChartTooltip content={<ChartTooltipContent />} />
                   </BarChart>
                 </ResponsiveContainer>
@@ -432,27 +455,27 @@ const Admin: React.FC = () => {
 
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-gray-800">
-                <Calendar className="h-5 w-5 text-gray-600" />
+              <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
+                <Calendar className="h-4 w-4 text-gray-600" />
                 Recent Activity
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4 max-h-80 overflow-y-auto">
-                {events.slice(0, 10).map((event) => (
-                  <div key={event.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+            <CardContent className="px-4 pb-4">
+              <div className="space-y-3 max-h-64 overflow-y-auto">
+                {events.slice(0, 8).map((event) => (
+                  <div key={event.id} className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg">
                     <div className="flex-shrink-0">
-                      {event.channel ? getDeviceIcon(event.channel) : <Monitor className="h-4 w-4" />}
+                      {event.channel ? getDeviceIcon(event.channel) : <Monitor className="h-3 w-3" />}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate">{event.event_name}</p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs font-medium text-gray-900 truncate">{event.event_name}</p>
+                      <p className="text-xs text-gray-500 truncate">
                         {event.city && event.country ? `${event.city}, ${event.country}` : 
                          event.country ? event.country : 'Unknown location'}
                       </p>
                     </div>
                     <div className="text-xs text-gray-400">
-                      {new Date(event.created_at).toLocaleTimeString()}
+                      {new Date(event.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </div>
                   </div>
                 ))}
