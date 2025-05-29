@@ -91,25 +91,32 @@ const Admin: React.FC = () => {
 
   const getEventTypeData = () => {
     const eventTypeCounts = events.reduce((acc, event) => {
-      acc[event.event_type] = (acc[event.event_type] || 0) + 1;
+      const eventType = event.event_type.replace('_', ' ').toUpperCase();
+      acc[eventType] = (acc[eventType] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
 
-    const colors = ['#4F46E5', '#06B6D4', '#F59E0B', '#EF4444'];
+    const colors = ['#4F46E5', '#06B6D4', '#F59E0B', '#EF4444', '#10B981'];
     return Object.entries(eventTypeCounts).map(([type, count], index) => ({
-      name: type.replace('_', ' ').toUpperCase(),
+      name: type,
       value: count,
       fill: colors[index % colors.length]
     }));
   };
 
   const getDeviceData = () => {
-    return [
-      { name: 'Desktop', value: stats.desktopUsers, fill: '#4F46E5' },
-      { name: 'Mobile', value: stats.mobileUsers, fill: '#06B6D4' },
-      { name: 'Tablet', value: stats.tabletUsers, fill: '#F59E0B' },
-      { name: 'Other', value: stats.otherUsers, fill: '#EF4444' }
-    ].filter(item => item.value > 0);
+    const deviceCounts = events.reduce((acc, event) => {
+      const device = event.channel || 'Other';
+      acc[device] = (acc[device] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const colors = ['#4F46E5', '#06B6D4', '#F59E0B', '#EF4444'];
+    return Object.entries(deviceCounts).map(([device, count], index) => ({
+      name: device,
+      value: count,
+      fill: colors[index % colors.length]
+    })).filter(item => item.value > 0);
   };
 
   const getTopEvents = () => {
@@ -133,6 +140,21 @@ const Admin: React.FC = () => {
       }, {} as Record<string, number>);
 
     return Object.entries(countryCounts)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 8)
+      .map(([name, count]) => ({ name, count }));
+  };
+
+  const getTopCities = () => {
+    const cityCounts = events
+      .filter(event => event.city)
+      .reduce((acc, event) => {
+        const cityCountry = event.country ? `${event.city}, ${event.country}` : event.city!;
+        acc[cityCountry] = (acc[cityCountry] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+
+    return Object.entries(cityCounts)
       .sort(([,a], [,b]) => b - a)
       .slice(0, 8)
       .map(([name, count]) => ({ name, count }));
@@ -354,7 +376,7 @@ const Admin: React.FC = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={getTopEvents()} layout="horizontal">
                     <XAxis type="number" />
-                    <YAxis dataKey="name" type="category" width={60} fontSize={12} />
+                    <YAxis dataKey="name" type="category" width={80} fontSize={12} />
                     <Bar dataKey="count" fill="#8B5CF6" radius={[0, 4, 4, 0]} />
                     <ChartTooltip content={<ChartTooltipContent />} />
                   </BarChart>
@@ -364,8 +386,8 @@ const Admin: React.FC = () => {
           </Card>
         </div>
 
-        {/* Countries Chart */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        {/* Location and Activity Charts */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-gray-800">
@@ -380,6 +402,27 @@ const Admin: React.FC = () => {
                     <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} fontSize={12} />
                     <YAxis />
                     <Bar dataKey="count" fill="#4F46E5" radius={[4, 4, 0, 0]} />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-2 text-gray-800">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                Top Cities
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={{}} className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={getTopCities()}>
+                    <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} fontSize={12} />
+                    <YAxis />
+                    <Bar dataKey="count" fill="#10B981" radius={[4, 4, 0, 0]} />
                     <ChartTooltip content={<ChartTooltipContent />} />
                   </BarChart>
                 </ResponsiveContainer>
