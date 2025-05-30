@@ -18,8 +18,8 @@ const MuSigmaSection: React.FC = () => {
         <ul className="text-lg leading-relaxed list-disc pl-6 space-y-2 px-[30px]">
           <li>Built statistical models at the AT&T Big Data Centre of Excellence to enhance customer targeting for digital channels</li>
           <li>Led teams in launching cross-channel sales processes with the Buy Online – Pick Up in Store initiative at AT&T</li>
-          <li>Managed the web analytics for the iPhone 6 launch on the AT&T website</li>
-          <li>Developed robust segmentation frameworks for a Key Bank, enabling effective sales performance management and staff optimization</li>
+          <li>Managed web analytics for the iPhone 6 launch on the AT&T website</li>
+          <li>Developed robust segmentation frameworks for Key Bank, enabling effective sales performance management and staff optimization</li>
         </ul>
         
         {/* Client logos */}
