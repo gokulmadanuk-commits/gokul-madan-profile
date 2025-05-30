@@ -1,17 +1,16 @@
+
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Legend } from 'recharts';
-import { useAnalytics } from '@/hooks/useAnalytics';
-import { Globe, MapPin, Users, Eye, MousePointer, Download, Smartphone, Laptop, Tablet, Monitor, Calendar, TrendingUp } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
+import { Globe, MapPin, Users, Eye, MousePointer, Download, Smartphone, Laptop, Tablet, Monitor, Calendar, TrendingUp, Chrome, Globe2 } from 'lucide-react';
+import EventsTable from '@/components/EventsTable';
 import type { Database } from '@/integrations/supabase/types';
 
 type AnalyticsEvent = Database['public']['Tables']['analytics_events']['Row'];
 
 const Admin: React.FC = () => {
-  const { trackPageView } = useAnalytics();
   const [events, setEvents] = useState<AnalyticsEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
@@ -25,13 +24,16 @@ const Admin: React.FC = () => {
     mobileUsers: 0,
     tabletUsers: 0,
     otherUsers: 0,
+    topBrowser: '',
+    topOS: '',
+    uniqueSessions: 0,
   });
 
   useEffect(() => {
     document.title = "Analytics Dashboard - Admin";
-    trackPageView('Admin Dashboard');
+    // Removed trackPageView for admin dashboard
     fetchAnalyticsData();
-  }, [trackPageView]);
+  }, []);
 
   const fetchAnalyticsData = async () => {
     try {
@@ -39,7 +41,7 @@ const Admin: React.FC = () => {
         .from('analytics_events')
         .select('*')
         .order('created_at', { ascending: false })
-        .limit(500);
+        .limit(1000);
 
       if (error) {
         console.error('Error fetching analytics:', error);
@@ -69,6 +71,27 @@ const Admin: React.FC = () => {
       const tabletUsers = data?.filter(e => e.channel === 'Tablet').length || 0;
       const otherUsers = data?.filter(e => e.channel === 'Other').length || 0;
       
+      // Calculate browser and OS stats
+      const browsers = data?.filter(e => e.browser).map(e => e.browser);
+      const browserCount = browsers?.reduce((acc, browser) => {
+        acc[browser] = (acc[browser] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+      const topBrowser = Object.entries(browserCount || {})
+        .sort(([,a], [,b]) => b - a)[0]?.[0] || 'Unknown';
+      
+      const osData = data?.filter(e => e.operating_system).map(e => e.operating_system);
+      const osCount = osData?.reduce((acc, os) => {
+        acc[os] = (acc[os] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+      const topOS = Object.entries(osCount || {})
+        .sort(([,a], [,b]) => b - a)[0]?.[0] || 'Unknown';
+      
+      // Calculate unique sessions
+      const sessions = data?.filter(e => e.session_id).map(e => e.session_id);
+      const uniqueSessions = new Set(sessions).size;
+      
       setStats({
         totalPageViews: pageViews,
         totalClicks: clicks,
@@ -80,6 +103,9 @@ const Admin: React.FC = () => {
         mobileUsers,
         tabletUsers,
         otherUsers,
+        topBrowser,
+        topOS,
+        uniqueSessions,
       });
     } catch (error) {
       console.error('Failed to fetch analytics data:', error);
@@ -116,6 +142,25 @@ const Admin: React.FC = () => {
       value: count,
       fill: colors[index % colors.length]
     })).filter(item => item.value > 0);
+  };
+
+  const getBrowserData = () => {
+    const browserCounts = events
+      .filter(event => event.browser)
+      .reduce((acc, event) => {
+        acc[event.browser!] = (acc[event.browser!] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+
+    const colors = ['#4F46E5', '#06B6D4', '#F59E0B', '#EF4444', '#10B981', '#8B5CF6'];
+    return Object.entries(browserCounts)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 6)
+      .map(([browser, count], index) => ({
+        name: browser,
+        value: count,
+        fill: colors[index % colors.length]
+      }));
   };
 
   const getTopEvents = () => {
@@ -239,10 +284,10 @@ const Admin: React.FC = () => {
             <CardContent className="p-4 lg:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-orange-100 text-sm font-medium">Downloads</p>
-                  <p className="text-2xl lg:text-3xl font-bold">{stats.totalDownloads.toLocaleString()}</p>
+                  <p className="text-orange-100 text-sm font-medium">Sessions</p>
+                  <p className="text-2xl lg:text-3xl font-bold">{stats.uniqueSessions.toLocaleString()}</p>
                 </div>
-                <Download className="h-8 w-8 text-orange-200" />
+                <Users className="h-8 w-8 text-orange-200" />
               </div>
             </CardContent>
           </Card>
@@ -265,10 +310,10 @@ const Admin: React.FC = () => {
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardContent className="p-4 lg:p-6">
               <div className="flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-green-600" />
+                <Chrome className="h-5 w-5 text-green-600" />
                 <div>
-                  <p className="text-sm text-gray-600">Top Country</p>
-                  <p className="text-lg font-bold text-gray-900 truncate">{stats.topCountry}</p>
+                  <p className="text-sm text-gray-600">Top Browser</p>
+                  <p className="text-lg font-bold text-gray-900 truncate">{stats.topBrowser}</p>
                 </div>
               </div>
             </CardContent>
@@ -277,10 +322,10 @@ const Admin: React.FC = () => {
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardContent className="p-4 lg:p-6">
               <div className="flex items-center gap-3">
-                <Laptop className="h-5 w-5 text-purple-600" />
+                <Globe2 className="h-5 w-5 text-purple-600" />
                 <div>
-                  <p className="text-sm text-gray-600">Desktop</p>
-                  <p className="text-xl font-bold text-gray-900">{stats.desktopUsers}</p>
+                  <p className="text-sm text-gray-600">Top OS</p>
+                  <p className="text-lg font-bold text-gray-900 truncate">{stats.topOS}</p>
                 </div>
               </div>
             </CardContent>
@@ -300,7 +345,7 @@ const Admin: React.FC = () => {
         </div>
 
         {/* Charts Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
@@ -373,7 +418,43 @@ const Admin: React.FC = () => {
             </CardContent>
           </Card>
 
-          <Card className="shadow-md hover:shadow-lg transition-shadow lg:col-span-2 xl:col-span-1">
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
+                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                Browsers
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-4 pb-4">
+              <ChartContainer config={{}} className="h-48 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={getBrowserData()}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={35}
+                      outerRadius={70}
+                      dataKey="value"
+                    >
+                      {getBrowserData().map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.fill} />
+                      ))}
+                    </Pie>
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Legend 
+                      verticalAlign="bottom" 
+                      height={36}
+                      iconSize={8}
+                      wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
                 <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
@@ -395,8 +476,8 @@ const Admin: React.FC = () => {
           </Card>
         </div>
 
-        {/* Location and Activity Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        {/* Location Charts */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <Card className="shadow-md hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
@@ -452,97 +533,10 @@ const Admin: React.FC = () => {
               </ChartContainer>
             </CardContent>
           </Card>
-
-          <Card className="shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-gray-800 text-lg">
-                <Calendar className="h-4 w-4 text-gray-600" />
-                Recent Activity
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="px-4 pb-4">
-              <div className="space-y-3 max-h-64 overflow-y-auto">
-                {events.slice(0, 8).map((event) => (
-                  <div key={event.id} className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg">
-                    <div className="flex-shrink-0">
-                      {event.channel ? getDeviceIcon(event.channel) : <Monitor className="h-3 w-3" />}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium text-gray-900 truncate">{event.event_name}</p>
-                      <p className="text-xs text-gray-500 truncate">
-                        {event.city && event.country ? `${event.city}, ${event.country}` : 
-                         event.country ? event.country : 'Unknown location'}
-                      </p>
-                    </div>
-                    <div className="text-xs text-gray-400">
-                      {new Date(event.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
-        {/* Recent Events Table */}
-        <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-gray-800">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-              Recent Events
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="min-w-[120px]">Time</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Event</TableHead>
-                    <TableHead>Device</TableHead>
-                    <TableHead className="hidden md:table-cell">Location</TableHead>
-                    <TableHead className="hidden lg:table-cell">Page URL</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {events.slice(0, 15).map((event) => (
-                    <TableRow key={event.id}>
-                      <TableCell className="text-xs">
-                        {new Date(event.created_at).toLocaleString()}
-                      </TableCell>
-                      <TableCell>
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          event.event_type === 'page_view' ? 'bg-blue-100 text-blue-800' :
-                          event.event_type === 'click' ? 'bg-green-100 text-green-800' :
-                          'bg-yellow-100 text-yellow-800'
-                        }`}>
-                          {event.event_type}
-                        </span>
-                      </TableCell>
-                      <TableCell className="font-medium text-sm max-w-[150px] truncate">
-                        {event.event_name}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center gap-2">
-                          {event.channel ? getDeviceIcon(event.channel) : <Monitor className="h-4 w-4" />}
-                          <span className="text-sm">{event.channel || 'Unknown'}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell className="text-sm text-gray-600 hidden md:table-cell max-w-[150px] truncate">
-                        {event.city && event.country ? `${event.city}, ${event.country}` : 
-                         event.country ? event.country : 'Unknown'}
-                      </TableCell>
-                      <TableCell className="text-sm text-gray-600 hidden lg:table-cell max-w-[200px] truncate">
-                        {event.page_url}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Enhanced Events Table with Pagination and Filters */}
+        <EventsTable events={events} />
       </div>
     </div>
   );

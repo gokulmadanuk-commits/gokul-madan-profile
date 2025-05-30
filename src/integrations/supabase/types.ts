@@ -11,6 +11,7 @@ export type Database = {
     Tables: {
       analytics_events: {
         Row: {
+          browser: string | null
           channel: string | null
           city: string | null
           country: string | null
@@ -19,12 +20,18 @@ export type Database = {
           event_type: string
           id: string
           ip_address: unknown | null
+          language: string | null
+          operating_system: string | null
           page_url: string
           referrer: string | null
           region: string | null
+          screen_resolution: string | null
+          session_id: string | null
+          timezone: string | null
           user_agent: string | null
         }
         Insert: {
+          browser?: string | null
           channel?: string | null
           city?: string | null
           country?: string | null
@@ -33,12 +40,18 @@ export type Database = {
           event_type: string
           id?: string
           ip_address?: unknown | null
+          language?: string | null
+          operating_system?: string | null
           page_url: string
           referrer?: string | null
           region?: string | null
+          screen_resolution?: string | null
+          session_id?: string | null
+          timezone?: string | null
           user_agent?: string | null
         }
         Update: {
+          browser?: string | null
           channel?: string | null
           city?: string | null
           country?: string | null
@@ -47,9 +60,14 @@ export type Database = {
           event_type?: string
           id?: string
           ip_address?: unknown | null
+          language?: string | null
+          operating_system?: string | null
           page_url?: string
           referrer?: string | null
           region?: string | null
+          screen_resolution?: string | null
+          session_id?: string | null
+          timezone?: string | null
           user_agent?: string | null
         }
         Relationships: []
