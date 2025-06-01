@@ -23,7 +23,7 @@ const XolutionSection: React.FC = () => {
   return <div className="mb-10">
       <div className="flex items-center justify-between w-full mb-4">
         <div>
-          <h3 className="text-2xl font-bold">2023 - Present</h3>
+          <h3 className="text-2xl font-bold">2024 - Present</h3>
           <p className="text-xl text-gray-700">Founder and CEO</p>
           <a href="https://xolution.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
             https://xolution.io
