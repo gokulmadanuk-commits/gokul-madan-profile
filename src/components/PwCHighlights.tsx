@@ -54,7 +54,7 @@ const PwCHighlights: React.FC = () => {
         <div className="max-w-4xl mx-auto mb-12 text-center">
           
           <p className="text-lg text-gray-700 leading-relaxed mt-4">
-            I've seen firsthand how data and automation can unlock real value in complex transactions. I believe I can bring meaningful insight, execution experience, and founder-level thinking to what you're building.
+            Helping Private Equity sponsors and CFOs unlock value through data, automation, and execution is at the heart of Accordion. That's where I know I can contribute.
           </p>
         </div>
         
