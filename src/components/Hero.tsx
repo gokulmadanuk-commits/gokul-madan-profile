@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
             <p className="text-lg md:text-xl font-semibold text-primary">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
             <div className="flex flex-wrap gap-4 mt-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
-                <Button size="lg" onClick={handleResumeDownload} className="group w-full bg-[#eefb87]">
+                <Button size="lg" onClick={handleResumeDownload} className="group w-full">
                   <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                   Download My Resume
                 </Button>
