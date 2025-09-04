@@ -54,7 +54,7 @@ const PwCHighlights: React.FC = () => {
         <div className="max-w-4xl mx-auto mb-12 text-center">
           <p className="text-lg leading-relaxed font-bold text-[#1F242F]">Helping sponsors and CFOs unlock value through data, automation, and execution is at the heart of Accordion — and it’s where I know I can contribute.</p>
           <p className="text-lg text-gray-700 leading-relaxed mt-4">
-            Helping sponsors and CFOs unlock value through data, automation, and execution is at the heart of Accordion. That's where I know I can contribute.
+            Helping Private Equity sponsors and CFOs unlock value through data, automation, and execution is at the heart of Accordion. That's where I know I can contribute.
           </p>
         </div>
         
