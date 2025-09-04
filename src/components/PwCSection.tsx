@@ -96,7 +96,7 @@ const PwCSection: React.FC = () => {
         <div>
           <h3 className="text-2xl font-bold">2015 - 2023</h3>
           <p className="text-xl text-gray-700">Senior Manager</p>
-          <p className="text-primary hover:underline">
+          <p className="text-[#1F242F] hover:underline">
             Deals Strategy and PE Value Creation
           </p>
         </div>
