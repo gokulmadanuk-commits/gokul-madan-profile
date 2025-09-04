@@ -5,9 +5,9 @@ const MuSigmaSection: React.FC = () => {
         <div>
           <h3 className="text-2xl font-bold">2011 - 2015</h3>
           <p className="text-xl text-gray-700">Associate</p>
-          <p className="text-primary hover:underline">
+          <a href="https://www.mu-sigma.com" target="_blank" rel="noopener noreferrer" className="text-[#1F242F] hover:underline">
             Mu Sigma Inc.
-          </p>
+          </a>
         </div>
         <img src="/lovable-uploads/2e8e1f34-d32d-49fb-8294-4d4670c7f88e.png" alt="Mu Sigma Logo" className="h-14 w-auto rounded-md" />
       </div>
