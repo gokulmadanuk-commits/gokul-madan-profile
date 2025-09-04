@@ -62,7 +62,7 @@ const PwCCard: React.FC<PwCCardProps> = ({
           </div>}
         
         {tags && tags.length > 0 && <div className="flex gap-2 flex-wrap mt-auto">
-            {tags.map((tag, index) => <span key={index} className="inline-block bg-[#EEFB87]/70 text-[#1F242F] px-2 py-1 rounded-full text-xs font-medium">
+            {tags.map((tag, index) => <span key={index} className="inline-block bg-[#EEFB87]/50 text-[#1F242F] px-2 py-1 rounded-full text-xs font-medium">
                 {tag}
               </span>)}
           </div>}

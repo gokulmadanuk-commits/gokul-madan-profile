@@ -70,7 +70,7 @@ const PwCHighlights: React.FC = () => {
                   <p className="text-gray-700">{proposition.description}</p>
                 </CardContent>
                 <CardFooter>
-                  <span className="text-xs font-medium bg-[#EEFB87]/70 text-[#1F242F] px-2 py-1 rounded-full">
+                  <span className="text-xs font-medium bg-[#EEFB87]/50 text-[#1F242F] px-2 py-1 rounded-full">
                     {proposition.category}
                   </span>
                 </CardFooter>
