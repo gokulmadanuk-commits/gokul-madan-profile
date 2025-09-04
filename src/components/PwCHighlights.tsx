@@ -49,7 +49,7 @@ const PwCHighlights: React.FC = () => {
   }, []);
   return <section id="pwc" className="bg-beige-light py-[20px]">
       <div className="section-container">
-        <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-6 text-center">Why I'm Excited About Unity Advisory</h2>
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-6 text-center">Why I'm Excited About Accordion</h2>
         
         <div className="max-w-4xl mx-auto mb-12 text-center">
           <p className="text-lg leading-relaxed font-bold text-[#31602f]">
@@ -70,7 +70,7 @@ const PwCHighlights: React.FC = () => {
                   <p className="text-gray-700">{proposition.description}</p>
                 </CardContent>
                 <CardFooter>
-                  <span className="text-xs font-medium bg-[#EEFB87]/50 text-[#1F242F] px-2 py-1 rounded-full">
+                  <span className="text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full">
                     {proposition.category}
                   </span>
                 </CardFooter>
