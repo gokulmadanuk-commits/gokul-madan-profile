@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
               <h1 className="text-4xl md:text-5xl font-serif font-semibold leading-tight lg:text-6xl">Hi, I'm Gokul</h1>
               <h2 className="text-2xl md:text-3xl font-serif font-semibold lg:text-4xl">A Deals &amp; Data Analytics professional.</h2>
             </div>
-            <p className="text-lg md:text-xl font-semibold text-primary">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
+            <p className="text-lg md:text-xl font-semibold text-[#1F242F]">Ex-PwC. Driving Deals Automation and helping PE PortCos unlock value.</p>
             <div className="flex flex-wrap gap-4 mt-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
                 <Button size="lg" className="group w-full" onClick={handleResumeDownload}>
