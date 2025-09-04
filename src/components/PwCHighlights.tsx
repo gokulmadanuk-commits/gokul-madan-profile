@@ -52,9 +52,9 @@ const PwCHighlights: React.FC = () => {
         <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-6 text-center">Why I'm Excited About Accordion</h2>
         
         <div className="max-w-4xl mx-auto mb-12 text-center">
-          <p className="text-lg leading-relaxed font-bold text-[#1F242F]">Helping sponsors and CFOs unlock value through data, automation, and execution is at the heart of Accordion — and it’s where I know I can contribute.</p>
+          
           <p className="text-lg text-gray-700 leading-relaxed mt-4">
-            Helping Private Equity sponsors and CFOs unlock value through data, automation, and execution is at the heart of Accordion. That's where I know I can contribute.
+            I've seen firsthand how data and automation can unlock real value in complex transactions. I believe I can bring meaningful insight, execution experience, and founder-level thinking to what you're building.
           </p>
         </div>
         
@@ -68,7 +68,7 @@ const PwCHighlights: React.FC = () => {
                   <p className="text-gray-700">{proposition.description}</p>
                 </CardContent>
                 <CardFooter>
-                  <span className="inline-block bg-[#EEFB87]/50 text-[#1F242F] px-2 py-1 rounded-full text-xs font-medium">
+                  <span className="text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full">
                     {proposition.category}
                   </span>
                 </CardFooter>
