@@ -21,7 +21,7 @@ const PwCCard: React.FC<PwCCardProps> = ({
 }) => {
   return <Card className={`shadow-lg ${className || ''}`}>
       <CardContent className="p-6 h-full flex flex-col">
-        <h4 className="mb-3 font-bold text-[#31602f] text-xl">{title}</h4>
+        <h4 className="mb-3 font-bold text-[#1F242F] text-xl">{title}</h4>
         <div className="text-gray-600 mb-4 flex-grow">
           {typeof description === 'string' ? <p>{description}</p> : description}
         </div>
