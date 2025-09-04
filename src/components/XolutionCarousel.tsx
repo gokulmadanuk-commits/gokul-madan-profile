@@ -76,7 +76,7 @@ const XolutionCarousel: React.FC<XolutionCarouselProps> = ({ slides }) => {
       
       {/* Download Overview button */}
       <div className="mt-6">
-        <Button size="lg" className="group w-full sm:w-auto" onClick={handleOverviewDownload}>
+        <Button variant="default" size="lg" className="group w-full sm:w-auto" onClick={handleOverviewDownload}>
           <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
           Download Overview
         </Button>
