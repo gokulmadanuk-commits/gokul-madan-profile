@@ -25,8 +25,8 @@ const XolutionSection: React.FC = () => {
         <div>
           <h3 className="text-2xl font-bold">2023 - Present</h3>
           <p className="text-xl text-gray-700">Founder and CEO</p>
-          <a href="https://xolution.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-            https://xolution.io
+          <a href="https://xolution.io" target="_blank" rel="noopener noreferrer" className="text-[#1F242F] hover:underline">
+            Xolution
           </a>
         </div>
         <img src="/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png" alt="Xolution Logo" className="h-8 w-auto" />
