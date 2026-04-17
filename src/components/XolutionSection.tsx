@@ -35,11 +35,7 @@ const XolutionSection: React.FC = () => {
       {/* Xolution description */}
       <div className="mb-8 rounded-lg p-6 bg-transparent py-0 px-0">
         <p className="text-lg leading-relaxed mb-4">
-          Xolution is a tech-enabled Fractional FP&A partner, empowering lean mid-market PE portfolio companies
-          drive rapid value creation. It serves as a bridge between technology-driven efficiency and the ever-evolving world of financial transactions.
-        </p>
-        <p className="text-xl font-bold text-[#1F242F]">
-          What if you had the ability to produce a QoE every single month, instead of just at the time of the deal!
+          Xolution brings transparency and clarity to mid-market PE portfolio companies financial, enabling rapid value creation.
         </p>
       </div>
       

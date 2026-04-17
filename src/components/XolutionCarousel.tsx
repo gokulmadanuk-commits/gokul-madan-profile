@@ -3,9 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselApi } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
-import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface CarouselSlide {
   src: string;
@@ -20,13 +17,6 @@ const XolutionCarousel: React.FC<XolutionCarouselProps> = ({ slides }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
-  const { trackClick, trackDownload } = useAnalytics();
-
-  const handleOverviewDownload = () => {
-    trackDownload('Xolution_Overview.pdf');
-    trackClick('Xolution Overview Download Button');
-    window.open('https://drive.google.com/file/d/12jLt5QWPXslQqPpClrUgLvVR9Ggsid6G/view?usp=sharing', '_blank');
-  };
 
   useEffect(() => {
     if (!api) {
@@ -72,14 +62,6 @@ const XolutionCarousel: React.FC<XolutionCarouselProps> = ({ slides }) => {
             onClick={() => api?.scrollTo(index)}
           />
         ))}
-      </div>
-      
-      {/* Download Overview button */}
-      <div className="mt-6">
-        <Button variant="default" size="lg" className="group w-full sm:w-auto" onClick={handleOverviewDownload}>
-          <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-          Download Overview
-        </Button>
       </div>
     </div>
   );

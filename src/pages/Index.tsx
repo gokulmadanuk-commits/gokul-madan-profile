@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import AboutMe from '@/components/AboutMe';
-import PwCHighlights from '@/components/PwCHighlights';
 import Vision from '@/components/Vision';
 import Footer from '@/components/Footer';
 import ClientLogos from '@/components/ClientLogos';
@@ -50,7 +49,6 @@ const Index: React.FC = () => {
         <ClientLogos />
         <AboutMe />
         <ProfessionalJourney />
-        <PwCHighlights />
         <Vision />
       </main>
       <Footer />

@@ -4,8 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { useAnalytics } from '@/hooks/useAnalytics';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,13 +14,15 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
 const Vision: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [submittedName, setSubmittedName] = useState('');
   const { toast } = useToast();
-  const { trackClick } = useAnalytics();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,29 +37,24 @@ const Vision: React.FC = () => {
     }
 
     setIsLoading(true);
-    trackClick('Contact Form Submit');
 
     try {
-      console.log('Calling Supabase function with:', { name, email });
-
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: { name, email }
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email }),
       });
 
-      if (error) {
-        throw error;
+      if (!response.ok) {
+        throw new Error('Form submission failed');
       }
 
-      console.log('Email sent successfully:', data);
-
-      // Show success dialog
+      setSubmittedName(name);
       setShowSuccessDialog(true);
-      
-      // Reset form
       setName('');
       setEmail('');
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error sending form:', error);
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
@@ -119,7 +114,7 @@ const Vision: React.FC = () => {
           <AlertDialogHeader>
             <AlertDialogTitle>Thank You!</AlertDialogTitle>
             <AlertDialogDescription>
-              Hi {name}, Thanks so much for reaching out. I will get back to you shortly. Looking forward to connecting with you.
+              Hi {submittedName}, Thanks so much for reaching out. I will get back to you shortly. Looking forward to connecting with you.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
