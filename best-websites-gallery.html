@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Atlas of Beautiful Websites — A Curated Gallery</title>
+<meta name="description" content="A hand-curated gallery of 83 of the most beautiful, functional and flabbergasting websites in the world, across 11 categories." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --bg-2: #101013;
+    --card: #141417;
+    --card-2: #1a1a1e;
+    --line: rgba(255,255,255,0.08);
+    --line-strong: rgba(255,255,255,0.16);
+    --ink: #f1efe9;
+    --ink-soft: #b9b7b0;
+    --ink-mute: #7d7b75;
+    --accent: #c8ff5a;
+    --accent-warm: #e9b872;
+    --radius: 16px;
+    --maxw: 1480px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #0a0a0c; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ambient background */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(60vw 60vw at 80% -10%, rgba(200,255,90,0.07), transparent 60%),
+      radial-gradient(50vw 50vw at -10% 20%, rgba(233,184,114,0.06), transparent 55%),
+      radial-gradient(40vw 40vw at 50% 120%, rgba(120,140,255,0.05), transparent 60%);
+  }
+  .grain {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .wrap { position: relative; z-index: 2; max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(18px, 4vw, 56px); }
+
+  /* ---------- top bar ---------- */
+  header.topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(120%);
+    background: linear-gradient(to bottom, rgba(10,10,12,.86), rgba(10,10,12,.55));
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-weight: 600; letter-spacing: -.01em; }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 16px var(--accent); animation: pulse 3s var(--ease) infinite; }
+  @keyframes pulse { 0%,100%{ transform: scale(1); opacity:1 } 50%{ transform: scale(.7); opacity:.6 } }
+  .brand span.sub { color: var(--ink-mute); font-weight: 400; font-size: 13px; }
+  .topbar .search { margin-left: auto; position: relative; }
+  .topbar .search input {
+    width: 220px; max-width: 40vw; background: var(--card); border: 1px solid var(--line);
+    color: var(--ink); padding: 9px 14px 9px 34px; border-radius: 999px; font: inherit; font-size: 13px;
+    transition: width .35s var(--ease), border-color .2s;
+  }
+  .topbar .search input:focus { outline: none; border-color: var(--accent); width: 280px; }
+  .topbar .search svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; stroke: var(--ink-mute); }
+  .kbd { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-mute); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(64px, 12vh, 150px) 0 clamp(36px, 6vh, 70px); position: relative; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; display: flex; align-items: center; gap: 14px; }
+  .eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--accent); display: inline-block; }
+  .hero h1 {
+    font-family: 'Fraunces', serif; font-weight: 350; font-size: clamp(44px, 8.5vw, 132px);
+    line-height: .94; letter-spacing: -.025em; margin: 0 0 30px;
+  }
+  .hero h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .hero .lede { max-width: 760px; font-size: clamp(17px, 2vw, 22px); line-height: 1.6; color: var(--ink-soft); font-weight: 400; }
+  .stats { display: flex; flex-wrap: wrap; gap: clamp(24px, 5vw, 64px); margin-top: 48px; }
+  .stat .n { font-family: 'Fraunces', serif; font-size: clamp(34px, 5vw, 56px); line-height: 1; letter-spacing: -.02em; }
+  .stat .l { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-mute); margin-top: 10px; }
+
+  /* ---------- filter rail ---------- */
+  .rail { position: sticky; top: 64px; z-index: 40; background: linear-gradient(to bottom, rgba(10,10,12,.92), rgba(10,10,12,.7)); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .rail .wrap { display: flex; gap: 10px; padding-top: 14px; padding-bottom: 14px; overflow-x: auto; scrollbar-width: none; }
+  .rail .wrap::-webkit-scrollbar { display: none; }
+  .chip {
+    flex: 0 0 auto; cursor: pointer; border: 1px solid var(--line); background: var(--card);
+    color: var(--ink-soft); padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 500;
+    white-space: nowrap; transition: all .22s var(--ease); display: inline-flex; align-items: center; gap: 8px;
+  }
+  .chip:hover { border-color: var(--line-strong); color: var(--ink); transform: translateY(-1px); }
+  .chip[aria-pressed="true"] { background: var(--accent); color: #0a0a0c; border-color: var(--accent); font-weight: 600; }
+  .chip .c { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: .6; }
+  .chip[aria-pressed="true"] .c { opacity: .75; }
+  .chip.star[aria-pressed="true"] { background: var(--accent-warm); border-color: var(--accent-warm); }
+
+  /* ---------- sections ---------- */
+  main { padding-bottom: 120px; }
+  section.cat { padding-top: clamp(56px, 9vh, 104px); scroll-margin-top: 130px; }
+  .cat-head { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; margin-bottom: 34px; border-bottom: 1px solid var(--line); padding-bottom: 22px; }
+  .cat-head .idx { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); }
+  .cat-head h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(28px, 4vw, 46px); letter-spacing: -.02em; margin: 0; }
+  .cat-head .blurb { color: var(--ink-mute); font-size: 15px; margin-left: auto; max-width: 460px; text-align: right; line-height: 1.5; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: clamp(18px, 2vw, 28px); }
+
+  /* ---------- card ---------- */
+  .card {
+    position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column; transition: transform .4s var(--ease), border-color .3s, box-shadow .4s;
+    opacity: 0; transform: translateY(26px) scale(.99);
+  }
+  .card.in { opacity: 1; transform: none; }
+  .card:hover { transform: translateY(-6px); border-color: var(--line-strong); box-shadow: 0 26px 60px -24px rgba(0,0,0,.8); }
+  .card.standout { border-color: rgba(233,184,114,.32); }
+  .card.standout:hover { border-color: rgba(233,184,114,.55); box-shadow: 0 26px 70px -24px rgba(233,184,114,.18); }
+
+  .shot { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-2); }
+  .shot .ph {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px;
+    font-family: 'Fraunces', serif; font-size: 22px; text-align: center; color: var(--ink-mute); letter-spacing: -.01em;
+  }
+  .shot .ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.05) 40%, transparent 60%); background-size: 220% 100%; animation: shimmer 2.2s linear infinite; }
+  @keyframes shimmer { to { background-position: -220% 0; } }
+  .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .7s var(--ease), transform .6s var(--ease); }
+  .shot img.loaded { opacity: 1; }
+  .card:hover .shot img.loaded { transform: scale(1.045); }
+  .shot .scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,12,.7), transparent 55%); opacity: 0; transition: opacity .35s; }
+  .card:hover .shot .scrim { opacity: 1; }
+
+  .badge { position: absolute; top: 12px; left: 12px; z-index: 3; display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; background: var(--accent-warm); color: #1a1205; padding: 5px 10px; border-radius: 999px; font-weight: 500; box-shadow: 0 4px 18px rgba(233,184,114,.35); }
+  .visit { position: absolute; bottom: 12px; right: 12px; z-index: 3; width: 38px; height: 38px; border-radius: 50%; background: rgba(20,20,23,.7); backdrop-filter: blur(6px); border: 1px solid var(--line-strong); display: grid; place-items: center; opacity: 0; transform: translateY(8px); transition: all .35s var(--ease); }
+  .card:hover .visit { opacity: 1; transform: none; }
+  .visit svg { width: 16px; height: 16px; stroke: var(--ink); }
+
+  .body { padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 13px; flex: 1; }
+  .body .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .body h3 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; margin: 0; }
+  .body .host { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--ink-mute); }
+  .body .why { font-size: 14px; line-height: 1.62; color: var(--ink-soft); margin: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 4px; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .04em; color: var(--ink-mute); border: 1px solid var(--line); padding: 4px 9px; border-radius: 6px; transition: all .2s; }
+  .card:hover .tag { border-color: var(--line-strong); color: var(--ink-soft); }
+  .stretched { position: absolute; inset: 0; z-index: 2; }
+
+  .empty { text-align: center; color: var(--ink-mute); padding: 80px 0; font-size: 16px; display: none; }
+  .empty.show { display: block; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 54px 0 80px; position: relative; z-index: 2; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 24px 60px; justify-content: space-between; align-items: flex-start; }
+  footer h4 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 26px; margin: 0 0 8px; letter-spacing: -.01em; }
+  footer p { color: var(--ink-mute); font-size: 13.5px; line-height: 1.6; max-width: 520px; margin: 0; }
+  footer .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-mute); letter-spacing: .1em; text-transform: uppercase; text-align: right; line-height: 1.9; }
+
+  .totop { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 46px; height: 46px; border-radius: 50%; background: var(--accent); color: #0a0a0c; display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; box-shadow: 0 10px 30px rgba(200,255,90,.3); }
+  .totop.show { opacity: 1; pointer-events: auto; }
+  .totop:hover { transform: translateY(-3px); }
+  .totop svg { width: 18px; height: 18px; stroke: #0a0a0c; }
+
+  @media (max-width: 720px) {
+    .cat-head .blurb { text-align: left; margin-left: 0; }
+    .brand span.sub { display: none; }
+    .grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; scroll-behavior: auto; }
+    .card { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> The Atlas of Beautiful Websites <span class="sub">/ curated 2026</span></div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Search  /" autocomplete="off" aria-label="Search sites" />
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">A field guide to the web at its most ambitious</div>
+    <h1>The most <em>beautiful</em><br />websites on Earth.</h1>
+    <p class="lede">A field guide to the web at its most ambitious — where scroll becomes a camera dolly, typography behaves like physics, and a humble pantry good can carry an entire fictional universe. These are sites where craft is the message: real-time rendering pushed to console quality, restraint sharpened into luxury, and data bent into narrative. The most beautiful work the open web has to offer.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">83</div><div class="l">Sites curated</div></div>
+      <div class="stat"><div class="n">11</div><div class="l">Categories</div></div>
+      <div class="stat"><div class="n">22</div><div class="l">Mind-blowing</div></div>
+      <div class="stat"><div class="n">∞</div><div class="l">Inspiration</div></div>
+    </div>
+  </section>
+</div>
+
+<div class="rail">
+  <div class="wrap" id="chips"></div>
+</div>
+
+<main class="wrap" id="main"></main>
+<div class="empty" id="empty">No sites match that search. Try another word.</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Built to be browsed slowly.</h4>
+      <p>A hand-curated atlas of the web's finest craft — from WebGL spectacles and Swiss type foundries to luxury houses and data-journalism masterpieces. Researched across the design awards circuit and the corners of the community that obsesses over this stuff. Open a few in new tabs and let them blow your mind. Thumbnails are live screenshots and may take a moment to render.</p>
+    </div>
+    <div class="meta">
+      83 sites · 11 categories<br />
+      Curated 2026<br />
+      Click any card to visit ↗
+    </div>
+  </div>
+</footer>
+
+<a class="totop" href="#" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+
+<script>
+const DATA = {"intro":"A field guide to the web at its most ambitious — where scroll becomes a camera dolly, typography behaves like physics, and a humble pantry good can carry an entire fictional universe. These are sites where craft is the message: real-time rendering pushed to console quality, restraint sharpened into luxury, and data bent into narrative. The most beautiful work the open web has to offer.","totalSites":83,"standoutCount":22,"categories":[{"name":"Award Darlings","slug":"award-darlings","blurb":"The benchmark-setting experiences that swept the year's top honors and redefined what a website can be.","sites":[{"name":"Igloo Inc","url":"https://igloo.inc","why":"A near-fully WebGL world where scroll dollies a camera through one continuous frozen scene, with portfolio pieces encased in procedurally grown ice and even type rendered as in-canvas SDF. Awwwards and FWA Site of the Year 2024, and the current high-water mark for narrative real-time 3D.","tags":["WebGL","3D","Three.js","Motion"],"standout":true},{"name":"Lando Norris Official","url":"https://landonorris.com/","why":"OFF+BRAND fuse Webflow, WebGL and Rive into a motorsport-paced experience where a real-time 3D helmet tracks your reading and lime-green display type cuts like a race edit. Awwwards Site of the Year 2025, and proof mass-appeal polish can carry deep technical craft.","tags":["WebGL","Rive","Motion","3D"],"standout":true},{"name":"Don't Board Me","url":"https://dontboardme.com","why":"No WebGL, no spectacle — just a flawless hand-illustrated brand system, warm red-and-cream art direction and impeccably timed micro-animation. Awwwards Site of the Year (Users' Choice) 2024 and a reminder that craft beats horsepower.","tags":["Illustration","Brand","Motion","Warm"],"standout":false},{"name":"Bruno Simon Portfolio","url":"https://bruno-simon.com/","why":"The canonical 'how did they build that' portfolio: drive a physics-driven toy car through a low-poly world where projects are objects you bump into. The 2025 rebuild adds a WebGPU path and spatialized audio that shifts with your position.","tags":["WebGL","WebGPU","Playable","Physics"],"standout":true},{"name":"Oura Ring","url":"https://ouraring.com/","why":"Instrument's Webby-winning build choreographs scroll to reveal layered health science through CGI renders, in-app data viz and micro-interaction — award-level craft sustained at full e-commerce scale.","tags":["Product","Scrollytelling","CGI","Editorial"],"standout":false},{"name":"Buttermax","url":"https://buttermax.net/","why":"CSS Design Awards Website of the Year 2024, celebrated for personality-driven interaction: springy elastic easing, a tactile custom cursor and a buttery yellow palette that turn a portfolio into a toy.","tags":["Interaction","Custom Cursor","Motion","Playful"],"standout":false}]},{"name":"Studios & Agencies","slug":"studios-and-agencies","blurb":"The creative shops whose own sites are the loudest argument for hiring them.","sites":[{"name":"Active Theory","url":"https://activetheory.net","why":"A studio site that behaves like a live R&D demo: project thumbnails bloom into full-screen GLSL scenes with shader-driven transitions, all locked to frame rate over a severe black-and-white system.","tags":["WebGL","Shaders","Minimal","Motion"],"standout":true},{"name":"Lusion","url":"https://lusion.co","why":"An abstract real-time environment that deforms under cursor and scroll with weighty, inertial easing — interactions feel physical rather than scripted, backed by Cannes Lions, D&AD and FWA honors.","tags":["WebGL","GPU Particles","Motion","Tactile"],"standout":true},{"name":"Obys Agency","url":"https://obys.agency","why":"Swiss grid discipline collides with calculated brutalist breaks: kinetic type that reflows under motion, unexpected scroll directions and razor-sharp transitions over near-monochrome palettes. Awwwards Studio of the Year 2023.","tags":["Typography","Brutalist","Grid","Motion"],"standout":false},{"name":"Basement Studio","url":"https://basement.studio","why":"Internet-native taste in its purest form: a fully real-time 3D office (open-sourced as website-2k25) with CRT-terminal UI and custom type, kept fast and responsive. Beloved by design Twitter for craft plus performance.","tags":["WebGL","3D","Open Source","Performance"],"standout":false},{"name":"Phantom","url":"https://phantom.land","why":"A shape-shifting interface that re-composes itself on scroll, weaving WebGL theatrics through kinetic grids and infinite exploration while staying genuinely usable.","tags":["WebGL","Kinetic","Layout","Experimental"],"standout":false},{"name":"Locomotive","url":"https://locomotive.ca","why":"From the Montreal studio behind the smooth-scroll library everyone uses: buttery inertia parallax, confident editorial type and razor-clean grids that feel calm rather than flashy.","tags":["Smooth Scroll","Editorial","Grid","Parallax"],"standout":false},{"name":"Cuberto","url":"https://cuberto.com","why":"A masterclass in cursor craft: a magnetic morphing cursor, gooey image reveals and silky inertia transitions over a clean oversized typographic base.","tags":["Custom Cursor","Motion","Interaction","Typography"],"standout":false},{"name":"Unseen Studio","url":"https://unseen.co","why":"Bristol studio leading with kinetic typography as a first-class language — words stretch and reveal in tightly art-directed sequences over a stark black-and-gold system.","tags":["Kinetic Type","Motion","Two-Tone","Editorial"],"standout":false},{"name":"Garden Eight","url":"https://garden-eight.com/","why":"A connoisseur's pick from Tokyo: meticulously timed transitions and bilingual typographic rigor where negative space and pacing do the work. A repeat Awwwards Site of the Day.","tags":["Minimal","Motion","Typography","Precision"],"standout":false},{"name":"Sucuk und Bratwurst","url":"https://sucukundbratwurst.de","why":"A Berlin studio's maximalist, attitude-soaked reel — aggressive type, glitch transitions and brutalist swagger that mirror its fashion-film work for Dior and Nike.","tags":["Maximalist","Brutalist","Video","Bold"],"standout":false}]},{"name":"Experimental & Immersive","slug":"experimental-and-immersive","blurb":"WebGL playgrounds and technical flexes that show off exactly what the browser can do.","sites":[{"name":"Zentry","url":"https://zentry.com","why":"Resn's Site of the Month delivers cinematic, WebGL-grade visuals while staying on the DOM — its signature 3D portal clip-masks are a custom non-WebGL solution built purely for speed, scored by an evolving soundtrack.","tags":["Gaming","3D","Sound","Motion"],"standout":true},{"name":"Resn","url":"https://resn.co.nz","why":"A wordless, programmable playground built around a grabbable black crystalline drop you can fling and morph, with easter eggs hidden as far as the browser-resize event. Surrealist art direction with near-zero UI chrome.","tags":["WebGL","Surreal","Interactive","Shaders"],"standout":true},{"name":"David Whyte Experience","url":"https://davidwhyte.com/experience","why":"Immersive Garden animate real hand-painted watercolors with a cursor-driven wet-paint shader, long-pressing each canvas to reveal the actual landscape on film. Fine art and real-time interaction fused into one poetic journey.","tags":["WebGL","Shaders","Editorial","Art"],"standout":true},{"name":"Kriss.ai","url":"https://kriss.ai","why":"Studio 28K turn a product explainer into a navigable 3D 'dollhouse' clinic you explore room to room, built lean on OGL and Svelte 5 for rich interaction without framework bloat.","tags":["WebGL","3D","Svelte","Spatial"],"standout":false},{"name":"GEMINI — A WebGL Car Demo by Lusion","url":"https://exp-gemini.lusion.co/","why":"A pure technical flex: physically based car paint, glass and metal with accurate HDR reflections, all interactive at near-offline render quality. The deep cut engineers share to prove the point.","tags":["WebGL","PBR","Real-time","Tech Demo"],"standout":false},{"name":"Henry Heffernan","url":"https://henryheffernan.com/","why":"A 90s CRT desktop rebuilt in Three.js with a bootable, usable faux-OS — draggable windows, a working terminal, even Doom — and a camera that dollies smoothly from room into the monitor frame.","tags":["WebGL","3D","Retro","Portfolio"],"standout":true},{"name":"Robin Payot Portfolio","url":"https://robinpayot.com/","why":"A developer-favorite single-page Three.js portfolio where handcrafted GLSL effects and obsessively tuned easing read as a masterclass in restraint and timing.","tags":["WebGL","Shaders","Three.js","Motion"],"standout":false}]},{"name":"Product & SaaS","slug":"product-and-saas","blurb":"The dev-tool and software sites whose taste an entire generation now imitates.","sites":[{"name":"Linear","url":"https://linear.app","why":"The single most-copied SaaS site of the era: a near-black canvas with subtle indigo auroras, spring-eased scroll reveals and instant transitions that make speed feel like the product itself.","tags":["Dark Mode","SaaS","Motion","Minimal"],"standout":true},{"name":"Stripe","url":"https://stripe.com","why":"The original gold standard for developer marketing — the WebGL animated gradient hero, live syntax-highlighted code in the narrative, and a baseline grid tuned to the pixel.","tags":["Gradient","WebGL","Fintech","Grid"],"standout":true},{"name":"Family","url":"https://family.co","why":"A designer's cult favorite for native-feeling web motion: spring-physics animations, morphing UI and spatial card stacks studied as reference for easing and motion continuity.","tags":["Motion","Spring Physics","Spatial","Product"],"standout":true},{"name":"Vercel","url":"https://vercel.com","why":"An austere monochrome system built on the custom Geist type family, organizing a sprawling AI-cloud product line through shader gradients and surgical information architecture — proven live by edge-fast navigation.","tags":["Dark Mode","Typography","IA","Shaders"],"standout":false},{"name":"Cursor","url":"https://cursor.com","why":"The benchmark AI-product hero: cinematic dark gradients, real in-editor footage of AI completions, and bento feature grids that sell the pair-programmer feel in seconds.","tags":["AI","Dark Mode","Bento","Motion"],"standout":false},{"name":"Liveblocks","url":"https://liveblocks.io","why":"A rare site that is a working demo of its own SDK — live multiplayer cursors, presence and comments animate in the hero, doubling as proof of the realtime engine.","tags":["Realtime","Interactive","Dark Mode","Demo"],"standout":false},{"name":"Resend","url":"https://resend.com","why":"The community-revered small dev-tool site: elegant dark mode, restrained motion and code snippets treated as first-class hero objects, all loading lightning fast.","tags":["Dark Mode","Developer","Code","Minimal"],"standout":false},{"name":"Anthropic","url":"https://www.anthropic.com","why":"A deliberate break from the dark-neon dev-tool trend: cream backgrounds, a humanist serif pairing and earthy clay-and-slate accents proving an AI lab can feel literary rather than sci-fi.","tags":["Editorial","Serif","Warm","Brand"],"standout":false},{"name":"Cosmos","url":"https://www.cosmos.so/","why":"An Awwwards-recognized product site that leads with quiet typography and a precise modular grid, making software feel like a design publication.","tags":["Typography","Minimal","Grid","Editorial"],"standout":false}]},{"name":"Luxury & Fashion","slug":"luxury-and-fashion","blurb":"Heritage houses and beauty brands treating the browser like a printed quarterly.","sites":[{"name":"Gentle Monster","url":"https://www.gentlemonster.com","why":"Korean eyewear that ports its retail-as-art philosophy into the browser: bold 3D motion, sculptural animated product displays and AR try-on where the experience, not the catalog, is the point.","tags":["3D","Immersive","Eyewear","AR"],"standout":true},{"name":"Bottega Veneta","url":"https://www.bottegaveneta.com","why":"Famously off social media, Bottega built a site that behaves like a printed quarterly — full-bleed campaign imagery, oversized serif headlines and an austere green-forward identity that feels like a curated object.","tags":["Editorial","Luxury","Serif","Minimal"],"standout":false},{"name":"Loewe","url":"https://www.loewe.com","why":"Color is withheld entirely so photography carries all chromatic authority — ink-black M/M (Paris) logotype on near-white, the proprietary Avus sans at a single weight, a system of unusual rigor.","tags":["Monochrome","Typography","Luxury","Editorial"],"standout":false},{"name":"Aesop","url":"https://www.aesop.com","why":"A storefront run as a publication: products float in heavy padding like museum objects, with literary long-form copy and an amber-to-cream palette lifted straight from the packaging.","tags":["Editorial","Skincare","Whitespace","Typography"],"standout":false},{"name":"Jacquemus","url":"https://www.jacquemus.com","why":"The brand's sun-drenched Provencal world rendered in warm color, oversized lowercase type and surreal scale play that reads like its viral campaign photography rather than a shop.","tags":["Playful","Typography","Warm","Fashion"],"standout":false},{"name":"Chanel","url":"https://www.chanel.com","why":"A cinematic black-and-white broadcast channel — strict monochrome codes, the ABChanel type system and full-screen film-led storytelling with unhurried, couture authority.","tags":["Monochrome","Video","Luxury","Cinematic"],"standout":false},{"name":"Hermès","url":"https://www.hermes.com","why":"Whimsy as luxury: hand-drawn motifs, signature orange and charming character animation channel the brand's silk-scarf playfulness across seasonal microsites that regularly hit Awwwards and FWA.","tags":["Illustration","Animation","Playful","Seasonal"],"standout":false},{"name":"Maison Margiela","url":"https://www.maisonmargiela.com","why":"A blank-label, anti-branding ethos made digital: austere type, the numeric 0–23 lexicon woven into navigation and a near-clinical layout that feels conceptual rather than commercial.","tags":["Conceptual","Minimal","Avant-garde","Monochrome"],"standout":false}]},{"name":"Editorial & Storytelling","slug":"editorial-and-storytelling","blurb":"Scrollytelling and data journalism where the data is the narrative.","sites":[{"name":"The Pudding","url":"https://pudding.cool/","why":"The reference point for scrollytelling as craft: every essay is a bespoke build where datapoints morph, sort and highlight in sync with sticky text — jank-free even with thousands of animated marks.","tags":["Scrollytelling","Data Viz","SVG","Editorial"],"standout":true},{"name":"The New York Times","url":"https://www.nytimes.com/","why":"The Graphics desk that defines the genre: sticky maps and 3D scenes that pin while annotated text advances, with Cheltenham/Franklin type tuned for chart legibility and color used only to reveal meaning.","tags":["Scrollytelling","Data Viz","3D","Editorial"],"standout":true},{"name":"Bloomberg Graphics","url":"https://www.bloomberg.com/graphics","why":"Finance turned striking: confident dark canvases with neon-leaning categorical palettes engineered for chart separation, building dense multi-series data one encoded layer at a time.","tags":["Dark Mode","Data Viz","Scrollytelling","Finance"],"standout":false},{"name":"Reuters Graphics","url":"https://www.reuters.com/graphics/","why":"Cinematic, Pulitzer-winning builds where satellite imagery pans and zooms under stepped annotation and 3D reconstructions sit inline — heavy geospatial scenes kept smooth.","tags":["Scrollytelling","3D","Maps","Investigative"],"standout":false},{"name":"SCMP Multimedia","url":"https://multimedia.scmp.com/","why":"One of the world's most-awarded graphics desks blends hand-painted full-screen scenes that dissolve into precise data diagrams — illustrated longform paced like a graphic novel.","tags":["Illustration","Scrollytelling","Data Viz","Cinematic"],"standout":true},{"name":"The Guardian","url":"https://www.theguardian.com/","why":"Built on the custom Guardian type family, with bold sectional color blocking and colorblind-safe, accessibility-minded charting that reflows gracefully from desktop to mobile.","tags":["Editorial","Data Viz","Typography","Accessible"],"standout":false},{"name":"Information is Beautiful","url":"https://informationisbeautiful.net/","why":"The site that popularized data-vis as a design discipline, with a warm hand-tuned palette and poster-like infographic compositions browsed as a curated gallery.","tags":["Data Viz","Infographics","Color","Gallery"],"standout":false},{"name":"Visual Cinnamon","url":"https://www.visualcinnamon.com/","why":"Nadieh Bremer's portfolio of data-as-fine-art: ornate radial and generative SVG with astronomy-inspired glow palettes, presented in an editorial layout as considered as the work.","tags":["Data Art","SVG","Generative","Portfolio"],"standout":false}]},{"name":"Typographic & Type Foundries","slug":"typographic-and-type-foundries","blurb":"Where grid, hierarchy and the letterforms themselves are the entire design.","sites":[{"name":"Klim Type Foundry","url":"https://klim.co.nz/","why":"A near-perfect demonstration of type setting the whole tone: enormous inline-editable specimens, immaculate hierarchy and a reading experience treated with the same rigor as the fonts. Webby-winning.","tags":["Type","Editorial","Grid","Minimal"],"standout":true},{"name":"ABC Dinamo","url":"https://abcdinamo.com/","why":"A tool-driven foundry where typography is the interface: the interactive Font Gauntlet animates type through weights and effects, and design-mode toggles re-typeset the entire site live.","tags":["Type","Interactive","Tools","Experimental"],"standout":true},{"name":"Grilli Type","url":"https://grillitype.com/","why":"The most literally Swiss site in the set: a true modular grid, configurable in-browser specimen testers and high-contrast black-and-white where type, grid and restraint genuinely are the design.","tags":["Swiss","Type","Grid","Minimal"],"standout":false},{"name":"Pangram Pangram Foundry","url":"https://pangrampangram.com/","why":"The foundry template pushed into motion-rich territory: draggable, resizable specimen blocks and real-time variable-font demos anchored by a strict baseline grid.","tags":["Type","Motion","Variable Fonts","Interactive"],"standout":false},{"name":"Typography.com","url":"https://www.typography.com/","why":"Hoefler&Co's foundry, among the most rigorously typeset commercial sites anywhere — live OpenType demos, print-grade hierarchy and a black-white-red palette echoing classic specimen books.","tags":["Type","Editorial","Classical","Grid"],"standout":false},{"name":"Commercial Type","url":"https://commercialtype.com/","why":"The foundry behind Guardian and Publico presents its work with newspaper-grade discipline — a multi-column grid and in-use galleries where reading typography is the whole experience.","tags":["Type","Editorial","Grid","Newspaper"],"standout":false}]},{"name":"Portfolios","slug":"portfolios","blurb":"Individual designers and engineers turning the personal site into a craft statement.","sites":[{"name":"Lynn Fisher","url":"https://lynnandtonic.com/","why":"Rebuilt from scratch nearly every year as a public CSS experiment, where resizing the browser is part of the artwork and each iteration explores responsive behavior no template could produce.","tags":["CSS Art","Responsive","Illustration","Experimental"],"standout":true},{"name":"Rauno Freiberg","url":"https://rauno.me/","why":"From the Vercel design engineer behind cmdk: a restrained monochrome manifesto where physically-correct micro-interactions and embedded UI experiments teach as much as they showcase.","tags":["Interaction","Minimal","Craft","Engineering"],"standout":false},{"name":"Brittany Chiang","url":"https://brittanychiang.com/","why":"The most-cloned dev portfolio on the web, for good reason: a calm slate-and-teal palette, a spotlight cursor gradient and buttery nav indicators with genuine reduced-motion and accessibility support.","tags":["Dark Mode","Minimal","Accessible","Developer"],"standout":false},{"name":"Jesper Landberg","url":"https://jesperlandberg.dev/","why":"A masterclass in shared-element transitions: the same hero image stays locked in place while everything around it animates between list and detail — a technique he popularized via Codrops.","tags":["Smooth Scroll","Transitions","WebGL","Motion"],"standout":false},{"name":"Cassie Evans","url":"https://www.cassie.codes/","why":"From a GreenSock advocate: hand-crafted SVG that animates on scroll as both decoration and wayfinding, proving motion can be expressive and performant without heavy assets.","tags":["SVG","GSAP","Animation","Playful"],"standout":false},{"name":"Olivier Larose","url":"https://www.olivierlarose.com/","why":"A curated reel of Framer Motion and GSAP technique — magnetic buttons, sticky-distortion images and staggered reveals — executed with editorial polish and doubling as a living tutorial index.","tags":["Framer Motion","GSAP","Editorial","Motion"],"standout":false},{"name":"Seán Halpin","url":"https://www.seanhalpin.xyz/","why":"Personality over spectacle: hand-drawn doodles, conversational microcopy and subtle motion that make a flat, approachable layout read like a person rather than a template.","tags":["Illustration","Warm","Personality","Minimal"],"standout":false}]},{"name":"Commerce & Brand","slug":"commerce-and-brand","blurb":"DTC brands committing fully to a voice, where world-building is the conversion strategy.","sites":[{"name":"Vacation","url":"https://www.vacation.inc","why":"A fully-built fictional 1980s leisure conglomerate rendered as a store — airbrush chrome, sun-faded pastel gradients, faux-corporate copy and Poolsuite-linked audio that carry the world all the way into checkout.","tags":["Retro","World-building","DTC","Nostalgia"],"standout":true},{"name":"Liquid Death","url":"https://liquiddeath.com","why":"A total commitment to the bit: heavy-metal blackletter, grindhouse art direction and aggressively in-character microcopy on every button and cart step — applied, gloriously, to canned water.","tags":["Maximalist","Brand Voice","DTC","Bold"],"standout":false},{"name":"Graza","url":"https://www.graza.co","why":"A commodity pantry good turned personality brand: kelly-green packaging color, oversized headlines and a looping squeeze-bottle hero that became the reference for the new wave of DTC pantry sites.","tags":["DTC","Editorial","Color","Video"],"standout":false},{"name":"Tony's Chocolonely","url":"https://tonyschocolonely.com","why":"Mission-first design with neo-brutalist confidence: clashing saturated color blocks, an oversized red wordmark and an unequal chocolate-bar grid motif that proves activism can be joyfully art-directed.","tags":["Neo-brutalist","Color","Mission","DTC"],"standout":false},{"name":"Our Place","url":"https://fromourplace.com","why":"Color as the primary merchandising device: a curated named-colorway system drives the entire grid with instant swatch swapping and warm lifestyle photography that frames cookware as decor.","tags":["Color","DTC","Photography","Commerce"],"standout":false},{"name":"sweetgreen","url":"https://www.sweetgreen.com","why":"A Collins rebrand expressed in two custom typefaces, produce-bright color and vintage cookbook illustration — every choice tying back to 'real food' and carrying warmth into the ordering flow.","tags":["Custom Type","Illustration","Color","Brand"],"standout":false},{"name":"Gymshark","url":"https://www.gymshark.com","why":"The mobile-first DTC execution benchmark: dark high-contrast UI with sharp accent pops, cinematic athlete-in-motion heroes and drop mechanics with hype framing baked into the shopping flow.","tags":["Mobile-first","Dark Mode","Apparel","Motion"],"standout":false},{"name":"Jones Road Beauty","url":"https://www.jonesroadbeauty.com","why":"Bobbi Brown's line reads like a beauty editorial: a warm neutral palette, swatch-driven shade selectors that double as design elements and dense product education kept calm through tight hierarchy.","tags":["Beauty","Editorial","DTC","Warm"],"standout":false}]},{"name":"Arts & Culture","slug":"arts-and-culture","blurb":"Museums and institutions where the interface knows to recede behind the art.","sites":[{"name":"Frans Hals Museum","url":"https://www.franshalsmuseum.nl/en/","why":"A landmark of playful institutional design that literally splits the screen between old and new, with kinetic oversized type, a millennial-pink-and-teal palette and game-like collection tools.","tags":["Split-screen","Kinetic Type","Museum","Playful"],"standout":true},{"name":"M+","url":"https://www.mplus.org.hk/en/","why":"Anton & Irene atop Thonik's identity refuse the generic museum template — oversized type, a bold flexible grid and robust trilingual typesetting tested for accessibility while staying vivid.","tags":["Typography","Grid","Multilingual","Museum"],"standout":false},{"name":"Stedelijk Museum","url":"https://www.stedelijk.nl/en","why":"Web brutalism delivered to a mainstream cultural audience: Mevis & Van Deursen's typographic identity translated faithfully, mobile-first and unapologetically structural.","tags":["Brutalist","Typography","Museum","Mobile-first"],"standout":false},{"name":"Cooper Hewitt","url":"https://www.cooperhewitt.org/","why":"Anchored by Pentagram's bespoke open-source Cooper Hewitt typeface, a clinic in type-driven editorial design with rare coherence between building wayfinding and screen.","tags":["Type","Editorial","Museum","Identity"],"standout":false},{"name":"Fondazione Prada","url":"https://www.fondazioneprada.org/en/","why":"2x4's severe, intellectual language matches the OMA campus — an archive-like grid and documentary photography that feel like Prada's cultural voice in print.","tags":["Grid","Editorial","Art","Minimal"],"standout":false},{"name":"Van Gogh Museum","url":"https://www.vangoghmuseum.nl/en","why":"Fabrique and Q42's benchmark for image-first museum design at scale: full-bleed, color-accurate artwork and smooth transitions balanced against a frictionless ticketing funnel.","tags":["Image-first","Museum","Editorial","Color"],"standout":false}]},{"name":"Architecture & Hospitality","slug":"architecture-and-hospitality","blurb":"Practices and venues that translate material restraint and atmosphere into the browser.","sites":[{"name":"Studio KO","url":"https://www.studioko.fr/","why":"A deliberately idiosyncratic, editorial site that breaks the portfolio grid: the '#' brand glyph as a structural motif, varied rhythm and raw texture-forward photography of stone and hammered iron.","tags":["Architecture","Editorial","Texture","Typography"],"standout":true},{"name":"Map Project Office","url":"https://mapprojectoffice.com/","why":"Engineering as craft: a bespoke JS auto-layout engine packs the homepage into a living block grid that reflows around its content, pairing Swiss typography with crisp product photography.","tags":["Industrial Design","Generative Layout","Swiss","Grid"],"standout":false},{"name":"Aman","url":"https://www.aman.com","why":"Restrained luxury where generous negative space and slow cinematic imagery do the selling, with whisper-quiet custom type and transitions as calm as the resorts themselves.","tags":["Luxury","Hospitality","Cinematic","Minimal"],"standout":false},{"name":"Vincent Van Duysen Architects","url":"https://vincentvanduysen.com/","why":"Material restraint made digital: a warm-greige ground, a refined serif/sans pairing and slow image reveals that let full-bleed project photography carry the page in editorial calm.","tags":["Architecture","Minimal","Editorial","Warm"],"standout":false},{"name":"Snøhetta","url":"https://www.snohetta.com/","why":"A large-format site matching the scale of the work — full-viewport imagery and video, momentum scrolling and a clean sans system organizing a vast cross-disciplinary portfolio without clutter.","tags":["Architecture","Full-bleed","Motion","Minimal"],"standout":false},{"name":"Dishoom","url":"https://www.dishoom.com","why":"Editorial storytelling, period-authentic illustration and archival photography fused into one navigable site — warm sepia tones and vintage Bombay typographic detailing earning perfect Awwwards 10s.","tags":["Editorial","Illustration","Restaurant","Warm"],"standout":false},{"name":"A24","url":"https://a24films.com","why":"The catalog turned design statement: gallery-grade layouts built from high-res key art with bold editorial type and near-monochrome chrome that lets each film's color palette lead.","tags":["Film","Editorial","Gallery","Typography"],"standout":false},{"name":"Senua's Saga: Hellblade II","url":"https://senuassaga.com","why":"A brooding promo experience matched to the game's tone — full-bleed photoreal imagery, slow weighty transitions and oppressive Norse atmosphere with minimal chrome letting the art direction carry the dread.","tags":["Game","Cinematic","Atmospheric","Minimal"],"standout":false}]}]};
+
+const host = (u) => { try { return new URL(u).hostname.replace(/^www\./,''); } catch { return u; } };
+const shotURL = (u) => 'https://s.wp.com/mshots/v1/' + encodeURIComponent(u) + '?w=1100&h=688';
+const grads = [
+  ['#1b2a4a','#0a0a0c'],['#3a1d2e','#0a0a0c'],['#16302b','#0a0a0c'],['#33270f','#0a0a0c'],
+  ['#2a1a3a','#0a0a0c'],['#102a33','#0a0a0c'],['#33161a','#0a0a0c'],['#1f2e16','#0a0a0c']
+];
+
+let gi = 0;
+function card(s) {
+  const g = grads[gi++ % grads.length];
+  const el = document.createElement('article');
+  el.className = 'card' + (s.standout ? ' standout' : '');
+  el.dataset.text = (s.name + ' ' + s.why + ' ' + s.tags.join(' ')).toLowerCase();
+  el.dataset.standout = s.standout ? '1' : '0';
+  el.innerHTML = `
+    <div class="shot" style="background:linear-gradient(150deg,${g[0]},${g[1]})">
+      ${s.standout ? '<span class="badge">★ Standout</span>' : ''}
+      <div class="ph">${esc(s.name)}</div>
+      <div class="scrim"></div>
+      <span class="visit"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </div>
+    <div class="body">
+      <div class="row">
+        <h3>${esc(s.name)}</h3>
+      </div>
+      <div class="host">${esc(host(s.url))}</div>
+      <p class="why">${esc(s.why)}</p>
+      <div class="tags">${s.tags.map(t => '<span class="tag">'+esc(t)+'</span>').join('')}</div>
+    </div>
+    <a class="stretched" href="${s.url}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${esc(s.name)}"></a>`;
+
+  // lazy-load screenshot with retry coaxing (mShots warms up async)
+  const shot = el.querySelector('.shot');
+  const img = new Image();
+  let tries = 0;
+  img.alt = s.name + ' screenshot';
+  img.addEventListener('load', () => {
+    // mShots returns a tiny placeholder while generating; retry a few times
+    if (img.naturalWidth > 0 && img.naturalWidth < 60 && tries < 4) {
+      tries++; setTimeout(() => { img.src = shotURL(s.url) + '&retry=' + tries; }, 1600 * tries);
+      return;
+    }
+    img.classList.add('loaded');
+  });
+  img.addEventListener('error', () => {
+    if (tries < 3) { tries++; setTimeout(() => { img.src = shotURL(s.url) + '&retry=' + tries; }, 1600 * tries); }
+  });
+  const io = new IntersectionObserver((ents, obs) => {
+    ents.forEach(e => { if (e.isIntersecting) { img.src = shotURL(s.url); shot.appendChild(img); obs.disconnect(); } });
+  }, { rootMargin: '300px' });
+  io.observe(el);
+  return el;
+}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// build sections
+const main = document.getElementById('main');
+DATA.categories.forEach((c, i) => {
+  const sec = document.createElement('section');
+  sec.className = 'cat'; sec.id = c.slug; sec.dataset.cat = c.slug;
+  const n = String(i + 1).padStart(2, '0');
+  sec.innerHTML = `<div class="cat-head">
+      <span class="idx">${n}</span>
+      <h2>${esc(c.name)}</h2>
+      <span class="blurb">${esc(c.blurb)}</span>
+    </div>`;
+  const grid = document.createElement('div'); grid.className = 'grid';
+  c.sites.forEach(s => grid.appendChild(card(s)));
+  sec.appendChild(grid);
+  main.appendChild(sec);
+});
+
+// chips
+const chips = document.getElementById('chips');
+const mkChip = (label, count, cls='') => {
+  const b = document.createElement('button');
+  b.className = 'chip ' + cls; b.type = 'button';
+  b.innerHTML = esc(label) + (count != null ? ' <span class="c">'+count+'</span>' : '');
+  chips.appendChild(b); return b;
+};
+const allChip = mkChip('All', DATA.totalSites); allChip.setAttribute('aria-pressed','true');
+const starChip = mkChip('★ Mind-blowing', DATA.standoutCount, 'star'); starChip.setAttribute('aria-pressed','false');
+const catChips = DATA.categories.map(c => { const b = mkChip(c.name, c.sites.length); b.dataset.target = c.slug; b.setAttribute('aria-pressed','false'); return b; });
+
+let starOnly = false;
+function setActive(chip){ [allChip, starChip, ...catChips].forEach(c => c.setAttribute('aria-pressed','false')); chip.setAttribute('aria-pressed','true'); }
+
+allChip.addEventListener('click', () => { starOnly = false; setActive(allChip); applyFilter(); });
+starChip.addEventListener('click', () => { starOnly = !starOnly; if (starOnly){ setActive(starChip);} else { setActive(allChip);} applyFilter(); });
+catChips.forEach(b => b.addEventListener('click', () => {
+  document.getElementById(b.dataset.target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+
+// search + star filter
+const q = document.getElementById('q');
+const empty = document.getElementById('empty');
+function applyFilter(){
+  const term = q.value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('.cat').forEach(sec => {
+    let secVisible = 0;
+    sec.querySelectorAll('.card').forEach(card => {
+      const matchText = !term || card.dataset.text.includes(term);
+      const matchStar = !starOnly || card.dataset.standout === '1';
+      const show = matchText && matchStar;
+      card.style.display = show ? '' : 'none';
+      if (show) { secVisible++; visible++; }
+    });
+    sec.style.display = secVisible ? '' : 'none';
+  });
+  empty.classList.toggle('show', visible === 0);
+}
+q.addEventListener('input', () => { if (q.value.trim()) { /* keep current star state */ } applyFilter(); });
+
+// scroll reveal
+const revealIO = new IntersectionObserver((ents) => {
+  ents.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); } });
+}, { rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.card').forEach((c, i) => { c.style.transitionDelay = (Math.min(i, 6) * 35) + 'ms'; revealIO.observe(c); });
+
+// scrollspy for chips
+const spy = new IntersectionObserver((ents) => {
+  ents.forEach(e => {
+    if (e.isIntersecting && !starOnly && !q.value.trim()) {
+      const slug = e.target.id;
+      catChips.forEach(b => b.setAttribute('aria-pressed', b.dataset.target === slug ? 'true' : 'false'));
+      allChip.setAttribute('aria-pressed','false'); starChip.setAttribute('aria-pressed','false');
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('.cat').forEach(s => spy.observe(s));
+
+// keyboard '/'
+document.addEventListener('keydown', (e) => {
+  if (e.key === '/' && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+  if (e.key === 'Escape' && document.activeElement === q) { q.value=''; applyFilter(); q.blur(); }
+});
+
+// back to top
+const totop = document.getElementById('totop');
+window.addEventListener('scroll', () => { totop.classList.toggle('show', window.scrollY > 800); }, { passive: true });
+totop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+</body>
+</html>
