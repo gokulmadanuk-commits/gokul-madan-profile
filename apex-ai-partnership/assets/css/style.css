@@ -493,5 +493,24 @@ footer .disc { max-width: 60ch; font-size:.74rem; color: var(--muted-2); }
 .nova-strip h3 { font-family: var(--serif); }
 @media (max-width: 600px){ .nova-strip { flex-direction:column; gap:16px; } }
 
+/* ==========================================================================
+   Print — a presentable PDF leave-behind (Cmd/Ctrl+P → Save as PDF)
+   ========================================================================== */
+@media print {
+  :root { --paper:#fff; --paper-2:#fff; }
+  body { background:#fff; font-size: 11pt; }
+  .topbar, .marquee-wrap, .ask-form, .ask-chips, .dash-seg, .roi-field input,
+  .hero-actions, .btn, .cap-toolbar { display:none !important; }
+  section { padding-block: 24px !important; break-inside: avoid; }
+  .reveal { opacity:1 !important; transform:none !important; }
+  .dash, .roi-right, .close, .mm-us, .sc-head, .msg.user .bubble { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .card, .uc, .gov-card, .ev, .wow-card, .phase, .mm-col, .sc-row { break-inside: avoid; }
+  .uc-list { max-height:none !important; overflow:visible !important; }
+  .ask-log { max-height:none !important; }
+  .matrix { position: static !important; }
+  a[href^="#"] { text-decoration: none; color: inherit; }
+  h1, h2, h3 { break-after: avoid; }
+}
+
 /* number counter monospacing */
 .tnum { font-variant-numeric: tabular-nums; }
