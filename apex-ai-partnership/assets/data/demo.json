@@ -1,0 +1,204 @@
+{
+  "company_context": "Apex Group — Global Fund Solutions Division (synthetic demo entity). A single-source, global fund administrator and asset servicer operating across 50+ jurisdictions, providing fund administration, private-markets servicing, depositary, custody, corporate services, and ManCo/ESG solutions to alternative and institutional managers. The division administers c.$3.5 trillion in assets under administration (AUA) across roughly 13,200 FTEs. FY runs July–June; these figures reflect FY26 (Jul-2025 to Jun-2026) full-year run and the board pack for the June 2026 close. The business is fee-based and largely recurring, with revenue driven by NAV/AUA-linked ad-valorem fees, per-transaction and per-entity charges, and project/onboarding work. Growth is led by private equity and real-assets servicing and by ESG/ManCo mandates; the demo is calibrated to look credible to a CFO's deputy reviewing monthly actuals vs budget vs forecast.",
+  "kpis": [
+    {
+      "label": "Total Revenue (FY26)",
+      "value": "$2,640M",
+      "delta": "+11.4% YoY",
+      "trend": "up"
+    },
+    {
+      "label": "EBITDA Margin",
+      "value": "31.2%",
+      "delta": "+90 bps YoY",
+      "trend": "up"
+    },
+    {
+      "label": "AUA",
+      "value": "$3.51T",
+      "delta": "+8.7% YoY",
+      "trend": "up"
+    },
+    {
+      "label": "Net New AUA (FY26)",
+      "value": "$196B",
+      "delta": "+14.0% YoY",
+      "trend": "up"
+    },
+    {
+      "label": "DSO",
+      "value": "52 days",
+      "delta": "-3 days QoQ",
+      "trend": "down"
+    },
+    {
+      "label": "Headcount (FTE)",
+      "value": "13,200",
+      "delta": "+4.6% YoY",
+      "trend": "up"
+    },
+    {
+      "label": "Revenue per FTE",
+      "value": "$200K",
+      "delta": "+6.5% YoY",
+      "trend": "up"
+    },
+    {
+      "label": "Client Retention (by revenue)",
+      "value": "96.4%",
+      "delta": "+0.4 pts YoY",
+      "trend": "up"
+    }
+  ],
+  "revenue_by_segment": [
+    {
+      "segment": "Fund Administration",
+      "revenue_musd": 1085,
+      "growth_pct": 8.5
+    },
+    {
+      "segment": "Private Equity & Real Assets Services",
+      "revenue_musd": 742,
+      "growth_pct": 17.2
+    },
+    {
+      "segment": "Corporate Services",
+      "revenue_musd": 356,
+      "growth_pct": 6.1
+    },
+    {
+      "segment": "Depositary & Custody",
+      "revenue_musd": 298,
+      "growth_pct": 9.4
+    },
+    {
+      "segment": "ManCo & ESG Solutions",
+      "revenue_musd": 159,
+      "growth_pct": 22.8
+    }
+  ],
+  "aum_by_region": [
+    {
+      "region": "Americas",
+      "aum_busd": 1180
+    },
+    {
+      "region": "EMEA",
+      "aum_busd": 1420
+    },
+    {
+      "region": "APAC",
+      "aum_busd": 640
+    },
+    {
+      "region": "Middle East",
+      "aum_busd": 270
+    }
+  ],
+  "variance_commentary": [
+    {
+      "line_item": "Total Revenue — FY26 vs Budget",
+      "variance": "-$15.0M (-0.6%)",
+      "commentary": "Full-year revenue landed marginally below plan, driven almost entirely by the June close. Recurring AUA-linked fees tracked budget through Q3; the shortfall is timing, not run-rate erosion, and reverses in early FY27 as delayed closes complete."
+    },
+    {
+      "line_item": "Private Equity & Real Assets Services",
+      "variance": "+$41.0M (+17.2% YoY)",
+      "commentary": "Standout performer, ahead of both budget and prior year on strong fund launches and drawdown activity across three anchor GP relationships. Onboarding-related project fees pulled forward c.$8M into H1; underlying recurring growth remains double-digit."
+    },
+    {
+      "line_item": "June Revenue vs Budget",
+      "variance": "-$18.0M (-8.4%)",
+      "commentary": "Two large private-markets onboardings slipped past 30-June due to client-side legal delays, and a NAV-strike timing shift deferred c.$6M of ad-valorem fees. No mandates were lost; c.$14M is expected to recognise in July–August."
+    },
+    {
+      "line_item": "EBITDA Margin",
+      "variance": "+90 bps YoY",
+      "commentary": "Margin expansion despite headcount growth, reflecting platform automation in fund accounting and a favourable shift in mix toward higher-margin ManCo/ESG and PE servicing. Wage inflation was largely offset by improved offshore utilisation."
+    },
+    {
+      "line_item": "DSO",
+      "variance": "-3 days QoQ (52 days)",
+      "commentary": "Collections discipline and earlier invoicing on project work reduced DSO to 52 days, releasing c.$21M of working capital in the quarter. Aged receivables over 90 days fell to 4.1% of the book from 5.3%."
+    },
+    {
+      "line_item": "ManCo & ESG Solutions",
+      "variance": "+$29.5M (+22.8% YoY)",
+      "commentary": "Fastest-growing segment off a small base, driven by SFDR/ESG reporting mandates and third-party AIFM/ManCo appointments in Luxembourg and Ireland. Pipeline supports sustained 20%+ growth into FY27; segment now 6.0% of revenue."
+    }
+  ],
+  "monthly": [
+    {
+      "month": "Jul-25",
+      "actual": 208,
+      "budget": 210,
+      "forecast": 209
+    },
+    {
+      "month": "Aug-25",
+      "actual": 205,
+      "budget": 209,
+      "forecast": 207
+    },
+    {
+      "month": "Sep-25",
+      "actual": 214,
+      "budget": 213,
+      "forecast": 214
+    },
+    {
+      "month": "Oct-25",
+      "actual": 219,
+      "budget": 217,
+      "forecast": 218
+    },
+    {
+      "month": "Nov-25",
+      "actual": 222,
+      "budget": 220,
+      "forecast": 221
+    },
+    {
+      "month": "Dec-25",
+      "actual": 241,
+      "budget": 235,
+      "forecast": 238
+    },
+    {
+      "month": "Jan-26",
+      "actual": 216,
+      "budget": 220,
+      "forecast": 217
+    },
+    {
+      "month": "Feb-26",
+      "actual": 220,
+      "budget": 222,
+      "forecast": 221
+    },
+    {
+      "month": "Mar-26",
+      "actual": 233,
+      "budget": 231,
+      "forecast": 233
+    },
+    {
+      "month": "Apr-26",
+      "actual": 229,
+      "budget": 230,
+      "forecast": 230
+    },
+    {
+      "month": "May-26",
+      "actual": 236,
+      "budget": 233,
+      "forecast": 235
+    },
+    {
+      "month": "Jun-26",
+      "actual": 197,
+      "budget": 215,
+      "forecast": 203
+    }
+  ]
+}
