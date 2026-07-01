@@ -8,11 +8,17 @@
 
 ## 1. Who's across the table
 
-The **#2 to the CFO**, deep in FP&A. New finance leadership (CFO **Kimberly DeTrask**,
-ex-State Street, in seat since Oct 2025) arrived with an explicit mandate: a
-**"future-looking, institutionally-sophisticated finance function."** Your buyer is the
-person who has to *operationalise* that mandate — turn board-level language into working
-systems. **You are the execution layer for the modernisation they were hired to lead.**
+**Kelly — a direct report to the CFO**, deep in FP&A. Kelly's boss, CFO
+**Kimberly DeTrask** (ex-State Street, in seat since Oct 2025), arrived with an explicit
+mandate: a **"future-looking, institutionally-sophisticated finance function."** Kelly is
+the person who has to *operationalise* that mandate — turn the CFO's board-level language
+into working systems. **You are Kelly's execution layer for the modernisation DeTrask was
+hired to lead** — which makes Kelly the ideal buyer: close enough to the CFO to carry the
+mandate, hands-on enough to feel every hour of pack production.
+
+> Keep the reporting line straight in the room: DeTrask = the CFO (the mandate-setter);
+> Kelly = your buyer (the executor). Speak to Kelly as the person who makes it real, and
+> frame wins as "this makes *your* mandate land with the CFO and the board."
 
 They are: controls-obsessed, sponsor-graded (Genstar-backed, PIK-levered — thinks in
 adjusted EBITDA, synergy, cash conversion, covenant headroom, exit-readiness), and
