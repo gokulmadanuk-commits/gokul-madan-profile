@@ -1,0 +1,100 @@
+{
+  "benchmarks": [
+    {
+      "stat": "44% of CFOs use genAI in five-plus finance use cases (up from 7% in 2024)",
+      "claim": "GenAI adoption in finance has scaled roughly six-fold in a year, but broad multi-use deployment is still a minority.",
+      "area": "Adoption / FP&A",
+      "source_type": "McKinsey (State of AI in Finance, 2025)"
+    },
+    {
+      "stat": "20-30% less time spent crunching data where genAI is robustly adopted",
+      "claim": "In finance functions with mature genAI use, professionals reclaim a fifth to a third of data-processing time for business-partnering.",
+      "area": "Productivity / FP&A",
+      "source_type": "McKinsey (How finance teams are putting AI to work, 2025)"
+    },
+    {
+      "stat": "Spreadsheet consolidation consumes 20-30% of the planning cycle",
+      "claim": "A fifth to a third of planning-cycle effort is manual data consolidation that AI can compress.",
+      "area": "FP&A / Forecasting",
+      "source_type": "McKinsey (How finance teams are putting AI to work, 2025)"
+    },
+    {
+      "stat": "59% of finance leaders use AI in 2025 (vs 58% in 2024, 37% in 2023)",
+      "claim": "Finance AI adoption has plateaued after a sharp 2023-24 jump, signalling a stalled scaling curve.",
+      "area": "Adoption",
+      "source_type": "Gartner (Finance AI adoption survey, Nov 2025)"
+    },
+    {
+      "stat": "66% of AI-adopting finance teams cite greater efficiency/productivity as the top benefit",
+      "claim": "Where finance has deployed AI, two-thirds report efficiency and productivity as the leading realised benefit.",
+      "area": "Productivity / Reporting",
+      "source_type": "Gartner (Finance AI adoption survey, 2025)"
+    },
+    {
+      "stat": "63% of finance organisations say AI implementation was slower than expected in 2025",
+      "claim": "Nearly two-thirds of finance functions are hitting an execution gap between AI ambition and delivery.",
+      "area": "Adoption / Scaling gap",
+      "source_type": "Gartner (Finance AI adoption survey, 2025)"
+    },
+    {
+      "stat": "CFOs with strategic AI deployment to add ~10 margin points of growth by 2029",
+      "claim": "Gartner forecasts a 10-point margin advantage for CFOs who manage AI as a portfolio rather than isolated pilots.",
+      "area": "Value / Margin",
+      "source_type": "Gartner (Finance Technology Bullseye, Apr 2026; 314 orgs)"
+    },
+    {
+      "stat": "Median reported ROI from AI in finance is just 10%, vs a ~20% target",
+      "claim": "The first systematic study to quantify finance-AI ROI finds returns running at half the level leaders aim for.",
+      "area": "Value / ROI",
+      "source_type": "BCG Center for CFO Excellence (280+ finance execs, Mar 2025)"
+    },
+    {
+      "stat": "Active AI use in finance rose to 75% in 2025, up from 30% in 2024",
+      "claim": "Finance AI usage more than doubled year-on-year as governance matured, per a 1,013-leader global survey.",
+      "area": "Adoption",
+      "source_type": "KPMG (Global AI in Finance Report, 2025)"
+    },
+    {
+      "stat": "64% of AI-using finance orgs report improved forecast accuracy",
+      "claim": "Nearly two-thirds see measurable forecast-accuracy gains, alongside 70% decision quality and 71% decision speed.",
+      "area": "Forecasting",
+      "source_type": "KPMG (Global AI in Finance Report, 2025)"
+    },
+    {
+      "stat": "71% of finance leaders say AI is meeting or exceeding ROI expectations",
+      "claim": "Just over seven in ten report AI investment paying back as expected or better, concentrated in planning/forecasting.",
+      "area": "Value / ROI",
+      "source_type": "KPMG (Global AI in Finance Report, 2025)"
+    },
+    {
+      "stat": "HPE cut its financial reporting cycle by ~40% using an agentic AI tool",
+      "claim": "A real-world agentic AI deployment compressed the reporting close by about 40% and sharpened performance discussions.",
+      "area": "Board/Management reporting",
+      "source_type": "Deloitte (CFO Guide to Tech Trends 2026 / HPE case)"
+    },
+    {
+      "stat": "87% of CFOs expect AI to be very/extremely important to finance in 2026; 54% prioritise AI agents",
+      "claim": "Nearly nine in ten CFOs deem AI critical to finance operations, and a majority are prioritising agentic AI.",
+      "area": "Adoption / Strategy",
+      "source_type": "Deloitte (Q4 2025 CFO Signals Survey)"
+    },
+    {
+      "stat": "Only 23% of FP&A practitioners currently use AI; 53% use it in no FP&A process",
+      "claim": "Despite the hype, FP&A adoption remains low, with only ~10% using AI for forecasting or data analytics.",
+      "area": "FP&A / Forecasting adoption gap",
+      "source_type": "AFP (2025 FP&A Benchmarking Survey) / FP&A Trends Survey"
+    },
+    {
+      "stat": "61% cite unreliable data and 60% inaccessible data as top barriers to FP&A tech success",
+      "claim": "Poor data quality and accessibility, not tooling, are the leading blockers to AI value in FP&A.",
+      "area": "Risk / Data readiness",
+      "source_type": "AFP (2025 FP&A Benchmarking Survey)"
+    },
+    {
+      "stat": "Leading AP platforms deliver 3.5x productivity, 60% touchless invoices, 59% faster cycle times",
+      "claim": "Best-in-class AI-enabled transaction processing shows 3.5x productivity gains, evidencing scale where use cases are mature.",
+      "area": "Productivity / Automation",
+      "source_type": "Hackett Group (AP Digital World Class Matrix, Nov 2025)"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "pillars": [
+    {
+      "pillar": "Human-in-the-Loop & Named Accountability",
+      "principle": "AI drafts, proposes, and accelerates — but a named human always owns, signs, and is accountable for the final number.",
+      "controls": [
+        "Every AI-assisted output routes to a mandatory human reviewer with sign-off before it leaves the boundary (NAV, reconciliation, investor statement, regulatory filing); no auto-release for anything client- or regulator-facing.",
+        "Accountability register maps each AI use-case to a named owner (RACI), so there is always an identifiable person answerable to the board, auditors, and regulators — never 'the model decided'.",
+        "Materiality-tiered review: higher-risk / higher-value outputs require senior or four-eyes approval; the AI presents its work and confidence, the human adjudicates.",
+        "Reviewer attestation is captured in the audit trail (who approved, when, what they saw, what they changed) and reviewers are trained to spot over-reliance / automation bias."
+      ],
+      "reassurance": "'If AI produces a wrong NAV, who is on the hook?' — Answer: a named human signs every number; the AI is a tool, accountability never transfers to the machine."
+    },
+    {
+      "pillar": "Data Security, Residency & Sovereignty (50+ Jurisdictions)",
+      "principle": "Client data stays where the law and the contract require it; the AI comes to the data, the data does not leak to the model.",
+      "controls": [
+        "Jurisdiction-aware data routing and regional model deployments (in-region / EU / dedicated tenancy) with a data-residency map per fund and per jurisdiction, enforced by policy-as-code, not manual discretion.",
+        "Zero data retention / no-training contractual terms with model providers; enterprise deployment with encryption in transit and at rest, and tenant isolation so one client's data can never surface in another's session.",
+        "Data classification and DLP at the boundary: PII, MNPI, and cross-border transfers are tagged, minimized, and blocked from prompts unless the use-case is sanctioned; GDPR Art. 44-49 transfer basis documented.",
+        "Regional key management and the ability to prove — per record — where it was processed and under which legal basis, for regulator and client due-diligence questionnaires."
+      ],
+      "reassurance": "'Will our data leave the jurisdiction, get co-mingled, or train someone else's model?' — Answer: contractual zero-retention, in-region processing, tenant isolation, and a provable residency map."
+    },
+    {
+      "pillar": "Source Citation, Explainability & Full Audit Trail",
+      "principle": "No unsourced numbers — every AI output is traceable to its inputs, its prompt, its model version, and the human who approved it.",
+      "controls": [
+        "Retrieval-grounded outputs with inline citations back to source documents (trust deeds, trade files, GL, custodian feeds); ungrounded / uncited claims are flagged and cannot be used as the basis for a booked figure.",
+        "Immutable, tamper-evident logging of prompt, retrieved context, model + version, output, confidence, reviewer, and edits — retained per records-retention schedule and exportable for audit.",
+        "Full reproducibility: any historical output can be reconstructed with the exact model version, data snapshot, and configuration in force at the time (versioned, pinned models — no silent upgrades).",
+        "Lineage view that lets an auditor trace a final number backward through the AI step to the underlying evidence in a few clicks."
+      ],
+      "reassurance": "'When the auditor or regulator asks how this figure was derived, can we show our work?' — Answer: end-to-end citation and an immutable, reproducible trail from source to signature."
+    },
+    {
+      "pillar": "Access Controls & Segregation of Duties",
+      "principle": "AI operates strictly within each user's existing entitlements and never becomes a back door around SoD.",
+      "controls": [
+        "The AI inherits the requesting user's RBAC/entitlements — it can only see and act on data that user is already authorized for; no privilege elevation via the assistant.",
+        "SoD enforced across the AI workflow: the identity that prepares/AI-drafts cannot also approve; maker-checker preserved and the AI cannot occupy both roles.",
+        "Least-privilege, per-use-case service accounts for AI system access, with secrets management, session logging, and periodic access recertification.",
+        "Prompt-injection and tool-permission guardrails so the model cannot be coerced into actions or data access outside its sanctioned scope."
+      ],
+      "reassurance": "'Could someone use the AI to see data they shouldn't, or to both prepare and approve?' — Answer: AI runs inside existing entitlements and SoD; it can't elevate privilege or collapse maker-checker."
+    },
+    {
+      "pillar": "Model Risk Management & Validation",
+      "principle": "AI models are governed like any other model of consequence — inventoried, independently validated, monitored, and re-approved on a lifecycle.",
+      "controls": [
+        "Central model inventory with risk-tiering (aligned to SR 11-7-style MRM and EU AI Act tiers); each use-case has a documented risk assessment, intended use, and limitations.",
+        "Independent validation before go-live and periodic revalidation: benchmark test sets, accuracy/precision thresholds, bias and drift testing, and defined acceptance criteria owned outside the build team.",
+        "Ongoing performance monitoring with drift/degradation alerts, KPIs, and automatic fallback to human-only processing when the model breaches thresholds.",
+        "Change control and a model-risk committee gate for new use-cases, model upgrades, and prompt/config changes; kill-switch and rollback procedures documented."
+      ],
+      "reassurance": "'How do you know the model is fit for purpose and stays that way?' — Answer: independent validation, tiered MRM governance, continuous monitoring, and a kill-switch — the same rigor as any material model."
+    },
+    {
+      "pillar": "Hallucination & Error Mitigation",
+      "principle": "The system is designed to fail safe — it says 'I don't know', escalates uncertainty, and never fabricates a number to look complete.",
+      "controls": [
+        "Retrieval-grounding + constrained outputs so the model answers from provided evidence, not memory; abstention and 'insufficient evidence' responses are first-class, not penalized.",
+        "Confidence scoring and mandatory human escalation on low-confidence, out-of-distribution, or high-materiality items; deterministic calculations (NAV math, tie-outs) done by validated engines, with AI used for reasoning/summarization, not arithmetic of record.",
+        "Automated validation harnesses: cross-footing, tolerance checks, reconciliation against golden sources, and adversarial/red-team test suites run before and during deployment.",
+        "Continuous error-rate tracking, incident logging, and feedback loops that feed corrections back into prompts, retrieval, and test sets."
+      ],
+      "reassurance": "'What if it just makes something up?' — Answer: grounded answers, enforced abstention, deterministic engines for the actual numbers, and tolerance checks that catch fabrication before a human ever sees it."
+    },
+    {
+      "pillar": "Regulatory Alignment & Shadow-AI to Sanctioned-AI",
+      "principle": "One governed, transparent AI estate mapped to the control frameworks regulators already trust — replacing ungoverned shadow-AI with a safe, sanctioned path.",
+      "controls": [
+        "Framework mapping and evidence: EU AI Act risk-tiering per use-case, SOC 2 Type II and ISO 27001/42001 for the platform, GDPR DPIAs, and SOX-style ITGC / control testing over AI-touched financial processes.",
+        "Sanctioned-AI provision: an approved, monitored enterprise tool that is genuinely better and easier than consumer chatbots, so staff have no reason to paste client data into unmanaged services.",
+        "Shadow-AI detection and policy enforcement (network/DLP controls blocking unsanctioned AI endpoints) plus a clear intake process to onboard new use-cases safely rather than driving them underground.",
+        "AI governance committee, written policy, mandatory training, vendor due-diligence, and periodic independent audit/attestation to keep alignment current as regulations evolve."
+      ],
+      "reassurance": "'How do we satisfy regulators across the group and stop staff quietly using ChatGPT with client data?' — Answer: use-cases mapped to EU AI Act / SOC 2 / ISO / GDPR / SOX evidence, plus a sanctioned tool good enough that shadow-AI disappears."
+    }
+  ]
+}

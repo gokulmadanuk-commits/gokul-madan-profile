@@ -15,6 +15,18 @@ It is a single-page scrolling narrative with live, interactive demos:
   AI-drafted variance commentary). Hand-rolled SVG charts.
 - **Board-pack generator** — pick a document, period and tone; watch AI draft a
   board-ready narrative live, with every figure pulled from the dashboard numbers.
+- **Ask your numbers** — a working conversational engine: ask in plain English, get an
+  answer computed from the demo numbers with a source citation for every figure.
+- **ROI value calculator** — drag your own inputs; see capacity returned, FTE-equivalents
+  and payback vs a lighthouse. Grounded, deliberately conservative defaults.
+- **Sponsor scorecard** — maps each capability to the PE metrics the board watches
+  (adjusted EBITDA, synergy, cash conversion, covenant headroom, exit-readiness).
+- **Governance & trust** — the guardrails (human-in-the-loop, data residency, audit trail,
+  model-risk) that let a controls-heavy group move fast.
+- **The evidence** — 16 filterable, sourced third-party benchmarks (McKinsey, Gartner,
+  KPMG, Deloitte, BCG, AFP, Hackett).
+- **Why us** — competitive market-map (vs strategy houses & software vendors) and the
+  "complement to your own AI" positioning.
 - **Partnership model** — phased: land 1–2 → prove ROI → strategy/roadmap → train to AI-native.
 
 ## Run it

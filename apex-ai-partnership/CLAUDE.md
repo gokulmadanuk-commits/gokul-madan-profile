@@ -74,6 +74,31 @@ the possible with AI, and (b) proves we're the right partner to deliver it.
   FP&A ~46% time on data / ~35% on insight; ~80% of pack identical MoM; 57% first AI use is
   report-writing; <20% of firms scaled beyond pilots.
 
+## Session 2 — deepening (deep research + new features)
+Ran a 2nd research workflow (competitive landscape, hard ROI benchmarks, Apex intel,
+governance, ROI model, ask-numbers questions). Key intel now baked in:
+- **The "last mile" wedge**: ~88% of AI pilots never reach production; failure is
+  scope/ownership not models. Positioned as our differentiation.
+- **Apex has a CAIO (Helen Wang) + "Apex Nova" AI platform — but client/product-facing.**
+  We position as the INTERNAL CFO-back-office complement (see Nova strip in Why-us).
+  Do NOT pitch generic "AI for finance" — would look redundant.
+- **New CFO Kimberly DeTrask (ex-State Street, Oct 2025), mandate = "future-looking,
+  institutionally-sophisticated finance function".** The #2 operationalises it — that's the
+  hook (referenced as the mandate/theme in Why-now; named lightly).
+- **Sponsor scorecard**: map capabilities → adjusted EBITDA / synergy / organic-v-inorganic /
+  cash conversion / covenant headroom / exit-readiness (PE value language).
+- Uncertainty flags respected: NO hard acquisition count stated; benchmarks shown as
+  "directional / third-party". 88% shown as "industry analyses … as high as ~88%".
+
+New sections & features added (site now 13 sections, auto-numbered):
+- Ask-your-numbers conversational engine (real NL intent matching over demo.json, cited answers)
+- ROI value calculator (grounded defaults; models capacity returned + payback vs lighthouse)
+- Sponsor scorecard, Governance & trust (7 pillars, data-driven), Evidence (16 sourced stats,
+  filterable), upgraded Why-us with competitive market-map + Nova-complement strip, last-mile wedge.
+- New data files: assets/data/governance.json, assets/data/benchmarks.json
+- New JS: initAskNumbers, initROI, initGovernance, initEvidence, numberSections (auto-numbering)
+- New CSS blocks: ask chat, roi, governance, evidence, scorecard, market-map, nova-strip
+
 ## If resuming / iterating
 - Serve locally: `python3 -m http.server 8099` in this folder, open index.html.
 - Headless QA harness pattern: import playwright from `/opt/node22/lib/node_modules/playwright`

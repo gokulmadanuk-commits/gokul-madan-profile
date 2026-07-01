@@ -386,18 +386,240 @@
     next();
   }
 
+  /* ================= ASK YOUR NUMBERS (NL query engine over the data) ================= */
+  function initAskNumbers(data) {
+    const log = $("#askLog"); const chipWrap = $("#askChips"); const form = $("#askForm"); const input = $("#askInput");
+    if (!log) return;
+
+    // ---- precompute the facts the engine can reason over ----
+    const seg = [...data.revenue_by_segment].sort((a, b) => b.revenue_musd - a.revenue_musd);
+    const byGrowth = [...data.revenue_by_segment].sort((a, b) => b.growth_pct - a.growth_pct);
+    const top = seg[0], hi = byGrowth[0], lo = byGrowth[byGrowth.length - 1];
+    const totalAua = data.aum_by_region.reduce((a, r) => a + r.aum_busd, 0);
+    const region = [...data.aum_by_region].sort((a, b) => b.aum_busd - a.aum_busd);
+    const M = data.monthly, last = M[M.length - 1], prev = M[M.length - 2];
+    const kget = (n) => data.kpis.find(x => x.label.toLowerCase().includes(n)) || { value: "", delta: "" };
+    const comm = (n) => data.variance_commentary.find(c => c.line_item.toLowerCase().includes(n));
+    const juneVar = comm("june") || comm("total revenue");
+    const b = (s) => `<b>${s}</b>`;
+    const cite = (s) => `<span class="cite">↳ source · ${s}</span>`;
+
+    // ---- intents: keyword score + answer generator ----
+    const intents = [
+      { keys: ["why","below","budget","miss","short","adverse","down","variance","june","lower"], a: () => ({
+        html: `June revenue came in at ${b("$" + fmt(last.actual) + "m")} versus a ${b("$" + fmt(last.budget) + "m")} budget — a ${b(fmt(((last.actual-last.budget)/last.budget)*100,1) + "% adverse")} variance. It's <b>timing, not run-rate erosion</b>: ${juneVar ? juneVar.commentary : "two large private-markets onboardings slipped past the 30-June cut-off on client-side legal delays, and a NAV-strike timing shift deferred fees."} No mandates were lost.`,
+        cite: "Group P&L → Jun FY26 close · variance bridge B24:B31" }) },
+      { keys: ["best","top","strong","standout","fastest","grow","growth","winner","performer"], a: () => ({
+        html: `Your standout is ${b(hi.segment)}, up ${b("+" + hi.growth_pct + "% YoY")} to ${b("$" + fmt(hi.revenue_musd) + "m")} — driven by strong fund launches and drawdown activity across anchor GP relationships. ${b(byGrowth[1].segment)} is next at +${byGrowth[1].growth_pct}%.`,
+        cite: "Segment P&L → FY26 · revenue by service line" }) },
+      { keys: ["worst","slow","weak","laggard","lowest","underperform"], a: () => ({
+        html: `The slowest grower is ${b(lo.segment)} at ${b("+" + lo.growth_pct + "% YoY")} — steady and recurring, but below the group average. It's a mix effect, not a problem: faster-growing PE and ManCo/ESG lines are pulling the blended rate up.`,
+        cite: "Segment P&L → FY26 · growth vs prior year" }) },
+      { keys: ["margin","ebitda","profit","profitab"], a: () => ({
+        html: `EBITDA margin is ${b(kget("margin").value)} (${kget("margin").delta}). Expansion despite headcount growth reflects <b>platform automation in fund accounting</b> and a favourable shift toward higher-margin ManCo/ESG and PE servicing; wage inflation was largely offset by improved offshore utilisation.`,
+        cite: "Group P&L → FY26 · EBITDA bridge" }) },
+      { keys: ["total revenue","how much revenue","group revenue","topline","top line","full year","fy26 revenue"], a: () => ({
+        html: `Group revenue for FY26 is ${b(kget("total revenue").value)}, ${b(kget("total revenue").delta)}. The book is ~90% recurring — NAV/AUA-linked ad-valorem fees plus per-entity and project charges.`,
+        cite: "Group P&L → FY26 consolidated" }) },
+      { keys: ["aum","aua","assets","region","geography","emea","americas","apac","where"], a: () => ({
+        html: `Platform assets total ${b("$" + fmt(totalAua/1000,2) + "T")} AUA (${kget("aua").delta}). Largest region is ${b(region[0].region)} at ${b("$" + fmt(region[0].aum_busd) + "b")}, then ${region[1].region} ($${fmt(region[1].aum_busd)}b). Net new AUA of ${b(kget("net new").value)} shows continued momentum.`,
+        cite: "Asset servicing ledger → AUA by region" }) },
+      { keys: ["dso","cash","working capital","receivable","collect","days sales"], a: () => ({
+        html: `DSO is ${b(kget("dso").value)} (${kget("dso").delta}). Collections discipline and earlier invoicing on project work released roughly ${b("$21m")} of working capital in the quarter; aged receivables over 90 days fell to 4.1% from 5.3%.`,
+        cite: "AR sub-ledger → DSO trend, aged debt" }) },
+      { keys: ["headcount","fte","people","productiv","per fte","utilisation","utilization","staff"], a: () => ({
+        html: `Headcount is ${b(kget("headcount").value)} FTE (${kget("headcount").delta}), yet revenue per FTE rose to ${b(kget("revenue per").value)} (${kget("revenue per").delta}) — productivity is outpacing hiring, exactly the operating-leverage story the sponsors want to see.`,
+        cite: "HR + P&L → revenue per FTE" }) },
+      { keys: ["forecast","outlook","rest of year","guidance","next","reforecast","expect","fy27"], a: () => ({
+        html: `Full-year guidance is <b>reaffirmed</b>. The June slippage is a timing effect — roughly ${b("$14m")} is expected to recognise in July–August as the delayed closes complete. Watch items: FX translation across ${region[0].region}, H2 onboarding phasing, and DSO.`,
+        cite: "Rolling reforecast → FY26 close + FY27 open" }) },
+      { keys: ["esg","manco","sustainab","sfdr"], a: () => ({
+        html: `${b("ManCo & ESG Solutions")} is the fastest-growing line at ${b("+" + (data.revenue_by_segment.find(s=>/ESG|ManCo/i.test(s.segment))||{growth_pct:22.8}).growth_pct + "% YoY")}, off a small base — driven by SFDR/ESG reporting mandates and third-party AIFM/ManCo appointments in Luxembourg and Ireland. Pipeline supports 20%+ growth into FY27.`,
+        cite: "Segment P&L → ManCo/ESG detail" }) },
+      { keys: ["retention","churn","client","lost","keep"], a: () => ({
+        html: `Client retention by revenue is ${b(kget("retention").value)} (${kget("retention").delta}) — a sticky, recurring book. No material mandates lost this period.`,
+        cite: "Revenue ledger → retention by value" }) },
+    ];
+
+    const suggestions = [
+      "Why was June below budget?",
+      "Which segment is performing best?",
+      "What's driving EBITDA margin?",
+      "Where is our AUA concentrated?",
+      "How's DSO and working capital?",
+      "Is the full-year forecast still on track?",
+      "How is revenue per FTE trending?",
+    ];
+
+    const match = (q) => {
+      const s = q.toLowerCase();
+      let best = null, bestScore = 0;
+      intents.forEach(it => {
+        const score = it.keys.reduce((n, k) => n + (s.includes(k) ? (k.length > 5 ? 2 : 1) : 0), 0);
+        if (score > bestScore) { bestScore = score; best = it; }
+      });
+      return bestScore > 0 ? best : null;
+    };
+
+    const scrollDown = () => { log.scrollTop = log.scrollHeight; };
+    const addUser = (q) => { log.insertAdjacentHTML("beforeend", `<div class="msg user"><div class="bubble">${q}</div></div>`); scrollDown(); };
+    const think = () => { const el = document.createElement("div"); el.className = "msg ai"; el.innerHTML = `<div class="ava">✦</div><div class="bubble thinking"><span></span><span></span><span></span></div>`; log.appendChild(el); scrollDown(); return el; };
+
+    const answer = (q) => {
+      addUser(q);
+      const t = think();
+      setTimeout(() => {
+        const it = match(q);
+        const res = it ? it.a() : {
+          html: `I answer from the board numbers — try asking about <b>revenue variance</b>, <b>segment performance</b>, <b>margin</b>, <b>AUA by region</b>, <b>DSO</b>, <b>productivity</b> or the <b>forecast</b>. In production I'm grounded on your governed ledgers with a citation for every figure.`,
+          cite: "grounded on Apex governed data (illustrative)" };
+        t.querySelector(".bubble").className = "bubble";
+        t.querySelector(".bubble").innerHTML = `${res.html}<div class="cite-row">${cite(res.cite)}<span class="verified">✓ traced &amp; reviewable</span></div>`;
+        scrollDown();
+      }, 620 + Math.random() * 380);
+    };
+
+    chipWrap.innerHTML = suggestions.map(q => `<button class="ask-chip">${q}</button>`).join("");
+    chipWrap.onclick = (e) => { const bt = e.target.closest(".ask-chip"); if (bt) answer(bt.textContent); };
+    form.onsubmit = (e) => { e.preventDefault(); const q = input.value.trim(); if (q) { answer(q); input.value = ""; } };
+
+    // opening message
+    log.insertAdjacentHTML("beforeend", `<div class="msg ai"><div class="ava">✦</div><div class="bubble">Ask me anything about the June board pack — variances, segments, margin, assets, cash. I'll answer from the numbers and show you where each figure comes from.</div></div>`);
+  }
+
+  /* ================= ROI / VALUE CALCULATOR ================= */
+  // Grounded in the research ROI model: model CAPACITY RETURNED (the metric a controls-
+  // minded CFO deputy trusts), net of retained review time, with payback vs a lighthouse.
+  const ROI_INPUTS = [
+    { key: "packs",  label: "Board &amp; management packs / month", def: 60, min: 10, max: 200, step: 5, unit: "" },
+    { key: "hours",  label: "Analyst hours per full pack cycle",   def: 20, min: 6,  max: 45,  step: 1, unit: "hrs" },
+    { key: "auto",   label: "Drafting work AI can take on",        def: 60, min: 30, max: 80,  step: 5, unit: "%" },
+    { key: "review", label: "Analyst review retained (we keep the human in)", def: 25, min: 10, max: 50, step: 5, unit: "%" },
+    { key: "cost",   label: "Fully-loaded cost per finance FTE",   def: 95000, min: 45000, max: 180000, step: 5000, unit: "$/yr" },
+    { key: "invest", label: "Lighthouse investment (year one)",    def: 180000, min: 100000, max: 500000, step: 10000, unit: "$" },
+  ];
+  const PROD_HRS = 1600, CYCLES = 12;
+
+  function initROI() {
+    const wrap = $("#roiInputs"); if (!wrap) return;
+    const state = {}; ROI_INPUTS.forEach(i => state[i.key] = i.def);
+
+    wrap.innerHTML = ROI_INPUTS.map(i => `
+      <div class="roi-field">
+        <div class="roi-lab"><span>${i.label}</span><span class="roi-val" id="rv_${i.key}"></span></div>
+        <input type="range" id="ri_${i.key}" min="${i.min}" max="${i.max}" step="${i.step}" value="${i.def}" />
+      </div>`).join("");
+
+    const fmtInput = (i, v) => (i.unit === "$/yr" || i.unit === "$") ? "$" + fmt(v) : i.unit === "%" ? v + "%" : i.unit ? v + " " + i.unit : fmt(v);
+
+    const compute = () => {
+      const grossHours = state.packs * state.hours * CYCLES;
+      const savedHours = grossHours * (state.auto / 100) * (1 - state.review / 100);
+      const hourly = state.cost / PROD_HRS;
+      const value = savedHours * hourly;                 // steady-state annual capacity value
+      const fteEq = savedHours / PROD_HRS;
+      const payback = state.invest / (value / 12);       // months
+      return { savedHours, value, fteEq, payback };
+    };
+
+    const outputs = {
+      value:      { el: "#roiDollars", fmt: v => "$" + fmt(Math.round(v / 1000)) + "k" },
+      savedHours: { el: "#roiHours",   fmt: v => fmt(Math.round(v)) },
+      fteEq:      { el: "#roiFte",     fmt: v => fmt(v, 1) },
+      payback:    { el: "#roiWeeks",   fmt: v => (v < 1 ? "<1" : fmt(Math.round(v))) },
+    };
+
+    const render = () => {
+      ROI_INPUTS.forEach(i => {
+        $("#rv_" + i.key).textContent = fmtInput(i, state[i.key]);
+        const pct = ((state[i.key] - i.min) / (i.max - i.min)) * 100;
+        $("#ri_" + i.key).style.background = `linear-gradient(90deg, var(--gold) ${pct}%, var(--line) ${pct}%)`;
+      });
+      const r = compute();
+      Object.entries(outputs).forEach(([k, o]) => { const el = $(o.el); if (el) el.textContent = o.fmt(r[k]); });
+      const band = $("#roiBand");
+      if (band) {
+        const low = r.value * 0.7, high = r.value * 1.35;
+        band.innerHTML = `Base case shown. Credible range: <b>$${fmt(Math.round(low/1000))}k</b> – <b>$${fmt(Math.round(high/1000))}k</b> per year — and it scales as we roll the pattern across more of your ${fmt(state.packs)} monthly packs.`;
+      }
+    };
+
+    ROI_INPUTS.forEach(i => {
+      $("#ri_" + i.key).addEventListener("input", (e) => { state[i.key] = +e.target.value; render(); });
+    });
+    render();
+  }
+
   /* ================= BOOT ================= */
+  /* ================= GOVERNANCE ================= */
+  const GOV_ICONS = ["👤","🔒","🧾","🛡️","⚖️","🎯","🗂️","✅"];
+  function initGovernance(gov) {
+    const host = $("#govGrid"); if (!host || !gov) return;
+    host.innerHTML = gov.pillars.map((p, i) => `
+      <div class="gov-card reveal ${i%3===1?'d1':i%3===2?'d2':''}">
+        <div class="g-ico">${GOV_ICONS[i % GOV_ICONS.length]}</div>
+        <h4>${p.pillar}</h4>
+        <p class="principle">${p.principle}</p>
+        <ul>${p.controls.map(c => `<li>${c}</li>`).join("")}</ul>
+        <p class="reassure">“${p.reassurance}”</p>
+      </div>`).join("");
+    // re-observe newly injected reveals
+    reobserve(host);
+  }
+
+  /* ================= EVIDENCE / PROOF ================= */
+  function initEvidence(data) {
+    const host = $("#evGrid"); const bar = $("#evBar"); if (!host || !data) return;
+    const rows = data.benchmarks;
+    const areas = [...new Set(rows.map(b => (b.area || "").split("/")[0].trim()).filter(Boolean))];
+    bar.innerHTML = `<button class="chip active" data-f="all">All evidence</button>` +
+      areas.map(a => `<button class="chip" data-f="${a}">${a}</button>`).join("");
+    const render = (f) => {
+      const list = f === "all" ? rows : rows.filter(b => (b.area || "").split("/")[0].trim() === f);
+      host.innerHTML = list.map(b => `
+        <div class="ev">
+          <span class="area-tab"></span>
+          <div class="stat">${b.stat}</div>
+          <div class="claim">${b.claim}</div>
+          <div class="src">${(b.source_type || "").split("(")[0].trim()}</div>
+        </div>`).join("");
+    };
+    bar.onclick = (e) => { const bt = e.target.closest(".chip"); if (!bt) return;
+      $$(".chip", bar).forEach(c => c.classList.remove("active")); bt.classList.add("active"); render(bt.dataset.f); };
+    render("all");
+  }
+
+  // helper: observe reveals inside a freshly-rendered container
+  function reobserve(container) {
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+    $$(".reveal", container).forEach(el => io.observe(el));
+  }
+
+  // auto-number section eyebrows in DOM order (robust to inserting sections)
+  function numberSections() {
+    $$(".sec-num").forEach((el, i) => { el.textContent = String(i + 1).padStart(2, "0") + " —"; });
+  }
+
   async function boot() {
-    initReveal(); initCounters(); initNavSpy();
+    initReveal(); initCounters(); initNavSpy(); numberSections();
     try {
-      const [uc, data] = await Promise.all([
+      const [uc, data, gov, bench] = await Promise.all([
         fetch("assets/data/usecases.json").then(r => r.json()),
         fetch("assets/data/demo.json").then(r => r.json()),
+        fetch("assets/data/governance.json").then(r => r.json()).catch(() => null),
+        fetch("assets/data/benchmarks.json").then(r => r.json()).catch(() => null),
       ]);
       uc.forEach((u, i) => u._id = i + 1);
       initCapabilityMap(uc);
       initDashboard(data);
+      initAskNumbers(data);
       initGenerator(data);
+      initROI();
+      initGovernance(gov);
+      initEvidence(bench);
+      numberSections();
     } catch (err) {
       console.error("Data load failed (are you opening via file://? use a local server):", err);
       // graceful inline fallback if embedded
