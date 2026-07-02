@@ -1,0 +1,54 @@
+/* ============================================================
+   Apex AI Partnership — design tokens
+   Brand accent #EF6419 per Brandfetch extraction of apexgroup.com
+   (third-party source; verify in devtools before client meeting).
+   Categorical chart palette validated with the dataviz six-checks
+   validator against the paper surface #FAF8F3 (all PASS).
+   ============================================================ */
+:root {
+  /* Surfaces — editorial paper */
+  --paper:        #FAF8F3;  /* page background */
+  --paper-raise:  #FFFFFF;  /* cards, panels */
+  --paper-recess: #F3EFE7;  /* wells, code/grid zebra */
+  --ink-wash:     #1D1F21;  /* dark inverse blocks (footer, hero band) */
+
+  /* Ink */
+  --ink:          #181A1B;  /* primary text */
+  --ink-2:        #4A4D50;  /* secondary text */
+  --ink-3:        #8A8D8F;  /* muted / axis labels */
+  --hairline:     #E4DFD8;  /* rules, gridlines */
+  --baseline:     #C9C3B8;  /* chart axis baseline */
+
+  /* Apex accent — reserved: brand moments + the AI layer */
+  --accent:       #EF6419;  /* Apex "Tango" orange */
+  --accent-ink:   #B84A0B;  /* darkened for text-weight / links (AA on paper) */
+  --accent-wash:  #FBEADD;  /* tint for AI-layer backgrounds */
+
+  /* Categorical series (validated order — never cycle, never reorder) */
+  --series-1:     #2A62B0;  /* blue    — e.g. Fund Solutions   */
+  --series-2:     #EF6419;  /* orange  — e.g. Corporate Solutions */
+  --series-3:     #14875A;  /* green   — e.g. Custody & Depositary */
+  --series-4:     #8A4F9E;  /* violet  — e.g. ESG & Reg Reporting */
+  --series-5:     #A87700;  /* gold    — spare */
+  --series-6:     #C43D6B;  /* magenta — spare */
+
+  /* Polarity / status (fixed meaning, always paired with +/- or icon+label) */
+  --favourable:      #0E7A3C;
+  --favourable-text: #096330;
+  --adverse:         #C0392B;
+  --adverse-text:    #A82F22;
+  --neutral-bar:     #6B6E71;  /* bridge subtotals / totals */
+  --warning:         #B8860B;
+
+  /* Type */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-text:    "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* Rhythm */
+  --measure: 68ch;
+  --radius: 6px;
+  --radius-lg: 12px;
+  --shadow-card: 0 1px 2px rgba(24,26,27,.06), 0 8px 24px rgba(24,26,27,.05);
+  --wrap: 1200px;
+  --wrap-narrow: 760px;
+}
