@@ -1,0 +1,40 @@
+{
+  "name": "luca-forensic-engine",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "LUCA — Forensic Income Reconstruction Engine. Demonstration platform prepared for Masin Advisory Group, Risk & Resolution.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "gen:case": "tsx scripts/generate-case.ts",
+    "gen:docs": "tsx scripts/generate-documents.ts",
+    "gen": "npm run gen:case && npm run gen:docs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.12.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.20",
+    "pdf-lib": "^1.17.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.11",
+    "tsx": "^4.19.2",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vitest": "^2.1.9"
+  }
+}

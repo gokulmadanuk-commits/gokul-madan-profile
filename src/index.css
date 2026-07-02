@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   LUCA — "The Examiner's Folio"
+   Warm paper, iron-gall ink, bottle green, brass, oxblood.
+   Nothing glows. Nothing bounces. Nothing moves that ink cannot do.
+--------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    background-color: #f7f3ea;
+  }
+  body {
+    @apply bg-paper text-ink font-body text-body antialiased;
+    /* faint paper grain — SVG turbulence at ~2% */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  }
+  ::selection {
+    background: #dce5dd;
+    color: #142b22;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+  }
+}
+
+@layer components {
+  /* Small-caps label — Fraunces 600 letterspaced */
+  .label-caps {
+    @apply font-display text-caption uppercase;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  /* Broadsheet rules */
+  .rule-hairline {
+    border-bottom: 1px solid rgba(28, 27, 22, 0.15);
+  }
+  /* Oxford rule: thick over thin, for section mastheads */
+  .rule-oxford {
+    border-top: 2px solid #1c1b16;
+    position: relative;
+    padding-top: 3px;
+  }
+  .rule-oxford::before {
+    content: "";
+    display: block;
+    border-top: 1px solid rgba(28, 27, 22, 0.45);
+  }
+  .rule-oxford-brass {
+    border-top: 2px solid #9c7c46;
+    position: relative;
+    padding-top: 3px;
+  }
+  .rule-oxford-brass::before {
+    content: "";
+    display: block;
+    border-top: 1px solid rgba(156, 124, 70, 0.55);
+  }
+
+  /* Accounting total rules */
+  .rule-subtotal {
+    border-top: 1px solid rgba(28, 27, 22, 0.55);
+  }
+  .rule-total {
+    border-bottom: 3px double #1c1b16;
+    border-top: 1px solid rgba(28, 27, 22, 0.55);
+  }
+
+  /* Ledger figures */
+  .figure {
+    @apply font-mono text-table tabular-nums;
+    font-variant-numeric: tabular-nums;
+  }
+  .figure-debit {
+    color: #8c3a3d;
+  }
+  .figure-credit {
+    color: #2f5d45;
+  }
+
+  /* Flagged row — oxblood left rule like a pen stroke */
+  .row-flagged {
+    background: #f3e4de;
+    box-shadow: inset 2px 0 0 #6e2b31;
+  }
+
+  /* A sheet of paper resting on the desk */
+  .sheet {
+    @apply bg-paper-raised shadow-sheet;
+    border: 1px solid rgba(28, 27, 22, 0.12);
+  }
+
+  /* Marginalia note */
+  .marginalia {
+    @apply font-body italic text-ink-secondary;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+}
+
+@layer utilities {
+  .transition-ink {
+    transition-property: opacity, transform, background-color, border-color, color;
+    transition-duration: 160ms;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

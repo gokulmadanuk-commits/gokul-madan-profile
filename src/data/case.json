@@ -1,0 +1,27 @@
+{
+ "matter": {
+  "number": "2025-0147",
+  "caption": "In re the Marriage of Delaney",
+  "court": "311th Judicial District Court, Harris County, Texas",
+  "engagedBy": "Counsel for Petitioner, Sarah W. Delaney",
+  "preparedFor": "Masin Advisory Group \u2014 Risk & Resolution",
+  "subject": "Marcus T. Delaney",
+  "spouse": "Sarah W. Delaney",
+  "periodStart": "2022-01-01",
+  "periodEnd": "2024-12-31",
+  "summary": "STUB \u2014 regenerate with npm run gen:case"
+ },
+ "entities": [],
+ "accounts": [],
+ "transactions": [],
+ "documents": [],
+ "schedule": [],
+ "reported": [],
+ "tracing": {
+  "accountId": "frost-savings",
+  "claimant": "Sarah W. Delaney",
+  "separateSource": "Estate of Margaret H. Whitmore",
+  "separateAmount": 25000000,
+  "separateDate": "2022-06-15"
+ }
+}
