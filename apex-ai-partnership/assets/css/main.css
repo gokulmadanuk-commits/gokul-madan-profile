@@ -1,0 +1,815 @@
+/* ============================================================
+   Apex AI Partnership — shared editorial system
+   Loads after tokens.css. Pages (pitch.css / dashboard.css) add
+   layout only — every reusable component lives here.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Reset
+   ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, ul, ol {
+  margin: 0;
+}
+
+ul[class], ol[class] { padding: 0; list-style: none; }
+
+img, svg { max-width: 100%; vertical-align: middle; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+/* ------------------------------------------------------------
+   2. Base
+   ------------------------------------------------------------ */
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--accent-wash); color: var(--ink); }
+
+a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--ink); }
+
+hr, .rule {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 2.5rem 0;
+}
+
+.rule-strong { border-top-color: var(--baseline); }
+
+/* ------------------------------------------------------------
+   3. Typography scale — Fraunces display, Inter text
+   ------------------------------------------------------------ */
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 560;
+  letter-spacing: -0.01em;
+}
+
+h1, .h1 {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  line-height: 1.05;
+  font-weight: 560;
+  margin-bottom: 1.4rem;
+}
+
+h2, .h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+h3, .h3 {
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  line-height: 1.25;
+  font-weight: 540;
+  margin-bottom: .75rem;
+}
+
+h4, .h4 {
+  font-family: var(--font-text);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: .5rem;
+}
+
+p + p { margin-top: 1.1em; }
+
+.lede {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+small, .small { font-size: .84rem; }
+
+strong, b { font-weight: 600; }
+
+/* Numbers: tabular everywhere a figure appears */
+.num, .tnum, td.num, th.num {
+  font-variant-numeric: tabular-nums;
+}
+td.num, th.num { text-align: right; }
+
+/* Polarity text — always paired with a sign or parentheses in markup */
+.delta-pos { color: var(--favourable-text); }
+.delta-neg { color: var(--adverse-text); }
+.delta-flat { color: var(--ink-3); }
+
+/* ------------------------------------------------------------
+   4. Layout containers
+   ------------------------------------------------------------ */
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.wrap-narrow {
+  max-width: var(--wrap-narrow);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.prose > p, .prose > ul, .prose > ol { max-width: var(--measure); }
+
+/* Dark inverse band (hero/demo/footer sections) */
+.band-dark {
+  background: var(--ink-wash);
+  color: var(--paper);
+}
+.band-dark h1, .band-dark h2, .band-dark h3 { color: var(--paper); }
+.band-dark .eyebrow { color: var(--paper); opacity: .72; }
+.band-dark .eyebrow b { color: var(--accent); opacity: 1; }
+.band-dark hr, .band-dark .rule { border-top-color: rgba(250, 248, 243, .18); }
+.band-dark a { color: var(--accent); }
+.band-dark a:hover { color: var(--paper); }
+
+/* ------------------------------------------------------------
+   5. Editorial components
+   ------------------------------------------------------------ */
+
+/* Eyebrow — "01 — Why now"; wrap the number in <b> for accent */
+.eyebrow {
+  display: block;
+  font-family: var(--font-text);
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 1.1rem;
+}
+.eyebrow b { color: var(--accent-ink); font-weight: 600; }
+
+/* Pull quote — Fraunces italic between hairlines */
+.pullquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+  line-height: 1.4;
+  color: var(--ink);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: 1.7rem .25rem;
+  margin: 2.75rem 0;
+}
+.pullquote cite {
+  display: block;
+  margin-top: 1rem;
+  font-family: var(--font-text);
+  font-style: normal;
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .05em;
+  color: var(--ink-2);
+}
+
+/* Footnotes + superscript references */
+.footnote, .footnotes {
+  font-size: .8rem;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+.footnotes ol { padding-left: 1.2rem; margin: 0; }
+.footnotes li { margin-bottom: .45rem; }
+.footnotes li:target { color: var(--ink); }
+
+sup.fn, .fn-ref {
+  font-size: .68em;
+  line-height: 0;
+  vertical-align: super;
+}
+sup.fn a, a.fn-ref {
+  color: var(--accent-ink);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 .1em;
+}
+sup.fn a:hover, a.fn-ref:hover { text-decoration: underline; }
+
+/* Marginal / boxed aside note */
+.note-box {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  font-size: .86rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  background: var(--paper-raise);
+}
+
+/* ------------------------------------------------------------
+   6. Illustrative-data badge + popover
+   ------------------------------------------------------------ */
+.badge-illustrative {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--font-text);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: .3rem .75rem;
+  cursor: help;
+  white-space: nowrap;
+}
+.badge-illustrative::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--warning);
+  flex: none;
+}
+.badge-illustrative:hover { border-color: var(--baseline); color: var(--ink); }
+
+/* Popover: <span class="has-popover"><button class="badge-illustrative">…</button>
+   <span class="popover" role="note">…</span></span> — CSS-only reveal on
+   hover / focus-within; JS may pin with .is-open. */
+.has-popover { position: relative; display: inline-block; }
+.has-popover > .popover { display: none; }
+.has-popover:hover > .popover,
+.has-popover:focus-within > .popover,
+.has-popover.is-open > .popover { display: block; }
+
+.popover {
+  position: absolute;
+  z-index: 70;
+  top: calc(100% + 8px);
+  left: 0;
+  width: max-content;
+  max-width: min(42ch, 82vw);
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: .85rem 1rem;
+  font-size: .8rem;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-2);
+  text-align: left;
+  white-space: normal;
+}
+.popover-right { left: auto; right: 0; }
+.popover-up { top: auto; bottom: calc(100% + 8px); }
+
+/* ------------------------------------------------------------
+   7. Buttons
+   ------------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  font-family: var(--font-text);
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: .85rem 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .18s ease, color .18s ease,
+              border-color .18s ease, text-decoration-color .18s ease,
+              text-underline-offset .18s ease;
+}
+
+/* Primary — ink block, orange underline shifts down on hover */
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.btn-primary:hover, .btn-primary:focus-visible {
+  color: var(--paper);
+  text-decoration-color: var(--accent);
+  text-underline-offset: 6px;
+}
+.btn-primary:active { background: var(--ink-wash); }
+
+/* Secondary — hairline */
+.btn-secondary {
+  background: transparent;
+  border-color: var(--baseline);
+  color: var(--ink);
+}
+.btn-secondary:hover, .btn-secondary:focus-visible {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* Accent — reserved for the AI layer's calls to action */
+.btn-accent {
+  background: var(--accent);
+  color: var(--paper-raise);
+}
+.btn-accent:hover, .btn-accent:focus-visible { background: var(--accent-ink); color: var(--paper-raise); }
+
+.btn-small { font-size: .82rem; padding: .55rem 1rem; }
+
+.btn[disabled], .btn[aria-disabled="true"] {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------
+   8. Cards & stat tiles
+   ------------------------------------------------------------ */
+.card {
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.4rem 1.5rem;
+}
+
+.card-flat { box-shadow: none; }
+
+.stat-tile {
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem .95rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  min-width: 0;
+}
+.stat-tile .stat-label {
+  font-size: .74rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--ink-2);
+}
+.stat-tile .stat-value {
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: clamp(1.65rem, 2.4vw, 2.15rem);
+  line-height: 1.08;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.stat-tile .stat-delta {
+  font-size: .8rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.stat-tile .stat-delta.delta-pos { color: var(--favourable-text); }
+.stat-tile .stat-delta.delta-neg { color: var(--adverse-text); }
+.stat-tile .stat-spark { margin-top: .35rem; line-height: 0; }
+
+/* ------------------------------------------------------------
+   9. Financial tables
+   ------------------------------------------------------------ */
+.table-fin {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+.table-fin caption {
+  text-align: left;
+  font-size: .8rem;
+  color: var(--ink-3);
+  padding-bottom: .5rem;
+}
+.table-fin th, .table-fin td {
+  padding: .5rem .75rem;
+  text-align: right;
+}
+.table-fin th:first-child, .table-fin td:first-child {
+  text-align: left;
+}
+.table-fin thead th {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--baseline);
+  white-space: nowrap;
+}
+.table-fin tbody td { border-bottom: 1px solid var(--hairline); }
+.table-fin tbody tr:nth-child(even) { background: var(--paper-recess); }
+.table-fin tbody tr:hover { background: var(--accent-wash); }
+
+/* subtotal / total rules */
+.table-fin tr.row-subtotal td,
+.table-fin tr.row-total td {
+  border-top: 1.5px solid var(--baseline);
+  font-weight: 600;
+  background: transparent;
+}
+.table-fin tr.row-total td { border-bottom: 3px double var(--baseline); }
+
+/* negatives: parentheses in markup + colour here — never colour alone */
+.table-fin .neg, td.neg { color: var(--adverse-text); }
+.table-fin .pos, td.pos { color: var(--favourable-text); }
+
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ------------------------------------------------------------
+   10. Tabs
+   ------------------------------------------------------------ */
+.tabs {
+  display: flex;
+  gap: .25rem;
+  border-bottom: 1px solid var(--hairline);
+  overflow-x: auto;
+}
+.tab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: .75rem 1.05rem .65rem;
+  font-family: var(--font-text);
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .15s ease, border-color .15s ease;
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"], .tab.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+.tab-panel[hidden] { display: none; }
+
+/* ------------------------------------------------------------
+   11. Chips (filters, question chips, source chips)
+   ------------------------------------------------------------ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  appearance: none;
+  font-family: var(--font-text);
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: .38rem .9rem;
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease, background-color .15s ease;
+}
+.chip:hover { border-color: var(--baseline); color: var(--ink); }
+.chip[aria-pressed="true"], .chip.is-selected {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* Non-interactive chips (e.g. cited sources) */
+.chip-static {
+  cursor: default;
+  background: var(--paper-recess);
+}
+.chip-static:hover { border-color: var(--hairline); color: var(--ink-2); }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+/* ------------------------------------------------------------
+   12. The AI layer — reserved treatment
+   ------------------------------------------------------------ */
+.ai-panel {
+  background: var(--accent-wash);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.15rem 1.35rem;
+}
+.ai-panel > * + * { margin-top: .8rem; }
+
+.ai-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: var(--font-text);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.ai-tag::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+/* Amber caveat block (data-honesty moments) */
+.caveat {
+  display: flex;
+  gap: .6rem;
+  align-items: baseline;
+  background: var(--paper-raise);
+  border: 1px solid var(--warning);
+  border-radius: var(--radius);
+  padding: .75rem 1rem;
+  font-size: .84rem;
+  color: var(--ink-2);
+}
+.caveat::before {
+  content: "▲";
+  font-size: .7rem;
+  color: var(--warning);
+  flex: none;
+  transform: translateY(-1px);
+}
+
+/* Typewriter caret (appended by Viz.typewriter) */
+.tw-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: -0.12em;
+  background: var(--accent);
+  animation: tw-blink .9s steps(1) infinite;
+}
+@keyframes tw-blink { 50% { opacity: 0; } }
+
+/* ------------------------------------------------------------
+   13. Skeleton shimmer — latency theater
+   ------------------------------------------------------------ */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-recess);
+  border-radius: var(--radius);
+  min-height: 1em;
+  color: transparent;
+  user-select: none;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(255, 255, 255, .7) 50%, transparent 100%);
+  animation: skeleton-sweep 1.3s ease-in-out infinite;
+}
+@keyframes skeleton-sweep {
+  to { transform: translateX(100%); }
+}
+.skeleton-line { height: .9em; margin: .5em 0; }
+.skeleton-line:last-child { width: 62%; }
+
+/* ------------------------------------------------------------
+   14. Chart chrome (used by charts.js)
+   ------------------------------------------------------------ */
+.figure { margin: 1.9rem 0; }
+.figure-title {
+  font-family: var(--font-text);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.figure-sub, .figure-caption {
+  font-size: .78rem;
+  color: var(--ink-3);
+  margin-top: .15rem;
+}
+.figure-caption { margin-top: .6rem; }
+
+.viz { position: relative; }
+
+.viz-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1.15rem;
+  margin: .55rem 0 .4rem;
+  font-size: .78rem;
+  color: var(--ink-2);
+}
+.viz-key { display: inline-flex; align-items: center; gap: .45rem; }
+.viz-swatch-line {
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  flex: none;
+}
+.viz-swatch-rect {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex: none;
+}
+
+.viz-tip {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  max-width: 320px;
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: .55rem .75rem;
+  font-family: var(--font-text);
+  font-size: .78rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.viz-tip .tip-title {
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: .25rem;
+}
+.viz-tip .tip-row {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  min-width: 130px;
+}
+.viz-tip .tip-row b {
+  margin-left: auto;
+  padding-left: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.viz-tip .tip-key {
+  align-self: center;
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  flex: none;
+}
+.viz-tip .tip-key-rect { width: 9px; height: 9px; }
+.viz-tip .tip-muted { color: var(--ink-3); font-size: .74rem; max-width: 240px; }
+
+.viz-bar:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 1px; }
+
+/* ------------------------------------------------------------
+   15. Accordion (objections)
+   ------------------------------------------------------------ */
+details.accordion {
+  border-top: 1px solid var(--hairline);
+}
+details.accordion:last-of-type { border-bottom: 1px solid var(--hairline); }
+details.accordion summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem .25rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+}
+details.accordion summary::-webkit-details-marker { display: none; }
+details.accordion summary::after {
+  content: "+";
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ink-3);
+  flex: none;
+  transition: transform .18s ease;
+}
+details.accordion[open] summary::after { content: "–"; color: var(--accent-ink); }
+details.accordion .accordion-body {
+  padding: 0 .25rem 1.3rem;
+  color: var(--ink-2);
+  max-width: var(--measure);
+}
+
+/* ------------------------------------------------------------
+   16. Focus visibility (keyboard)
+   ------------------------------------------------------------ */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 200;
+  background: var(--ink);
+  color: var(--paper);
+  padding: .6rem 1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: top .15s ease;
+}
+.skip-link:focus-visible { top: 1rem; }
+
+/* ------------------------------------------------------------
+   17. Print — collapse interaction to end states
+   ------------------------------------------------------------ */
+@media print {
+  body { background: var(--paper-raise); }
+
+  .no-print, .viz-tip, .skip-link, .tw-caret { display: none !important; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .card, .stat-tile, .figure, .table-fin tr, .ai-panel, .pullquote {
+    break-inside: avoid;
+  }
+
+  .card, .stat-tile { box-shadow: none; }
+
+  /* accents survive print where the browser allows it */
+  .ai-panel, .caveat, .badge-illustrative, .chip {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* open every accordion; show every tab panel */
+  details.accordion .accordion-body { display: block; }
+  .tab-panel[hidden] { display: block; }
+
+  .skeleton { background: none; }
+  .skeleton::after { display: none; }
+
+  /* dark bands cost toner and hide ink-on-paper text */
+  .band-dark { background: var(--paper-raise); color: var(--ink); }
+  .band-dark h1, .band-dark h2, .band-dark h3 { color: var(--ink); }
+}
+
+/* Force accordions open in print (details needs the attribute; this is
+   the graceful CSS half — page scripts add [open] onbeforeprint) */
+@media print {
+  details.accordion > summary::after { display: none; }
+}
+
+/* ------------------------------------------------------------
+   18. Reduced motion
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .tw-caret { animation: none; }
+  .skeleton::after { animation: none; }
+}
