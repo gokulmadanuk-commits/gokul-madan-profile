@@ -25,7 +25,7 @@ established at 2021-12-31 (the Holland "firm starting point").
 |---|---|---|---|
 | Reported income (returns) | $138,500 | $141,200 | $143,800 |
 | True lifestyle spend | ~$385,000 | ~$412,000 | ~$438,000 |
-| Understatement (all 3 methods converge ±5%) | ~$230k | ~$265k | ~$285k |
+| Understatement (all 3 methods converge <1%) | ~$315k | ~$420k | ~$380k |
 
 ### Accounts (7)
 
@@ -51,7 +51,7 @@ established at 2021-12-31 (the Holland "firm starting point").
 3. **Separate property:** 2022-06-15 Sarah deposits $250,000 — Estate of Margaret H. Whitmore
    (her mother; executor letter doc) — into frost-savings, which already holds and continues
    to receive community funds. Withdrawals follow; balance hits a minimum of ~$187,340
-   (2023-11-17) then recovers to ~$233,000 at 2024-12-31. Minimum sum balance ⇒ $187,340
+   (2023-11-17) then recovers to ~$222,000 at 2024-12-31. Minimum sum balance ⇒ $187,340
    retains separate character; community-out-first ledger shows every withdrawal consuming
    community first.
 4. **Lifestyle:** Tanglewood home mortgage (~$6,400/mo, Cadence Bank), Kinkaid School tuition
