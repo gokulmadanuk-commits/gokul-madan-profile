@@ -297,7 +297,8 @@
         name: s.name || "",
         color: resolveColor(s.color, el),
         values: s.values || [],
-        dash: s.dash || null,
+        /* dash accepts a dasharray string or `true` for the house dash */
+        dash: s.dash === true ? "5 4" : (s.dash || null),
         width: s.width || 2
       };
     });

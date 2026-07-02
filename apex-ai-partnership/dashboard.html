@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finance Intelligence — working demo · Apex Group</title>
+<meta name="description" content="A working demo of an AI-assisted finance function for Apex Group: command centre, natural-language Q&amp;A, board-pack generation and workbook risk scanning. Illustrative data throughout.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+<a class="skip-link" href="#dash-main">Skip to content</a>
+<h1 class="visually-hidden">Finance Intelligence — working demo for Apex Group</h1>
+
+<header class="dash-header no-pack-print">
+  <div class="wrap dash-header-inner">
+    <div class="dash-wordmark">
+      <span class="dash-mark">Finance Intelligence</span>
+      <span class="dash-mark-sub">Working demo for Apex Group</span>
+    </div>
+    <div class="dash-header-meta">
+      <span class="period-pill num" id="periodPill"></span>
+      <span class="has-popover">
+        <button class="badge-illustrative" type="button" aria-describedby="illus-note">Illustrative data</button>
+        <span class="popover popover-right" role="note" id="illus-note"></span>
+      </span>
+      <a class="dash-backlink" href="index.html">&larr;&nbsp;The proposal</a>
+    </div>
+  </div>
+  <nav class="wrap dash-tabs-row" aria-label="Demo modules">
+    <div class="tabs" role="tablist" aria-label="Demo modules">
+      <a class="tab" role="tab" id="tab-command" href="#command" aria-controls="panel-command" aria-selected="false" tabindex="-1">Command centre</a>
+      <a class="tab" role="tab" id="tab-ask" href="#ask" aria-controls="panel-ask" aria-selected="false" tabindex="-1">Ask the numbers</a>
+      <a class="tab" role="tab" id="tab-boardpack" href="#boardpack" aria-controls="panel-boardpack" aria-selected="false" tabindex="-1">Board pack</a>
+      <a class="tab" role="tab" id="tab-workbook" href="#workbook" aria-controls="panel-workbook" aria-selected="false" tabindex="-1">Workbook scanner</a>
+    </div>
+  </nav>
+</header>
+
+<main id="dash-main">
+
+  <!-- ============================================================
+       #command — Command centre
+       ============================================================ -->
+  <section class="tab-panel no-pack-print" id="panel-command" role="tabpanel" aria-labelledby="tab-command" tabindex="-1" hidden>
+    <div class="wrap module">
+      <header class="module-head">
+        <p class="eyebrow"><b>01</b> — Command centre</p>
+        <h2>June at a glance</h2>
+        <p class="lede module-lede" id="commandLede"></p>
+      </header>
+
+      <div class="kpi-row" id="kpiRow"></div>
+
+      <div class="grid-2 chart-pair">
+        <figure class="figure chart-card">
+          <figcaption>
+            <span class="figure-title">Revenue — trailing 12 months ($m)</span>
+            <span class="figure-sub" id="revenueSub"></span>
+          </figcaption>
+          <div class="viz" id="chartRevenue"></div>
+        </figure>
+        <figure class="figure chart-card">
+          <figcaption>
+            <span class="figure-title">EBITDA margin vs budget (%)</span>
+            <span class="figure-sub" id="marginSub"></span>
+          </figcaption>
+          <div class="viz" id="chartMargin"></div>
+        </figure>
+      </div>
+
+      <figure class="figure chart-card chart-wide">
+        <figcaption>
+          <span class="figure-title">Revenue by service line — year to date ($m)</span>
+          <span class="figure-sub" id="serviceSub"></span>
+        </figcaption>
+        <div class="viz" id="chartServiceLines"></div>
+        <p class="figure-caption" id="serviceCaption"></p>
+      </figure>
+
+      <section class="bridge-hero" aria-labelledby="bridgeHeading">
+        <div class="bridge-head">
+          <h3 id="bridgeHeading">Where the June margin went</h3>
+          <p class="bridge-lede" id="bridgeLede"></p>
+        </div>
+        <div class="bridge-grid">
+          <figure class="figure chart-card bridge-figure">
+            <figcaption>
+              <span class="figure-title" id="bridgeTitle"></span>
+              <span class="figure-sub">Favourable and adverse variances, budget to actual</span>
+            </figcaption>
+            <div class="viz" id="chartBridge"></div>
+          </figure>
+          <aside class="ai-panel bridge-commentary" aria-label="AI commentary on the June EBITDA bridge">
+            <div class="bridge-commentary-head">
+              <span class="ai-tag">AI draft — for human review</span>
+              <button class="btn btn-accent btn-small" type="button" id="runCommentary">Run AI commentary</button>
+            </div>
+            <div class="commentary-body" id="commentaryBody">
+              <p class="commentary-hint">Press <em>Run AI commentary</em> and the bridge replays step by step while the narrative drafts itself — each line grounded in the ledger entries behind it.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <div class="module-strip">
+        <p>This is illustrative — imagine it on your consolidation layer.</p>
+        <a class="btn btn-secondary btn-small" href="index.html#engagement">See the engagement plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       #ask — Ask the numbers
+       ============================================================ -->
+  <section class="tab-panel no-pack-print" id="panel-ask" role="tabpanel" aria-labelledby="tab-ask" tabindex="-1" hidden>
+    <div class="wrap module ask-wrap">
+      <header class="module-head">
+        <p class="eyebrow"><b>02</b> — Ask the numbers</p>
+        <h2>Ask the June numbers</h2>
+        <p class="lede module-lede" id="askLede"></p>
+      </header>
+
+      <div class="ask-log" id="askLog"></div>
+      <div class="visually-hidden" aria-live="polite" id="askLive"></div>
+
+      <form class="ask-box" id="askForm">
+        <label class="visually-hidden" for="askInput">Ask a question about the June numbers</label>
+        <input type="text" id="askInput" name="question" autocomplete="off" spellcheck="false"
+               placeholder="Why did June margin miss budget?">
+        <button class="btn btn-accent" type="submit" id="askSubmit">Ask</button>
+      </form>
+
+      <div class="chip-row ask-chips" id="askChips" aria-label="Worked questions"></div>
+      <p class="footnote ask-footnote" id="askFootnote"></p>
+
+      <div class="module-strip">
+        <p>This is illustrative — imagine it on your consolidation layer.</p>
+        <a class="btn btn-secondary btn-small" href="index.html#engagement">See the engagement plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       #boardpack — Board pack in minutes
+       ============================================================ -->
+  <section class="tab-panel" id="panel-boardpack" role="tabpanel" aria-labelledby="tab-boardpack" tabindex="-1" hidden>
+    <div class="wrap module">
+      <header class="module-head no-pack-print">
+        <p class="eyebrow"><b>03</b> — Board pack in minutes</p>
+        <h2>The June board pack, drafted before you finish coffee</h2>
+        <p class="lede module-lede" id="bpLede"></p>
+      </header>
+
+      <div class="bp-grid">
+        <div class="bp-config no-pack-print">
+          <div class="card bp-config-card">
+            <h3 class="h4">Configuration</h3>
+            <dl class="bp-fixed">
+              <div><dt>Audience</dt><dd>Group Board</dd></div>
+              <div><dt>Period</dt><dd id="bpPeriod"></dd></div>
+              <div><dt>Source</dt><dd id="bpSource"></dd></div>
+            </dl>
+            <fieldset class="bp-sections">
+              <legend>Sections</legend>
+              <div id="bpSectionList"></div>
+            </fieldset>
+            <button class="btn btn-accent bp-generate" type="button" id="bpGenerate">Generate June board pack</button>
+          </div>
+
+          <ol class="bp-pipeline" id="bpPipeline" hidden aria-label="Generation pipeline"></ol>
+
+          <div class="bp-toolbar" id="bpToolbar" hidden>
+            <button class="btn btn-secondary btn-small" type="button" id="bpPrint">Print / save as PDF</button>
+            <span class="footnote" id="bpPrintHint">Prints the pack only — nothing else on this page.</span>
+          </div>
+
+          <div class="ai-panel bp-review" id="bpReview" hidden>
+            <span class="ai-tag">AI draft — for human review</span>
+            <p id="bpReviewNote"></p>
+          </div>
+        </div>
+
+        <div class="bp-output">
+          <div class="note-box bp-empty no-pack-print" id="bpEmpty">
+            The pack renders here as a paged document — five pipeline steps, a few seconds,
+            every figure traced to the June consolidation. The close it draws from is already
+            done and untouched.
+          </div>
+          <div class="pack-paper" id="packPaper" hidden></div>
+        </div>
+      </div>
+
+      <figure class="figure bp-timeline no-pack-print">
+        <figcaption>
+          <span class="figure-title">The reporting cycle — today vs with AI (working days)</span>
+          <span class="figure-sub">The close is hatched because nothing about it changes.</span>
+        </figcaption>
+        <div class="viz" id="chartTimeline"></div>
+        <p class="figure-caption" id="timelineCaption"></p>
+      </figure>
+
+      <div class="module-strip no-pack-print">
+        <p>This is illustrative — imagine it on your consolidation layer.</p>
+        <a class="btn btn-secondary btn-small" href="index.html#engagement">See the engagement plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       #workbook — Workbook risk scanner
+       ============================================================ -->
+  <section class="tab-panel no-pack-print" id="panel-workbook" role="tabpanel" aria-labelledby="tab-workbook" tabindex="-1" hidden>
+    <div class="wrap module">
+      <header class="module-head">
+        <p class="eyebrow"><b>04</b> — Workbook risk scanner</p>
+        <h2>The workbook nobody has audited</h2>
+        <p class="lede module-lede" id="wbLede"></p>
+      </header>
+
+      <div class="card wb-filecard">
+        <span class="wb-filetype" aria-hidden="true">XLSX</span>
+        <div class="wb-fileinfo">
+          <span class="wb-filename" id="wbFileName"></span>
+          <span class="wb-filemeta" id="wbFileMeta"></span>
+        </div>
+        <button class="btn btn-accent" type="button" id="wbScan">Scan workbook</button>
+      </div>
+
+      <div class="wb-progress" id="wbProgress" hidden>
+        <div class="wb-progress-track" role="progressbar" aria-label="Scanning workbook" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="wbProgressBar">
+          <div class="wb-progress-fill" id="wbProgressFill"></div>
+        </div>
+        <p class="wb-progress-status footnote" id="wbProgressStatus"></p>
+      </div>
+
+      <div class="wb-results" id="wbResults" hidden>
+        <div class="wb-summary" id="wbSummary"></div>
+        <div class="wb-main">
+          <div class="wb-sheet">
+            <div class="wb-formulabar">
+              <span class="wb-cellref num" id="wbCellRef"></span>
+              <span class="wb-fx" aria-hidden="true">fx</span>
+              <code class="wb-formula num" id="wbFormula"></code>
+            </div>
+            <div class="table-scroll wb-gridwrap">
+              <table class="wb-grid wb-i-hidden" id="wbGrid"></table>
+            </div>
+            <p class="footnote wb-gridnote">Column I is hidden in the workbook itself — the scanner reads it anyway. Click any cell to inspect it; click a marker or a finding to see the issue.</p>
+          </div>
+          <aside class="wb-findings" id="wbFindings" aria-label="Scan findings"></aside>
+        </div>
+        <p class="wb-closer">Point this at the fee models that feed revenue — before they feed the P&amp;L.</p>
+      </div>
+
+      <div class="module-strip">
+        <p>This is illustrative — imagine it on your consolidation layer.</p>
+        <a class="btn btn-secondary btn-small" href="index.html#engagement">See the engagement plan</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="dash-footer no-pack-print">
+  <div class="wrap">
+    <p class="footnote" id="dashDisclaimer"></p>
+  </div>
+</footer>
+
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/charts.js" defer></script>
+<script src="assets/js/dashboard.js" defer></script>
+</body>
+</html>

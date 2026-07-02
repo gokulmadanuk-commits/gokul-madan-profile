@@ -51,13 +51,36 @@ Static site, zero build step — open `index.html` in a browser.
 - [x] 2026-07-02 Branch `claude/apex-ai-transformation-pitch-nyokqh`, folder scaffolded.
 - [x] 2026-07-02 Research workflow launched (Apex brand/business, genaipi.org &
       pitch playbooks, finance-AI use cases + benchmarks, demo craft).
-- [ ] Research synthesised into `research/NOTES.md`.
-- [ ] Design tokens + palette validated.
-- [ ] Seeded dataset authored (`data.js`).
-- [ ] Pitch page built.
-- [ ] Dashboard demo built.
-- [ ] Verified in headless Chromium (screenshots, console clean).
-- [ ] Committed & pushed.
+- [x] Research synthesised into `research/NOTES.md` (Apex brand = #EF6419 orange
+      per Brandfetch — navy/yellow memory debunked; real Fitch financials:
+      ~$1.5bn revenue, 31%→35% margin march, 7.6x→5.8x deleveraging; CFO
+      DeTrask "future-looking finance function" mandate; GenAI PI STE model).
+- [x] Design tokens + categorical palette validated (dataviz six-checks, all
+      PASS on paper surface #FAF8F3).
+- [x] Seeded dataset authored (`data.js`) — June 2026 close, every view foots;
+      self-check IIFE runs clean.
+- [x] Pitch page built (`index.html`) — 8 acts, interactive capability map
+      (grid/list, filters, drawer), engagement timeline, 14 footnoted sources.
+- [x] Dashboard demo built (`dashboard.html`) — #command (KPIs, T12 charts,
+      EBITDA bridge + streamed AI commentary), #ask (7 worked answers, fuzzy
+      free-text fallback), #boardpack (animated pipeline → printable pack),
+      #workbook (scanner with 6 findings on a fee-model grid).
+- [x] Integration pass fixed one real bug (dash:true rendered budget lines
+      solid) and verified number ties, links, footnotes, console cleanliness.
+- [x] Verified end-to-end in headless Chromium (11 screenshots reviewed,
+      console clean, print-pack mode works, all four modules driven).
+- [x] Committed & pushed to `claude/apex-ai-transformation-pitch-nyokqh`.
+
+## Known follow-ups (next session)
+
+- Verify #EF6419 against apexgroup.com in real devtools (site was 403-blocked
+  from this environment; Brandfetch is third-party).
+- Contact block uses Gokul Madan / gokulmadan2@gmail.com — confirm the firm
+  name/brand to present under before the meeting.
+- Revenue T12 legend shows Budget/Prior-year with same grey swatch (dash
+  disambiguates in-plot) — acceptable, could add dashed legend swatches.
+- Optional: deploy (e.g. Vercel/GitHub Pages) for a shareable link; site is
+  fully static and works from file://.
 
 ## Session notes
 
