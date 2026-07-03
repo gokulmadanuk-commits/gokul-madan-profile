@@ -33,7 +33,7 @@ Renders the Oxford rule beneath; start every page with one.
 ```tsx
 <StatTile
   label="Understatement, 2023"
-  value={<TickFigure cents={26_500_000_00 / 100} />}  // ReactNode or string
+  value={<TickFigure cents={42_000_000} />}  // ReactNode or string; 42_000_000 cents = $420,000
   note="All three methods converge within 5%."
   tone="adverse"   // 'default' | 'adverse' (oxblood) | 'credit' (green)
 />
