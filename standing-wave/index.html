@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>STANDING WAVE — an instrument that proves a theorem</title>
+<meta name="description" content="A quarter-million grains of sand on a vibrating plate you play with your fingers. Find the pure intervals, stack twelve perfect fifths, and prove with your own ears why perfect tuning is mathematically impossible.">
+<meta property="og:title" content="STANDING WAVE">
+<meta property="og:description" content="Play sand. Hear ratios. Prove the Pythagorean comma with your fingers.">
+<meta name="theme-color" content="#050507">
+<link rel="preload" href="fonts/plex-mono-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050507'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23EDEAE2' stroke-width='1.4'/%3E%3Ccircle cx='16' cy='7' r='2.6' fill='%23FF3B1F'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<canvas id="plate"></canvas>
+<canvas id="overlay"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="frame" aria-hidden="true"></div>
+
+<div id="title-fallback" aria-hidden="true">
+  <h1>STANDING<br>WAVE</h1>
+</div>
+
+<header class="ui">
+  <div class="wordmark"><b>STANDING WAVE</b> · SW-001</div>
+  <nav id="nav" aria-label="acts">
+    <button data-act="tune">01 TUNE</button>
+    <button data-act="interval">02 INTERVAL</button>
+    <button data-act="loom">03 LOOM</button>
+    <button data-act="etch">04 ETCH</button>
+  </nav>
+</header>
+
+<button id="mute" class="ui">SOUND ON</button>
+
+<div class="colophon" aria-hidden="true">
+  CHLADNI PLATE · ANALYTIC FIELD<br>
+  BUILT BY AN AI AGENT · NO FRAMEWORKS<br>
+  NOTHING PRE-RENDERED · VIEW SOURCE
+</div>
+
+<div id="ratio-row" aria-hidden="true"></div>
+<div id="stamp" role="status"></div>
+
+<div id="equation" aria-hidden="true">
+  <div class="eq">3<sup>12</sup> = 531,441&ensp;<b>≠</b>&ensp;524,288 = 2<sup>19</sup></div>
+  <div class="sub">TWELVE PURE FIFTHS CAN NEVER EQUAL SEVEN OCTAVES</div>
+</div>
+
+<div id="temper-wrap" class="ui">
+  <label for="temper">TEMPER — SPREAD THE ERROR AROUND THE CIRCLE</label>
+  <input id="temper" type="range" min="0" max="100" value="0" step="1" aria-label="temper the circle of fifths">
+</div>
+
+<button id="seal" class="ui">HOLD<br>TO<br>ETCH</button>
+
+<div id="etch-panel" class="ui" role="dialog" aria-label="your etching">
+  <div class="row"><span>EDITION</span><b id="etch-hash" class="red">—</b></div>
+  <div class="row"><span>DEVELOPED</span><b id="etch-date">—</b></div>
+  <div class="row"><span>RATIOS FOUND</span><b id="etch-ratios">—</b></div>
+  <div class="row"><span>PYTHAGOREAN COMMA</span><b id="etch-comma">—</b></div>
+  <div class="row"><span>MEDIUM</span><b id="etch-engine">—</b></div>
+  <p class="motto">Nothing here was drawn. Everything was played.</p>
+  <div class="btns">
+    <button id="btn-save">SAVE PNG</button>
+    <button id="btn-share">SHARE</button>
+    <button id="btn-again">PLAY AGAIN</button>
+  </div>
+</div>
+
+<button id="chip" class="ui"></button>
+
+<div class="caption-wrap" aria-live="polite">
+  <div id="caption"></div>
+  <div id="caption-sub"></div>
+</div>
+
+<div id="telemetry" aria-hidden="true"></div>
+
+<noscript>
+  <div style="position:fixed;inset:0;display:grid;place-items:center;background:#050507;color:#EDEAE2;font-family:monospace;text-align:center;padding:2rem;">
+    STANDING WAVE is an instrument.<br>It needs JavaScript to vibrate.
+  </div>
+</noscript>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
