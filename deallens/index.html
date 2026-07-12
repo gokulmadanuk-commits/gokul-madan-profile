@@ -10,6 +10,15 @@
     />
   </head>
   <body>
+    <script>
+      // Apply the stored theme before hydration so there is no flash.
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("deallens-theme") === "dark" ? "dark" : "light";
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

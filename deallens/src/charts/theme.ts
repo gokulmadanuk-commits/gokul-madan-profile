@@ -27,7 +27,7 @@ export const SURFACE_2 = "var(--surface-2)";
 export const AXIS_TICK = { fill: INK.muted, fontSize: 11 } as const;
 
 /** Subtle wash used as the bar-chart hover cursor. */
-export const CURSOR_FILL = { fill: "rgba(255,255,255,0.05)" } as const;
+export const CURSOR_FILL = { fill: "var(--cursor-wash)" } as const;
 
 /** Crosshair cursor for line/area charts. */
 export const CURSOR_LINE = { stroke: GRIDLINE, strokeWidth: 1 } as const;

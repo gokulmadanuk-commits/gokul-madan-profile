@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
-import { ChevronDown, RotateCcw } from "lucide-react";
+import { ChevronDown, Moon, RotateCcw, Sun } from "lucide-react";
 import type { DealAssumptions } from "@/engine/types";
+import type { ThemeMode } from "@/App";
 import { fmtM, fmtPct, fmtX } from "@/lib/format";
 import SliderControl from "@/components/SliderControl";
 
@@ -12,6 +13,8 @@ interface AssumptionsPanelProps {
   scenarioDescription: string;
   onSet: (patch: Partial<DealAssumptions>) => void;
   onReset: () => void;
+  theme: ThemeMode;
+  onThemeChange: (t: ThemeMode) => void;
 }
 
 /** Resize a growth vector to `n` years: truncate, or pad with the last value. */
@@ -32,7 +35,7 @@ function Group({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="border-b border-white/10 last:border-b-0">
+    <div className="border-b border-line last:border-b-0">
       <button
         type="button"
         aria-expanded={open}
@@ -66,6 +69,8 @@ export default function AssumptionsPanel({
   scenarioDescription,
   onSet,
   onReset,
+  theme,
+  onThemeChange,
 }: AssumptionsPanelProps) {
   const a = assumptions;
   const [fineTuneOpen, setFineTuneOpen] = useState(false);
@@ -95,9 +100,9 @@ export default function AssumptionsPanel({
   return (
     <aside
       aria-label="Deal assumptions"
-      className="rounded-xl border border-white/10 bg-surface-1"
+      className="rounded-xl border border-line bg-surface-1"
     >
-      <div className="border-b border-white/10 px-5 pb-4 pt-5">
+      <div className="border-b border-line px-5 pb-4 pt-5">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h2 className="text-sm font-semibold text-ink-primary">
@@ -111,7 +116,7 @@ export default function AssumptionsPanel({
             <button
               type="button"
               onClick={onReset}
-              className="flex shrink-0 items-center gap-1.5 rounded-md border border-white/10 bg-surface-2 px-2.5 py-1.5 text-[11px] font-medium text-ink-secondary transition-colors duration-150 hover:text-ink-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="flex shrink-0 items-center gap-1.5 rounded-md border border-line bg-surface-2 px-2.5 py-1.5 text-[11px] font-medium text-ink-secondary transition-colors duration-150 hover:text-ink-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <RotateCcw size={11} aria-hidden="true" />
               Reset
@@ -268,7 +273,7 @@ export default function AssumptionsPanel({
             Fine-tune growth by year
           </button>
           {fineTuneOpen && (
-            <div className="mb-2 rounded-lg border border-white/10 bg-surface-0/40 px-3 py-1.5">
+            <div className="mb-2 rounded-lg border border-line bg-surface-0/40 px-3 py-1.5">
               {activeGrowth.map((g, i) => (
                 <SliderControl
                   key={i}
@@ -348,6 +353,43 @@ export default function AssumptionsPanel({
             onChange={(v) => onSet({ exitMultiple: v })}
           />
         </Group>
+      </div>
+
+      {/* Appearance toggle */}
+      <div className="flex items-center justify-between border-t border-line px-5 py-3.5">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-muted">
+          Appearance
+        </span>
+        <div
+          role="group"
+          aria-label="Appearance"
+          className="flex rounded-lg border border-line bg-surface-2 p-0.5"
+        >
+          {(
+            [
+              { id: "light", label: "Light", Icon: Sun },
+              { id: "dark", label: "Dark", Icon: Moon },
+            ] as const
+          ).map(({ id, label, Icon }) => {
+            const active = theme === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                aria-pressed={active}
+                onClick={() => onThemeChange(id)}
+                className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[11px] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  active
+                    ? "bg-surface-1 text-ink-primary shadow-sm"
+                    : "text-ink-muted hover:text-ink-secondary"
+                }`}
+              >
+                <Icon size={12} aria-hidden="true" />
+                {label}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </aside>
   );

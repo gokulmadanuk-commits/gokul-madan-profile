@@ -47,7 +47,7 @@ export default function Tabs({ active, onChange }: TabsProps) {
     <div
       role="tablist"
       aria-label="Deal analytics views"
-      className="flex gap-1 overflow-x-auto border-b border-white/10"
+      className="flex gap-1 overflow-x-auto border-b border-line"
     >
       {TABS.map((tab, i) => {
         const isActive = tab.id === active;

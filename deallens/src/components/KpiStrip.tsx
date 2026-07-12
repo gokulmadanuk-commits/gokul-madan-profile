@@ -37,11 +37,11 @@ function Tile({
   sub?: ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-surface-1 px-5 py-4">
+    <div className="rounded-xl border border-line bg-surface-1 px-5 py-4">
       <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-ink-muted">
         {label}
       </p>
-      <p className="mt-1.5 text-[30px] font-semibold leading-none tracking-tight text-ink-primary">
+      <p className="mt-1.5 font-serif text-[30px] font-semibold leading-none tracking-tight text-ink-primary">
         {value}
       </p>
       {sub && <div className="mt-2 text-[11px] leading-none">{sub}</div>}

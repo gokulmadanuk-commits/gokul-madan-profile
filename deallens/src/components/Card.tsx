@@ -14,11 +14,11 @@ export function Card({
 }) {
   return (
     <section
-      className={`rounded-xl border border-white/10 bg-surface-1 p-6 ${className}`}
+      className={`rounded-xl border border-line bg-surface-1 p-6 ${className}`}
     >
       {title && (
         <header className="mb-4">
-          <h3 className="text-sm font-semibold tracking-wide text-ink-primary">
+          <h3 className="font-serif text-[15px] font-semibold text-ink-primary">
             {title}
           </h3>
           {subtitle && (

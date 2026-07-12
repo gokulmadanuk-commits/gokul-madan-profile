@@ -11,7 +11,7 @@ interface HeaderProps {
  */
 export default function Header({ scenarioId, onScenarioChange }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-surface-0/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-line bg-surface-0/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-x-6 gap-y-3 px-4 py-4 sm:px-6">
         {/* Wordmark */}
         <div className="flex items-center gap-2.5">
@@ -20,7 +20,7 @@ export default function Header({ scenarioId, onScenarioChange }: HeaderProps) {
             className="block h-3.5 w-3.5 rounded-[3px] bg-accent"
           />
           <div>
-            <h1 className="text-lg font-semibold leading-none tracking-tight text-ink-primary">
+            <h1 className="font-serif text-xl font-semibold leading-none tracking-tight text-ink-primary">
               DealLens
             </h1>
             <p className="mt-0.5 text-[11px] leading-none tracking-wide text-ink-muted">
@@ -33,7 +33,7 @@ export default function Header({ scenarioId, onScenarioChange }: HeaderProps) {
         <div
           role="group"
           aria-label="Scenario"
-          className="flex rounded-lg border border-white/10 bg-surface-1 p-0.5"
+          className="flex rounded-lg border border-line bg-surface-1 p-0.5"
         >
           {SCENARIOS.map((s) => {
             const active = s.id === scenarioId;

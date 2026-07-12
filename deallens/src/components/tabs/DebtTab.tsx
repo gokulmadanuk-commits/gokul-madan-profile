@@ -5,7 +5,7 @@ import { fmtM, fmtX } from "@/lib/format";
 
 function Readout({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 border-b border-white/10 py-2.5 last:border-b-0">
+    <div className="flex items-baseline justify-between gap-4 border-b border-line py-2.5 last:border-b-0">
       <span className="text-xs text-ink-muted">{label}</span>
       <span className="tabular-nums text-sm font-semibold text-ink-primary">
         {value}

@@ -144,7 +144,7 @@ export default function FinancialsTab({ result }: { result: LboResult }) {
                 <th
                   scope="rowgroup"
                   colSpan={years.length + 2}
-                  className="border-t border-white/10 pb-1.5 pt-4 text-left text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted"
+                  className="border-t border-line pb-1.5 pt-4 text-left text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted"
                 >
                   <span className="sticky left-0 inline-block">
                     {group.name}
@@ -154,7 +154,7 @@ export default function FinancialsTab({ result }: { result: LboResult }) {
               {group.rows.map((row) => (
                 <tr
                   key={row.label}
-                  className="border-t border-white/[0.06]"
+                  className="border-t border-line-faint"
                 >
                   <th
                     scope="row"

@@ -142,12 +142,13 @@ export default function SensitivityHeatmap({
                       key={`c${i}-${j}`}
                       onMouseEnter={onEnter(i, j)}
                       onMouseLeave={() => setHover(null)}
-                      className={`tabular-nums flex cursor-default items-center justify-center rounded-[3px] transition-transform duration-100${
-                        base ? " ring-2 ring-white ring-inset" : ""
-                      }`}
+                      className="tabular-nums flex cursor-default items-center justify-center rounded-[3px] transition-transform duration-100"
                       style={{
                         background: nm ? "var(--surface-2)" : RAMP[step],
                         border: nm ? "1px solid var(--gridline)" : undefined,
+                        boxShadow: base
+                          ? "inset 0 0 0 2px var(--ring-strong)"
+                          : undefined,
                         color: nm ? "var(--text-muted)" : CELL_INK[step],
                         fontSize: 11,
                         fontWeight: base ? 600 : 500,

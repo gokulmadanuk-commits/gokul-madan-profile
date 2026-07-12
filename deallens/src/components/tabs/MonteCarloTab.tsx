@@ -28,7 +28,7 @@ function recenter(t: Triangular, mode: number): Triangular {
 
 function StatTile({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-surface-2/60 px-4 py-3">
+    <div className="rounded-lg border border-line bg-surface-2/60 px-4 py-3">
       <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-ink-muted">
         {label}
       </p>
@@ -103,7 +103,7 @@ export default function MonteCarloTab({
           <div
             role="group"
             aria-label="Iterations"
-            className="flex rounded-lg border border-white/10 bg-surface-2/60 p-0.5"
+            className="flex rounded-lg border border-line bg-surface-2/60 p-0.5"
           >
             {ITERATION_CHOICES.map((n) => {
               const active = n === iterations;

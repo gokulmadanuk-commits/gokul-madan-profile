@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { DealAssumptions, ScenarioId } from "@/engine/types";
 import { runLbo } from "@/engine/lbo";
 import { SCENARIOS, DEFAULT_MC_CONFIG } from "@/engine/presets";
@@ -26,7 +26,18 @@ const TAB_MOTION_CSS = `
 }
 `;
 
+export type ThemeMode = "light" | "dark";
+
+function initialTheme(): ThemeMode {
+  try {
+    return localStorage.getItem("deallens-theme") === "dark" ? "dark" : "light";
+  } catch {
+    return "light";
+  }
+}
+
 export default function App() {
+  const [theme, setTheme] = useState<ThemeMode>(initialTheme);
   const [scenarioId, setScenarioId] = useState<ScenarioId>("base");
   const [overrides, setOverrides] = useState<Partial<DealAssumptions>>({});
   const [activeTab, setActiveTab] = useState<TabId>("returns");
@@ -34,6 +45,15 @@ export default function App() {
     DEFAULT_MC_CONFIG.iterations,
   );
   const [hurdle, setHurdle] = useState(0.2);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem("deallens-theme", theme);
+    } catch {
+      // storage unavailable (private mode / sandbox) — theme still applies
+    }
+  }, [theme]);
 
   const scenario =
     SCENARIOS.find((s) => s.id === scenarioId) ?? SCENARIOS[0];
@@ -90,6 +110,8 @@ export default function App() {
               scenarioDescription={scenario.description}
               onSet={handleSet}
               onReset={() => setOverrides({})}
+              theme={theme}
+              onThemeChange={setTheme}
             />
           </div>
 
