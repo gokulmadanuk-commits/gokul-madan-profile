@@ -14,6 +14,12 @@
  *   totalDebt0       = seniorDebt0 + mezzDebt0
  *   fees             = enterpriseValue * transactionFeesPct
  *   sponsorEquity    = enterpriseValue + fees - totalDebt0   (equity check = plug)
+ *   financeable      = sponsorEquity > 0. When false (debt exceeds EV + fees),
+ *                      the structure cannot be financed: sponsorEquity keeps its
+ *                      raw (non-positive) value so the bridge still reconciles,
+ *                      but irr and moic are set to 0 as sentinels and consumers
+ *                      MUST gate on `financeable` and render "n.m." instead.
+ *                      Sensitivity grids emit NaN for unfinanceable cells.
  *
  * OPERATING YEARS t = 1..holdYears
  *   revenue[t]   = revenue[t-1] * (1 + revenueGrowth[t-1]),  revenue[0] = entryRevenue
@@ -148,10 +154,12 @@ export interface LboResult {
   entry: EntrySummary;
   years: YearRow[];
   exit: ExitSummary;
-  irr: number; // decimal
-  moic: number;
+  irr: number; // decimal; 0 sentinel when !financeable
+  moic: number; // 0 sentinel when !financeable
   bridge: ValueBridge;
   cashShortfall: boolean; // true if closing cash went negative in any year
+  /** False when entry debt exceeds EV + fees (equity check <= 0). */
+  financeable: boolean;
 }
 
 // ---------------------------------------------------------------------------
