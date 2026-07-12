@@ -80,6 +80,7 @@ let dprCap = Math.min(devicePixelRatio || 1, 2);
 const plateEl = () => (engine && engine.canvas) || plate;
 
 function sizeCanvases() {
+  if (frozen) return;   // resizing would clear the developed etching
   const w = innerWidth, h = innerHeight;
   for (const c of [plateEl(), overlay]) {
     c.width = Math.round(w * dprCap);
@@ -123,7 +124,7 @@ const state = {
 
 /* ------------------------------------------------------------- captions */
 
-let captionTimer = 0;
+let captionTimer = 0, stampTimer = 0;
 function caption(main, sub = '', hold = 0) {
   clearTimeout(captionTimer);
   captionEl.textContent = main;
@@ -133,12 +134,13 @@ function caption(main, sub = '', hold = 0) {
 }
 
 function stamp(text, ok = true) {
+  clearTimeout(stampTimer);
   stampEl.textContent = text;
   stampEl.classList.remove('on', 'ok');
   void stampEl.offsetWidth;
   stampEl.classList.add('on');
   if (ok) stampEl.classList.add('ok');
-  setTimeout(() => stampEl.classList.remove('on'), 2600);
+  stampTimer = setTimeout(() => stampEl.classList.remove('on'), 2600);
 }
 
 function chip(text, onClick) {
@@ -166,13 +168,13 @@ function enterAct(next) {
   ratioRow.classList.remove('on');
   audio.allOff();
   state.live.clear();
+  state.lie = null;
   state.loomPlay = false;
   frozen = false;
+  temperInput.disabled = true;
+  plateEl().classList.remove('developing');
 
-  if (next === 'tune') {
-    caption('each touch is a note. hold, and the sand explains it.', 'high is up · left is dark');
-    setTimeout(() => { if (act === 'tune') chip('02 · INTERVAL →', () => enterAct('interval')); }, 6000);
-  }
+  if (next === 'tune') tuneIntro();
   if (next === 'interval') {
     state.drone = makeDrone(ROOT);
     renderRatioRow();
@@ -187,11 +189,24 @@ function enterAct(next) {
       'every fifth is pure: exactly 3:2');
   }
   if (next === 'etch') {
-    sealEl.classList.add('on');
-    caption('press and hold the seal. develop what you played.',
-      'the etching is signed with your session hash — no two exist');
+    if (state.etched) {
+      // already developed: show the finished print again, not a dead seal
+      etchPanel.classList.add('on');
+      plateEl().classList.add('developing');
+      frozen = true;
+      caption('developed.', 'nothing here was drawn. everything was played.');
+    } else {
+      sealEl.classList.add('on');
+      caption('press and hold the seal. develop what you played.',
+        'the etching is signed with your session hash — no two exist');
+    }
   }
   logEvent('act', next);
+}
+
+function tuneIntro() {
+  caption('each touch is a note. hold, and the sand explains it.', 'high is up · left is dark');
+  setTimeout(() => { if (act === 'tune') chip('02 · INTERVAL →', () => enterAct('interval')); }, 6000);
 }
 
 function makeDrone(freq) {
@@ -315,6 +330,7 @@ function enterActQuiet(next) { act = next; setNav(next); }
 
 function resolveLie() {
   if (!state.lie) return;
+  if (act !== 'tune') { state.lie = null; return; }
   // glide B down onto A: the wobble stops, the sand snaps
   audio.voiceGlide('lieB', state.lie.fA);
   state.liePlayed = true;
@@ -326,7 +342,7 @@ function resolveLie() {
     audio.voiceOff('lieB', 1.2);
   }, 1400);
   caption('in tune, sand stands still.', 'that difference has a name. you will meet it again.', 7000);
-  setTimeout(() => { if (act === 'tune') enterAct('tune'); }, 2600);
+  setTimeout(() => { if (act === 'tune') tuneIntro(); }, 2600);
   logEvent('lieResolved', { heldMs: Math.round(performance.now() - lie.started) });
 }
 
@@ -363,6 +379,7 @@ function plantFifth() {
 }
 
 function showComma() {
+  temperInput.disabled = false;
   equationEl.classList.add('on');
   caption('the twelfth fifth does not land. it cannot.',
     `twelve pure fifths overshoot seven octaves by ${COMMA_CENTS}¢ — the Pythagorean comma`);
@@ -372,6 +389,7 @@ function showComma() {
 }
 
 temperInput.addEventListener('input', () => {
+  if (act !== 'loom' || !state.commaShown) return;
   state.temper = temperInput.value / 100;
   if (state.temper >= 1 && !state.healed) {
     state.healed = true;
@@ -392,6 +410,7 @@ let pressTimer = null, pressStart = 0;
 sealEl.addEventListener('pointerdown', (e) => {
   e.preventDefault(); e.stopPropagation();
   audio.unlock();
+  try { sealEl.setPointerCapture(e.pointerId); } catch (_) {}
   pressStart = performance.now();
   sealEl.classList.add('pressing');
   pressTimer = setTimeout(develop, 850);
@@ -436,6 +455,7 @@ function exportPNG() {
   c.width = S; c.height = ph + 420;
   const x = c.getContext('2d');
   x.fillStyle = '#050507'; x.fillRect(0, 0, c.width, c.height);
+  if (engine.present) engine.present();   // re-blit: preserveDrawingBuffer is off
   x.drawImage(src, 80, 80, pw, ph);
   x.strokeStyle = 'rgba(237,234,226,0.25)'; x.lineWidth = 1;
   x.strokeRect(80.5, 80.5, pw, ph);
@@ -537,8 +557,12 @@ function tick(now) {
   for (const v of state.live.values()) {
     if (act === 'interval') {
       const g = gravitate(v.freq);
-      v.freq = g.freq; liveNear = g.near; liveOff = g.off;
-      liveRatio = v.freq >= state.drone.freq ? v.freq / state.drone.freq : state.drone.freq / v.freq;
+      v.freq = g.freq;
+      // track the pointer closest to a pure ratio, not merely the last one
+      if (liveOff === null || Math.abs(g.off) < Math.abs(liveOff)) {
+        liveNear = g.near; liveOff = g.off;
+        liveRatio = v.freq >= state.drone.freq ? v.freq / state.drone.freq : state.drone.freq / v.freq;
+      }
     }
     const [n, m] = modesForFreq(v.freq);
     let boil = 0;
@@ -609,6 +633,7 @@ function tick(now) {
   if (state.lie) P = { ...state.lie.pos, active: true, r: 0.2 };
   else if (firstLive) P = { x: firstLive.x, y: firstLive.y, active: true, r: 0.12 };
 
+  maybeRecover();
   engine.step(dt, time, simVoices, P, params);
   drawOverlay(now);
 
@@ -733,12 +758,15 @@ function governor(dtms) {
   if (++govFrames % 90 !== 0 || govWindow.length < 45) return;
   const sorted = [...govWindow].sort((a, b) => a - b);
   const median = sorted[Math.floor(sorted.length / 2)];
-  if (median <= 26) return;
+  // calibrate against the display's own cadence: a uniform 33ms rAF
+  // (30fps cap, low-power mode) is a baseline, not GPU distress
+  const baseline = sorted[Math.floor(sorted.length * 0.1)];
+  // degrade when jank exceeds the display's own cadence, or when even the
+  // cadence itself is hopeless (uniform 45ms+ is distress, not a frame cap)
+  if (median <= Math.max(26, baseline * 1.4) && median <= 45) return;
   if (tierIdx < TIERS.length - 1) {
     tierIdx++;
-    const keepTargets = state.targetOn > 0;
-    engine = createEngine(plate, { seed, texSize: TIERS[tierIdx] });
-    if (keepTargets) buildTitleTargets().then((p) => engine.setTargets(p));
+    rebuildEngine();
     govWindow = [];
     console.info(`[standing-wave] governor: ${TIERS[tierIdx]}² grains (median ${median.toFixed(0)}ms)`);
   } else if (dprCap > 1.05) {
@@ -749,6 +777,23 @@ function governor(dtms) {
   }
 }
 
+function rebuildEngine() {
+  const keepTargets = state.targetOn > 0;
+  if (engine) engine.destroy();
+  engine = createEngine(plateEl(), { seed, texSize: TIERS[tierIdx] });
+  if (keepTargets) buildTitleTargets().then((p) => { if (firstTouch) engine.setTargets(p); });
+}
+
+/* WebGL context loss: wait briefly for a restore, then rebuild
+   (createEngine falls back to Canvas2D if the context stays lost). */
+let recovering = false;
+plate.addEventListener('webglcontextrestored', () => { recovering = false; rebuildEngine(); });
+function maybeRecover() {
+  if (recovering || !(engine && engine.lost)) return;
+  recovering = true;
+  setTimeout(() => { if (recovering) { recovering = false; rebuildEngine(); } }, 2500);
+}
+
 /* ----------------------------------------------------------------- wire */
 
 window.addEventListener('pointerdown', onDown, { passive: false });
@@ -756,10 +801,23 @@ window.addEventListener('pointermove', onMove, { passive: false });
 window.addEventListener('pointerup', onUp);
 window.addEventListener('pointercancel', onUp);
 window.addEventListener('resize', sizeCanvases);
+/* Persistent voices (the interval drone) die with allOff; bring them back. */
+function restoreVoices() {
+  if (!audio.ctx || audio.muted) return;
+  if (act === 'interval' && state.drone) audio.voiceOn('drone', state.drone.freq, 0.11);
+}
+
 document.addEventListener('visibilitychange', () => {
   running = !document.hidden;
-  if (document.hidden) audio.allOff(0.1);
-  else lastT = performance.now();
+  if (document.hidden) {
+    if (state.lie) resolveLie();      // its voices are about to die anyway
+    state.live.clear();               // held-pointer voices die with allOff
+    audio.allOff(0.1);
+  } else {
+    lastT = performance.now();
+    audio.resume();
+    restoreVoices();
+  }
 });
 
 muteBtn.addEventListener('click', (e) => {
@@ -768,6 +826,7 @@ muteBtn.addEventListener('click', (e) => {
   audio.setMuted(!audio.muted);
   muteBtn.textContent = audio.muted ? 'SOUND OFF' : 'SOUND ON';
   muteBtn.classList.toggle('off', audio.muted);
+  if (!audio.muted) restoreVoices();
 });
 
 navEl.addEventListener('click', (e) => {
@@ -788,6 +847,7 @@ if (reduceMotion) {
   caption('hold anywhere. hear a lie.', 'sound recommended · reduced motion honored');
 } else {
   buildTitleTargets().then((pts) => {
+    if (!firstTouch) return;   // user already scattered in; don't reassemble over play
     engine.setTargets(pts);
     state.targetOn = 1;
     setTimeout(() => {

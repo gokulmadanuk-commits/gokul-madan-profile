@@ -108,7 +108,7 @@ void main(){
   /* Extra boil in a ring around an active pointer. */
   if (uPointer.z > 0.5) {
     float d = distance(pos, uPointer.xy);
-    agitation += uJitter * (1.2 + boil * 4.0) * smoothstep(uPointer.w, 0.0, d) * totalAmp;
+    agitation += uJitter * (1.2 + boil * 4.0) * (1.0 - smoothstep(0.0, uPointer.w, d)) * totalAmp;
   }
 
   force += vec2(cos(ang), sin(ang)) * agitation * (0.5 + r2);
@@ -227,11 +227,14 @@ class GLEngine {
     this.rng = rng;
     const gl = canvas.getContext('webgl2', {
       alpha: false, antialias: false, depth: false, stencil: false,
-      powerPreference: 'high-performance', preserveDrawingBuffer: true,
+      powerPreference: 'high-performance', preserveDrawingBuffer: false,
     });
     if (!gl) throw new Error('no webgl2');
     if (!gl.getExtension('EXT_color_buffer_float')) throw new Error('no float fbo');
     this.gl = gl;
+    this.lost = false;
+    this._onLost = (e) => { e.preventDefault(); this.lost = true; };
+    canvas.addEventListener('webglcontextlost', this._onLost);
 
     this.simProg = program(gl, SIM_VS, SIM_FS);
     this.ptsProg = program(gl, PTS_VS, PTS_FS);
@@ -241,7 +244,7 @@ class GLEngine {
     // fullscreen quad
     this.quad = gl.createVertexArray();
     gl.bindVertexArray(this.quad);
-    const qb = gl.createBuffer();
+    const qb = this.quadBuf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, qb);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
     gl.enableVertexAttribArray(0);
@@ -334,9 +337,39 @@ class GLEngine {
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA32F, this.texSize, this.texSize, 0, gl.RGBA, gl.FLOAT, data);
   }
 
+  /* Re-blit the trail buffer to screen (preserveDrawingBuffer is off,
+     so exportPNG calls this right before drawImage). */
+  present() {
+    const gl = this.gl;
+    if (this.lost || gl.isContextLost()) return;
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+    gl.disable(gl.BLEND);
+    gl.useProgram(this.blitProg);
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, this.trailTex);
+    gl.uniform1i(this.blitU, 0);
+    gl.bindVertexArray(this.quad);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    gl.bindVertexArray(null);
+  }
+
+  destroy() {
+    const gl = this.gl;
+    this.canvas.removeEventListener('webglcontextlost', this._onLost);
+    if (gl.isContextLost()) return;
+    for (const t of [this.stateTex[0], this.stateTex[1], this.targetTex, this.trailTex]) gl.deleteTexture(t);
+    for (const f of [this.stateFbo[0], this.stateFbo[1], this.trailFbo]) gl.deleteFramebuffer(f);
+    for (const p of [this.simProg, this.ptsProg, this.fadeProg, this.blitProg]) gl.deleteProgram(p);
+    gl.deleteVertexArray(this.quad);
+    gl.deleteVertexArray(this.emptyVao);
+    gl.deleteBuffer(this.quadBuf);
+  }
+
   /* voices: [{n, m, amp, boil}], pointer: {x,y,active,r}, params: {...} */
   step(dt, time, voices, pointer, params) {
     const gl = this.gl;
+    if (this.lost || gl.isContextLost()) return;
     this.resize();
 
     // --- simulation pass ---
@@ -428,6 +461,9 @@ class CPUEngine {
     if (!n) return;
     this.targets = { points, n };
   }
+
+  present() {}
+  destroy() {}
 
   step(dt, time, voices, pointer, params) {
     const { px, py, vx, vy, count, ctx, canvas } = this;

@@ -90,9 +90,16 @@ class AudioEngine {
     this.muted = false;
   }
 
+  /* iOS reports the non-standard 'interrupted' state after calls/Siri/lock;
+     treat anything that isn't running-or-closed as resumable. */
+  _tryResume() {
+    const s = this.ctx && this.ctx.state;
+    if (s === 'suspended' || s === 'interrupted') this.ctx.resume().catch(() => {});
+  }
+
   /* Must be called synchronously inside a user gesture (iOS). */
   unlock() {
-    if (this.ctx) { if (this.ctx.state === 'suspended') this.ctx.resume(); return; }
+    if (this.ctx) { this._tryResume(); return; }
     const AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) return;
     this.ctx = new AC({ latencyHint: 'interactive' });
@@ -104,10 +111,10 @@ class AudioEngine {
     this.master.connect(this.comp);
     this.comp.connect(this.ctx.destination);
     this.space = new Space(this.ctx, this.master);
-    if (this.ctx.state === 'suspended') this.ctx.resume();
+    this._tryResume();
   }
 
-  resume() { if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume(); }
+  resume() { this._tryResume(); }
 
   get ready() { return !!this.ctx && this.ctx.state === 'running'; }
 
