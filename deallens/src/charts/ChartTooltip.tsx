@@ -24,7 +24,7 @@ export default function ChartTooltip({ title, rows }: ChartTooltipProps) {
       className="rounded-lg px-3 py-2 shadow-lg"
       style={{
         background: "var(--surface-2)",
-        border: "1px solid rgba(255,255,255,0.10)",
+        border: "1px solid var(--border-strong)",
         fontSize: 12,
         lineHeight: 1.5,
         pointerEvents: "none",
