@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build:deallens",
+    "build:deallens": "npm --prefix deallens ci --no-audit --no-fund && npm --prefix deallens run build && cp -r deallens/dist dist/deallens",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"
