@@ -63,6 +63,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
+				paper: '#F5F2EA',
+				'card-paper': '#FBFAF6',
+				ink: {
+					DEFAULT: '#15171C',
+					soft: '#4A4F59',
+					faint: '#7D828C'
+				},
+				rule: '#DCD5C6',
+				lime: '#E8F56B',
 				// Custom colors for Gokul's portfolio
 				beige: {
 					light: '#F5F0E5',
@@ -76,8 +85,10 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				serif: ['Playfair Display', 'serif'],
+				sans: ['Geist', 'system-ui', 'sans-serif'],
+				serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+				display: ['"Instrument Serif"', 'Georgia', 'serif'],
+				mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

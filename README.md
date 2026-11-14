@@ -71,3 +71,14 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Editing content and the resume
+
+All copy for the homepage and the `/resume` page lives in `src/data/profile.ts`.
+After changing it, regenerate the downloadable PDF and commit it:
+
+```sh
+npm run resume:pdf   # builds the site and prints /resume to public/resume.pdf (needs Playwright + Chromium)
+```
+
+Prototype screenshots for the Selected Work section live in `public/work/`.

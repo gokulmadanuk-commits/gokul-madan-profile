@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -91,39 +91,86 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
   }
-  
-  p, li, span, a, button, input, textarea {
-    @apply font-sans;
+
+  ::selection {
+    background: #e8f56b;
+    color: #15171c;
   }
 }
 
 @layer components {
-  .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20;
+  .wrap {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-8;
   }
-  
-  .gradient-bg {
-    @apply bg-gradient-to-b from-beige-light to-slate-light;
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint;
   }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+
+  .marker {
+    background-image: linear-gradient(transparent 60%, #e8f56b 60%, #e8f56b 92%, transparent 92%);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
-  
-  .timeline-card {
-    @apply relative pl-8 pb-8 border-l border-gray-200 card-hover;
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-rule bg-card-paper px-3 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-soft;
   }
-  
-  .timeline-dot {
-    @apply absolute left-0 -translate-x-1/2 w-4 h-4 rounded-full bg-primary;
+
+  .link-u {
+    @apply underline decoration-rule decoration-1 underline-offset-4 transition-colors hover:decoration-ink;
+  }
+}
+
+/* Resume: print exactly the A4 sheet */
+@page {
+  size: A4;
+  margin: 14mm 16mm 13mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+  }
+  .resume-screen {
+    background: #fff !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+  }
+  .resume-toolbar {
+    display: none !important;
+  }
+  .resume-screen > div {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+  .resume-sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+  .resume-role,
+  .resume-section h2 {
+    break-inside: avoid;
+  }
+  .resume-section h2 {
+    break-after: avoid;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }
