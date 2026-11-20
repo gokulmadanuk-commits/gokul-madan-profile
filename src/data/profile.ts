@@ -17,11 +17,11 @@ export const person = {
 export const hero = {
   eyebrow: "Consulting · Product · Sovereign AI",
   headline: {
-    lead: "I find the hard problem, then ",
-    highlight: "build what solves it.",
+    lead: "From analytics to deals to ",
+    highlight: "deployed AI.",
   },
   subline:
-    "16 years across PwC Deals, a SaaS company I founded, and now sovereign AI at Whitespace — from Fortune 100 carve-outs to AI in production.",
+    "I work directly with clients to find the problem worth solving, then build it, drawing on 16 years across PwC Deals, a SaaS company I founded, and now sovereign AI at Whitespace.",
   chips: ["Whitespace", "Founder, Xolution", "Ex-PwC US"],
 };
 
@@ -99,6 +99,16 @@ export const projects: Project[] = [
     tags: ["Financial close", "AI workflows", "PE reporting"],
     url: "https://northwind-close-demo.vercel.app/",
     image: "/work/northwind-close-demo.webp",
+  },
+  {
+    slug: "workflow-library",
+    title: "Workflow Library",
+    category: "AI adoption playbook",
+    summary:
+      "Most AI pilots never reach production. A filterable catalogue of 34 finance and operations workflows, each scoped by tier, function, inputs, outputs and time to deploy.",
+    tags: ["AI adoption", "Finance ops", "Solution design"],
+    url: "https://workflow-library-iota.vercel.app/",
+    image: "/work/workflow-library.webp",
   },
   {
     slug: "board-pack-studio",
@@ -374,7 +384,7 @@ export const resume = {
   summary:
     "Solutions engineer with 16 years across enterprise analytics, M&A advisory and product. Led deals analytics teams at PwC US on Fortune 100 carve-outs, IPOs and private equity transactions. Founded Xolution and built a SaaS platform for post-deal financial reporting, taking it from concept through implementation with advisory and PE clients. Now Lead Solutions Engineer at Whitespace, a UK sovereign AI company, working with customers to prototype solutions and bring them to life on its Collective platform.",
   selectedBuilds:
-    "AI-run year-end close, board-pack workspace, adjusted EBITDA consolidation, PE value creation ledger, contract revenue-leakage engine and more. Live demos at gokulmadan.com/#work.",
+    "AI-run year-end close, a 34-workflow AI adoption library, board-pack workspace, adjusted EBITDA consolidation, PE value creation ledger, contract revenue-leakage engine and more. Live demos at gokulmadan.com/#work.",
   skills: [
     {
       label: "Solutions engineering",
