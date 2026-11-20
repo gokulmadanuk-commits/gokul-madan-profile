@@ -17,7 +17,7 @@ export const person = {
 export const hero = {
   eyebrow: "Consulting · Product · Sovereign AI",
   headline: {
-    lead: "I work alongside clients to find the hard problem, then ",
+    lead: "I find the hard problem, then ",
     highlight: "build what solves it.",
   },
   subline:
@@ -281,6 +281,7 @@ export const roles: Role[] = [
   {
     id: "cognizant",
     company: "Cognizant",
+    logo: "/lovable-uploads/c18351e1-f187-4f17-9d0e-537024853b11.png",
     title: "Programmer Analyst",
     team: "Insurance and Financial Services",
     location: "Bangalore",
@@ -361,7 +362,7 @@ export const pwcHighlights: Highlight[] = [
     logos: [
       { src: "/lovable-uploads/eef35f22-2207-453e-b7a6-461ea39fbd05.png", alt: "KKR", className: "h-6" },
       { src: "/lovable-uploads/3860c3ed-d503-4eda-8c9f-f74bbab5eaeb.png", alt: "PlayOn", className: "h-7" },
-      { src: "/lovable-uploads/b8f19173-4547-4d54-bb16-b241249d6af8.png", alt: "GoFan", className: "h-9" },
+      { src: "/lovable-uploads/b8f19173-4547-4d54-bb16-b241249d6af8.png", alt: "GoFan", className: "h-7" },
     ],
   },
 ];

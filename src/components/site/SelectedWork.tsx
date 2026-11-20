@@ -10,16 +10,40 @@ const CaseStudy: React.FC = () => (
   <article className="overflow-hidden rounded-[4px] border border-ink/80 bg-card-paper">
     <header className="flex flex-wrap items-center justify-between gap-4 border-b border-rule px-6 py-4 sm:px-8">
       <p className="eyebrow text-ink-soft">{caseStudy.kicker}</p>
-      <div className="flex items-center gap-4">
-        <img src={XOLUTION_LOGO} alt="Xolution" className="h-5 w-auto" />
+      <div className="flex items-center gap-3">
+        <a
+          href="https://xolution.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-1 rounded-full border border-transparent px-2 py-1 transition-colors hover:border-rule hover:bg-paper"
+        >
+          <img src={XOLUTION_LOGO} alt="Xolution website" className="h-5 w-auto" />
+          <ArrowUpRight className="h-3.5 w-3.5 text-ink-faint transition-colors group-hover:text-ink" />
+        </a>
         <span className="font-mono text-xs text-ink-faint">×</span>
-        <img src={ACCORDION_LOGO} alt="Accordion" className="h-4 w-auto" />
+        <a
+          href="https://www.accordion.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-1 rounded-full border border-transparent px-2 py-1 transition-colors hover:border-rule hover:bg-paper"
+        >
+          <img src={ACCORDION_LOGO} alt="Accordion website" className="h-4 w-auto" />
+          <ArrowUpRight className="h-3.5 w-3.5 text-ink-faint transition-colors group-hover:text-ink" />
+        </a>
       </div>
     </header>
 
     <div className="grid lg:grid-cols-12">
       <div className="border-rule p-6 sm:p-8 lg:col-span-5 lg:border-r">
         <h3 className="font-display text-3xl leading-[1.05] text-ink sm:text-[2.6rem]">{caseStudy.title}</h3>
+        <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-[0.1em]">
+          <a href="https://xolution.io" target="_blank" rel="noopener noreferrer" className="link-u text-ink-soft hover:text-ink">
+            xolution.io ↗
+          </a>
+          <a href="https://www.accordion.com" target="_blank" rel="noopener noreferrer" className="link-u text-ink-soft hover:text-ink">
+            accordion.com ↗
+          </a>
+        </p>
         <p className="mt-5 leading-relaxed text-ink-soft">{caseStudy.context}</p>
         <p className="eyebrow mt-7">Stack</p>
         <ul className="mt-3 flex flex-wrap gap-2">
@@ -53,7 +77,7 @@ const CaseStudy: React.FC = () => (
               </li>
             ))}
           </ul>
-          <p className="mt-7 border-l-2 border-lime pl-4 font-display text-xl italic leading-snug text-ink sm:text-2xl">
+          <p className="mt-7 border-l-2 border-hl-strong pl-4 font-display text-xl leading-snug text-ink sm:text-2xl">
             {caseStudy.outcome}
           </p>
         </div>
@@ -91,15 +115,15 @@ const ProjectCard: React.FC<{ p: Project; index: number }> = ({ p, index }) => {
           />
         </div>
       </div>
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
+      <div className="flex flex-1 flex-col p-5">
         <div className="flex items-baseline justify-between gap-3">
           <p className="eyebrow">
             <span className="text-ink">{String(index + 1).padStart(2, "0")}</span> · {p.category}
           </p>
         </div>
-        <h3 className="mt-2 font-display text-[1.9rem] leading-tight text-ink">{p.title}</h3>
-        <p className="mt-2 leading-relaxed text-ink-soft">{p.summary}</p>
-        <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-5">
+        <h3 className="mt-2 font-display text-[1.6rem] leading-tight text-ink">{p.title}</h3>
+        <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{p.summary}</p>
+        <div className="mt-auto flex flex-col gap-4 pt-5">
           <ul className="flex flex-wrap gap-1.5">
             {p.tags.map((t) => (
               <li key={t} className="rounded-full bg-paper px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink-soft">
@@ -124,7 +148,7 @@ const SelectedWork: React.FC = () => (
         <div className="lg:col-span-7">
           <p className="eyebrow">Selected work</p>
           <h2 className="mt-4 font-display text-4xl leading-[1.02] text-ink sm:text-6xl">
-            Things I&rsquo;ve designed <em>and built.</em>
+            Things I&rsquo;ve designed <span className="marker">and built.</span>
           </h2>
         </div>
         <p className="max-w-md leading-relaxed text-ink-soft lg:col-span-5 lg:justify-self-end">
@@ -143,7 +167,7 @@ const SelectedWork: React.FC = () => (
           {String(projects.length).padStart(2, "0")} live demos
         </span>
       </div>
-      <div className="mt-8 grid gap-6 md:grid-cols-2">
+      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
           <ProjectCard key={p.slug} p={p} index={i} />
         ))}

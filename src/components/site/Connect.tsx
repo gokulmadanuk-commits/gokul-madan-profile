@@ -64,7 +64,7 @@ const Connect: React.FC = () => {
           <div className="lg:col-span-6">
             <p className="eyebrow">Contact</p>
             <h2 className="mt-4 font-display text-5xl leading-[0.98] text-ink sm:text-7xl">
-              Let&rsquo;s <span className="marker italic">talk.</span>
+              Let&rsquo;s <span className="marker">talk.</span>
             </h2>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-soft">
               Working on a hard problem where business, data and AI meet? I&rsquo;d like to hear about it.

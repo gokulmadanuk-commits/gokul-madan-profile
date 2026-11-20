@@ -71,7 +71,10 @@ export default {
 					faint: '#7D828C'
 				},
 				rule: '#DCD5C6',
-				lime: '#E8F56B',
+				hl: {
+					DEFAULT: '#C9DCF6',
+					strong: '#2C56C8'
+				},
 				// Custom colors for Gokul's portfolio
 				beige: {
 					light: '#F5F0E5',
