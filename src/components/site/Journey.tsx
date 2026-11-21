@@ -100,6 +100,21 @@ const RoleBody: React.FC<{ r: Role }> = ({ r }) => (
       </>
     )}
 
+    {r.practice && (
+      <div className="mt-6">
+        <p className="eyebrow">In practice</p>
+        <div className="mt-3 grid gap-4 lg:grid-cols-3">
+          {r.practice.map((x, i) => (
+            <article key={x.title} className="rounded-[4px] border border-rule bg-card-paper p-5">
+              <p className="font-mono text-[11px] text-ink-faint">{String(i + 1).padStart(2, "0")}</p>
+              <h4 className="mt-1 font-display text-[1.35rem] leading-tight text-ink">{x.title}</h4>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{x.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+
     {(r.focus || r.stack) && (
       <div className="mt-5">
         <p className="eyebrow">{r.focus ? "Focus" : "Built on"}</p>

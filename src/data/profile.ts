@@ -199,6 +199,7 @@ export type Role = {
   intro: string[];
   focus?: string[];
   stack?: string[];
+  practice?: { title: string; body: string }[]; // site-only: concrete work in the role
   bullets: string[]; // resume bullets
 };
 
@@ -224,10 +225,25 @@ export const roles: Role[] = [
       "Rapid prototyping",
       "Enterprise AI implementation",
     ],
+    practice: [
+      {
+        title: "A finance lens on public-sector contracts",
+        body: "Collective had already parsed thousands of contracts for a UK local-government reorganisation bringing several councils into one. I added the financial layer: a platform that flags contracts over or approaching their cap and under-utilised commitments, surfacing savings and risk opportunities.",
+      },
+      {
+        title: "An operating system for leadership",
+        body: "An internal product that brings together CRM (HubSpot), HR, time tracking, project management and finance (Xero) data, so leadership can monitor the deal pipeline and live projects in one place.",
+      },
+      {
+        title: "A knowledge graph of how products get built",
+        body: "A graph of the key decisions, Jira tickets, Slack threads and GitLab activity behind a product build, so the whole project can be queried in one place. The goal: a \u201cmeta\u201d graph for every project that Collective agents can use in the app builder to build applications the Whitespace way.",
+      },
+    ],
     bullets: [
-      "Work directly with customers to uncover operational problems, shape requirements and design solutions on Collective, Whitespace's graph-native AI operating system.",
-      "Prototype solutions alongside customers, then partner with engineering and product teams to take them into production.",
-      "Identify repeatable AI use cases across customer operations and feed them back into the product.",
+      "Work directly with customers to uncover operational problems, shape requirements and prototype solutions on Collective, Whitespace's graph-native AI operating system.",
+      "Added a financial lens to a Collective deployment that had parsed thousands of contracts for a UK local-government reorganisation: a platform flagging contracts over or near their cap and under-utilised commitments.",
+      "Built an internal leadership operating system unifying HubSpot, HR, time tracking, project management and Xero data to track pipeline and live delivery.",
+      "Building a project knowledge graph across decisions, Jira, Slack and GitLab, the basis for reusable project graphs that Collective agents use in the app builder.",
     ],
   },
   {
