@@ -72,12 +72,13 @@ export const caseStudy = {
     { value: "66", label: "Financial adjustments managed" },
     { value: "3", label: "Reporting periods" },
   ],
-  // Overlapping collage, as on the original case-study slide. Positions are % of the collage box (desktop).
+  // Overlapping collage, laid out as on the original case-study slide.
+  // Positions are % of the collage box (desktop only; phones get a simple stack).
   images: [
-    { src: "/work/xolution/tiles.png", caption: "Adjustments and team", pos: { left: 0, top: 0, width: 54 }, z: 10 },
-    { src: "/work/xolution/status.png", caption: "Adjustment review status", pos: { right: 0, top: 3, width: 45 }, z: 30 },
-    { src: "/work/xolution/audit.png", caption: "Audit trail", pos: { left: 5, top: 22, width: 22 }, z: 40 },
-    { src: "/work/xolution/pnl.png", caption: "P&L with the adjustment overlay", pos: { left: 25, top: 33, width: 66 }, z: 20 },
+    { src: "/work/xolution/team.webp", caption: "Adjustments and project team", pos: { left: 0, top: 0, width: 64.7 }, z: 10 },
+    { src: "/work/xolution/pnl.webp", caption: "P&L with the adjustment overlay", pos: { left: 29.2, top: 43.2, width: 70.5 }, z: 20 },
+    { src: "/work/xolution/status.png", caption: "Adjustment review status", pos: { left: 47.8, top: 16.9, width: 48.2 }, z: 30 },
+    { src: "/work/xolution/audit.webp", caption: "Audit trail", pos: { left: 3.4, top: 36.3, width: 23.6 }, z: 40 },
   ],
   stack: ["Bubble front end", "Azure SQL", ".NET APIs on Azure", "Excel outputs"],
 };

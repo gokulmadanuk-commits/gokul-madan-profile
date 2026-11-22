@@ -81,14 +81,13 @@ const CaseStudy: React.FC = () => (
     <div className="border-t border-rule bg-paper px-6 py-6 sm:px-8">
       <p className="eyebrow">Inside the product</p>
       {/* Desktop: overlapping collage, as on the original slide */}
-      <div className="relative mx-auto mt-5 hidden aspect-[16/8.6] max-w-[980px] lg:block">
+      <div className="relative mx-auto mt-5 hidden aspect-[1.3245] max-w-[980px] lg:block">
         {caseStudy.images.map((im) => (
           <figure
             key={im.src}
             className="absolute"
             style={{
-              left: im.pos.left !== undefined ? `${im.pos.left}%` : undefined,
-              right: im.pos.right !== undefined ? `${im.pos.right}%` : undefined,
+              left: `${im.pos.left}%`,
               top: `${im.pos.top}%`,
               width: `${im.pos.width}%`,
               zIndex: im.z,
