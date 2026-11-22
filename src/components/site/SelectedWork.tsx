@@ -58,11 +58,8 @@ const CaseStudy: React.FC = () => (
             >
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className="flex items-baseline gap-2">
-                  <span className="marker font-display text-5xl leading-none text-ink sm:text-6xl">{s.value}</span>
-                  <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink">{s.label}</span>
-                </span>
-                <span className="mt-3 block text-[14px] leading-snug text-ink-soft">{s.detail}</span>
+                <span className="marker font-display text-5xl leading-none text-ink sm:text-6xl">{s.value}</span>
+                <span className="mt-3 block text-[15px] leading-snug text-ink">{s.label}</span>
               </dd>
             </div>
           ))}
@@ -83,11 +80,32 @@ const CaseStudy: React.FC = () => (
 
     <div className="border-t border-rule bg-paper px-6 py-6 sm:px-8">
       <p className="eyebrow">Inside the product</p>
-      <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:flex lg:flex-row lg:items-end">
+      {/* Desktop: overlapping collage, as on the original slide */}
+      <div className="relative mx-auto mt-5 hidden aspect-[16/8.6] max-w-[980px] lg:block">
+        {caseStudy.images.map((im) => (
+          <figure
+            key={im.src}
+            className="absolute"
+            style={{
+              left: im.pos.left !== undefined ? `${im.pos.left}%` : undefined,
+              right: im.pos.right !== undefined ? `${im.pos.right}%` : undefined,
+              top: `${im.pos.top}%`,
+              width: `${im.pos.width}%`,
+              zIndex: im.z,
+            }}
+          >
+            <div className="overflow-hidden rounded-[3px] border border-ink/70 bg-white shadow-[0_18px_40px_-20px_rgba(21,23,28,0.5)]">
+              <img src={im.src} alt={im.caption} loading="lazy" className="block h-auto w-full" />
+            </div>
+          </figure>
+        ))}
+      </div>
+      {/* Smaller screens: stacked */}
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:hidden">
         {caseStudy.images.map((im) => (
           <figure key={im.src} className="min-w-0">
-            <div className="overflow-hidden rounded-[3px] border border-rule bg-white p-1.5 shadow-[0_12px_30px_-22px_rgba(21,23,28,0.45)]">
-              <img src={im.src} alt={im.caption} loading="lazy" className="h-auto w-full lg:h-[200px] lg:w-auto" />
+            <div className="overflow-hidden rounded-[3px] border border-rule bg-white">
+              <img src={im.src} alt={im.caption} loading="lazy" className="h-auto w-full" />
             </div>
             <figcaption className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-faint">{im.caption}</figcaption>
           </figure>

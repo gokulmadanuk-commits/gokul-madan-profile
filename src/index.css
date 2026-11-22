@@ -134,7 +134,7 @@
 /* Resume: print exactly the A4 sheet */
 @page {
   size: A4;
-  margin: 14mm 16mm 13mm;
+  margin: 15mm 17mm 14mm;
 }
 
 @media print {
@@ -163,10 +163,10 @@
     width: auto !important;
   }
   .resume-role,
-  .resume-section h2 {
+  .resume-section-head {
     break-inside: avoid;
   }
-  .resume-section h2 {
+  .resume-section-head {
     break-after: avoid;
   }
   a {

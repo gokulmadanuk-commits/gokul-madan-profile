@@ -65,17 +65,19 @@ export const caseStudy = {
     "Excel-ready outputs, so advisers could keep working the way they already did.",
   ],
   outcome:
-    "Several Excel models, 48+ tabs between them, fully replaced by one platform the advisory, client and audit teams all worked from.",
+    "Fully replaced several 48+ tab Excel models by one unified platform the advisory, client and audit teams all worked from.",
   stats: [
-    { value: "7", label: "entities", detail: "Consolidation complexity" },
-    { value: "22", label: "users", detail: "Adoption across advisory, client and audit teams" },
-    { value: "66", label: "adjustments", detail: "Substantive financial workflows" },
-    { value: "3", label: "reporting periods", detail: "Repeated use" },
+    { value: "7", label: "Entities consolidated" },
+    { value: "22", label: "Users across advisory, client and audit teams" },
+    { value: "66", label: "Financial adjustments managed" },
+    { value: "3", label: "Reporting periods" },
   ],
+  // Overlapping collage, as on the original case-study slide. Positions are % of the collage box (desktop).
   images: [
-    { src: "/work/xolution/pnl.png", caption: "P&L with the adjustment overlay" },
-    { src: "/work/xolution/status.png", caption: "Adjustment review status" },
-    { src: "/work/xolution/audit.png", caption: "Audit trail" },
+    { src: "/work/xolution/tiles.png", caption: "Adjustments and team", pos: { left: 0, top: 0, width: 54 }, z: 10 },
+    { src: "/work/xolution/status.png", caption: "Adjustment review status", pos: { right: 0, top: 3, width: 45 }, z: 30 },
+    { src: "/work/xolution/audit.png", caption: "Audit trail", pos: { left: 5, top: 22, width: 22 }, z: 40 },
+    { src: "/work/xolution/pnl.png", caption: "P&L with the adjustment overlay", pos: { left: 25, top: 33, width: 66 }, z: 20 },
   ],
   stack: ["Bubble front end", "Azure SQL", ".NET APIs on Azure", "Excel outputs"],
 };
@@ -201,6 +203,7 @@ export type Role = {
   focus?: string[];
   stack?: string[];
   practice?: { title: string; body: string; image?: string; imageAlt?: string }[]; // site-only: concrete work in the role
+  resumeIntro?: string; // resume-only context line under the role
   bullets: string[]; // resume bullets
 };
 
@@ -244,11 +247,13 @@ export const roles: Role[] = [
         body: "An internal product that brings together CRM (HubSpot), HR, time tracking, project management and finance (Xero) data, so leadership can monitor the deal pipeline and live projects in one place.",
       },
     ],
+    resumeIntro:
+      "Whitespace is a Belfast-based sovereign AI company. Its AI operating system, Collective, helps organisations make faster, better-informed decisions while keeping control of their data, models and infrastructure.",
     bullets: [
-      "Work directly with customers to uncover operational problems, shape requirements and prototype solutions on Collective, Whitespace's graph-native AI operating system.",
-      "Added a financial lens to a Collective deployment that had parsed thousands of contracts for a UK local-government reorganisation: a platform flagging contracts over or near their cap and under-utilised commitments.",
-      "Built an internal leadership operating system unifying HubSpot, HR, time tracking, project management and Xero data to track pipeline and live delivery.",
-      "Building a project knowledge graph across decisions, Jira, Slack and GitLab, the basis for reusable project graphs that Collective agents use in the app builder.",
+      "Work directly with customers to uncover operational problems, shape requirements and prototype solutions on Collective, then partner with engineering and product teams to take them into production.",
+      "Public-sector contracts: Collective had already parsed thousands of contracts for a UK local-government reorganisation bringing several councils into one. Added the financial layer: a platform flagging contracts over or approaching their cap and under-utilised commitments, surfacing savings and risk opportunities.",
+      "Leadership operating system: an internal product bringing HubSpot, HR, time tracking, project management and Xero data together so leadership can monitor the deal pipeline and live projects in one place.",
+      "Project knowledge graph: maps the key decisions, Jira tickets, Slack threads and GitLab activity behind a product build into one queryable graph, the basis for reusable project graphs that Collective agents use in the app builder.",
     ],
   },
   {
@@ -265,10 +270,12 @@ export const roles: Role[] = [
       "I designed the product and led the development of a SaaS platform that brings fragmented financial data into a unified reporting model, so teams can automate complex workflows, keep data consistent and report to stakeholders without rebuilding spreadsheets each month. I owned product design, the financial data model and customer implementation; the platform was built with engineering collaborators.",
     ],
     stack: ["Bubble front end", "Azure SQL", ".NET APIs on Azure", "Financial data mapping", "Workflow design"],
+    resumeIntro:
+      "A SaaS platform for financial consolidation, reporting and analytics, built for private equity-backed businesses and the advisory firms that support them.",
     bullets: [
-      "Founded and built a SaaS platform that harmonises fragmented financial data into one reporting model for PE-backed businesses and advisory firms.",
-      "Designed the product, financial data model and workflows, and led development with engineering collaborators (Bubble, Azure SQL, .NET APIs on Azure).",
-      "Delivered post-acquisition reporting with Accordion for a multi-billion-dollar Apax portfolio company: 7 entities consolidated, 66 adjustments, 22 users across advisory, client and audit teams, 3 reporting periods, and 48+ tabs of Excel models replaced.",
+      "Founded the company and took the product from concept to paying customers: a platform that brings fragmented financial data into one reporting model, so teams can automate complex workflows and report without rebuilding spreadsheets each month.",
+      "Owned product design, the financial data model and workflows, and led development with engineering collaborators (Bubble front end, Azure SQL, .NET APIs on Azure).",
+      "Accordion case study: post-acquisition reporting for a multi-billion-dollar Apax portfolio company. 7 entities consolidated, 66 financial adjustments managed, 22 users across advisory, client and audit teams, 3 reporting periods; several 48+ tab Excel models fully replaced.",
       "Ran customer discovery, implementation and onboarding end to end, turning difficult reporting processes into repeatable workflows.",
     ],
   },
@@ -284,10 +291,14 @@ export const roles: Role[] = [
     intro: [
       "I led analytics and strategy work in PwC's US Deals practice across Fortune 100 companies, M&A, IPOs and divestitures, and specialised in value creation for private equity clients. Below are a few highlights.",
     ],
+    resumeIntro:
+      "Led analytics and strategy work in the US Deals practice across Fortune 100 companies, M&A, IPOs and divestitures, specialising in value creation for private equity clients.",
     bullets: [
       "Led the team that built a customer and product insights engine for the sell-side diligence of Pilot Freight Services (backed by ATL Partners and BCI) in its $1.7B sale to Maersk.",
-      "Led deals analytics on complex carve-outs and spin-offs: Enterprise Services from HPE to form DXC, multiple DXC divestitures, GE Healthcare, GE Power and GE Lighting, and Verisign from Symantec.",
+      "Complex carve-outs: led the deals analytics team on a three-way carve-out at DXC (AP, AR, revenue and expense allocations, plus a consolidation automation tool); supported the four-way separation of HPE (legal-entity P&L separation with complex transfer pricing); and worked on the divestitures of GE Healthcare, GE Power (Vernova) and GE Lighting, and of Verisign from Symantec.",
       "Built a bottom-up indirect revenue forecasting model, with significant accounting standards implications, ahead of the IPO of Carlyle portfolio company PPD.",
+      "Set the direction for an accounts receivable collections model that predicted customers' propensity to pay and shaped invoicing strategy.",
+      "Combined six data sources into a consolidated data cube for monthly sponsor reporting after GoFan's acquisition by PlayOn, a KKR portfolio company.",
       "Used Palantir Foundry to drive a cost takeout initiative for AT&T Engineering Operations, identifying $25M+ of opportunity.",
       "Owned project planning, scoping, proposals and client relationships; mentored and led analytics teams across high-profile transactions.",
     ],
@@ -303,6 +314,7 @@ export const roles: Role[] = [
     start: "Apr 2011",
     end: "Oct 2015",
     intro: ["I led digital adoption work for Fortune 500 companies in telecommunications and banking."],
+    resumeIntro: "Digital adoption and analytics for Fortune 500 companies in telecommunications and banking.",
     bullets: [
       "Built statistical models at the AT&T Big Data Centre of Excellence to improve customer targeting for digital channels.",
       "Led teams launching cross-channel sales processes for AT&T's Buy Online, Pick Up in Store initiative, and managed web analytics for the iPhone 6 launch on att.com.",
@@ -401,11 +413,11 @@ export const pwcHighlights: Highlight[] = [
 // ── Resume-only content ──────────────────────────────────────────────────────
 
 export const resume = {
-  headline: "Solutions engineering · Deals & private equity · Enterprise AI",
-  summary:
-    "Solutions engineer with 16 years across enterprise analytics, M&A advisory and product. Led deals analytics teams at PwC US on Fortune 100 carve-outs, IPOs and private equity transactions. Founded Xolution and built a SaaS platform for post-deal financial reporting, taking it from concept through implementation with advisory and PE clients. Now Lead Solutions Engineer at Whitespace, a UK sovereign AI company, working with customers to prototype solutions and bring them to life on its Collective platform.",
-  selectedBuilds:
-    "AI-run year-end close, a 34-workflow AI adoption library, board-pack workspace, adjusted EBITDA consolidation, PE value creation ledger, contract revenue-leakage engine and more. Live demos at gokulmadan.com/#work.",
+  headline: "Solutions engineering · Deals & PE · Enterprise AI",
+  summary: [
+    "Understanding how a business works is the part I enjoy most. Building something that makes it work better is a very close second.",
+    "Over 16 years that has meant analytics for Fortune 500 companies at Mu Sigma, leading deals analytics teams at PwC US on Fortune 100 carve-outs, IPOs and private equity transactions, and founding Xolution, a SaaS platform for post-deal financial reporting that I took from concept to paying customers. Today I am a Lead Solutions Engineer at Whitespace, a UK sovereign AI company, working directly with customers to prototype solutions and bring them to life on its Collective platform.",
+  ],
   skills: [
     {
       label: "Solutions engineering",
@@ -436,6 +448,7 @@ export const resume = {
 export const community = {
   name: "Belfast Builds AI",
   url: "https://belfastbuilds.ai",
+  role: "Founder & co-host",
   body: [
     "What started as a landing page I built during a Claude Code event turned into 100+ people together for a night of live AI demos.",
     "That was the start of Belfast Builds AI, a meetup series bringing together people across Northern Ireland to build things, share experiences and learn from each other. No prizes or judging, just live demos of things people have actually built.",

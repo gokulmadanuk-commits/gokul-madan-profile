@@ -13,6 +13,7 @@ const Community: React.FC = () => {
           <h2 className="mt-4 font-display text-4xl leading-[1.02] text-ink sm:text-5xl">
             <span className="marker">{community.name}</span>
           </h2>
+          <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft">{community.role}</p>
           <div className="mt-5 space-y-4 leading-relaxed text-ink-soft">
             {community.body.map((p, i) => (
               <p key={i} className={i === 0 ? "text-lg text-ink" : undefined}>
