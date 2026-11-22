@@ -12,16 +12,17 @@ export const person = {
   websiteLabel: "gokulmadan.com",
   portrait: "/lovable-uploads/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png",
   resumePdf: "/resume.pdf",
+  resumeFileName: "Gokul Madan - Resume - Nov 2026.pdf",
 };
 
 export const hero = {
-  eyebrow: "Consulting · Product · Sovereign AI",
+  eyebrow: "Consulting · Product · AI",
   headline: {
-    lead: "From analytics to deals to ",
+    lead: "From deals and data to ",
     highlight: "deployed AI.",
   },
   subline:
-    "I work directly with clients to find the problem worth solving, then build it, drawing on 16 years across PwC Deals, a SaaS company I founded, and now sovereign AI at Whitespace.",
+    "Understanding how a business works is the part I enjoy most. Building something that makes it work better is a very close second. Over the past 16 years, that’s meant analytics for Fortune 500 companies, deals advisory at PwC, founding a SaaS company, and now AI solutions engineering.",
   chips: ["Whitespace", "Founder, Xolution", "Ex-PwC US"],
 };
 
@@ -42,7 +43,7 @@ export type Logo = { src: string; alt: string; className?: string };
 
 export const clientLogos: Logo[] = [
   { src: "/logos/whitespace.svg", alt: "Whitespace" },
-  { src: "/lovable-uploads/bd60c7ea-a7fb-4ab5-bc37-e74844fe9151.png", alt: "PwC" },
+  { src: "/logos/pwc.png", alt: "PwC" },
   { src: "/lovable-uploads/1f68f6ac-9673-4389-88a0-713912cec46e.png", alt: "Accordion" },
   { src: "/lovable-uploads/64a96aef-ba27-448b-9b28-edb7fcc441b3.png", alt: "AT&T" },
   { src: "/lovable-uploads/ee904dae-73ef-4ba8-a44b-910102e0178e.png", alt: "GE" },
@@ -270,7 +271,7 @@ export const roles: Role[] = [
   {
     id: "pwc",
     company: "PwC US",
-    logo: "/lovable-uploads/5ea78123-d77b-4bca-9d19-36b970acc74a.png",
+    logo: "/logos/pwc.png",
     title: "Senior Manager",
     team: "Deals Strategy and PE Value Creation",
     location: "Washington DC",

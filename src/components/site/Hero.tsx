@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowDown, Download, Linkedin, Mail } from "lucide-react";
+import { Download, Linkedin, Mail } from "lucide-react";
 import { arc, hero, person } from "@/data/profile";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
@@ -21,7 +21,14 @@ const Hero: React.FC = () => {
       <div className="wrap relative z-10 pb-14 pt-12 sm:pt-20 lg:pb-20">
         <div className="grid items-end gap-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <p className="eyebrow">{hero.eyebrow}</p>
+            <div className="flex items-center gap-4">
+              <img
+                src={person.portrait}
+                alt="Portrait of Gokul Madan Alikkal"
+                className="h-16 w-16 shrink-0 rounded-full border border-rule object-cover object-[50%_18%] sm:h-20 sm:w-20 lg:hidden"
+              />
+              <p className="eyebrow">{hero.eyebrow}</p>
+            </div>
             <h1 className="mt-5 font-display text-[3rem] leading-[1] tracking-[-0.005em] text-ink [text-wrap:balance] sm:text-[4.4rem] lg:text-[5rem]">
               {hero.headline.lead}
               <span className="marker">{hero.headline.highlight}</span>
@@ -38,21 +45,13 @@ const Hero: React.FC = () => {
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
-                href="#work"
-                onClick={() => trackClick("Hero: See the work")}
-                className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
-              >
-                See the work
-                <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-              </a>
-              <a
                 href={person.resumePdf}
-                download="Gokul-Madan-Alikkal-Resume.pdf"
+                download={person.resumeFileName}
                 onClick={() => {
                   trackDownload("resume.pdf");
                   trackClick("Hero: Download resume");
                 }}
-                className="inline-flex items-center gap-2 rounded-full border border-ink/80 px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5"
               >
                 <Download className="h-4 w-4" />
                 Download resume
@@ -80,14 +79,10 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <figure className="mx-auto w-full max-w-[18rem] sm:max-w-xs lg:col-span-4 lg:mx-0 lg:ml-auto">
+          <figure className="hidden w-full max-w-xs lg:col-span-4 lg:ml-auto lg:block">
             <div className="overflow-hidden rounded-[3px] border border-rule bg-card-paper p-2 shadow-[0_1px_0_rgba(21,23,28,0.04),0_18px_40px_-24px_rgba(21,23,28,0.35)]">
               <img src={person.portrait} alt="Portrait of Gokul Madan Alikkal" className="h-auto w-full" />
             </div>
-            <figcaption className="mt-3 flex justify-between font-mono text-[11px] uppercase tracking-[0.12em] text-ink-faint">
-              <span>{person.location}</span>
-              <span>16 yrs</span>
-            </figcaption>
           </figure>
         </div>
 

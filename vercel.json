@@ -1,3 +1,9 @@
 {
-  "rewrites": [{ "source": "/((?!.*\\.).*)", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/((?!.*\\.).*)", "destination": "/index.html" }],
+  "headers": [
+    {
+      "source": "/resume.pdf",
+      "headers": [{ "key": "Content-Disposition", "value": "inline; filename=\"Gokul Madan - Resume - Nov 2026.pdf\"" }]
+    }
+  ]
 }
