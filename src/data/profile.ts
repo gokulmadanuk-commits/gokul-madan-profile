@@ -21,16 +21,12 @@ export const hero = {
     lead: "From deals and data to ",
     highlight: "deployed AI.",
   },
-  subline:
-    "Understanding how a business works is the part I enjoy most. Building something that makes it work better is a very close second. Over the past 16 years, that’s meant analytics for Fortune 500 companies, deals advisory at PwC, founding a SaaS company, and now AI solutions engineering.",
+  sublines: [
+    "Understanding how a business works is the part I enjoy most. Building something that makes it work better is a very close second.",
+    "Over the past 16 years, that’s meant analytics for Fortune 500 companies, deals advisory at PwC, founding a SaaS company, and now AI solutions engineering.",
+  ],
   chips: ["Whitespace", "Founder, Xolution", "Ex-PwC US"],
 };
-
-export const about = [
-  "My career has taken me from enterprise analytics and digital transformation, through complex M&A, to building a SaaS company and now enterprise AI.",
-  "At PwC US I led analytics and technology work on major transactions: carve-outs, divestitures, IPOs and private equity value creation. I then founded Xolution to fix a problem I had seen on almost every deal: financial reporting held together by fragmented spreadsheets.",
-  "Today I work in Solutions Engineering at Whitespace, bringing that mix of consulting, product and hands-on building to help organisations put AI to work.",
-];
 
 export const arc = [
   { years: "2010 – 2015", label: "Analytics", detail: "Cognizant · Mu Sigma" },
@@ -51,9 +47,7 @@ export const clientLogos: Logo[] = [
   { src: "/lovable-uploads/06605beb-1704-4008-9ef8-9f0226f8b6e7.png", alt: "DXC" },
   { src: "/lovable-uploads/88064e12-18aa-42ef-b6fb-7e21e834eaff.png", alt: "Maersk" },
   { src: "/lovable-uploads/2a736e24-15d0-4879-b154-b1c8a89c2bc0.png", alt: "Symantec" },
-  { src: "/lovable-uploads/bd656b34-ed64-4bb8-ae7f-26cdda022fcf.png", alt: "Barclays Eagle Labs" },
-  { src: "/lovable-uploads/05f51801-ae11-44e7-bf2a-ad20ed89c9b8.png", alt: "Invest Northern Ireland" },
-  { src: "/lovable-uploads/ef1072e8-c89b-46a1-bce6-e47da501b05a.png", alt: "Mu Sigma" },
+  { src: "/lovable-uploads/2e8e1f34-d32d-49fb-8294-4d4670c7f88e.png", alt: "Mu Sigma" },
   { src: "/lovable-uploads/c18351e1-f187-4f17-9d0e-537024853b11.png", alt: "Cognizant" },
 ];
 
@@ -61,21 +55,27 @@ export const clientLogos: Logo[] = [
 
 export const caseStudy = {
   kicker: "Featured case study · Xolution × Accordion",
-  title: "Post-deal reporting for a PE-backed portfolio company",
+  title: "Post-acquisition reporting for an Apax portfolio company",
   context:
-    "After a private equity acquisition, the portfolio company needed audit-ready reporting for purchase price accounting and its lenders. Adjustments lived in fragmented Excel workbooks: every update meant manual work across files, version-control problems and little visibility for the client or sponsor.",
+    "Accordion used Xolution to manage post-acquisition reporting for a multi-billion-dollar Apax portfolio company, bringing financial adjustments, reviews and reporting into one place.",
   built: [
-    "Replaced the workbooks with Xolution as the single reporting layer, with financial data, adjustments and documentation in one model.",
-    "Structured GAAP uplift, purchase accounting and consolidation adjustments, with audit-ready views and journal previews.",
-    "Adjustment bridges and variance analysis that track impact across periods and shorten review cycles.",
+    "One reporting layer for financial data, adjustments and documentation across every entity.",
+    "Structured GAAP, purchase accounting, consolidation and day-one transaction adjustments, with audit-ready views.",
+    "Review workflow with internal and client approvals and a full audit trail.",
     "Excel-ready outputs, so advisers could keep working the way they already did.",
   ],
   outcome:
-    "A repeatable post-close reporting framework that management, lenders and auditors could all work from.",
+    "Several Excel models, 48+ tabs between them, fully replaced by one platform the advisory, client and audit teams all worked from.",
   stats: [
-    { value: "50+", label: "GAAP, PPA and consolidation adjustments managed" },
-    { value: "20+", label: "users across client, advisory and audit teams" },
-    { value: "3", label: "post-close periods standardised on one data model" },
+    { value: "7", label: "entities", detail: "Consolidation complexity" },
+    { value: "22", label: "users", detail: "Adoption across advisory, client and audit teams" },
+    { value: "66", label: "adjustments", detail: "Substantive financial workflows" },
+    { value: "3", label: "reporting periods", detail: "Repeated use" },
+  ],
+  images: [
+    { src: "/work/xolution/pnl.png", caption: "P&L with the adjustment overlay" },
+    { src: "/work/xolution/status.png", caption: "Adjustment review status" },
+    { src: "/work/xolution/audit.png", caption: "Audit trail" },
   ],
   stack: ["Bubble front end", "Azure SQL", ".NET APIs on Azure", "Excel outputs"],
 };
@@ -91,16 +91,6 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  {
-    slug: "northwind-close-demo",
-    title: "Northwind close",
-    category: "AI-run year-end close",
-    summary:
-      "From inbox to accounts: a year-end close for a fictional PE-backed logistics company, with AI booking journals, agreeing cash to bank and proposing EBITDA adjustments for a human to approve.",
-    tags: ["Financial close", "AI workflows", "PE reporting"],
-    url: "https://northwind-close-demo.vercel.app/",
-    image: "/work/northwind-close-demo.webp",
-  },
   {
     slug: "workflow-library",
     title: "Workflow Library",
@@ -181,6 +171,16 @@ export const projects: Project[] = [
     url: "https://forensic-income-reconstruction-engi.vercel.app/",
     image: "/work/forensic-income-reconstruction-engine.webp",
   },
+  {
+    slug: "northwind-close-demo",
+    title: "Northwind close",
+    category: "AI-run year-end close",
+    summary:
+      "From inbox to accounts: a year-end close for a fictional PE-backed logistics company, with AI booking journals, agreeing cash to bank and proposing EBITDA adjustments for a human to approve.",
+    tags: ["Financial close", "AI workflows", "PE reporting"],
+    url: "https://northwind-close-demo.vercel.app/",
+    image: "/work/northwind-close-demo.webp",
+  },
 ];
 
 // ── Experience ───────────────────────────────────────────────────────────────
@@ -200,7 +200,7 @@ export type Role = {
   intro: string[];
   focus?: string[];
   stack?: string[];
-  practice?: { title: string; body: string }[]; // site-only: concrete work in the role
+  practice?: { title: string; body: string; image?: string; imageAlt?: string }[]; // site-only: concrete work in the role
   bullets: string[]; // resume bullets
 };
 
@@ -229,15 +229,19 @@ export const roles: Role[] = [
     practice: [
       {
         title: "A finance lens on public-sector contracts",
+        image: "/work/whitespace-contracts.webp",
+        imageAlt: "Contract opportunities dashboard: spend over cap, close to cap, renewals and price increases",
         body: "Collective had already parsed thousands of contracts for a UK local-government reorganisation bringing several councils into one. I added the financial layer: a platform that flags contracts over or approaching their cap and under-utilised commitments, surfacing savings and risk opportunities.",
+      },
+      {
+        title: "A knowledge graph of how products get built",
+        image: "/work/whitespace-bench-graph.webp",
+        imageAlt: "Build graph linking decisions, Jira tickets and versions over time",
+        body: "A graph of the key decisions, Jira tickets, Slack threads and GitLab activity behind a product build, so the whole project can be queried in one place. The goal: a \u201cmeta\u201d graph for every project that Collective agents can use in the app builder to build applications the Whitespace way.",
       },
       {
         title: "An operating system for leadership",
         body: "An internal product that brings together CRM (HubSpot), HR, time tracking, project management and finance (Xero) data, so leadership can monitor the deal pipeline and live projects in one place.",
-      },
-      {
-        title: "A knowledge graph of how products get built",
-        body: "A graph of the key decisions, Jira tickets, Slack threads and GitLab activity behind a product build, so the whole project can be queried in one place. The goal: a \u201cmeta\u201d graph for every project that Collective agents can use in the app builder to build applications the Whitespace way.",
       },
     ],
     bullets: [
@@ -264,7 +268,7 @@ export const roles: Role[] = [
     bullets: [
       "Founded and built a SaaS platform that harmonises fragmented financial data into one reporting model for PE-backed businesses and advisory firms.",
       "Designed the product, financial data model and workflows, and led development with engineering collaborators (Bubble, Azure SQL, .NET APIs on Azure).",
-      "Delivered post-deal reporting for a PE-backed portfolio company with Accordion: replaced fragmented Excel with one platform managing 50+ GAAP, purchase accounting and consolidation adjustments for 20+ users across client, advisory and audit teams, over three post-close periods.",
+      "Delivered post-acquisition reporting with Accordion for a multi-billion-dollar Apax portfolio company: 7 entities consolidated, 66 adjustments, 22 users across advisory, client and audit teams, 3 reporting periods, and 48+ tabs of Excel models replaced.",
       "Ran customer discovery, implementation and onboarding end to end, turning difficult reporting processes into repeatable workflows.",
     ],
   },
@@ -423,8 +427,19 @@ export const resume = {
     },
   ],
   education: {
-    school: "BMS Institute of Technology, Visvesvaraya Technological University",
-    degree: "B.E. Electrical and Electronics Engineering",
+    school: "BMS Institute of Technology, VTU",
+    degree: "Electrical and Electronics Engineering",
     years: "2006 – 2010",
   },
+};
+
+export const community = {
+  name: "Belfast Builds AI",
+  url: "https://belfastbuilds.ai",
+  body: [
+    "What started as a landing page I built during a Claude Code event turned into 100+ people together for a night of live AI demos.",
+    "That was the start of Belfast Builds AI, a meetup series bringing together people across Northern Ireland to build things, share experiences and learn from each other. No prizes or judging, just live demos of things people have actually built.",
+  ],
+  thumbnail: "/community/belfast-builds-ai.webp",
+  photo: "/community/belfast-builds-ai-meetup.webp",
 };

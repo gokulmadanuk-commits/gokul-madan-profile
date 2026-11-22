@@ -6,47 +6,41 @@ import { useAnalytics } from "@/hooks/useAnalytics";
 const ACCORDION_LOGO = "/lovable-uploads/1f68f6ac-9673-4389-88a0-713912cec46e.png";
 const XOLUTION_LOGO = "/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png";
 
+const XoLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group inline-flex items-center gap-1 rounded-full border border-transparent px-2 py-1 transition-colors hover:border-rule hover:bg-paper"
+  >
+    {children}
+    <ArrowUpRight className="h-3.5 w-3.5 text-ink-faint transition-colors group-hover:text-ink" />
+  </a>
+);
+
 const CaseStudy: React.FC = () => (
   <article className="overflow-hidden rounded-[4px] border border-ink/80 bg-card-paper">
     <header className="flex flex-wrap items-center justify-between gap-4 border-b border-rule px-6 py-4 sm:px-8">
       <p className="eyebrow text-ink-soft">{caseStudy.kicker}</p>
-      <div className="flex items-center gap-3">
-        <a
-          href="https://xolution.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1 rounded-full border border-transparent px-2 py-1 transition-colors hover:border-rule hover:bg-paper"
-        >
+      <div className="flex items-center gap-2">
+        <XoLink href="https://xolution.io">
           <img src={XOLUTION_LOGO} alt="Xolution website" className="h-5 w-auto" />
-          <ArrowUpRight className="h-3.5 w-3.5 text-ink-faint transition-colors group-hover:text-ink" />
-        </a>
+        </XoLink>
         <span className="font-mono text-xs text-ink-faint">×</span>
-        <a
-          href="https://www.accordion.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1 rounded-full border border-transparent px-2 py-1 transition-colors hover:border-rule hover:bg-paper"
-        >
+        <XoLink href="https://www.accordion.com">
           <img src={ACCORDION_LOGO} alt="Accordion website" className="h-4 w-auto" />
-          <ArrowUpRight className="h-3.5 w-3.5 text-ink-faint transition-colors group-hover:text-ink" />
-        </a>
+        </XoLink>
       </div>
     </header>
 
     <div className="grid lg:grid-cols-12">
       <div className="border-rule p-6 sm:p-8 lg:col-span-5 lg:border-r">
-        <h3 className="font-display text-3xl leading-[1.05] text-ink sm:text-[2.6rem]">{caseStudy.title}</h3>
-        <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] uppercase tracking-[0.1em]">
-          <a href="https://xolution.io" target="_blank" rel="noopener noreferrer" className="link-u text-ink-soft hover:text-ink">
-            xolution.io ↗
-          </a>
-          <a href="https://www.accordion.com" target="_blank" rel="noopener noreferrer" className="link-u text-ink-soft hover:text-ink">
-            accordion.com ↗
-          </a>
+        <h3 className="font-display text-3xl leading-[1.05] text-ink sm:text-[2.5rem]">{caseStudy.title}</h3>
+        <p className="mt-5 text-lg leading-relaxed text-ink">{caseStudy.context}</p>
+        <p className="mt-7 border-l-2 border-hl-strong pl-4 font-display text-xl leading-snug text-ink sm:text-[1.55rem]">
+          {caseStudy.outcome}
         </p>
-        <p className="mt-5 leading-relaxed text-ink-soft">{caseStudy.context}</p>
-        <p className="eyebrow mt-7">Stack</p>
-        <ul className="mt-3 flex flex-wrap gap-2">
+        <ul className="mt-6 flex flex-wrap gap-2">
           {caseStudy.stack.map((s) => (
             <li key={s} className="chip">
               {s}
@@ -56,31 +50,48 @@ const CaseStudy: React.FC = () => (
       </div>
 
       <div className="flex flex-col lg:col-span-7">
-        <dl className="grid grid-cols-3 border-b border-rule">
+        <dl className="grid grid-cols-2 border-b border-rule">
           {caseStudy.stats.map((s, i) => (
-            <div key={s.value} className={`p-5 sm:p-7 ${i > 0 ? "border-l border-rule" : ""}`}>
+            <div
+              key={s.label}
+              className={`p-5 sm:p-7 ${i % 2 === 1 ? "border-l border-rule" : ""} ${i >= 2 ? "border-t border-rule" : ""}`}
+            >
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className="marker font-display text-5xl leading-none text-ink sm:text-6xl">{s.value}</span>
-                <span className="mt-3 block text-[13px] leading-snug text-ink-soft">{s.label}</span>
+                <span className="flex items-baseline gap-2">
+                  <span className="marker font-display text-5xl leading-none text-ink sm:text-6xl">{s.value}</span>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink">{s.label}</span>
+                </span>
+                <span className="mt-3 block text-[14px] leading-snug text-ink-soft">{s.detail}</span>
               </dd>
             </div>
           ))}
         </dl>
-        <div className="flex-1 p-6 sm:p-8">
+        <div className="p-6 sm:p-8">
           <p className="eyebrow">What we built</p>
-          <ul className="mt-4 space-y-3">
+          <ul className="mt-3 space-y-2.5">
             {caseStudy.built.map((b, i) => (
-              <li key={i} className="flex gap-4 leading-relaxed text-ink">
-                <span className="mt-[3px] font-mono text-[11px] text-ink-faint">{String(i + 1).padStart(2, "0")}</span>
+              <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-ink-soft">
+                <span className="mt-[2px] font-mono text-[11px] text-ink-faint">{String(i + 1).padStart(2, "0")}</span>
                 <span>{b}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-7 border-l-2 border-hl-strong pl-4 font-display text-xl leading-snug text-ink sm:text-2xl">
-            {caseStudy.outcome}
-          </p>
         </div>
+      </div>
+    </div>
+
+    <div className="border-t border-rule bg-paper px-6 py-6 sm:px-8">
+      <p className="eyebrow">Inside the product</p>
+      <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:flex lg:flex-row lg:items-end">
+        {caseStudy.images.map((im) => (
+          <figure key={im.src} className="min-w-0">
+            <div className="overflow-hidden rounded-[3px] border border-rule bg-white p-1.5 shadow-[0_12px_30px_-22px_rgba(21,23,28,0.45)]">
+              <img src={im.src} alt={im.caption} loading="lazy" className="h-auto w-full lg:h-[200px] lg:w-auto" />
+            </div>
+            <figcaption className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-faint">{im.caption}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </article>
@@ -151,10 +162,6 @@ const SelectedWork: React.FC = () => (
             Things I&rsquo;ve designed <span className="marker">and built.</span>
           </h2>
         </div>
-        <p className="max-w-md leading-relaxed text-ink-soft lg:col-span-5 lg:justify-self-end">
-          A production platform with real clients, then a set of prototypes I built hands-on to test ideas in finance, deals
-          and AI. Every prototype runs on synthetic data and opens live.
-        </p>
       </div>
 
       <div className="mt-12">

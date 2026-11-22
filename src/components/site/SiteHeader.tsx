@@ -5,6 +5,7 @@ import { person } from "@/data/profile";
 const nav = [
   { href: "/#work", label: "Work" },
   { href: "/#journey", label: "Journey" },
+  { href: "/#community", label: "Community" },
   { href: "/#contact", label: "Contact" },
 ];
 

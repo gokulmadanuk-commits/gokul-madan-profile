@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
         className="[mask-image:radial-gradient(900px_circle_at_center,white,transparent)] fill-ink/40 stroke-ink/[0.09]"
       />
       <div className="wrap relative z-10 pb-14 pt-12 sm:pt-20 lg:pb-20">
-        <div className="grid items-end gap-10 lg:grid-cols-12">
+        <div className="grid items-start gap-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <div className="flex items-center gap-4">
               <img
@@ -33,7 +33,11 @@ const Hero: React.FC = () => {
               {hero.headline.lead}
               <span className="marker">{hero.headline.highlight}</span>
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">{hero.subline}</p>
+            <div className="mt-7 max-w-2xl space-y-4 text-lg leading-relaxed text-ink-soft sm:text-xl">
+              {hero.sublines.map((p) => (
+                <p key={p.slice(0, 24)}>{p}</p>
+              ))}
+            </div>
 
             <ul className="mt-6 flex flex-wrap gap-2">
               {hero.chips.map((c) => (
@@ -79,7 +83,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <figure className="hidden w-full max-w-xs lg:col-span-4 lg:ml-auto lg:block">
+          <figure className="hidden w-full max-w-xs lg:col-span-4 lg:ml-auto lg:mt-1 lg:block">
             <div className="overflow-hidden rounded-[3px] border border-rule bg-card-paper p-2 shadow-[0_1px_0_rgba(21,23,28,0.04),0_18px_40px_-24px_rgba(21,23,28,0.35)]">
               <img src={person.portrait} alt="Portrait of Gokul Madan Alikkal" className="h-auto w-full" />
             </div>

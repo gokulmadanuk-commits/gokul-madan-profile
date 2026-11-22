@@ -1,141 +1,56 @@
-import React, { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+import React from "react";
+import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { person } from "@/data/profile";
 import { useAnalytics } from "@/hooks/useAnalytics";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzdyrbyz";
-
 const Connect: React.FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [submittedName, setSubmittedName] = useState("");
-  const { toast } = useToast();
   const { trackClick } = useAnalytics();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !email.trim()) {
-      toast({ title: "Required fields", description: "Please enter your name and email address.", variant: "destructive" });
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ name, email, message }),
-      });
-      if (!res.ok) throw new Error("Form submission failed");
-      setSubmittedName(name);
-      setShowSuccess(true);
-      setName("");
-      setEmail("");
-      setMessage("");
-    } catch (err) {
-      console.error("Error sending form:", err);
-      toast({ title: "Something went wrong", description: "Please try again, or email me directly.", variant: "destructive" });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const field =
-    "h-12 rounded-[3px] border-rule bg-card-paper text-base text-ink placeholder:text-ink-faint focus-visible:ring-1 focus-visible:ring-ink focus-visible:ring-offset-0";
-
   return (
-    <>
-      <section id="contact" className="border-t border-rule bg-[#EFEBE1] py-20 sm:py-24">
-        <div className="wrap grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <p className="eyebrow">Contact</p>
-            <h2 className="mt-4 font-display text-5xl leading-[0.98] text-ink sm:text-7xl">
-              Let&rsquo;s <span className="marker">talk.</span>
-            </h2>
-            <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-soft">
-              Working on a hard problem where business, data and AI meet? I&rsquo;d like to hear about it.
-            </p>
-            <div className="mt-8 space-y-3">
-              <a
-                href={`mailto:${person.email}`}
-                onClick={() => trackClick("Contact: Email")}
-                className="group flex items-center gap-2 font-display text-2xl text-ink sm:text-3xl"
-              >
-                <span className="link-u">{person.email}</span>
-                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-              <a
-                href={person.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackClick("Contact: LinkedIn")}
-                className="group flex items-center gap-2 font-mono text-sm uppercase tracking-[0.1em] text-ink-soft hover:text-ink"
-              >
-                {person.linkedinLabel}
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
+    <section id="contact" className="relative overflow-hidden border-t border-rule bg-[#EFEBE1] py-24 sm:py-32">
+      {/* Same animated grid as the hero, so the page opens and closes on it */}
+      <AnimatedGridPattern
+        numSquares={60}
+        maxOpacity={0.2}
+        duration={0.9}
+        repeatDelay={1}
+        width={40}
+        height={40}
+        className="[mask-image:radial-gradient(700px_circle_at_center,white,transparent)] fill-ink/40 stroke-ink/[0.09]"
+      />
+      <div className="wrap relative z-10 text-center">
+        <p className="eyebrow">Contact</p>
+        <h2 className="mt-4 font-display text-6xl leading-[0.98] text-ink sm:text-8xl">
+          Let&rsquo;s <span className="marker">talk.</span>
+        </h2>
+        <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl">
+          If something here caught your interest, I&rsquo;d love to chat.
+        </p>
 
-          <form onSubmit={handleSubmit} className="space-y-3 lg:col-span-6 lg:pt-14">
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Input aria-label="Name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className={field} required />
-              <Input
-                aria-label="Email"
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={field}
-                required
-              />
-            </div>
-            <Textarea
-              aria-label="Message"
-              placeholder="What are you working on? (optional)"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className={`${field} h-auto min-h-[8rem] py-3`}
-            />
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-ink px-6 text-sm font-medium text-paper transition-transform hover:-translate-y-0.5 disabled:opacity-60 sm:w-auto"
-            >
-              {isLoading ? "Sending…" : "Send message"}
-            </button>
-          </form>
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href={`mailto:${person.email}`}
+            onClick={() => trackClick("Contact: Email")}
+            className="group inline-flex items-center gap-2.5 rounded-full bg-ink px-6 py-3.5 text-[15px] font-medium text-paper transition-transform hover:-translate-y-0.5"
+          >
+            <Mail className="h-4 w-4" />
+            {person.email}
+          </a>
+          <a
+            href={person.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick("Contact: LinkedIn")}
+            className="group inline-flex items-center gap-2.5 rounded-full border border-ink/80 bg-card-paper px-6 py-3.5 text-[15px] font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
+          >
+            <Linkedin className="h-4 w-4" />
+            LinkedIn
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
         </div>
-      </section>
-
-      <AlertDialog open={showSuccess} onOpenChange={setShowSuccess}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Thank you</AlertDialogTitle>
-            <AlertDialogDescription>
-              Hi {submittedName}, thanks for reaching out. I&rsquo;ll get back to you shortly.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction onClick={() => setShowSuccess(false)}>Close</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </>
+      </div>
+    </section>
   );
 };
 

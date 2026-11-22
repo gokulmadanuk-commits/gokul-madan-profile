@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Download, Printer } from "lucide-react";
-import { arc, person, projects, resume, roles } from "@/data/profile";
+import { arc, person, resume, roles } from "@/data/profile";
 import { useAnalytics } from "@/hooks/useAnalytics";
 
 // One page component drives both the on-screen resume and the PDF
@@ -65,12 +65,19 @@ const Resume: React.FC = () => {
         <article className="resume-sheet mx-auto w-[210mm] bg-white px-[15mm] py-[13mm] text-[9.2pt] leading-[1.48] text-ink shadow-[0_30px_60px_-30px_rgba(21,23,28,0.35)]">
           {/* Header card */}
           <header className="rounded-[2.5mm] border border-rule bg-paper px-[6mm] pb-[4.5mm] pt-[5.5mm]">
-            <div className="flex items-start justify-between gap-6">
-              <div>
+            <div className="flex items-center justify-between gap-6">
+              <div className="flex items-center gap-[5mm]">
+                <img
+                  src={person.portrait}
+                  alt="Gokul Madan Alikkal"
+                  className="h-[22mm] w-[22mm] shrink-0 rounded-full border-[0.6mm] border-white object-cover object-[50%_18%] shadow-[0_2mm_5mm_-2mm_rgba(21,23,28,0.35)]"
+                />
+                <div>
                 <h1 className="font-display text-[30pt] leading-[0.95] tracking-[-0.005em]">
                   {person.name}
                 </h1>
                 <p className="mt-[2.2mm] whitespace-nowrap font-mono text-[7pt] uppercase tracking-[0.1em] text-ink-soft">{resume.headline}</p>
+                </div>
               </div>
               <ul className="shrink-0 text-right font-mono text-[7.4pt] leading-[1.7] text-ink-soft">
                 <li>{person.location}</li>
@@ -113,30 +120,29 @@ const Resume: React.FC = () => {
                 <div key={r.id} className="resume-role">
                   <div>
                     <div className="flex items-center justify-between gap-4">
-                      <p className="flex items-center gap-[2.5mm] text-[10pt]">
+                      <div className="flex items-center gap-[3.5mm]">
                         {r.logo && (
-                          <span className="flex h-[5mm] w-[19mm] shrink-0 items-center">
+                          <span className="flex h-[7mm] w-[27mm] shrink-0 items-center">
                             <img
                               src={r.logo}
-                              alt={`${r.company} logo`}
-                              className={`w-auto max-w-[19mm] object-contain object-left ${r.logoIsSvgMark ? "h-[4.6mm]" : "max-h-[4.8mm]"}`}
+                              alt={r.company}
+                              className={`w-auto max-w-[27mm] object-contain object-left ${r.logoIsSvgMark ? "h-[6.6mm]" : "max-h-[6.6mm]"}`}
                             />
                           </span>
                         )}
-                        <span>
-                        <span className="font-semibold">{r.company === "PwC US" ? "PwC" : r.company}</span>
-                        <span className="text-ink-soft"> · {r.location}</span>
-                        </span>
-                      </p>
+                        <div className="border-l border-rule pl-[3.5mm]">
+                          <p className="text-[10pt] font-semibold leading-tight">{r.title}</p>
+                          <p className="text-[8.4pt] leading-tight text-ink-soft">
+                            {r.team ? `${r.team} · ` : ""}
+                            {r.location}
+                          </p>
+                        </div>
+                      </div>
                       <p className="shrink-0 font-mono text-[7.4pt] uppercase tracking-[0.08em] text-hl-strong">
                         {r.start} – {r.end}
                       </p>
                     </div>
-                    <p className="mt-[0.6mm] text-[9pt] font-medium text-ink-soft">
-                      {r.title}
-                      {r.team ? ` · ${r.team}` : ""}
-                    </p>
-                    <ul className="mt-[1.4mm] space-y-[0.9mm]">
+                    <ul className="mt-[2mm] space-y-[0.9mm]">
                       {r.bullets.map((b, i) => (
                         <Bullet key={i}>{b}</Bullet>
                       ))}
@@ -147,28 +153,6 @@ const Resume: React.FC = () => {
             </div>
           </Section>
 
-          <Section title="Selected builds">
-            <p className="text-ink-soft">
-              Live demos at{" "}
-              <a href={`${person.website}/#work`} className="font-medium text-hl-strong">
-                gokulmadan.com/#work
-              </a>
-              , all on synthetic data:
-            </p>
-            <ul className="mt-[2.2mm] flex flex-wrap gap-[1.6mm]">
-              {projects.map((p) => (
-                <li key={p.slug}>
-                  <a
-                    href={p.url}
-                    className="inline-flex items-center gap-[1.2mm] rounded-full border border-rule bg-paper px-[2.6mm] py-[0.7mm] text-[8pt]"
-                  >
-                    <span className="font-medium text-ink">{p.title}</span>
-                    <span className="text-ink-faint">· {p.category}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </Section>
 
           <Section title="Skills">
             <dl className="grid grid-cols-[34mm_1fr] gap-x-[4mm] gap-y-[1.8mm]">
