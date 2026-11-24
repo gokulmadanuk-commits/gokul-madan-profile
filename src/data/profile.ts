@@ -116,24 +116,24 @@ export const projects: Project[] = [
     image: "/work/recoup-revenue-leakage.webp",
   },
   {
-    slug: "deal-clearance-intelligence",
-    title: "Deal Clearance Intelligence",
-    category: "Merger-control research",
+    slug: "twilight-alpha",
+    title: "Twilight Alpha",
+    category: "Horizon scanning for financial services",
     summary:
-      "Source-backed regulatory research for transaction lawyers: precedent timelines, matter horizons and briefings built from public competition-authority records.",
-    tags: ["M&A", "Legal research"],
-    url: "https://deal-clearance-intelligence.vercel.app/",
-    image: "/work/deal-clearance-intelligence.webp",
+      "Surfaces emerging patterns before they go mainstream, testing each signal for persistence, explainability, strategic relevance and false-positive risk, with full provenance. Agent-initiated payments was flagged 153 days ahead of mainstream recognition.",
+    tags: ["Horizon scanning", "Financial services", "AI analysis"],
+    url: "https://twilight-alpha-jade.vercel.app/",
+    image: "/work/twilight-alpha.webp",
   },
   {
-    slug: "workflow-library",
-    title: "Workflow Library",
-    category: "AI adoption playbook",
+    slug: "xolution-ai-pe-workflows",
+    title: "PE Workflow Catalogue",
+    category: "AI copilots for portfolio companies",
     summary:
-      "Most AI pilots never reach production. A filterable catalogue of 34 finance and operations workflows, each scoped by tier, function, inputs, outputs and time to deploy.",
-    tags: ["AI adoption", "Finance ops", "Solution design"],
-    url: "https://workflow-library-iota.vercel.app/",
-    image: "/work/workflow-library.webp",
+      "22 AI copilots and workflows for private equity sponsors and their portfolio companies, across finance, revenue, people and legal: from a financial data copilot to touchless AP journals and a 13-week cash forecast that rebuilds itself every morning.",
+    tags: ["Private equity", "AI copilots", "Workflow design"],
+    url: "https://xolution-ai-pe-workflows.vercel.app/",
+    image: "/work/xolution-ai-pe-workflows.webp",
   },
   {
     slug: "board-pack-studio",
@@ -157,23 +157,13 @@ export const projects: Project[] = [
   },
   {
     slug: "pe-vc-value-ledger",
-    title: "Value Ledger",
+    title: "PE Value Creation Tracker",
     category: "Value creation tracking",
     summary:
       "A one-page PE value creation plan turned into a live execution ledger: every initiative owned and dated, status derived from progress, and value at risk shown in pounds.",
     tags: ["Value creation", "Portfolio monitoring"],
     url: "https://pe-vc-value-ledger.vercel.app/",
     image: "/work/pe-vc-value-ledger.webp",
-  },
-  {
-    slug: "anla-intercompany-tracker",
-    title: "ANLA intercompany tracker",
-    category: "Regulatory liquidity",
-    summary:
-      "AI-matched intercompany balances across six regulated Jersey entities, showing how reconciliation and netting take two of three entities out of liquidity breach.",
-    tags: ["Regulatory reporting", "Intercompany", "AI matching"],
-    url: "https://anla-intercompany-tracker.vercel.app/",
-    image: "/work/anla-intercompany-tracker.webp",
   },
   {
     slug: "forensic-income-reconstruction-engine",
@@ -184,6 +174,16 @@ export const projects: Project[] = [
     tags: ["Forensics", "Litigation support"],
     url: "https://forensic-income-reconstruction-engi.vercel.app/",
     image: "/work/forensic-income-reconstruction-engine.webp",
+  },
+  {
+    slug: "deal-clearance-intelligence",
+    title: "Deal Clearance Intelligence",
+    category: "Merger-control research",
+    summary:
+      "Source-backed regulatory research for transaction lawyers: precedent timelines, matter horizons and briefings built from public competition-authority records.",
+    tags: ["M&A", "Legal research"],
+    url: "https://deal-clearance-intelligence.vercel.app/",
+    image: "/work/deal-clearance-intelligence.webp",
   },
 ];
 
