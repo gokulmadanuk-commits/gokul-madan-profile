@@ -3,8 +3,8 @@ import { ArrowUpRight } from "lucide-react";
 import { pwcHighlights, resume, roles, type Role } from "@/data/profile";
 
 const MU_SIGMA_CLIENTS = [
-  { src: "/lovable-uploads/3e0b2e47-aa77-4237-9556-3cfec7225785.png", alt: "AT&T" },
-  { src: "/lovable-uploads/542d6830-9573-47fc-a7ba-978504ebb01a.png", alt: "KeyBank" },
+  { src: "/images/3e0b2e47-aa77-4237-9556-3cfec7225785.png", alt: "AT&T" },
+  { src: "/images/542d6830-9573-47fc-a7ba-978504ebb01a.png", alt: "KeyBank" },
 ];
 
 // Left column: logo (which already carries the company name), title, dates.

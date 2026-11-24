@@ -3,8 +3,8 @@ import { ArrowUpRight } from "lucide-react";
 import { caseStudy, projects, type Project } from "@/data/profile";
 import { useAnalytics } from "@/hooks/useAnalytics";
 
-const ACCORDION_LOGO = "/lovable-uploads/1f68f6ac-9673-4389-88a0-713912cec46e.png";
-const XOLUTION_LOGO = "/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png";
+const ACCORDION_LOGO = "/images/1f68f6ac-9673-4389-88a0-713912cec46e.png";
+const XOLUTION_LOGO = "/images/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png";
 
 const XoLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
   <a
@@ -99,17 +99,26 @@ const CaseStudy: React.FC = () => (
           </figure>
         ))}
       </div>
-      {/* Smaller screens: stacked */}
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:hidden">
-        {caseStudy.images.map((im) => (
-          <figure key={im.src} className="min-w-0">
-            <div className="overflow-hidden rounded-[3px] border border-rule bg-white">
-              <img src={im.src} alt={im.caption} loading="lazy" className="h-auto w-full" />
+      {/* Smaller screens: a compact collage led by the P&L */}
+      <div className="relative mx-auto mt-4 aspect-[1.075] max-w-[640px] lg:hidden">
+        {caseStudy.images
+          .filter((im) => im.mobile)
+          .map((im) => (
+            <div
+              key={im.src}
+              className="absolute overflow-hidden rounded-[3px] border border-ink/70 bg-white shadow-[0_14px_30px_-16px_rgba(21,23,28,0.5)]"
+              style={{ left: `${im.mobile!.left}%`, top: `${im.mobile!.top}%`, width: `${im.mobile!.width}%`, zIndex: im.mobile!.z }}
+            >
+              <img src={im.src} alt={im.caption} loading="lazy" className="block h-auto w-full" />
             </div>
-            <figcaption className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-faint">{im.caption}</figcaption>
-          </figure>
-        ))}
+          ))}
       </div>
+      <p className="mt-3 font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-faint lg:hidden">
+        {caseStudy.images
+          .filter((im) => im.mobile)
+          .map((im) => im.caption)
+          .join(" · ")}
+      </p>
     </div>
   </article>
 );

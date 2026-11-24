@@ -10,7 +10,7 @@ export const person = {
   linkedinLabel: "linkedin.com/in/gokulmadan",
   website: "https://gokulmadan.com",
   websiteLabel: "gokulmadan.com",
-  portrait: "/lovable-uploads/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png",
+  portrait: "/images/8cc9d0fe-9220-494f-84f5-9b5f765a8d3f.png",
   resumePdf: "/resume.pdf",
   resumeFileName: "Gokul Madan - Resume - Nov 2026.pdf",
 };
@@ -40,15 +40,15 @@ export type Logo = { src: string; alt: string; className?: string };
 export const clientLogos: Logo[] = [
   { src: "/logos/whitespace.svg", alt: "Whitespace" },
   { src: "/logos/pwc.png", alt: "PwC" },
-  { src: "/lovable-uploads/1f68f6ac-9673-4389-88a0-713912cec46e.png", alt: "Accordion" },
-  { src: "/lovable-uploads/64a96aef-ba27-448b-9b28-edb7fcc441b3.png", alt: "AT&T" },
-  { src: "/lovable-uploads/ee904dae-73ef-4ba8-a44b-910102e0178e.png", alt: "GE" },
-  { src: "/lovable-uploads/bfccb223-9fb9-4400-91ab-523c8a4abec0.png", alt: "Hewlett Packard Enterprise" },
-  { src: "/lovable-uploads/06605beb-1704-4008-9ef8-9f0226f8b6e7.png", alt: "DXC" },
-  { src: "/lovable-uploads/88064e12-18aa-42ef-b6fb-7e21e834eaff.png", alt: "Maersk" },
-  { src: "/lovable-uploads/2a736e24-15d0-4879-b154-b1c8a89c2bc0.png", alt: "Symantec" },
-  { src: "/lovable-uploads/2e8e1f34-d32d-49fb-8294-4d4670c7f88e.png", alt: "Mu Sigma" },
-  { src: "/lovable-uploads/c18351e1-f187-4f17-9d0e-537024853b11.png", alt: "Cognizant" },
+  { src: "/images/1f68f6ac-9673-4389-88a0-713912cec46e.png", alt: "Accordion" },
+  { src: "/images/64a96aef-ba27-448b-9b28-edb7fcc441b3.png", alt: "AT&T" },
+  { src: "/images/ee904dae-73ef-4ba8-a44b-910102e0178e.png", alt: "GE" },
+  { src: "/images/bfccb223-9fb9-4400-91ab-523c8a4abec0.png", alt: "Hewlett Packard Enterprise" },
+  { src: "/images/06605beb-1704-4008-9ef8-9f0226f8b6e7.png", alt: "DXC" },
+  { src: "/images/88064e12-18aa-42ef-b6fb-7e21e834eaff.png", alt: "Maersk" },
+  { src: "/images/2a736e24-15d0-4879-b154-b1c8a89c2bc0.png", alt: "Symantec" },
+  { src: "/images/2e8e1f34-d32d-49fb-8294-4d4670c7f88e.png", alt: "Mu Sigma" },
+  { src: "/images/c18351e1-f187-4f17-9d0e-537024853b11.png", alt: "Cognizant" },
 ];
 
 // ── Selected work ────────────────────────────────────────────────────────────
@@ -65,7 +65,7 @@ export const caseStudy = {
     "Excel-ready outputs, so advisers could keep working the way they already did.",
   ],
   outcome:
-    "Fully replaced several 48+ tab Excel models by one unified platform the advisory, client and audit teams all worked from.",
+    "Replaced multiple 48+ tab Excel models by one unified platform the advisory, client and audit teams all worked from.",
   stats: [
     { value: "7", label: "Entities consolidated" },
     { value: "22", label: "Users across advisory, client and audit teams" },
@@ -73,12 +73,13 @@ export const caseStudy = {
     { value: "3", label: "Reporting periods" },
   ],
   // Overlapping collage, laid out as on the original case-study slide.
-  // Positions are % of the collage box (desktop only; phones get a simple stack).
+  // Positions are % of the collage box. `mobile` is a smaller three-piece collage led by the P&L;
+  // images without it (the team panel) are desktop-only.
   images: [
     { src: "/work/xolution/team.webp", caption: "Adjustments and project team", pos: { left: 0, top: 0, width: 64.7 }, z: 10 },
-    { src: "/work/xolution/pnl.webp", caption: "P&L with the adjustment overlay", pos: { left: 29.2, top: 43.2, width: 70.5 }, z: 20 },
-    { src: "/work/xolution/status.png", caption: "Adjustment review status", pos: { left: 47.8, top: 16.9, width: 48.2 }, z: 30 },
-    { src: "/work/xolution/audit.webp", caption: "Audit trail", pos: { left: 3.4, top: 36.3, width: 23.6 }, z: 40 },
+    { src: "/work/xolution/pnl.webp", caption: "P&L with the adjustment overlay", pos: { left: 29.2, top: 43.2, width: 70.5 }, z: 20, mobile: { left: 0, top: 0, width: 94, z: 10 } },
+    { src: "/work/xolution/status.png", caption: "Adjustment review status", pos: { left: 47.8, top: 16.9, width: 48.2 }, z: 30, mobile: { left: 44, top: 53.8, width: 56, z: 20 } },
+    { src: "/work/xolution/audit.webp", caption: "Audit trail", pos: { left: 3.4, top: 36.3, width: 23.6 }, z: 40, mobile: { left: 3, top: 47.3, width: 30, z: 30 } },
   ],
   stack: ["Bubble front end", "Azure SQL", ".NET APIs on Azure", "Excel outputs"],
 };
@@ -94,6 +95,36 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "northwind-close-demo",
+    title: "Northwind close",
+    category: "AI-run year-end close",
+    summary:
+      "From inbox to accounts: a year-end close for a fictional PE-backed logistics company, with AI booking journals, agreeing cash to bank and proposing EBITDA adjustments for a human to approve.",
+    tags: ["Financial close", "AI workflows", "PE reporting"],
+    url: "https://northwind-close-demo.vercel.app/",
+    image: "/work/northwind-close-demo.webp",
+  },
+  {
+    slug: "recoup-revenue-leakage",
+    title: "RECOUP",
+    category: "Revenue leakage recovery",
+    summary:
+      "Reads customer contracts against billing exports and ranks what is owed: escalators never applied, expired discounts, tier breaches, each with the clause to cite.",
+    tags: ["Contract AI", "Revenue assurance"],
+    url: "https://recoup-revenue-leakage.vercel.app/",
+    image: "/work/recoup-revenue-leakage.webp",
+  },
+  {
+    slug: "deal-clearance-intelligence",
+    title: "Deal Clearance Intelligence",
+    category: "Merger-control research",
+    summary:
+      "Source-backed regulatory research for transaction lawyers: precedent timelines, matter horizons and briefings built from public competition-authority records.",
+    tags: ["M&A", "Legal research"],
+    url: "https://deal-clearance-intelligence.vercel.app/",
+    image: "/work/deal-clearance-intelligence.webp",
+  },
   {
     slug: "workflow-library",
     title: "Workflow Library",
@@ -145,26 +176,6 @@ export const projects: Project[] = [
     image: "/work/anla-intercompany-tracker.webp",
   },
   {
-    slug: "recoup-revenue-leakage",
-    title: "RECOUP",
-    category: "Revenue leakage recovery",
-    summary:
-      "Reads customer contracts against billing exports and ranks what is owed: escalators never applied, expired discounts, tier breaches, each with the clause to cite.",
-    tags: ["Contract AI", "Revenue assurance"],
-    url: "https://recoup-revenue-leakage.vercel.app/",
-    image: "/work/recoup-revenue-leakage.webp",
-  },
-  {
-    slug: "deal-clearance-intelligence",
-    title: "Deal Clearance Intelligence",
-    category: "Merger-control research",
-    summary:
-      "Source-backed regulatory research for transaction lawyers: precedent timelines, matter horizons and briefings built from public competition-authority records.",
-    tags: ["M&A", "Legal research"],
-    url: "https://deal-clearance-intelligence.vercel.app/",
-    image: "/work/deal-clearance-intelligence.webp",
-  },
-  {
     slug: "forensic-income-reconstruction-engine",
     title: "Forensic income reconstruction",
     category: "Forensic accounting",
@@ -173,16 +184,6 @@ export const projects: Project[] = [
     tags: ["Forensics", "Litigation support"],
     url: "https://forensic-income-reconstruction-engi.vercel.app/",
     image: "/work/forensic-income-reconstruction-engine.webp",
-  },
-  {
-    slug: "northwind-close-demo",
-    title: "Northwind close",
-    category: "AI-run year-end close",
-    summary:
-      "From inbox to accounts: a year-end close for a fictional PE-backed logistics company, with AI booking journals, agreeing cash to bank and proposing EBITDA adjustments for a human to approve.",
-    tags: ["Financial close", "AI workflows", "PE reporting"],
-    url: "https://northwind-close-demo.vercel.app/",
-    image: "/work/northwind-close-demo.webp",
   },
 ];
 
@@ -261,7 +262,7 @@ export const roles: Role[] = [
     id: "xolution",
     company: "Xolution",
     companyUrl: "https://xolution.io",
-    logo: "/lovable-uploads/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png",
+    logo: "/images/d1c4cddc-b280-4bac-a5ab-3f5976ffee87.png",
     title: "Founder & CEO",
     location: "Belfast",
     start: "Aug 2023",
@@ -276,7 +277,7 @@ export const roles: Role[] = [
     bullets: [
       "Founded the company and took the product from concept to paying customers: a platform that brings fragmented financial data into one reporting model, so teams can automate complex workflows and report without rebuilding spreadsheets each month.",
       "Owned product design, the financial data model and workflows, and led development with engineering collaborators (Bubble front end, Azure SQL, .NET APIs on Azure).",
-      "Accordion case study: post-acquisition reporting for a multi-billion-dollar Apax portfolio company. 7 entities consolidated, 66 financial adjustments managed, 22 users across advisory, client and audit teams, 3 reporting periods; several 48+ tab Excel models fully replaced.",
+      "Accordion case study: post-acquisition reporting for a multi-billion-dollar Apax portfolio company. 7 entities consolidated, 66 financial adjustments managed, 22 users across advisory, client and audit teams, 3 reporting periods; multiple 48+ tab Excel models replaced.",
       "Ran customer discovery, implementation and onboarding end to end, turning difficult reporting processes into repeatable workflows.",
     ],
   },
@@ -308,7 +309,7 @@ export const roles: Role[] = [
     id: "musigma",
     company: "Mu Sigma",
     companyUrl: "https://www.mu-sigma.com",
-    logo: "/lovable-uploads/2e8e1f34-d32d-49fb-8294-4d4670c7f88e.png",
+    logo: "/images/2e8e1f34-d32d-49fb-8294-4d4670c7f88e.png",
     title: "Associate",
     team: "Telecommunications · Banking and Finance",
     location: "Atlanta",
@@ -325,7 +326,7 @@ export const roles: Role[] = [
   {
     id: "cognizant",
     company: "Cognizant",
-    logo: "/lovable-uploads/c18351e1-f187-4f17-9d0e-537024853b11.png",
+    logo: "/images/c18351e1-f187-4f17-9d0e-537024853b11.png",
     title: "Programmer Analyst",
     team: "Insurance and Financial Services",
     location: "Bangalore",
@@ -353,10 +354,10 @@ export const pwcHighlights: Highlight[] = [
       "Led a team that built a customer and product insights engine, central to the sell-side diligence for the $1.7B sale of Pilot Freight Services (backed by ATL Partners and BCI) to Maersk.",
     ],
     logos: [
-      { src: "/lovable-uploads/1af70454-605a-4248-8505-92fa5666d3ea.png", alt: "Maersk", className: "h-6" },
-      { src: "/lovable-uploads/5e8c18be-970d-4977-b433-7ef973e4ce29.png", alt: "Pilot Freight Services", className: "h-9" },
-      { src: "/lovable-uploads/1ec2cced-d590-43d0-a971-d323e1d47af8.png", alt: "ATL Partners", className: "h-10" },
-      { src: "/lovable-uploads/0b165cc7-8ff4-486e-966b-89d71eb26e01.png", alt: "BCI", className: "h-5" },
+      { src: "/images/1af70454-605a-4248-8505-92fa5666d3ea.png", alt: "Maersk", className: "h-6" },
+      { src: "/images/5e8c18be-970d-4977-b433-7ef973e4ce29.png", alt: "Pilot Freight Services", className: "h-9" },
+      { src: "/images/1ec2cced-d590-43d0-a971-d323e1d47af8.png", alt: "ATL Partners", className: "h-10" },
+      { src: "/images/0b165cc7-8ff4-486e-966b-89d71eb26e01.png", alt: "BCI", className: "h-5" },
     ],
   },
   {
@@ -368,10 +369,10 @@ export const pwcHighlights: Highlight[] = [
       "GE: divestitures of GE Power (Vernova) and GE Healthcare across multi-layer accounting and reporting systems. Symantec: the divestiture of Verisign.",
     ],
     logos: [
-      { src: "/lovable-uploads/8ab96d05-60f7-416c-8d2f-eae3620b04d5.png", alt: "Hewlett Packard Enterprise", className: "h-6" },
-      { src: "/lovable-uploads/25d8be60-48bf-4948-9391-bc12f2ddd5ce.png", alt: "DXC Technology", className: "h-6" },
-      { src: "/lovable-uploads/cd70899d-30be-4e36-9dc6-9b9a04e6d71e.png", alt: "General Electric", className: "h-7" },
-      { src: "/lovable-uploads/4523e26c-e0e1-4376-a6fe-f8a75656d689.png", alt: "Symantec", className: "h-6" },
+      { src: "/images/8ab96d05-60f7-416c-8d2f-eae3620b04d5.png", alt: "Hewlett Packard Enterprise", className: "h-6" },
+      { src: "/images/25d8be60-48bf-4948-9391-bc12f2ddd5ce.png", alt: "DXC Technology", className: "h-6" },
+      { src: "/images/cd70899d-30be-4e36-9dc6-9b9a04e6d71e.png", alt: "General Electric", className: "h-7" },
+      { src: "/images/4523e26c-e0e1-4376-a6fe-f8a75656d689.png", alt: "Symantec", className: "h-6" },
     ],
   },
   {
@@ -382,8 +383,8 @@ export const pwcHighlights: Highlight[] = [
       "Set the direction for an accounts receivable collections model that predicted customers' propensity to pay and shaped invoicing strategy.",
     ],
     logos: [
-      { src: "/lovable-uploads/19f5f5c6-8131-47f2-998b-d1fd113ca882.png", alt: "The Carlyle Group", className: "h-6" },
-      { src: "/lovable-uploads/4f5b142c-7aee-4a67-931d-3f480f421800.png", alt: "PPD", className: "h-6" },
+      { src: "/images/19f5f5c6-8131-47f2-998b-d1fd113ca882.png", alt: "The Carlyle Group", className: "h-6" },
+      { src: "/images/4f5b142c-7aee-4a67-931d-3f480f421800.png", alt: "PPD", className: "h-6" },
     ],
   },
   {
@@ -393,8 +394,8 @@ export const pwcHighlights: Highlight[] = [
       "Used Palantir Foundry at AT&T to drive a cost takeout initiative for Engineering Operations, identifying $25M+ of opportunity.",
     ],
     logos: [
-      { src: "/lovable-uploads/d8bd04f8-30e1-46b6-b2c6-3b51b81906c4.png", alt: "AT&T", className: "h-7" },
-      { src: "/lovable-uploads/19818142-90f8-497a-85f3-68e7f3b2ebfb.png", alt: "Palantir", className: "h-6" },
+      { src: "/images/d8bd04f8-30e1-46b6-b2c6-3b51b81906c4.png", alt: "AT&T", className: "h-7" },
+      { src: "/images/19818142-90f8-497a-85f3-68e7f3b2ebfb.png", alt: "Palantir", className: "h-6" },
     ],
   },
   {
@@ -404,9 +405,9 @@ export const pwcHighlights: Highlight[] = [
       "Combined six data sources into a consolidated data cube for monthly sponsor reporting after GoFan's acquisition by PlayOn, a KKR portfolio company.",
     ],
     logos: [
-      { src: "/lovable-uploads/eef35f22-2207-453e-b7a6-461ea39fbd05.png", alt: "KKR", className: "h-6" },
-      { src: "/lovable-uploads/3860c3ed-d503-4eda-8c9f-f74bbab5eaeb.png", alt: "PlayOn", className: "h-7" },
-      { src: "/lovable-uploads/b8f19173-4547-4d54-bb16-b241249d6af8.png", alt: "GoFan", className: "h-7" },
+      { src: "/images/eef35f22-2207-453e-b7a6-461ea39fbd05.png", alt: "KKR", className: "h-6" },
+      { src: "/images/3860c3ed-d503-4eda-8c9f-f74bbab5eaeb.png", alt: "PlayOn", className: "h-7" },
+      { src: "/images/b8f19173-4547-4d54-bb16-b241249d6af8.png", alt: "GoFan", className: "h-7" },
     ],
   },
 ];
@@ -436,7 +437,7 @@ export const resume = {
     },
     {
       label: "Build & AI tools",
-      items: "AI coding assistants, OpenAI API, n8n, Gumloop, Lovable, Bubble, Azure SQL, Vercel",
+      items: "AI coding assistants, n8n, Gumloop, Bubble, Azure SQL, Vercel",
     },
   ],
   education: {
