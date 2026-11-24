@@ -120,7 +120,7 @@ export const projects: Project[] = [
     title: "Twilight Alpha",
     category: "Horizon scanning for financial services",
     summary:
-      "Surfaces emerging patterns before they go mainstream, testing each signal for persistence, explainability, strategic relevance and false-positive risk, with full provenance. Agent-initiated payments was flagged 153 days ahead of mainstream recognition.",
+      "Surfaces emerging patterns before they go mainstream, testing each signal for persistence, explainability, strategic relevance and false-positive risk, with full provenance.",
     tags: ["Horizon scanning", "Financial services", "AI analysis"],
     url: "https://twilight-alpha-jade.vercel.app/",
     image: "/work/twilight-alpha.webp",
